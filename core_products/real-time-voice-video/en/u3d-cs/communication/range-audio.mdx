@@ -98,7 +98,29 @@ ZEGO Express SDK 从 **2.11.0** 版本起，新增游戏语音模块，主要包
 
 ## 使用步骤
 
+```mermaid
+sequenceDiagram
+    participant App as Client App
+    participant SDK as ZEGO Express SDK
+
+    App->>SDK: Create engine <br/> [createEngineWithProfile]
+    App->>SDK: Create range audio instance object <br/> [createRangeAudio]
+    App->>SDK: Listen to range audio event callbacks <br/> [ZegoExpressEngine.onRangeAudioMicrophoneStateUpdate]
+    App->>SDK: Login room <br/> [loginRoom]
+
+    critical Critical steps
+        App->>SDK: Set listener's current position <br/> [updateSelfPosition]
+        App->>SDK: Add/Update audio source position info <br/> [updateAudioSource]
+        App->>SDK: Enable microphone, speaker <br/> [enableMicrophone / enableSpeaker]
+        SDK-->>App: Callback microphone usage status <br/> [onRangeAudioMicrophoneStateUpdate]
+    end
+
+    App->>SDK: Destroy range audio module <br/> [destroyRangeAudio]
+    App->>SDK: Logout room <br/> [logoutRoom]
+```
+{/*
 <Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/sdk-doc/Pics/Express/RangeVoice_u3d.png" /></Frame>
+*/}
 
 上图仅展示了实现游戏语音功能的核心步骤与接口，开发者可以根据业务需要，参考下文文档的详细介绍，实现其他相关接口。
 

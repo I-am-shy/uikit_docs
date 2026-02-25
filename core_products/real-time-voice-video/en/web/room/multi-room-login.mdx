@@ -48,7 +48,31 @@ Before implementing multi-room functionality, please ensure:
 
 Taking the example of the same user joining two rooms, the overall implementation process is as follows:
 
+```mermaid
+sequenceDiagram
+    participant Client
+    participant ZEGO Express SDK
+
+    Client ->> ZEGO Express SDK: Set multi-room mode <br/> [setRoomMode]
+
+    Client ->> ZEGO Express SDK: Initialize Express SDK <br/> [createEngine]
+
+
+    critical Call loginRoom multiple times with different roomID and same userID to login to multiple rooms simultaneously.
+        Client ->> ZEGO Express SDK: Login room <br/> [loginRoom]
+
+        Client ->> ZEGO Express SDK: Publish stream, play stream <br/> [startPublishingStream, startPlayingStream]
+
+        Client ->> ZEGO Express SDK: Send real-time message <br/> [sendCustomCommand]
+
+        ZEGO Express SDK -->> Client: Receive related room callbacks <br/> [onRoomStreamUpdate / onIMRecvCustomCommand]
+
+        Client ->> ZEGO Express SDK: Logout room <br/> [logoutRoom]
+    end
+```
+{/*
 <Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/sdk-doc/Pics/Common/MultiRoom/MultiRoom_Web_new.png" /></Frame>
+*/}
 
 1. Initialize the SDK, then set the room mode to multi-room.
 2. Join the first room. After successful login, you can publish streams, play streams, send and receive real-time messages in that room.

@@ -54,9 +54,24 @@ The basic process for users to conduct video calls through ZEGO Express SDK is:
 
 Users A and B join the room. User B previews and pushes the audio/video stream to the ZEGO cloud service (publish stream). After user A receives the notification of user B's published audio/video stream, user A plays user B's audio/video stream in the notification (play stream).
 
+```mermaid
+sequenceDiagram
+    participant UserA
+    participant ZEGO Express SDK
+    participant UserB
+    UserA->>ZEGO Express SDK: 1.User A creates engine
+    UserA->>ZEGO Express SDK: 2.User A logs in to room
+    UserB->>ZEGO Express SDK: 3.User B creates engine
+    UserB->>ZEGO Express SDK: 4.User B logs in to room
+    UserB->>ZEGO Express SDK: 5.User B publishes stream
+    ZEGO Express SDK->>UserA: 6.User A receives room stream update notification<br/>(get User B's streamID)
+    UserA->>ZEGO Express SDK: 7.User A passes User B's streamID to play stream
+```
+{/*
 <Frame width="512" height="auto" caption="">
   <img src="https://doc-media.zego.im/sdk-doc/Pics/Common/ZegoExpressEngine/common_usage_new.png" />
 </Frame>
+*/}
 
 ### Create Engine
 

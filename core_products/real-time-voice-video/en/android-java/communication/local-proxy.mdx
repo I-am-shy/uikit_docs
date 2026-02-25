@@ -11,9 +11,26 @@ When the developer's local network uses a socks5 proxy server to access the exte
 
 ### Architecture Description
 
+```mermaid
+sequenceDiagram
+    participant ClientAPP
+    participant ZEGO Express SDK
+    participant socks5ProxyServer
+    participant ZEGOVideoCallCloud
+    note right of ZEGOVideoCallCloud:───> Handled by developer<br>   ┄┄> Handled by ZEGO internally
+    ClientAPP->>ZEGO Express SDK: Set proxy
+    ZEGO Express SDK-->>socks5ProxyServer: Request to connect proxy
+    socks5ProxyServer-->>ZEGO Express SDK: Connect proxy succeeded
+    ZEGO Express SDK-->>socks5ProxyServer: Send data
+    socks5ProxyServer-->>ZEGOVideoCallCloud: Send data
+    ZEGOVideoCallCloud-->>socks5ProxyServer: Receive data
+    socks5ProxyServer-->>ZEGO Express SDK: Receive data
+```
+{/*
 <Frame width="512" height="auto" caption="">
   <img src="https://doc-media.zego.im/sdk-doc/Pics/Express/iOS_Client_Framework.png" />
 </Frame>
+*/}
 
 ### Usage Process
 

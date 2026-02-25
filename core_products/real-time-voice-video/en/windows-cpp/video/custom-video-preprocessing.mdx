@@ -39,7 +39,26 @@ Before performing custom video pre-processing, ensure that:
 
 The flow and interface calls for custom video pre-processing are as follows:
 
+```mermaid
+sequenceDiagram
+    participant App as Client App
+    participant SDK as ZEGO Express SDK
+
+    App->>SDK: Initialize Express SDK <br/> [createEngine]
+    App->>SDK: Set custom video render configuration <br/> [enableCustomVideoRender]
+    App->>SDK: Set render callback handler,<br>implement callback methods <br/> [setCustomVideoRenderHandler]
+    App->>SDK: Login room <br/> [loginRoom]
+
+    critical Call publish/play stream interfaces to get video data, then perform custom rendering
+        App->>SDK: Start preview, publish stream <br/> [startPreview, startPublishingStream]
+        SDK-->>App: Local preview captured video data notification <br/> [onCapturedVideoFrameRawData]
+        App->>SDK: Play stream <br/> [startPlayingStream]
+        SDK-->>App: Remote play stream video data notification <br/> [onRemoteVideoFrameRawData]
+    end
+```
+{/*
 <Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/sdk-doc/Pics/Common/ZegoExpressEngine/custom_video_process_win_new.png" /></Frame>
+*/}
 
 1. Initialize the Express SDK and login to the room.
 

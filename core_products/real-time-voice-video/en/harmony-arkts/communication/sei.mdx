@@ -33,7 +33,29 @@ SEI 的相关概念及原理请参考 [如何理解和使用 SEI（媒体补充�
 
 发送与接收 SEI 信息功能，需要在推流端发送 SEI 信息，在拉流端接收 SEI 信息，如下图所示：
 
+```mermaid
+sequenceDiagram
+    participant PublishingClientApp
+    participant ZEGO Express SDK
+    participant PlayingClientApp
+
+    PublishingClientApp->>ZEGO Express SDK: Initialize SDK <br/> [createEngine]
+    PublishingClientApp->>ZEGO Express SDK: Login room <br/> [loginRoom]
+    PublishingClientApp->>ZEGO Express SDK: Start publishing stream <br/> [startPublishingStream]
+
+    PlayingClientApp->>ZEGO Express SDK: Initialize SDK <br/> [createEngine]
+    PlayingClientApp->>ZEGO Express SDK: Register related callback listeners <br/> [setEventHandler]
+    PlayingClientApp->>ZEGO Express SDK: Login room <br/> [loginRoom]
+    PlayingClientApp->>ZEGO Express SDK: Start playing stream <br/> [startPlayingStream]
+
+    critical Critical steps
+    PublishingClientApp->>ZEGO Express SDK: Send SEI info <br/> [sendSEI]
+    ZEGO Express SDK-->>PlayingClientApp: Receive SEI info <br/> [onPlayerRecvSEI]
+    end
+```
+{/*
 <Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/sdk-doc/Pics/Common/ZegoExpressEngine/send_and_recv_sei_Andriod_new.png" /></Frame>
+*/}
 
 推流端：
 

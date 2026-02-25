@@ -41,9 +41,26 @@ Geofencing refers to limiting the transmission of audio, video, and signaling da
 - Since there is cross-regional public internet between the specified geofencing region and the App user's region, poor public internet network quality will affect the audio and video experience.
 </Warning>
 
+```mermaid
+graph LR
+    U1[User1] --> S1[Set geofencing area:<br/>area 1]
+    U3[User3] --> S3[Set geofencing area:<br/>area 2]
+    subgraph ZEGO Audio Video Cloud
+        A1[area 1]
+        A2[area 2]
+    end
+    S1 --> A1
+    S3 --> A2
+    S2[Set geofencing area:<br/>area 1] --> U2[User2]
+    S4[Set geofencing area:<br/>area 2] --> U4[User4]
+    A1 --> S2
+    A2 --> S4
+```
+{/*
 <Frame width="512" height="auto" caption="">
   <img src="https://doc-media.zego.im/sdk-doc/Pics/Express/Geofencing_pic.jpeg" />
 </Frame>
+*/}
 
 Currently, the SDK supports the following regions:
 

@@ -120,7 +120,47 @@ Before implementing object segmentation features, please ensure:
 - If custom third-party filters with pre-processing are used, ensure that the third-party filters support Alpha channel pass-through functionality.
 </Warning>
 
+```mermaid
+sequenceDiagram
+    participant Publisher
+    participant ZEGO Express SDK
+    participant Player
+
+    Publisher->>ZEGO Express SDK: Initialize engine <br/> [createEngine]
+
+    Publisher->>ZEGO Express SDK: Login room <br/> [loginRoom]
+
+    Player->>ZEGO Express SDK: Initialize <br/> [createEngine]
+
+    Player->>ZEGO Express SDK: Login room <br/> [loginRoom]
+
+    alt Optional: Custom render and callback
+        Publisher-->>ZEGO Express SDK: [enableCustomVideoRender / setCustomVideoRenderHandler]
+    end
+
+    Publisher->>ZEGO Express SDK: Listen to subject segmentation state callback <br/> [onVideoObjectSegmentationStateChanged]
+
+    Publisher->>ZEGO Express SDK: Enable subject segmentation <br/> [enableVideoObjectSegmentation]<br/>(Background blur/Virtual background/Transparent background)
+
+    alt Optional: Use Alpha channel to transmit segmented subject
+        Publisher-->>ZEGO Express SDK: [enableAlphaChannelVideoEncoder]
+    end
+
+    Publisher->>ZEGO Express SDK: Start preview and publish stream <br/> [startPreview / startPublishingStream]
+
+    alt Optional: Set Alpha channel rendering on player side and play stream
+        Player-->>ZEGO Express SDK: ZegoCanvas.alphaBlend = true,<br/>[startPlayingStream]
+    end
+
+    Publisher->>ZEGO Express SDK: Disable subject segmentation <br/> [enableVideoObjectSegmentation]
+
+    Publisher->>ZEGO Express SDK: Destroy engine <br/> [destroyEngine]
+
+    Player->>ZEGO Express SDK: Destroy engine <br/> [destroyEngine]
+```
+{/*
 <Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/sdk-doc/Pics/subject_segmentation/subject_segmentation_win.png" /></Frame>
+*/}
 
 Please note that developers can choose whether to implement the **(Optional)** steps in the above diagram based on their business scenario requirements. For implementation, please refer to the specific instructions below.
 

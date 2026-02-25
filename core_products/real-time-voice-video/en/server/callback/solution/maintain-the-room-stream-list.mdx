@@ -100,9 +100,57 @@ The field descriptions in the images below are as follows:
 
 - Stream created callback processing flow:
 
+```mermaid
+flowchart TD
+    A[Stream create callback] --> B{Does zego.RoomId exist in room list?}
+
+    B -- No --> C[Out of order, save to callback cache queue, wait for room creation callback before processing]
+
+    B -- Yes --> D{Is zego.room_session_id ==local.RoomSessionId?}
+
+    D -- No --> E{Is zego.create_time_ms≥local.RoomCreateTime?}
+    E -- Yes --> C
+    E -- No --> F[Out of order, the room session of the stream in this callback has ended, do not process this callback]
+
+    D -- Yes --> G{Does zego.stream_id exist in stream list?}
+
+    G -- No --> H[Add stream info based on callback data]
+
+    G -- Yes --> I[Compare zego.stream_seq, local.StreamSeq, use the data with larger value]
+
+    H --> J[Read cache queue, merge callback data]
+    I --> J
+    F --> J
+```
+{/*
     <Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/sdk-doc/Pics/server_v2/solution_of_stream_create.jpeg" /></Frame>
+*/}
 
 
 - Stream destroyed callback processing flow:
 
+```mermaid
+flowchart TD
+    A[Stream close callback] --> B{Does zego.RoomId exist in room list?}
+
+    B -- No --> C[Out of order, save to callback cache queue, wait for room creation callback before processing]
+
+    B -- Yes --> D{Is zego.room_session_id ==local.RoomSessionId?}
+
+    D -- No --> E{Is zego.destroy_timemillis >local.RoomCreateTime?}
+    E -- Yes --> C
+    E -- No --> F[Out of order, the room session of the stream in this callback has ended, do not process this callback]
+
+    D -- Yes --> G{Does zego.stream_id exist in stream list?}
+
+    G -- No --> H[Out of order, have not received the stream creation callback for this stream yet, save to callback cache queue, wait for processing]
+
+    G -- Yes --> I{Is zego.stream_seq >local.StreamSeq?}
+
+    I -- Yes --> J[Delete stream data]
+
+    I -- No --> K[Out of order, the room session of the stream in this callback has ended, do not process this callback]
+```
+{/*
     <Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/sdk-doc/Pics/server_v2/solution_of_stream_close.jpeg" /></Frame>
+*/}

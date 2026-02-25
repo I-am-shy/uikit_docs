@@ -99,9 +99,64 @@ The field descriptions in the images below are as follows:
 
 - Room created callback processing flow:
 
+```mermaid
+flowchart TD
+    A[Login room callback] --> B{Does zego.RoomId exist in room list?}
+
+    B -- No --> C[Out of order save to callback cache queue, wait for processing]
+
+    B -- Yes --> D{Is zego.RoomSeq ==local.RoomSessionId?}
+
+    D -- No --> E{Is zego.LoginTime >=local.RoomCreateTime?}
+    E -- Yes --> C
+    E -- No --> F[Out of order the user session of this callback has ended, do not process this callback]
+
+    D -- Yes --> G{Does zego.UserAccount exist in user list?}
+
+    G -- No --> H[Add user based on callback data]
+
+    G -- Yes --> I{Is zego.SessionId ==local.UserSessionId?}
+
+    I -- Yes --> J[Compare zego.LoginTime, local.UserLoginTime, use the newer data]
+
+    I -- No --> K{Is zego.LoginTime >local.UserLoginTime?}
+    K -- No --> F
+    K -- Yes --> L[Out of order update user based on callback data]
+
+    H --> M[Read cache queue, merge callback data]
+    L --> M
+```
+{/*
     <Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/sdk-doc/Pics/server_v2/solution_of_room_login.png" /></Frame>
+*/}
 
 
 - Room destroyed callback processing flow:
 
+```mermaid
+flowchart TD
+    A[Logout room callback] --> B{Does zego.RoomId exist in room list?}
+
+    B -- No --> C[Out of order save to callback cache queue, wait for processing]
+
+    B -- Yes --> D{Is zego.RoomSeq ==local.RoomSessionId?}
+
+    D -- No --> E{Is zego.LogoutTime >local.RoomCreateTime?}
+    E -- Yes --> C
+    E -- No --> F[Out of order the user session of this callback has ended, do not process this callback]
+
+    D -- Yes --> G{Does zego.UserAccount exist in user list?}
+
+    G -- No --> H[Out of order save to callback cache queue, wait for processing]
+
+    G -- Yes --> I{Is zego.SessionId ==local.UserSessionId?}
+
+    I -- Yes --> J[Delete user data]
+
+    I -- No --> K{Is zego.LogoutTime >local.UserLoginTime?}
+    K -- No --> F
+    K -- Yes --> L[Out of order save to callback cache queue, wait for processing]
+```
+{/*
     <Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/sdk-doc/Pics/server_v2/solution_of_room_logout.png" /></Frame>
+*/}

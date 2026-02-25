@@ -10,7 +10,22 @@ date: "2024-09-27"
 
 In the show live streaming scenario, instant startup is achieved by optimizing the audience's stream playing speed. Compared with the normal stream playing process, the advantage of instant startup stream playing is that it does not rely on the successful login room status. It initiates stream playing while initiating login room to speed up stream playing. The following is a comparison between normal stream playing and instant startup stream playing:
 
+```mermaid
+sequenceDiagram
+    participant Audience
+    participant ZEGO Express SDK
+    note over Audience,ZEGO Express SDK: Normal play stream process
+    Audience->>ZEGO Express SDK: Login room <br/> [loginRoom]
+    ZEGO Express SDK-->>Audience: Login succeeded
+    ZEGO Express SDK-->>Audience: New stream notification
+    Audience->>ZEGO Express SDK: Start playing stream <br/> [startPlayingStream]
+    note over Audience,ZEGO Express SDK: Instant-on play stream process
+    Audience->>ZEGO Express SDK: Login room <br/> [loginRoom]
+    Audience->>ZEGO Express SDK: Start playing stream <br/> [startPlayingStream]
+```
+{/*
 <Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/sdk-doc/Pics/Common/ZegoExpressEngine/Second_opening_scheme.png" /></Frame>
+*/}
 
 
 ## Prerequisites

@@ -37,7 +37,34 @@ Before implementing SEI functionality, ensure that:
 
 The function of sending and receiving SEI information requires sending SEI information on the publishing side and receiving SEI information on the playing side, as shown below:
 
+```mermaid
+sequenceDiagram
+    participant P as Publishing Client App
+    participant Z as ZEGO Express SDK
+    participant L as Playing Client App
+
+    P->>Z: Initialize SDK <br/> [new ZegoExpressEngine]
+
+    P->>Z: Login room <br/> [loginRoom]
+
+    P->>Z: Start publishing stream <br/> [startPublishingStream]
+
+    L->>Z: Initialize SDK <br/> [new ZegoExpressEngine]
+
+    L->>Z: Implement related callback listeners <br/> [on('playerRecvSEI')]
+
+    L->>Z: Login room <br/> [loginRoom]
+
+    L->>Z: Start playing stream <br/> [startPlayingStream]
+
+    critical Critical steps
+        P->>Z: Send SEI info <br/> [sendSEI]
+        Z-->>L: Receive SEI info <br/> [playerRecvSEI]
+    end
+```
+{/*
 <Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/sdk-doc/Pics/Common/ZegoExpressEngine/send_and_recv_sei_flutter_new.png" /></Frame>
+*/}
 
 Publishing side:
 

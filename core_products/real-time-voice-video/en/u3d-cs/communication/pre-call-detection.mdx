@@ -36,7 +36,22 @@ Before implementing pre-call device detection functionality, please ensure:
 
 The microphone device detection flow is shown in the following figure:
 
+```mermaid
+graph TD
+    A[Start microphone detection] --> B[Start microphone]
+    B --> C{Check microphone permission}
+    C -->|No| D{Agree to authorize}
+    C -->|Yes| E{Check if microphone is available}
+    D -->|Agree| E
+    D -->|Disagree| F[Device error]
+    E -->|No| F
+    E -->|Yes| G{Check microphone audio data}
+    G -->|Data abnormal| F
+    G -->|Data normal| H[Device normal]
+```
+{/*
 <Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/sdk-doc/Pics/Common/ZegoExpressEngine/Microphone_detection.png" /></Frame>
+*/}
 
 
 #### Corresponding Interfaces
@@ -112,7 +127,22 @@ Only when accessing real-time audio SDK or pure audio scenarios, camera detectio
 
 The camera device detection flow is shown in the following figure:
 
+```mermaid
+graph TD
+    A[Start camera detection] --> B[Start camera]
+    B --> C{Check camera permission}
+    C -- No --> D{Agree to authorize}
+    C -- Yes --> E{Check if camera is available}
+    D -- Agree --> E
+    D -- Disagree --> F[Device error]
+    E -- No --> F
+    E -- Yes --> G{Check if image is normal}
+    G -- Image abnormal --> F
+    G -- Image normal --> H[Device normal]
+```
+{/*
 <Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/sdk-doc/Pics/Common/ZegoExpressEngine/Camera_detection.png" /></Frame>
+*/}
 
 
 #### Corresponding Interfaces
@@ -176,7 +206,16 @@ If the video display is normal at this time, the camera is working properly and 
 
 The playback device detection flow is shown in the following figure:
 
+```mermaid
+graph TD
+    A[Start speaker detection] --> B[Use media player to play audio file]
+    B --> C{Can you hear sound}
+    C -->|Yes| D[Device normal]
+    C -->|No| E[Device error]
+```
+{/*
 <Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/sdk-doc/Pics/Common/ZegoExpressEngine/Playback_device_detection.png" /></Frame>
+*/}
 
 
 #### Corresponding Interfaces

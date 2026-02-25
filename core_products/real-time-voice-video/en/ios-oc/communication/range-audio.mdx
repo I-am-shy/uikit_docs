@@ -93,7 +93,29 @@ If you are already using the real-time audio/video features of ZEGO Express SDK,
 
 ## Usage Steps
 
+```mermaid
+sequenceDiagram
+    participant App as Client App
+    participant SDK as ZEGO Express SDK
+
+    App->>SDK: Create engine <br/> [CreateEngine]
+    App->>SDK: Create range audio module <br/> [CreateRangeAudio]
+    App->>SDK: Listen to range audio event callbacks <br/> [IZegoRangeAudioHandler]
+    App->>SDK: Login room <br/> [LoginRoom]
+
+    critical Critical steps
+        App->>SDK: Set listener's current position <br/> [UpdateSelfPosition]
+        App->>SDK: Add/Update audio source position info <br/> [UpdateAudioSource]
+        App->>SDK: Enable microphone, speaker <br/> [EnableMicrophone / EnableSpeaker]
+        SDK-->>App: Callback microphone usage status <br/> [OnRangeAudioMicrophoneStateUpdate]
+    end
+
+    App->>SDK: Destroy range audio module <br/> [DestroyRangeAudio]
+    App->>SDK: Logout room <br/> [LogoutRoom]
+```
+{/*
 <Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/sdk-doc/Pics/Express/RangeVoice_ios.png" /></Frame>
+*/}
 
 The above diagram only shows the core steps and interfaces for implementing the game voice feature. Developers can implement other related interfaces according to business needs, referring to the detailed introduction in the documentation below.
 

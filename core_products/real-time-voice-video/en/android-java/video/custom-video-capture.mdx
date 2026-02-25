@@ -35,7 +35,24 @@ Before performing custom video capture, please ensure:
 
 The API interface call sequence diagram is as follows:
 
+```mermaid
+sequenceDiagram
+    participant ClientApp as Client App
+    participant ZEGO as ZEGO Express SDK
+
+    ClientApp ->> ZEGO: Create engine <br/> [createEngine]
+    ClientApp ->> ZEGO: Enable custom video capture <br/> [enableCustomVideoCapture]
+    ClientApp ->> ZEGO: Set capture callback handler, implement callback methods <br/> [setCustomVideoCaptureHandler]
+    ClientApp ->> ZEGO: Login room <br/> [loginRoom]
+    ClientApp ->> ZEGO: Start preview, publish stream <br/> [startPreview, startPublishingStream]
+    ZEGO -->> ClientApp: Custom video capture start notification <br/> [onStart]
+    ClientApp ->> ZEGO: Send video frame data <br/> [sendCustomVideoCaptureRawData]
+    ClientApp ->> ZEGO: Stop preview, publish stream <br/> [stopPreview, stopPublishingStream]
+    ZEGO -->> ClientApp: Custom video capture stop notification <br/> [onStop]
+```
+{/*
 <Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/sdk-doc/Pics/Common/ZegoExpressEngine/custom_video_capture_uml_android_new.png" /></Frame>
+*/}
 
 1. Create ZegoExpressEngine engine.
 2. Call the [enableCustomVideoCapture](@enableCustomVideoCapture) interface to enable the custom video capture feature.

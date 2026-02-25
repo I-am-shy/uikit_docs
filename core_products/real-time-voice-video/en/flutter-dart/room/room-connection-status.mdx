@@ -19,7 +19,48 @@ If the room connection is interrupted due to poor network quality, the SDK will 
 
 **Room Status Description**
 
+```mermaid
+sequenceDiagram
+    participant APP
+    participant ZEGO Express SDK
+
+    note over APP,ZEGO Express SDK: Create ZegoExpressEngine instance
+    APP->>ZEGO Express SDK: [createEngineWithProfile]
+
+    note over APP,ZEGO Express SDK: Set recording info callback
+    APP->>ZEGO Express SDK: [setDataRecordEventHandler]
+
+    note over APP,ZEGO Express SDK: Login room
+    APP->>ZEGO Express SDK: [loginRoom]
+
+    note over APP,ZEGO Express SDK: Start publishing stream or preview to start data capture<br/>(enable microphone, camera)
+    APP->>ZEGO Express SDK: [startPublishingStream / startPreview]
+
+    note over APP,ZEGO Express SDK: Start recording
+    APP->>ZEGO Express SDK: [startRecordingCapturedData]
+
+    note over APP,ZEGO Express SDK: Handle recording info callback notifications
+    ZEGO Express SDK-->>APP: [onCapturedDataRecordStateUpdate]
+    loop Continuously trigger onCapturedDataRecordProgressUpdate callback
+        ZEGO Express SDK-->>APP: [onCapturedDataRecordProgressUpdate]
+    end
+
+    note over APP,ZEGO Express SDK: Stop recording
+    APP->>ZEGO Express SDK: [stopRecordingCapturedData]
+    ZEGO Express SDK-->>APP: [onCapturedDataRecordStateUpdate]
+
+    note over APP,ZEGO Express SDK: Stop publishing stream or preview
+    APP->>ZEGO Express SDK: [stopPublishingStream / stopPreview]
+
+    note over APP,ZEGO Express SDK: Logout room
+    APP->>ZEGO Express SDK: [logoutRoom]
+
+    note over APP,ZEGO Express SDK: Destroy engine
+    APP->>ZEGO Express SDK: [destroyEngine]
+```
+{/*
 <Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/sdk-doc/Pics/Express/Android/express_roomstate_change_android.png" /></Frame>
+*/}
 
 Room connection states will convert to each other. Developers can judge various situations through reason and combine errorCode to handle corresponding logic when necessary. reason is [ZegoRoomStateChangedReason](https://www.zegocloud.com/docs/unique-api/express-video-sdk/en/dart_flutter/zego_express_engine/ZegoRoomStateChangedReason.html) data (i.e., room connection state). The specific description is as follows:
 

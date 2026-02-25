@@ -50,9 +50,16 @@ Relaying to CDN includes the following three methods:
 
 Direct publishing to CDN refers to the process of pushing audio and video streams directly from the local client to CDN. Users can directly watch from web pages or third-party players by playing stream URL addresses. However, because the direct publishing to CDN function does not pass through ZEGO real-time audio and video cloud during network transmission, developers cannot use ZEGO's real-time audio and video services.
 
+```mermaid
+graph LR
+    A[Host] -->|"Push audio/video stream directly to CDN<br/>[enablePublishDirectToCDN]"| B[CDN]
+    B -->|"Play stream<br/>[startPlayingStream]"| C[Audience]
+```
+{/*
 <Frame width="512" height="auto" caption="">
   <img src="https://doc-media.zego.im/sdk-doc/Pics/Android/streamByCdn/direct_to_cdn.png" />
 </Frame>
+*/}
 
 ### Feature Comparison
 

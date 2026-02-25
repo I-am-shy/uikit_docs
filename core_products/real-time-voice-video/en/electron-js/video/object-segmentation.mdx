@@ -117,7 +117,43 @@ Before using the object segmentation function, please ensure:
 
 
 
+```mermaid
+sequenceDiagram
+    participant Publisher
+    participant ZEGO Express SDK
+    participant Player
+
+    Publisher->>ZEGO Express SDK: Initialize engine <br/> [createEngineWithProfile]
+
+    Publisher->>ZEGO Express SDK: Login room <br/> [loginRoom]
+
+    Player->>ZEGO Express SDK: Initialize <br/> [createEngineWithProfile]
+
+    Player->>ZEGO Express SDK: Login room <br/> [loginRoom]
+
+    Publisher->>ZEGO Express SDK: Set rendering view <br/> [setBackgroundColor]
+
+    Publisher-->>ZEGO Express SDK: (Optional) Custom<br>render and callback <br/> [enableCustomVideoRender / setCustomVideoRenderHandler]
+
+    Publisher->>ZEGO Express SDK: Listen to subject segmentation state callback <br/> [onVideoObjectSegmentationStateChanged]
+
+    Publisher->>ZEGO Express SDK: Enable subject segmentation <br/> [enableVideoObjectSegmentation]<br/>(Background blur/Virtual background/Transparent background)
+
+    Publisher-->>ZEGO Express SDK: (Optional) Use Alpha<br>channel to transmit segmented subject <br/> [enableAlphaChannelVideoEncoder]
+
+    Publisher->>ZEGO Express SDK: Start preview and publish stream <br/> [startPreview / startPublishingStream]
+
+    ZEGO Express SDK-->>Player: (Optional) Set Alpha<br/>channel rendering on player side and play stream <br/> ZegoCanvas.alphaBlend = YES,<br/>[startPlayingStream]
+
+    Publisher->>ZEGO Express SDK: Disable subject segmentation <br/> [enableVideoObjectSegmentation]
+
+    Publisher->>ZEGO Express SDK: Destroy engine <br/> [destroyEngine]
+
+    ZEGO Express SDK->>Player: Destroy engine <br/> [destroyEngine]
+```
+{/*
 <Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/sdk-doc/Pics/subject_segmentation/subject_segmentation_electron.png" /></Frame>
+*/}
 
 Please note that developers can choose whether to implement the **(Optional)** steps in the above figure according to their business scenario needs. If implementation is needed, please refer to the specific instructions below.
 

@@ -48,7 +48,36 @@ Before implementing real-time range audio and video, please ensure:
 
 The following figure shows the API interface call sequence diagram:
 
+```mermaid
+sequenceDiagram
+    participant App as Client App
+    participant SDK as ZEGO Express SDK
+
+    App->>SDK: Create engine <br/> [CreateEngine]
+
+    App->>SDK: Create range scene module <br/> [CreateRangeScene]
+
+    App->>SDK: Listen to range scene event callbacks <br/> [IZegoRangeSceneStreamEventHandler]
+
+    critical Critical steps
+        App->>SDK: Set range scene stream management parameters <br/> [SetReceiveRange / EnableRangeSpatializer]
+
+        App->>SDK: Login scene <br/> [LoginScene]
+
+        App->>SDK: Publish stream to scene <br/> [StartPublishingStreamInScene]
+
+        App->>SDK: Update user position <br/> [UpdateUserPosition]
+
+        App->>SDK: Logout scene <br/> [LogoutScene]
+    end
+
+    App->>SDK: Destroy range scene module <br/> [DestroyRangeScene]
+
+    App->>SDK: Destroy engine <br/> [DestroyEngine]
+```
+{/*
 <Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/sdk-doc/Pics/Express/rangeScene_u3d.png" /></Frame>
+*/}
 
 The following sections describe in detail the corresponding implementation steps for each API interface.
 

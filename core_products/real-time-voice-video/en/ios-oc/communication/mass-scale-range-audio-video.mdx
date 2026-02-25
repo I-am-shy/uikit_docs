@@ -46,7 +46,24 @@ Before implementing real-time range audio/video, ensure that:
 
 The following figure shows the API interface call sequence diagram:
 
+```mermaid
+sequenceDiagram
+    participant App as Client App
+    participant SDK as ZEGO Express SDK
+
+    App ->> SDK: Create engine <br/> [CreateEngine]
+    App ->> SDK: Enable custom video capture <br/> [EnableCustomVideoCapture]
+    App ->> SDK: Set capture callback handler,<br/>implement callback methods <br/> [IZegoEventHandler]
+    App ->> SDK: Login room <br/> [LoginRoom]
+    App ->> SDK: Start preview, publish stream <br/> [StartPreview / StartPublishingStream]
+    SDK -->> App: Custom video capture start notification <br/> [OnCustomVideoCaptureStart]
+    App ->> SDK: Send video frame data <br/> [SendCustomVideoCaptureRawData]
+    App ->> SDK: Stop preview, publish stream <br/> [StopPreview / StopPublishingStream]
+    SDK -->> App: Custom video capture stop notification <br/> [OnCustomVideoCaptureStop]
+```
+{/*
 <Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/sdk-doc/Pics/Express/rangeScene_ios.png" /></Frame>
+*/}
 
 The following sections describe in detail the implementation steps for each API interface.
 

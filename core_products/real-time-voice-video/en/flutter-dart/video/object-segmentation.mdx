@@ -126,7 +126,34 @@ Before using the object segmentation feature, ensure:
 
 
 
+```mermaid
+sequenceDiagram
+    participant P as Publisher
+    participant Z as ZEGO Express SDK
+    participant L as Player
+
+    P->>Z: Initialize engine <br/> [createEngine]
+    P->>Z: Login room <br/> [loginRoom]
+    L->>Z: Initialize engine <br/> [createEngine]
+    L->>Z: Login room <br/> [loginRoom]
+    P->>Z: Set rendering view <br/> [setOpaque / setFormat]
+
+    P-->>Z:  (Optional) Custom render and callback <br/> [enableCustomVideoRender / setCustomVideoRenderHandler]
+    P->>Z: Listen to subject segmentation state callback <br/> [onVideoObjectSegmentationStateChanged]
+    P->>Z: Enable subject segmentation <br/> [enableVideoObjectSegmentation]<br/>(Background blur/Virtual background/Transparent background)
+    P-->>Z: (Optional) Use Alpha channel to transmit segmented subject <br/> [enableAlphaChannelVideoEncoder]
+    P->>Z: Start preview and publish stream <br/> [startPreview / startPublishingStream]
+
+    L-->>Z: (Optional) Set Alpha channel rendering on player side and play stream <br/> ZegoCanvas.alphaBlend = true,<br/>[startPlayingStream]
+
+    P->>Z: Disable subject segmentation <br/> [enableVideoObjectSegmentation]
+
+    P->>Z: Destroy engine <br/> [destroyEngine]
+    L->>Z: Destroy engine <br/> [destroyEngine]
+```
+{/*
 <Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/sdk-doc/Pics/subject_segmentation/subject_segmentation_flutter.png" /></Frame>
+*/}
 
 Please note, developers can choose whether to implement the **(Optional)** steps in the above diagram according to their business scenario needs. If implementation is needed, please refer to the specific instructions below.
 

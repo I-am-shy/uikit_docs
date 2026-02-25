@@ -38,7 +38,30 @@ Before performing custom video preprocessing, please ensure:
 
 The flow and interface calls for custom video preprocessing are as follows:
 
+```mermaid
+sequenceDiagram
+    participant A as Client App
+    participant Z as ZEGO Express SDK
+
+    A->>Z: Initialize Express SDK <br/> [createEngine]
+    A->>Z: Login room <br/> [loginRoom]
+
+    critical Critical steps
+        A->>Z: Enable custom video preprocessing <br/> [enableCustomVideoProcessing]
+        A->>Z: Set custom video preprocessing callback <br/> [setCustomVideoProcessHandler]
+        A->>Z: Start preview, publish stream <br/> [startPreview, startPublishingStream]
+        Z-->>A: Get raw video data,<br>perform video preprocessing <br/> [onCapturedUnprocessedCVPixelBuffer]
+        A->>Z: Send processed image to Express <br/> [sendCustomVideoProcessedCVPixelBuffer]
+    end
+
+    A->>Z: Play processed video data <br/> [startPlayingStream]
+    A->>Z: Stop preview, publish stream <br/> [stopPreview, stopPublishingStream]
+    A->>Z: Logout room <br/> [logoutRoom]
+    A->>Z: Destroy Express SDK <br/> [destroyEngine]
+```
+{/*
 <Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/sdk-doc/Pics/Common/ZegoExpressEngine/custom_video_process_ios_new.png" /></Frame>
+*/}
 
 1. Initialize Express SDK and log in to room.
 2. Call the [enableCustomVideoProcessing](@enableCustomVideoProcessing) interface to [enable custom video preprocessing](#1-enable-custom-video-preprocessing) feature.

@@ -32,7 +32,22 @@ Click [Online Experience](https://zegoim.github.io/express-demo-web/src/Examples
 
 The microphone device testing process is shown in the following diagram:
 
+```mermaid
+graph TD
+    A[Start microphone detection] --> B{Get microphone permission}
+    B -->|No| C{Agree to authorize}
+    B -->|Yes| D[Start microphone]
+    C -->|Agree| D
+    C -->|Disagree| F[Device error]
+    D --> E{Check if microphone is available}
+    E -->|No| F
+    E -->|Yes| G{Check microphone audio data}
+    G -->|Data abnormal| F
+    G -->|Data normal| H[Device normal]
+```
+{/*
 <Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/sdk-doc/Pics/Common/ZegoExpressEngine/Microphone_detection_new.jpeg" /></Frame>
+*/}
 
 **1. Check microphone device permissions and get microphone device list**
 
@@ -121,7 +136,22 @@ zg.setSoundLevelDelegate(true);
 
 The camera device testing process is shown in the following diagram:
 
+```mermaid
+graph TD
+    A[Start camera detection] --> B{Check camera permission}
+    B -- No --> C{Agree to authorize}
+    B -- Yes --> D[Start camera]
+    C -- Agree --> D
+    C -- Disagree --> H[Device error]
+    D --> E{Check if camera is available}
+    E -- No --> H
+    E -- Yes --> F{Check if image is normal}
+    F -- Image abnormal --> H
+    F -- Image normal --> G[Device normal]
+```
+{/*
 <Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/sdk-doc/Pics/Common/ZegoExpressEngine/Camera_detection_new.jpeg" /></Frame>
+*/}
 
 
 **1. Check camera device permissions and get camera device list**
@@ -216,7 +246,16 @@ video.srcObject = cameraStream
 
 The speaker device testing process is shown in the following diagram:
 
+```mermaid
+graph TD
+    A[Start speaker detection] --> B[Use media player to play audio file]
+    B --> C{Can you hear sound}
+    C -->|Yes| D[Device normal]
+    C -->|No| E[Device error]
+```
+{/*
 <Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/sdk-doc/Pics/Common/ZegoExpressEngine/Playback_device_detection.png" /></Frame>
+*/}
 
 **1. Check speaker device permissions and get speaker device list**
 

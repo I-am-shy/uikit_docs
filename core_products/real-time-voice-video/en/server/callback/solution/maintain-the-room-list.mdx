@@ -84,9 +84,36 @@ The field descriptions in the images below are as follows:
 
 - Room created callback processing flow:
 
+```mermaid
+graph TD
+    A[Room create callback] --> B{Does zego.RoomId exist in<br>room list?}
+    B -- No --> C[Add room data]
+    B -- Yes --> D{Is zego.RoomSessionId ==<br>local.RoomSessionId?}
+    D -- Yes --> E[Compare zego.RoomCreateTime<br>and local.RoomCreateTime,<br>use the newer data]
+    D -- No --> F{Is zego.RoomCreateTime<br><= local.RoomCreateTime?}
+    F -- Yes --> G[Out of order<br>Do not process this callback]
+    F -- No --> H[Local room data is expired, update<br>room data based on callback data]
+    E --> I[Read callback cache queue, process<br>callback data]
+    H --> I
+    C --> I
+```
+{/*
     <Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/sdk-doc/Pics/server_v2/solution_of_room_create.png" /></Frame>
+*/}
 
 
 - Room destroyed callback processing flow:
 
+```mermaid
+flowchart TD
+    A[Room close callback] --> B{Does zego.RoomId exist in<br>room list?}
+    B -- No --> C[Out of order<br>Save to callback cache queue for later processing]
+    B -- Yes --> D{Is zego.RoomSessionId ==<br>local.RoomSessionId?}
+    D -- Yes --> E[Room close<br>Clean up local room data<br>Process related data in callback cache queue]
+    D -- No --> F{Is zego.RoomCloseTime <=<br>local.RoomCreateTime?}
+    F -- Yes --> G[Out of order<br>The room session of this callback has ended,<br>do not process this callback]
+    F -- No --> H[Out of order<br>Save to callback cache queue for later processing]
+```
+{/*
     <Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/sdk-doc/Pics/server_v2/solution_of_room_close.png" /></Frame>
+*/}

@@ -104,9 +104,39 @@ Before implementing the recording function, please ensure:
 
 The recording function interface call flow is shown in the following figure:
 
+```mermaid
+stateDiagram-v2
+    state "Error state <br/> Disconnected state" as unconnected {
+        [*] --> Logout
+        Logout: Logout (initial state)
+    }
+    state "Connected state" as connected {
+        Logined
+        Reconnected
+    }
+    Logout --> Logining: ① [loginRoom] Login room <br/> ② [switchRoom] Switch room, login to target room
+    Logining --> Logined: ① [loginRoom] Login room succeeded <br/> ② [switchRoom] Switch room succeeded
+    Logining --> LoginFailed: ① [loginRoom] Login room failed <br/> ② [switchRoom] Switch room failed
+    LoginFailed --> Logout
+    Logined --> Logout: ① [logoutRoom] Logout room <br/> ② [switchRoom] Switch room, logout current room
+    Logined --> LogoutFailed: ① [logoutRoom] Logout room failed <br/> ② [switchRoom] Switch room, logout current room failed
+    LogoutFailed --> Logout
+    Logined --> Reconnecting: Poor network quality
+    Reconnecting --> Reconnected: Reconnect succeeded
+    Reconnecting --> ReconnectFailed: Reconnect failed
+    ReconnectFailed --> Logout
+    Logined --> KickOut: Kicked out of room by server
+    KickOut --> Logout
+    Reconnected --> Logout: ① [logoutRoom] Logout room <br/> ② [switchRoom] Switch room, logout current room
+    Reconnected --> LogoutFailed: ① [logoutRoom] Logout room failed <br/> ② [switchRoom] Switch room, logout current room failed
+    Reconnected --> Reconnecting: Poor network quality
+    Reconnected --> KickOut: Kicked out of room by server
+```
+{/*
 <Frame width="512" height="auto" caption="">
   <img src="https://doc-media.zego.im/sdk-doc/Pics/Android/ExpressSDK/record/express_record_process_Andriod.png" />
 </Frame>
+*/}
 
 #### Set Recording Callback
 
