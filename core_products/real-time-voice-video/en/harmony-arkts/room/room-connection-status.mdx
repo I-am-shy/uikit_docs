@@ -18,7 +18,48 @@ date: "2024-11-18"
 
 **房间状态说明**
 
+```mermaid
+sequenceDiagram
+    participant APP
+    participant ZEGO Express SDK
+
+    note over APP,ZEGO Express SDK: Create ZegoExpressEngine instance
+    APP->>ZEGO Express SDK: [createEngineWithProfile]
+
+    note over APP,ZEGO Express SDK: Set recording info callback
+    APP->>ZEGO Express SDK: [setDataRecordEventHandler]
+
+    note over APP,ZEGO Express SDK: Login room
+    APP->>ZEGO Express SDK: [loginRoom]
+
+    note over APP,ZEGO Express SDK: Start publishing stream or preview to start data capture<br/>(enable microphone, camera)
+    APP->>ZEGO Express SDK: [startPublishingStream / startPreview]
+
+    note over APP,ZEGO Express SDK: Start recording
+    APP->>ZEGO Express SDK: [startRecordingCapturedData]
+
+    note over APP,ZEGO Express SDK: Handle recording info callback notifications
+    ZEGO Express SDK-->>APP: [onCapturedDataRecordStateUpdate]
+    loop Continuously trigger onCapturedDataRecordProgressUpdate callback
+        ZEGO Express SDK-->>APP: [onCapturedDataRecordProgressUpdate]
+    end
+
+    note over APP,ZEGO Express SDK: Stop recording
+    APP->>ZEGO Express SDK: [stopRecordingCapturedData]
+    ZEGO Express SDK-->>APP: [onCapturedDataRecordStateUpdate]
+
+    note over APP,ZEGO Express SDK: Stop publishing stream or preview
+    APP->>ZEGO Express SDK: [stopPublishingStream / stopPreview]
+
+    note over APP,ZEGO Express SDK: Logout room
+    APP->>ZEGO Express SDK: [logoutRoom]
+
+    note over APP,ZEGO Express SDK: Destroy engine
+    APP->>ZEGO Express SDK: [destroyEngine]
+```
+{/*
 <Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/sdk-doc/Pics/Express/Android/express_roomstate_change_android.png" /></Frame>
+*/}
 
 房间连接状态会互相转化，开发者可通过 [ZegoRoomStateChangedReason](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/ets_ohos/enums/_zegoexpressdefines_.zegoroomstatechangedreason.html)（即房间连接状态）的值判断各种情况，并在必要时结合 errorCode 处理相应的逻辑。
 
@@ -166,7 +207,7 @@ this.ZegoExpressInstance.on('onRoomStateChanged', (roomID: string, reason: ZegoR
 
 **情况一：在 ZEGO 服务端判断用户 A 心跳超时前重连成功**
 
-<Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/sdk-doc/Pics/FAQ/roomconnect1.png" /></Frame>
+<Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/core_products/real-time-voice-video/en/architecture/roomconnect1_en.png" /></Frame>
 
 如果用户 A 短暂断线，但是在 90s 内重连成功了，那么用户 B 不会收到 [onRoomUserUpdate](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/ets_ohos/interfaces/_zegoexpresseventhandler_.zegoeventlistener.html#onroomuserupdate) 的回调通知。
 
@@ -178,7 +219,7 @@ this.ZegoExpressInstance.on('onRoomStateChanged', (roomID: string, reason: ZegoR
 
 **情况二：在 ZEGO 服务端判断用户 A 心跳超时后重连成功**
 
-<Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/sdk-doc/Pics/FAQ/connect3.jpg" /></Frame>
+<Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/core_products/real-time-voice-video/en/architecture/connect3_en.png" /></Frame>
 
 
 - T0、T1、T2、T3 时刻的情况同 [情况一：在 ZEGO 服务端判断用户 A 心跳超时前重连成功](/real-time-video-harmonyos-arkts/room/room-connection-status) 中的 T0、T1、T2、T3。
@@ -191,7 +232,7 @@ this.ZegoExpressInstance.on('onRoomStateChanged', (roomID: string, reason: ZegoR
 
 **情况三：用户 A 重连失败**
 
-<Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/sdk-doc/Pics/FAQ/Reconnect3.png" /></Frame>
+<Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/core_products/real-time-voice-video/en/architecture/Reconnect3_en.png" /></Frame>
 
 - T0、T1、T2、T3 时刻的情况同 [情况一：在 ZEGO 服务端判断用户 A 心跳超时前重连成功](/real-time-video-harmonyos-arkts/room/room-connection-status) 中的 T0、T1、T2、T3。
 

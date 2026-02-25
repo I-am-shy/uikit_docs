@@ -13,7 +13,7 @@ date: "2024-07-11"
 
 Video preprocessing is a process between capture and encoding. Developers capture video data themselves. After obtaining the video data captured by the SDK, they can perform video preprocessing through the SDK's built-in basic beauty effects and watermark features. If the SDK cannot meet developers' needs (for example, the beauty effects cannot achieve the expected results), they can also combine with ZEGO Effects SDK to perform special processing on the video, such as beauty effects, adding accessories, etc. This process is custom video preprocessing.
 
-<Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/sdk-doc/Pics/Common/ZegoExpressEngine/video_pre_processing.png" /></Frame>
+<Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/core_products/real-time-voice-video/en/architecture/video_pre_processing_en.png" /></Frame>
 
 Compared with custom video capture, custom video preprocessing has the advantage that developers do not need to manage device input sources, they only need to operate on the raw data provided by ZEGO Express SDK, and then send it back to ZEGO Express SDK.
 
@@ -38,7 +38,32 @@ Before performing custom video preprocessing, please ensure:
 
 The flow and interface calls for custom video preprocessing are as follows:
 
+```mermaid
+sequenceDiagram
+    participant A as Client App
+    participant B as ZEGO Express SDK
+
+    A->>B: Create engine <br/> [createEngine]
+    A->>B: Login room <br/> [loginRoom]
+
+    critical Critical steps
+        A->>B: Enable custom video preprocessing <br/> [enableCustomVideoProcessing]
+        A->>B: Set custom video preprocessing callback <br/> [setCustomVideoProcessingHandler]
+        A->>B: Start preview, publish stream <br/> [startPreview, startPublishingStream]
+        B-->>A: Notify custom video preprocessing started,<br>can initialize third-party effects library <br/> [onStart]
+        B-->>A: Get raw video data,<br>perform video preprocessing <br/> [onCapturedUnprocessedTextureData]
+        A->>B: Send processed image to Express <br/> [sendCustomVideoProcessedTextureData]
+    end
+
+    A->>B: Play processed video data <br/> [startPlayingStream]
+    A->>B: Stop preview, publish stream <br/> [stopPreview, stopPublishingStream]
+    A->>B: Logout room <br/> [logoutRoom]
+    B-->>A: Notify custom video preprocessing ended,<br>can deinitialize third-party effects library <br/> [onStop]
+    A->>B: Destroy ZEGO Express SDK <br/> [destroyEngine]
+```
+{/*
 <Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/sdk-doc/Pics/Express/custom_video_process_Android_2025.png" /></Frame>
+*/}
 
 <Steps>
 <Step>

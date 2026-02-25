@@ -30,12 +30,71 @@ This section will introduce how to use ZEGO Express SDK to implement multiplayer
 
 - The process flow is as follows:
 
+```mermaid
+sequenceDiagram
+    participant ClientA
+    participant ZEGO Express SDK
+    participant ClientB
+
+    %% UserA initialization flow
+    note over ClientA,ClientB: User A joins
+    ClientA->>ZEGO Express SDK: User A creates engine <br/> [createEngineWithProfile]
+    ClientA->>ZEGO Express SDK: User A logs in to room <br/> [loginRoom]
+    ClientA->>ZEGO Express SDK: Set event notification callback <br/> [on]
+    ClientA->>ZEGO Express SDK: User A previews publishing stream <br/> [startPreview]
+    ClientA->>ZEGO Express SDK: User A starts publishing stream <br/> [startPublishingStream]
+    ClientA->>ZEGO Express SDK: User A starts playing stream <br/> [startPlayingStream]
+
+    %% UserB joins stage
+    note over ClientA,ClientB: User B joins
+    ClientB->>ZEGO Express SDK: User B creates engine <br/> [createEngineWithProfile]
+    ClientB->>ZEGO Express SDK: User B logs in to room <br/> [loginRoom]
+    ClientB->>ZEGO Express SDK: Set event notification callback <br/> [on]
+    ZEGO Express SDK-->>ClientA: Notify A of user update in room <br/> [roomUserUpdate]
+    ClientB->>ZEGO Express SDK: User B previews publishing stream <br/> [startPreview]
+    ClientB->>ZEGO Express SDK: User B starts publishing stream <br/> [startPublishingStream]
+    ZEGO Express SDK-->>ClientA: Notify A of stream update in room <br/> [roomStreamUpdate]
+    ClientB->>ZEGO Express SDK: User B starts playing stream <br/> [startPlayingStream]
+
+    %% UserA exits stage
+    note over ClientA,ClientB: User A exits
+    ClientA->>ZEGO Express SDK: User A stops preview <br/> [stopPreview]
+    ClientA->>ZEGO Express SDK: User A stops publishing stream <br/> [stopPublishingStream]
+    ZEGO Express SDK-->>ClientB: Notify B of stream update in room <br/> [roomStreamUpdate]
+    ClientA->>ZEGO Express SDK: User A stops playing stream <br/> [stopPlayingStream]
+    ClientA->>ZEGO Express SDK: User A logs out of room <br/> [logoutRoom]
+    ZEGO Express SDK-->>ClientB: Notify B of user update in room <br/> [roomUserUpdate]
+
+    %% UserB exits stage
+    note over ClientA,ClientB: User B exits
+    ClientB->>ZEGO Express SDK: User B stops preview <br/> [stopPreview]
+    ClientB->>ZEGO Express SDK: User B stops publishing stream <br/> [stopPublishingStream]
+    ClientB->>ZEGO Express SDK: User B stops playing stream <br/> [stopPlayingStream]
+    ClientB->>ZEGO Express SDK: User B logs out of room <br/> [logoutRoom]
+```
+{/*
   <Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/sdk-doc/Pics/Android/ExpressSDK/Scenes/VideoForMultipleUsers/Video_for_Multiple_Users_process_android.png" /></Frame>
+*/}
 
 
 - The API call sequence diagram is as follows:
 
+```mermaid
+sequenceDiagram
+    participant UserA
+    participant ZEGO Express SDK
+    participant UserB
+    UserA->>ZEGO Express SDK: 1.UserA creates engine <br/> [new ZegoExpressEngine]
+    UserA->>ZEGO Express SDK: 2.UserA logs in to room <br/> [loginRoom]
+    UserB->>ZEGO Express SDK: 3.UserB creates engine <br/> [new ZegoExpressEngine]
+    UserB->>ZEGO Express SDK: 4.UserB logs in to room <br/> [loginRoom]
+    UserB->>ZEGO Express SDK: 5.UserB publishes stream <br/> [startPublishingStream]
+    ZEGO Express SDK->>UserA: 6.UserA receives roomStreamUpdate callback <br/> (get UserB's streamID)
+    UserA->>ZEGO Express SDK: 7.UserA passes UserB's streamID to play stream <br/> [startPlayStream]
+```
+{/*
   <Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/sdk-doc/Pics/Web/ExpressSDK/Advanced_Features /Video_for_Multiple_Users_Web_new.png" /></Frame>
+*/}
 
 <Note title="Description">
 

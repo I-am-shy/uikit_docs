@@ -10,7 +10,27 @@ date: "2024-04-02"
 
 In co-hosting scenarios, since both CDN playing stream and CDN publishing stream have high latency, which will lead to poor interactive experience during the co-hosting process, it is recommended to use RTC playing stream and RTC publishing stream during the co-hosting process, and restore CDN playing stream after leaving the mic to improve the co-hosting experience. This article will introduce how to implement the co-hosting process under the complete CDN address playing stream method.
 
+```mermaid
+sequenceDiagram
+    participant Host
+    participant Audience
+    participant ZEGO Express SDK
+
+    note over Host,ZEGO Express SDK: Audience joins as co-host
+    Audience->>ZEGO Express SDK: Stop CDN play stream, switch to RTC play stream
+    Audience->>ZEGO Express SDK: Start preview and publish stream
+    ZEGO Express SDK-->>Host: Room audience stream added notification
+    Host->>ZEGO Express SDK: Start RTC play stream
+
+    note over Host,ZEGO Express SDK: Audience leaves as co-host
+    Audience->>ZEGO Express SDK: Stop preview and publish stream
+    Audience->>ZEGO Express SDK: Stop RTC play stream, switch to CDN play stream
+    ZEGO Express SDK-->>Host: Room audience stream removed notification
+    Host->>ZEGO Express SDK: Stop RTC play stream
+```
+{/*
 <Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/sdk-doc/Pics/Common/ZegoExpressEngine/CDN_To_Call_Scenario.png" /></Frame>
+*/}
 
 ### Comparison of Playing Stream Methods
 

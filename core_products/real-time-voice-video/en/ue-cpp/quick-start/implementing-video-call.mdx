@@ -23,7 +23,35 @@ SDK 同时也支持 Token 鉴权，若您对项目安全性有更高要求，建
 
 本节介绍如何使用 ZEGO Express SDK 实现基本的实时音视频功能，API 调用时序如下图：
 
+```mermaid
+sequenceDiagram
+    participant App
+    participant ZEGO Express SDK
+
+    App->>ZEGO Express SDK: Create engine <br/> [createEngineWithProfile]
+    App->>ZEGO Express SDK: Login room <br/> [loginRoom]
+    ZEGO Express SDK-->>App: Room/User/Stream state update callbacks <br/> [onRoomStateChanged / onRoomUserUpdate / onRoomStreamUpdate]
+
+    App->>ZEGO Express SDK: Start publishing stream <br/> [startPublishingStream]
+    ZEGO Express SDK-->>App: Publish state update callback <br/> [onPublisherStateUpdate]
+
+    App->>ZEGO Express SDK: Start playing stream <br/> [startPlayingStream]
+    ZEGO Express SDK-->>App: Play state update callback <br/> [onPlayerStateUpdate]
+
+    App->>ZEGO Express SDK: Stop publishing stream <br/> [stopPublishingStream]
+    ZEGO Express SDK-->>App: Publish state update callback <br/> [onPublisherStateUpdate]
+
+    App->>ZEGO Express SDK: Stop playing stream <br/> [stopPlayingStream]
+    ZEGO Express SDK-->>App: Play state update callback <br/> [onPlayerStateUpdate]
+
+    App->>ZEGO Express SDK: Logout room <br/> [logoutRoom]
+    ZEGO Express SDK-->>App: Room state update callback <br/> [onRoomStateChanged]
+
+    App->>ZEGO Express SDK: Destroy engine <br/> [destroyEngine]
+```
+{/*
 <Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/sdk-doc/Pics/QuickStart/quickstart_uml_audio.png" /></Frame>
+*/}
 
 <a id="CreateEngine"> </a>
 

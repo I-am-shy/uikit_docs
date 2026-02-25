@@ -42,7 +42,7 @@ Range Audio
 <p>Listeners in the room have a range limit on the distance for receiving audio. If the distance between the speaker and themselves exceeds this range, they cannot hear the sound. To ensure voice clarity, when more than 20 people nearby are speaking, only the sounds of the 20 speakers closest to them can be heard.</p>
 <p>Suppose the maximum range for audio reception is set to R, and the distance between the speaker and the listener is r, then:</p>
 <ul><li>When r &lt; R, it means the speaker is within the normal range, and the listener can hear the sound.</li><li>When r ≥ R, it means the speaker exceeds the maximum range, and the listener cannot hear the sound.</li></ul>
-<Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/sdk-doc/Pics/Common/RangeAudio/AudioRange.png" /></Frame>
+<Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/core_products/real-time-voice-video/en/architecture/AudioRange_en.jpeg" /></Frame>
 <p>The above image takes the range audio mode as "World" as an example. For more information about sound reachability under different mode combinations, please refer to <a href="#可选设置通用语音模式">Set General Voice Mode</a>.</p>
 </td>
 </tr>
@@ -107,7 +107,28 @@ If you are already using the real-time audio and video features of ZEGO Express 
 
 ## Usage Steps
 
+```mermaid
+sequenceDiagram
+    participant A as Client App
+    participant B as ZEGO Express SDK
+
+    A->>B: Create engine <br/> [createEngineWithProfile]
+    A->>B: Create range audio instance object <br/> [createRangeAudio]
+    A->>B: Listen to range audio event callbacks <br/> [setEventHandler]
+    A->>B: Login room <br/> [loginRoom]
+    critical Critical steps
+        A->>B: Set listener's current position <br/> [updateSelfPosition]
+        A->>B: Add/Update audio source position info <br/> [updateAudioSource]
+        A->>B: Enable microphone, speaker <br/> [enableMicrophone / enableSpeaker]
+        B-->>A: Callback microphone usage status <br/> [microphoneStateUpdate]
+    end
+
+    A->>B: Destroy range audio module <br/> [destroyRangeAudio]
+    A->>B: Logout room <br/> [logoutRoom]
+```
+{/*
 <Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/sdk-doc/Pics/Express/RangeVoice_flutter.png" /></Frame>
+*/}
 
 The above image only shows the core steps and interfaces for implementing the game voice feature. Developers can refer to the detailed introduction in the following documentation to implement other related interfaces as needed.
 
@@ -225,7 +246,7 @@ Developers can call the [updateSelfPosition](https://www.zegocloud.com/docs/uniq
   </tr>
 </tbody></table>
 
-<Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/sdk-doc/Pics/Common/RangeAudio/Coordinate_System.png" /></Frame>
+<Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/core_products/real-time-voice-video/en/architecture/Coordinate_System_en.jpeg" /></Frame>
 
 ```dart
 // One's own coordinates in the world coordinate system, in the order of forward, right, and up.

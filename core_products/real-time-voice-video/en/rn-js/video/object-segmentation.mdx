@@ -110,7 +110,47 @@ Before using the Object Segmentation feature, ensure that:
 
 
 
+```mermaid
+sequenceDiagram
+    participant Publisher
+    participant ZEGO Express SDK
+    participant Player
+
+    Publisher->>ZEGO Express SDK: Initialize engine <br/> [createEngineWithProfile]
+
+    Publisher->>ZEGO Express SDK: Login room <br/> [loginRoom]
+
+    Player->>ZEGO Express SDK: Initialize <br/> [createEngineWithProfile]
+
+    Player->>ZEGO Express SDK: Login room <br/> [loginRoom]
+
+    opt (Optional) Custom render and callback
+        Publisher-->>ZEGO Express SDK: [enableCustomVideoRender / setCustomVideoRenderHandler]
+    end
+
+    Publisher->>ZEGO Express SDK: Listen to subject segmentation state callback <br/> [onVideoObjectSegmentationStateChanged]
+
+    Publisher->>ZEGO Express SDK: Enable subject segmentation <br/> [enableVideoObjectSegmentation]<br/>(Background blur/Virtual background/Transparent background)
+
+    opt (Optional) Use Alpha channel to transmit segmented subject
+        Publisher-->>ZEGO Express SDK: [enableAlphaChannelVideoEncoder]
+    end
+
+    Publisher->>ZEGO Express SDK: Start preview and publish stream <br/> [startPreview / startPublishingStream]
+
+    opt (Optional) Set Alpha<br>channel rendering on player side and play stream
+        Player-->>ZEGO Express SDK: ZegoCanvas.alphaBlend = YES,<br/>[startPlayingStream]
+    end
+
+    Publisher->>ZEGO Express SDK: Disable subject segmentation <br/> [enableVideoObjectSegmentation]
+
+    Publisher->>ZEGO Express SDK: Destroy engine <br/> [destroyEngine]
+
+    Player->>ZEGO Express SDK: Destroy engine <br/> [destroyEngine]
+```
+{/*
 <Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/sdk-doc/Pics/subject_segmentation/subject_segmentation_rn.png" /></Frame>
+*/}
 
 Note that developers can choose whether to implement the **(Optional)** steps shown in the diagram above based on their business scenario needs. For implementation details, refer to the specific instructions below.
 

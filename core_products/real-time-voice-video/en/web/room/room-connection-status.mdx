@@ -25,7 +25,48 @@ If the room connection is interrupted due to poor network quality, the SDK will 
 
 #### Room Status Description
 
+```mermaid
+sequenceDiagram
+    participant APP
+    participant ZEGO Express SDK
+
+    note over APP,ZEGO Express SDK: Create ZegoExpressEngine instance
+    APP->>ZEGO Express SDK: [createEngineWithProfile]
+
+    note over APP,ZEGO Express SDK: Set recording info callback
+    APP->>ZEGO Express SDK: [setDataRecordEventHandler]
+
+    note over APP,ZEGO Express SDK: Login room
+    APP->>ZEGO Express SDK: [loginRoom]
+
+    note over APP,ZEGO Express SDK: Start publishing stream or preview to start data capture<br/>(enable microphone, camera)
+    APP->>ZEGO Express SDK: [startPublishingStream / startPreview]
+
+    note over APP,ZEGO Express SDK: Start recording
+    APP->>ZEGO Express SDK: [startRecordingCapturedData]
+
+    note over APP,ZEGO Express SDK: Handle recording info callback notifications
+    ZEGO Express SDK-->>APP: [onCapturedDataRecordStateUpdate]
+    loop Continuously trigger onCapturedDataRecordProgressUpdate callback
+        ZEGO Express SDK-->>APP: [onCapturedDataRecordProgressUpdate]
+    end
+
+    note over APP,ZEGO Express SDK: Stop recording
+    APP->>ZEGO Express SDK: [stopRecordingCapturedData]
+    ZEGO Express SDK-->>APP: [onCapturedDataRecordStateUpdate]
+
+    note over APP,ZEGO Express SDK: Stop publishing stream or preview
+    APP->>ZEGO Express SDK: [stopPublishingStream / stopPreview]
+
+    note over APP,ZEGO Express SDK: Logout room
+    APP->>ZEGO Express SDK: [logoutRoom]
+
+    note over APP,ZEGO Express SDK: Destroy engine
+    APP->>ZEGO Express SDK: [destroyEngine]
+```
+{/*
 <Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/sdk-doc/Pics/Express/Android/express_roomstate_change_android.png" /></Frame>
+*/}
 
 Room connection status transitions between various states. Developers can handle corresponding business logic by combining the reason for the room connection status change [ZegoRoomStateChangedReason](@-ZegoRoomStateChangedReason) (i.e., room connection status) with the errorCode.
 
@@ -147,7 +188,7 @@ The following diagram takes the situation where user A and user B have logged in
 
 #### Case 1: Successful Reconnection Before ZEGO Server Determines User A's Heartbeat Timeout
 
-<Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/sdk-doc/Pics/FAQ/reconnect_web_1.png" /></Frame>
+<Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/core_products/real-time-voice-video/en/architecture/reconnect_web_1_en.png" /></Frame>
 
 If user A briefly disconnects but reconnects successfully within 90s, user B will not receive the [roomUserUpdate](@roomUserUpdate) callback notification.
 
@@ -160,7 +201,7 @@ If user A briefly disconnects but reconnects successfully within 90s, user B wil
 
 #### Case 2: Successful Reconnection After ZEGO Server Determines User A's Heartbeat Timeout
 
-<Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/sdk-doc/Pics/FAQ/reconnect_web_2.png" /></Frame>
+<Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/core_products/real-time-voice-video/en/architecture/reconnect_web_2_en.png" /></Frame>
 
 - T0, T1, T2, T3 moments are the same as T0, T1, T2, T3 in [Case 1: Successful Reconnection Before ZEGO Server Determines User A's Heartbeat Timeout](/real-time-video-web/room/room-connection-status).
 - T4' ≈ T3 + 90s: User B receives the [roomUserUpdate](@roomUserUpdate) callback at this time to notify that user A has disconnected.
@@ -169,7 +210,7 @@ If user A briefly disconnects but reconnects successfully within 90s, user B wil
 
 #### Case 3: User A Fails to Reconnect
 
-<Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/sdk-doc/Pics/FAQ/reconnect_web_3.png" /></Frame>
+<Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/core_products/real-time-voice-video/en/architecture/reconnect_web_3_en.png" /></Frame>
 
 
 - T0, T1, T2, T3 moments are the same as T0, T1, T2, T3 in [Case 1: Successful Reconnection Before ZEGO Server Determines User A's Heartbeat Timeout](/real-time-video-web/room/room-connection-status).

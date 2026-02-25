@@ -40,7 +40,23 @@ When using Token authentication, developers need to generate a Token first, then
 Taking the use of Token to determine whether a user can log into a room as an example, the usage process is shown below:
 
 
+```mermaid
+sequenceDiagram
+    participant DeveloperClient
+    participant DeveloperServer
+    participant ZEGOSDK
+    participant ZEGOServer
+
+    DeveloperClient->>DeveloperServer: 1 Request Token
+    DeveloperServer-->>DeveloperClient: 2 Generate and return Token
+    DeveloperClient->>ZEGOSDK: 3 Login to corresponding room via userID, roomID and Token
+    ZEGOSDK->>ZEGOServer: 4 Verify Token
+    ZEGOServer-->>ZEGOSDK: 5 Verification passed
+    ZEGOSDK-->>DeveloperClient: 6 Successfully logged in to room
+```
+{/*
 <Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/sdk-doc/Pics/QuickStart/token_uml.png" /></Frame>
+*/}
 
 1. The developer's client initiates a request to apply for a Token.
 2. Generate a Token on the developer's server and return it to the developer's client.

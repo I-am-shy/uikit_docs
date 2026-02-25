@@ -59,7 +59,51 @@ date: "2025-01-21"
 用户 A、B 加入房间，用户 B 预览并将音视频流推送到 ZEGO 云服务（推流），用户 A 收到用户 B 推送音视频流的通知之后，在通知中播放用户 B 的音视频流（拉流）。
 
 
+```mermaid
+sequenceDiagram
+    participant ClientA
+    participant ZEGO Express SDK
+    participant ClientB
+
+    %% UserA initial flow
+    note over ClientA,ClientB: UserA joins
+    ClientA->>ZEGO Express SDK: UserA creates engine <br/> [new ZegoExpressEngine]
+    ClientA->>ZEGO Express SDK: UserA logs in to room <br/> [loginRoom]
+    ClientA->>ZEGO Express SDK: Set event notification callback <br/> [on]
+    ClientA->>ZEGO Express SDK: UserA creates stream (Capture) <br/> [createZegoStream]
+    ClientA->>ZEGO Express SDK: UserA starts publishing stream <br/> [startPublishingStream]
+    ClientA->>ZEGO Express SDK: UserA starts playing stream <br/> [startPlayingStream]
+
+    %% UserB joins stage
+    note over ClientA,ClientB: UserB joins
+    ClientB->>ZEGO Express SDK: UserB creates engine <br/> [new ZegoExpressEngine]
+    ClientB->>ZEGO Express SDK: UserB logs in to room <br/> [loginRoom]
+    ClientB->>ZEGO Express SDK: Set event notification callback <br/> [on]
+    ZEGO Express SDK-->>ClientA: Notify A of user update in room <br/> [roomUserUpdate]
+    ClientB->>ZEGO Express SDK: UserB creates stream (Capture) <br/> [createZegoStream]
+    ClientB->>ZEGO Express SDK: UserB starts publishing stream <br/> [startPublishingStream]
+    ZEGO Express SDK-->>ClientA: Notify A of stream update in room <br/> [roomStreamUpdate]
+    ClientB->>ZEGO Express SDK: UserB starts playing stream <br/> [startPlayingStream]
+
+    %% UserA exits stage
+    note over ClientA,ClientB: UserA exits
+    ClientA->>ZEGO Express SDK: UserA stops publishing stream <br/> [stopPublishingStream]
+    ClientA->>ZEGO Express SDK: UserA destroys stream (Stop capture) <br/> [destroyStream]
+    ZEGO Express SDK-->>ClientB: Notify B of stream update in room <br/> [roomStreamUpdate]
+    ClientA->>ZEGO Express SDK: UserA stops playing stream <br/> [stopPlayingStream]
+    ClientA->>ZEGO Express SDK: UserA logs out of room <br/> [logoutRoom]
+    ZEGO Express SDK-->>ClientB: Notify B of user update in room <br/> [roomUserUpdate]
+
+    %% UserB exits stage
+    note over ClientA,ClientB: UserB exits
+    ClientB->>ZEGO Express SDK: UserB stops publishing stream <br/> [stopPublishingStream]
+    ClientB->>ZEGO Express SDK: UserB destroys stream (Stop capture) <br/> [destroyStream]
+    ClientB->>ZEGO Express SDK: UserB stops playing stream <br/> [stopPlayingStream]
+    ClientB->>ZEGO Express SDK: UserB logs out of room <br/> [logoutRoom]
+```
+{/*
 <Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/sdk-doc/Pics/Common/ZegoExpressEngine/common_usage_flowchart_new.png" /></Frame>
+*/}
 
 
 ### 配置微信小程序后台
@@ -548,7 +592,19 @@ zg = null;
 
 整个推拉流过程的 API 调用时序可参考下图：
 
+```mermaid
+sequenceDiagram
+    participant ZIM SDK
+    participant App
+    participant ZEGO Express SDK
+    note over ZIM SDK,ZEGO Express SDK: Initialize SDK
+    App->>ZIM SDK: Initialize SDK<br/>[create]
+    App->>ZIM SDK: Set event notification callback<br/>[setEventHandler]
+    App->>ZEGO Express SDK: Initialize SDK and set event notification callback<br/>[createEngine(profile, eventHandler)]
+```
+{/*
 <Frame width="auto" height="512" caption=""><img src="https://doc-media.zego.im/core_products/real-time-voice-video/zh/mini-program/quick-start/we-chat/express-sdk.png" /></Frame>
+*/}
 
 {/* 
 ```mermaid

@@ -33,7 +33,38 @@ Before implementing custom video rendering functionality, please ensure:
 
 The API interface call sequence diagram is as follows:
 
+```mermaid
+sequenceDiagram
+    participant App as Client App
+    participant SDK as ZEGO Express SDK
+
+    App->>SDK: Initialize Express SDK <br/> [createEngine]
+
+    App->>SDK: Login room <br/> [loginRoom]
+
+    critical Critical steps
+        App->>SDK: Enable custom video preprocessing <br/> [enableCustomVideoProcessing]
+
+        App->>SDK: Set custom video preprocessing callback <br/> [setCustomVideoProcessHandler]
+
+        App->>SDK: Start preview, publish stream <br/> [startPreview, startPublishingStream]
+
+        SDK-->>App: Get raw video data,<br>perform video preprocessing <br/> [onCapturedUnprocessedRawData]
+
+        App->>SDK: Send processed image to Express <br/> [sendCustomVideoProcessedRawData]
+    end
+
+    App->>SDK: Play processed video data <br/> [startPlayingStream]
+
+    App->>SDK: Stop preview, publish stream <br/> [stopPreview, stopPublishingStream]
+
+    App->>SDK: Logout room <br/> [logoutRoom]
+
+    App->>SDK: Destroy Express SDK <br/> [destroyEngine]
+```
+{/*
 <Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/sdk-doc/Pics/Common/ZegoExpressEngine/custom_video_render_Andriod_Windows_new.png" /></Frame>
+*/}
 
 ### 1 Set up custom video rendering configuration
 

@@ -27,7 +27,40 @@ The usage flow for custom video rendering is as follows:
 
 The sequence diagram is as follows:
 
+```mermaid
+sequenceDiagram
+    participant APP
+    participant ZEGO Express SDK
+
+    Note over APP,ZEGO Express SDK: Create ZegoExpressEngine
+    APP ->> ZEGO Express SDK: [createEngine]
+
+    Note over APP,ZEGO Express SDK: Set custom video render configuration and enable
+    APP ->> ZEGO Express SDK: [enableCustomVideoRender]
+
+    Note over APP,ZEGO Express SDK: Set custom video renderer handler and implement callback methods
+    APP ->> ZEGO Express SDK: [setCustomVideoRenderHandler(IZegoCustomVideoRenderHandler)]
+
+    Note over APP,ZEGO Express SDK: Login room then start preview/play stream, receive<br/>custom video render frame data callback
+    APP ->> ZEGO Express SDK: [loginRoom]
+    APP ->> ZEGO Express SDK: [startPreview / startPlayingStream]
+
+    loop loop
+        ZEGO Express SDK -->> APP: IZegoCustomVideoRenderHandler <br/> [onCapturedVideoFrame / onRemoteVideoFrame]
+    end
+
+    Note over APP,ZEGO Express SDK: Stop preview or stop playing stream
+    APP ->> ZEGO Express SDK: [stopPreview / stopPlayingStream]
+
+    Note over APP,ZEGO Express SDK: Logout room
+    APP ->> ZEGO Express SDK: [logoutRoom]
+
+    Note over APP,ZEGO Express SDK: Destroy engine
+    APP ->> ZEGO Express SDK: [destroyEngine]
+```
+{/*
 <Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/sdk-doc/Pics/Common/ZegoExpressEngine/custom_video_render_uml_Andriod_Windows_new.png" /></Frame>
+*/}
 
 ### 1 Set Custom Video Rendering Configuration
 

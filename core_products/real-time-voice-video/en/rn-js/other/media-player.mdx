@@ -147,7 +147,21 @@ If the media resource has already been loaded by [loadResource](https://www.zego
 
 #### Playback State Control
 
+```mermaid
+stateDiagram-v2
+    [*] --> NoPlay: loadResource
+    NoPlay --> Playing: play
+    Playing --> Pausing: pause
+    Pausing --> Playing: resume
+    Pausing --> NoPlay: stop
+    Playing --> NoPlay: stop
+    Playing --> PlayEnded
+    PlayEnded --> Playing: enableRepeat
+    PlayEnded --> [*]
+```
+{/*
 <Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/sdk-doc/Pics/Common/ZegoExpressEngine/mediaplayer_state_iOS.jpg" /></Frame>
+*/}
 
 After successfully loading the file by calling [loadResource](@loadResource), you can call [start ](https://www.zegocloud.com/docs/unique-api/express-video-sdk/en/javascript_react_native/classes/_zegoexpressdefines_.zegomediaplayer.html#start), [pause ](https://www.zegocloud.com/docs/unique-api/express-video-sdk/en/javascript_react_native/classes/_zegoexpressdefines_.zegomediaplayer.html#pause), [resume ](https://www.zegocloud.com/docs/unique-api/express-video-sdk/en/javascript_react_native/classes/_zegoexpressdefines_.zegomediaplayer.html#resume), [stop ](https://www.zegocloud.com/docs/unique-api/express-video-sdk/en/javascript_react_native/classes/_zegoexpressdefines_.zegomediaplayer.html#stop) to start and stop playback. Once the internal state of the player changes, the [mediaPlayerStateUpdate ](https://www.zegocloud.com/docs/unique-api/express-video-sdk/en/javascript_react_native/interfaces/_zegoexpresseventhandler_.zegomediaplayerlistener.html#mediaplayerstateupdate) callback will be triggered.
 

@@ -106,7 +106,21 @@ If the media resource has already been [loadResource](@loadResource-IZegoMediaPl
 
 **Playback state control**
 
+```mermaid
+stateDiagram-v2
+    [*] --> NoPlay: loadResource
+    NoPlay --> Playing: play
+    Playing --> Pausing: pause
+    Pausing --> Playing: resume
+    Pausing --> NoPlay: stop
+    Playing --> NoPlay: stop
+    Playing --> PlayEnded
+    PlayEnded --> Playing: enableRepeat
+    PlayEnded --> [*]
+```
+{/*
 <Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/sdk-doc/Pics/Common/ZegoExpressEngine/mediaplayer_state_iOS.jpg" /></Frame>
+*/}
 
 Call [start](@start), [pause](@pause), [resume](@resume), [stop](@stop) to start and stop playback. Once the player's internal state changes, the [onMediaPlayerStateUpdate](@onMediaPlayerStateUpdate) callback will be triggered.
 

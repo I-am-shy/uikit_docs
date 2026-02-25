@@ -12,7 +12,7 @@ date: "2024-07-11"
 
 Video preprocessing is a process between capture and encoding. Developers can perform video preprocessing through the SDK's built-in basic AI effects and watermark features after capturing video data themselves or obtaining video data captured by the SDK. If the SDK cannot meet the developers' needs (for example, the beauty effect cannot achieve the expected results), they can also use the ZEGO Effects SDK to perform special processing on the video, such as beauty effects, adding accessories, etc. This process is called custom video preprocessing.
 
-<Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/sdk-doc/Pics/Common/ZegoExpressEngine/video_pre_processing.png" /></Frame>
+<Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/core_products/real-time-voice-video/en/architecture/video_pre_processing_en.png" /></Frame>
 
 Compared with custom video capture, the advantage of custom video preprocessing is that developers do not need to manage device input sources, but only need to operate on the original data provided by ZEGO Express SDK, and then send it back to ZEGO Express SDK.
 
@@ -44,7 +44,42 @@ Before performing custom video preprocessing, ensure that:
 
 The flow and interface calls for custom video preprocessing are as follows:
 
+```mermaid
+sequenceDiagram
+    participant A as Client App
+    participant B as ZEGO Express SDK
+
+    A->>B: Create engine <br/> [createEngineWithProfile]
+
+    A->>B: Login room <br/> [loginRoom]
+
+    critical Critical steps
+        A->>B: Enable custom video preprocessing <br/> [enableCustomVideoProcessing]
+
+        A->>B: Set custom video preprocessing callback <br/> [setCustomVideoProcessHandler]
+
+        A->>B: Start preview, publish stream <br/> [startPreview, startPublishingStream]
+
+        B-->>A: Notify custom video preprocessing started,<br>can initialize third-party effects library <br/> [onStart]
+
+        B-->>A: Get raw video data,<br>perform video preprocessing <br/> [onCapturedUnprocessedCVPixelBuffer]
+
+        A->>B: Send processed image to Express <br/> [sendCustomVideoProcessedCVPixelBuffer]
+    end
+
+    A->>B: Play processed video data <br/> [startPlayingStream]
+
+    A->>B: Stop preview, publish stream <br/> [stopPreview, stopPublishingStream]
+
+    B-->>A: Notify custom video preprocessing ended,<br>can deinitialize third-party effects library,<br>and free memory <br/> [onStop]
+
+    A->>B: Logout room <br/> [loginRoom]
+
+    A->>B: Destroy ZEGO Express SDK <br/> [destroyEngine]
+```
+{/*
 <Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/sdk-doc/Pics/Common/ZegoExpressEngine/custom_video_process_mac_new.png" /></Frame>
+*/}
 
 1. Initialize Express SDK and log in to the room.
 

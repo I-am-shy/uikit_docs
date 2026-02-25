@@ -14,7 +14,7 @@ This capability relies on the multi-user status real-time synchronization servic
 
 In large virtual worlds, users generally do not need to perceive distant remote users. ZEGO provides AOI (Area Of Interest) capability to reduce remote audio and video information outside the user's visible range, minimizing unnecessary user-side traffic and performance consumption.
 
-<Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/sdk-doc/Pics/Express/express_AOI.png" /></Frame>
+<Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/core_products/real-time-voice-video/en/architecture/express_AOI_en.jpeg" /></Frame>
 
 ### Concept Explanation
 
@@ -46,7 +46,36 @@ Before implementing real-time range audio and video, please ensure:
 
 The following figure shows the API interface call sequence diagram:
 
+```mermaid
+sequenceDiagram
+    participant Client App
+    participant ZEGO Express SDK
+
+    Client App->>ZEGO Express SDK: Create engine <br/> [createEngine]
+
+    Client App->>ZEGO Express SDK: Create range scene module <br/> [createRangeScene]
+
+    Client App->>ZEGO Express SDK: Listen to range scene event callbacks <br/> [setEventHandler]
+
+    critical Critical steps
+    Client App->>ZEGO Express SDK: Set range scene stream management parameters <br/> [setReceiveRange / enableRangeSpatializer]
+
+    Client App->>ZEGO Express SDK: Login scene <br/> [loginScene]
+
+    Client App->>ZEGO Express SDK: Publish stream to scene <br/> [startPublishingStreamInScene]
+
+    Client App->>ZEGO Express SDK: Update user position <br/> [updateUserPosition]
+
+    Client App->>ZEGO Express SDK: Logout scene <br/> [logoutScene]
+    end
+
+    Client App->>ZEGO Express SDK: Destroy range scene module <br/> [destroyRangeScene]
+
+    Client App->>ZEGO Express SDK: Destroy engine <br/> [destroyEngine]
+```
+{/*
 <Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/sdk-doc/Pics/Express/rangeScene.png" /></Frame>
+*/}
 
 The following sections describe in detail the corresponding implementation steps for each API interface.
 

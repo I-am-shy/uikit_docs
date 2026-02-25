@@ -120,7 +120,21 @@ If users need to load binary audio data, they can call the media player's [LoadR
 
 #### Playback state control
 
+```mermaid
+stateDiagram-v2
+    [*] --> NoPlay: loadResource
+    NoPlay --> Playing: play
+    Playing --> Pausing: pause
+    Pausing --> Playing: resume
+    Pausing --> NoPlay: stop
+    Playing --> NoPlay: stop
+    Playing --> PlayEnded
+    PlayEnded --> Playing: enableRepeat
+    PlayEnded --> [*]
+```
+{/*
 <Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/sdk-doc/Pics/Common/ZegoExpressEngine/mediaplayer_state_flutter.jpg" /></Frame>
+*/}
 
 - **Play start/stop**: After successfully calling [loadResource](@loadResource-ZegoMediaPlayer) to load the file, you can call [Start](@Start-ZegoMediaPlayer), [Pause](@Pause-ZegoMediaPlayer), [Resume](@Resume-ZegoMediaPlayer), [Stop](@Stop-ZegoMediaPlayer) to start/stop playback. Once the player's internal state changes, the [onMediaplayerStateUpdate](@onMediaplayerStateUpdate-IZegoMediaPlayerHandler) callback will be triggered.
 - **Get current playback state**: Users can call [GetCurrentState](@GetCurrentState-ZegoMediaPlayer) at any time to get the current state of the player.

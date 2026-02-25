@@ -30,11 +30,86 @@ This section will introduce how to use the ZEGO Express SDK to implement multipl
 
 - The flow chart of multiplayer video call is as follows:
 
+```mermaid
+graph TD
+    1[Create engine] --> 2[Login room]
+    2 --> 3[Listen to callbacks]
+    3 --> 4[onRoomStateUpdate]
+    3 --> 10[onRoomUserUpdate]
+    3 --> 7[onRoomStreamUpdate]
+    7
+
+    4 --> 5[Get room login status]
+    5 --> 6[Start publishing stream after successful login]
+    6 --> 14[Conduct video call]
+
+    7 --> 8[Get list of audio/video stream changes in callback]
+    8 --> 9[Iterate list, play newly added audio/video streams]
+    9 --> 14[Conduct video call]
+
+    10 --> 11[Get list of user changes in callback]
+    11 --> 12[Display user join/leave room info]
+    12 --> 14[Conduct video call]
+```
+{/*
 <Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/sdk-doc/Pics/Express/Android/eventhandler_process_new.jpeg" /></Frame>
+*/}
 
 - The API call sequence diagram is as follows:
 
+```mermaid
+sequenceDiagram
+    participant A as ClientA
+    participant SDK as ZEGO Express SDK
+    participant B as ClientB
+
+    %% Initial stage ClientA operations
+    A->>SDK: User A creates engine <br/> [createEngine]
+    A->>SDK: User A logs in to room <br/> [loginRoom]
+    A->>SDK: Set event notification callback <br/> [setEventHandler]
+    A->>SDK: User A previews publishing stream <br/> [startPreview]
+    A->>SDK: User A starts publishing stream <br/> [startPublishingStream]
+    A->>SDK: User A starts playing stream <br/> [startPlayingStream]
+
+    %% UserB joins stage
+    rect rgb(46, 170, 153, 0.2)
+        note over A,B: User B joins
+    end
+
+    B->>SDK: User B creates engine <br/> [createEngine]
+    B->>SDK: User B logs in to room <br/> [loginRoom]
+    B->>SDK: Set event notification callback <br/> [setEventHandler]
+    SDK-->>A: Notify A of user update in room <br/> [onRoomUserUpdate]
+    B->>SDK: User B previews publishing stream <br/> [startPreview]
+    B->>SDK: User B starts publishing stream <br/> [startPublishingStream]
+    SDK-->>A: Notify A of stream update in room <br/> [onRoomStreamUpdate]
+    B->>SDK: User B starts playing stream <br/> [startPlayingStream]
+
+    %% UserA exits stage
+    rect rgb(46, 170, 153, 0.2)
+        note over A,B: User A exits
+    end
+
+    A->>SDK: User A stops preview <br/> [stopPreview]
+    A->>SDK: User A stops publishing stream <br/> [stopPublishingStream]
+    SDK-->>B: Notify B of stream update in room <br/> [onRoomStreamUpdate]
+    A->>SDK: User A stops playing stream <br/> [stopPlayingStream]
+    A->>SDK: User A logs out of room <br/> [logoutRoom]
+    SDK-->>B: Notify B of user update in room <br/> [onRoomUserUpdate]
+
+    %% UserB exits stage
+    rect rgb(46, 170, 153, 0.2)
+        note over A,B: User B exits
+    end
+
+    B->>SDK: User B stops preview <br/> [stopPreview]
+    B->>SDK: User B stops publishing stream <br/> [stopPublishingStream]
+    B->>SDK: User B stops playing stream <br/> [stopPlayingStream]
+    B->>SDK: User B logs out of room <br/> [logoutRoom]
+```
+{/*
 <Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/sdk-doc/Pics/Android/ExpressSDK/Scenes/VideoForMultipleUsers/Video_for_Multiple_Users_android_new.png" /></Frame>
+*/}
 
   <Note title="Note">
 

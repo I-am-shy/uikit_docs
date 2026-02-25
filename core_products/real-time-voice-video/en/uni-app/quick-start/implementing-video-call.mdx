@@ -44,13 +44,49 @@ SDK 同时也支持 Token 鉴权，若您对项目安全性有更高要求，建
 
 用户 A、B  加入房间，用户 B 预览并将音视频流推送到 ZEGO 云服务（推流），用户 A 收到用户 B 推送音视频流的通知之后，在通知中播放用户 B 的音视频流（拉流）。
 
+```mermaid
+sequenceDiagram
+    participant UserA
+    participant ZEGO Express SDK
+    participant UserB
+    UserA->>ZEGO Express SDK: 1.User A creates engine
+    UserA->>ZEGO Express SDK: 2.User A logs in to room
+    UserB->>ZEGO Express SDK: 3.User B creates engine
+    UserB->>ZEGO Express SDK: 4.User B logs in to room
+    UserB->>ZEGO Express SDK: 5.User B publishes stream
+    ZEGO Express SDK->>UserA: 6.User A receives room stream update notification<br/>(get User B's streamID)
+    UserA->>ZEGO Express SDK: 7.User A passes User B's streamID to play stream
+```
+{/*
 <Frame width="512" height="auto" caption="">
   <img src="https://doc-media.zego.im/sdk-doc/Pics/Common/ZegoExpressEngine/common_usage_new.png" />
 </Frame>
+*/}
 
 整个推拉流过程的 API 调用时序如下图：
 
+```mermaid
+sequenceDiagram
+    participant App
+    participant ZEGO Express SDK
+    App->>ZEGO Express SDK: Create engine <br/> [createEngineWithProfile]
+    App->>ZEGO Express SDK: Login room <br/> [loginRoom]
+    ZEGO Express SDK-->>App: Room/User/Stream state update callbacks <br/> [roomStateUpdate / roomUserUpdate / roomStreamUpdate]
+    App->>ZEGO Express SDK: Preview/Publish stream <br/> [starPreview / startPublishingStream]
+    ZEGO Express SDK-->>App: Publish state update callback <br/> [publisherStateUpdate]
+    App->>ZEGO Express SDK: Play stream <br/> [startPlayingStream]
+    ZEGO Express SDK-->>App: Play state update callback <br/> [playerStateUpdate]
+    App->>ZEGO Express SDK: Stop preview/Publish stream <br/> [stopPreview / stopPublishingStream]
+    ZEGO Express SDK-->>App: Publish state update callback <br/> [publisherStateUpdate]
+    App->>ZEGO Express SDK: Stop playing stream <br/> [stopPlayingStream]
+    ZEGO Express SDK-->>App: Play state update callback <br/> [playerStateUpdate]
+    App->>ZEGO Express SDK: Logout room <br/> [logoutRoom]
+    ZEGO Express SDK-->>App: Room state update callback <br/> [roomStateUpdate]
+    App->>ZEGO Express SDK: Destroy engine <br/> [destroyEngine]
+```
+{/*
 <Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/sdk-doc/Pics/QuickStart/quickstart_uml_RN.png" /></Frame>
+*/}
 
 <a id="CreateEngine"> </a>
 

@@ -18,7 +18,48 @@ For room connection interruptions caused by poor network quality, the SDK will a
 
 **Room Status Description**
 
+```mermaid
+sequenceDiagram
+    participant APP
+    participant ZEGO Express SDK
+
+    note over APP,ZEGO Express SDK: Create ZegoExpressEngine instance
+    APP->>ZEGO Express SDK: [createEngineWithProfile]
+
+    note over APP,ZEGO Express SDK: Set recording info callback
+    APP->>ZEGO Express SDK: [setDataRecordEventHandler]
+
+    note over APP,ZEGO Express SDK: Login room
+    APP->>ZEGO Express SDK: [loginRoom]
+
+    note over APP,ZEGO Express SDK: Start publishing stream or preview to start data capture<br/>(enable microphone, camera)
+    APP->>ZEGO Express SDK: [startPublishingStream / startPreview]
+
+    note over APP,ZEGO Express SDK: Start recording
+    APP->>ZEGO Express SDK: [startRecordingCapturedData]
+
+    note over APP,ZEGO Express SDK: Handle recording info callback notifications
+    ZEGO Express SDK-->>APP: [onCapturedDataRecordStateUpdate]
+    loop Continuously trigger onCapturedDataRecordProgressUpdate callback
+        ZEGO Express SDK-->>APP: [onCapturedDataRecordProgressUpdate]
+    end
+
+    note over APP,ZEGO Express SDK: Stop recording
+    APP->>ZEGO Express SDK: [stopRecordingCapturedData]
+    ZEGO Express SDK-->>APP: [onCapturedDataRecordStateUpdate]
+
+    note over APP,ZEGO Express SDK: Stop publishing stream or preview
+    APP->>ZEGO Express SDK: [stopPublishingStream / stopPreview]
+
+    note over APP,ZEGO Express SDK: Logout room
+    APP->>ZEGO Express SDK: [logoutRoom]
+
+    note over APP,ZEGO Express SDK: Destroy engine
+    APP->>ZEGO Express SDK: [destroyEngine]
+```
+{/*
 <Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/sdk-doc/Pics/Express/Android/express_roomstate_change_android.png" /></Frame>
+*/}
 
 Room connection status will convert to each other due to various situations. Developers can make corresponding business logic processing based on the reason for the room connection status change [ZegoRoomStateChangedReason](@-ZegoRoomStateChangedReason) (i.e., room connection status) combined with errorCode.
 
@@ -119,7 +160,7 @@ The following diagram takes the case where user A and user B have logged in to t
 
 **Case 1: Successful reconnection before the ZEGO server determines that user A's heartbeat has timed out**
 
-<Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/sdk-doc/Pics/FAQ/roomconnect1.png" /></Frame>
+<Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/core_products/real-time-voice-video/en/architecture/roomconnect1_en.png" /></Frame>
 
 If user A briefly disconnects, but successfully reconnects within 90s, then user B will not receive the callback notification of [onRoomUserUpdate](@onRoomUserUpdate).
 
@@ -131,7 +172,7 @@ If user A briefly disconnects, but successfully reconnects within 90s, then user
 
 **Case 2: Successful reconnection after the ZEGO server determines that user A's heartbeat has timed out**
 
-<Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/sdk-doc/Pics/FAQ/connect3.jpg" /></Frame>
+<Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/core_products/real-time-voice-video/en/architecture/connect3_en.png" /></Frame>
 
 - The situations at moments T0, T1, T2, T3 are the same as T0, T1, T2, T3 in [Case 1: Successful reconnection before the server determines that user A's heartbeat has timed out](/real-time-video-windows-cpp/room/room-connection-status).
 
@@ -143,7 +184,7 @@ If user A briefly disconnects, but successfully reconnects within 90s, then user
 
 **Case 3: User A fails to reconnect**
 
-<Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/sdk-doc/Pics/FAQ/Reconnect3.png" /></Frame>
+<Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/core_products/real-time-voice-video/en/architecture/Reconnect3_en.png" /></Frame>
 
 - The situations at moments T0, T1, T2, T3 are the same as T0, T1, T2, T3 in [Case 1: Successful reconnection before the ZEGO server determines that user A's heartbeat has timed out](/real-time-video-windows-cpp/room/room-connection-status).
 

@@ -121,7 +121,28 @@ Before using the subject segmentation feature, please ensure:
 - If using third-party filters for custom pre-processing, please ensure the third-party filters support Alpha channel pass-through functionality.
 </Warning>
 
+```mermaid
+sequenceDiagram
+    participant Publisher
+    participant ZEGO Express SDK
+    participant Player
+
+    Publisher->>ZEGO Express SDK: Create engine <br/> [createEngine]
+    Publisher->>ZEGO Express SDK: Login room <br/> [loginRoom]
+    Player->>ZEGO Express SDK: Create engine <br/> [createEngine]
+    Player->>ZEGO Express SDK: Login room <br/> [loginRoom]
+    Publisher->>ZEGO Express SDK: Listen to subject segmentation state callback <br/> [onVideoObjectSegmentationStateChanged]
+    Publisher->>ZEGO Express SDK: Enable subject segmentation <br/> [enableVideoObjectSegmentation]<br/>(Background blur/Virtual background/Transparent background)
+    Publisher-->>ZEGO Express SDK: (Optional) Use Alpha<br/>channel to transmit segmented subject <br/> [enableAlphaChannelVideoEncoder]
+    Publisher->>ZEGO Express SDK: Start preview and publish stream <br/> [startPreview / startPublishingStream]
+    ZEGO Express SDK-->>Player: Play stream <br/> [startPlayingStream]
+    Publisher->>ZEGO Express SDK: Disable subject segmentation <br/> [enableVideoObjectSegmentation]
+    Publisher->>ZEGO Express SDK: Destroy engine <br/> [destroyEngine]
+    Player->>ZEGO Express SDK: Destroy engine <br/> [destroyEngine]
+```
+{/*
 <Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/sdk-doc/Pics/subject_segmentation/subject_segmentation_ios.png" /></Frame>
+*/}
 
 Please note that developers can choose whether to implement the **(Optional)** steps in the above diagram based on their business scenario needs. If implementation is needed, please refer to the specific instructions below.
 

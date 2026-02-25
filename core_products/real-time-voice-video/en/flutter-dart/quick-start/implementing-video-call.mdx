@@ -54,13 +54,55 @@ The basic process for users to make video calls through ZEGO Express SDK is as f
 
 User A and B join the room. User B previews and publishes the audio and video stream to the ZEGO cloud service (Publish stream). After user A receives the notification of user B's published audio and video stream, user A plays user B's audio and video stream in the notification (Play stream).
 
+```mermaid
+sequenceDiagram
+    participant UserA
+    participant ZEGO Express SDK
+    participant UserB
+    UserA->>ZEGO Express SDK: 1.User A creates engine
+    UserA->>ZEGO Express SDK: 2.User A logs in to room
+    UserB->>ZEGO Express SDK: 3.User B creates engine
+    UserB->>ZEGO Express SDK: 4.User B logs in to room
+    UserB->>ZEGO Express SDK: 5.User B publishes stream
+    ZEGO Express SDK->>UserA: 6.User A receives room stream update notification<br/>(get User B's streamID)
+    UserA->>ZEGO Express SDK: 7.User A passes User B's streamID to play stream
+```
+{/*
 <Frame width="512" height="auto" caption="">
   <img src="https://doc-media.zego.im/sdk-doc/Pics/Common/ZegoExpressEngine/common_usage_new.png" />
 </Frame>
+*/}
 
 The API call sequence of the entire publish/play process is as follows:
 
+```mermaid
+sequenceDiagram
+    participant App
+    participant ZEGO Express SDK
+
+    App->>ZEGO Express SDK: Create engine <br/> [new ZegoExpressEngine]
+
+    App->>ZEGO Express SDK: Login room <br/> [loginRoom]
+    ZEGO Express SDK-->>App: Room/User/Stream state update callbacks <br/> [roomStateUpdate / roomUserUpdate / roomStreamUpdate]
+
+    App->>ZEGO Express SDK: Publish stream <br/> [startPublishingStream]
+    ZEGO Express SDK-->>App: Publish state update callback <br/> [publisherStateUpdate]
+
+    App->>ZEGO Express SDK: Play stream <br/> [startPlayingStream]
+    ZEGO Express SDK-->>App: Play state update callback <br/> [playerStateUpdate]
+
+    App->>ZEGO Express SDK: Stop publishing stream <br/> [stopPublishingStream]
+    ZEGO Express SDK-->>App: Publish state update callback <br/> [publisherStateUpdate]
+
+    App->>ZEGO Express SDK: Stop playing stream <br/> [stopPlayingStream]
+    ZEGO Express SDK-->>App: Play state update callback <br/> [playerStateUpdate]
+
+    App->>ZEGO Express SDK: Logout room <br/> [logoutRoom]
+    ZEGO Express SDK-->>App: Room state update callback <br/> [roomStateUpdate]
+```
+{/*
 <Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/sdk-doc/Pics/QuickStart/quickstart_uml_createEngineWithProfile_2.png" /></Frame>
+*/}
 
 <a id="CreateEngine"> </a>
 

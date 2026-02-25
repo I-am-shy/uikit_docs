@@ -40,9 +40,24 @@ The basic process for users to make video calls through ZEGO Express SDK is as f
 
 Users A and B join the room. User B previews and publishes the audio and video stream to ZEGO cloud service (publish stream). After User A receives the notification of User B's published audio and video stream, User A plays User B's audio and video stream in the notification (play stream).
 
+```mermaid
+sequenceDiagram
+    participant UserA
+    participant ZEGO Express SDK
+    participant UserB
+    UserA->>ZEGO Express SDK: 1.User A creates engine
+    UserA->>ZEGO Express SDK: 2.User A logs in to room
+    UserB->>ZEGO Express SDK: 3.User B creates engine
+    UserB->>ZEGO Express SDK: 4.User B logs in to room
+    UserB->>ZEGO Express SDK: 5.User B publishes stream
+    ZEGO Express SDK->>UserA: 6.User A receives room stream update notification<br/>(get User B's streamID)
+    UserA->>ZEGO Express SDK: 7.User A passes User B's streamID to play stream
+```
+{/*
 <Frame width="512" height="auto" caption="">
   <img src="https://doc-media.zego.im/sdk-doc/Pics/Common/ZegoExpressEngine/common_usage_new.png" />
 </Frame>
+*/}
 
 
 ### Create Engine
@@ -57,7 +72,7 @@ Create a user interface for video calls in your project according to scenario ne
 
 - End button: Type is System.Windows.Forms.Button
 
-<Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/sdk-doc/Pics/QuickStart/express_quickstart_video_call_pc.png" /></Frame>
+<Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/core_products/real-time-voice-video/en/architecture/express_quickstart_video_call_pc_en.png" /></Frame>
 
 
 **2. Import Header Files**
@@ -478,7 +493,28 @@ ZegoExpressEngine.DestroyEngine();
 ## Video Call API Call Sequence
 
 
+```mermaid
+sequenceDiagram
+    participant App
+    participant ZEGO as ZEGO Express SDK
+    App->>ZEGO: Create engine <br/> [CreateEngine]
+    App->>ZEGO: Login room <br/> [LoginRoom]
+    ZEGO-->>App: Room/User/Stream state update callbacks <br/> [OnRoomStateUpdate / OnRoomUserUpdate / OnRoomStreamUpdate]
+    App->>ZEGO: Preview/Publish stream <br/> [StartPreview / StartPublishingStream]
+    ZEGO-->>App: Publish state update callback <br/> [OnPublisherStateUpdate]
+    App->>ZEGO: Play stream <br/> [StartPlayingStream]
+    ZEGO-->>App: Play state update callback <br/> [OnPlayerStateUpdate]
+    App->>ZEGO: Stop preview/Publish stream <br/> [StopPreview / StopPublishingStream]
+    ZEGO-->>App: Publish state update callback <br/> [OnPublisherStateUpdate]
+    App->>ZEGO: Stop playing stream <br/> [StopPlayingStream]
+    ZEGO-->>App: Play state update callback <br/> [OnPlayerStateUpdate]
+    App->>ZEGO: Logout room <br/> [LogoutRoom]
+    ZEGO-->>App: Room state update callback <br/> [OnRoomStateUpdate]
+    App->>ZEGO: Destroy engine <br/> [DestroyEngine]
+```
+{/*
 <Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/sdk-doc/Pics/QuickStart/quickstart_uml_winC.png" /></Frame>
+*/}
 
 ## FAQ
 

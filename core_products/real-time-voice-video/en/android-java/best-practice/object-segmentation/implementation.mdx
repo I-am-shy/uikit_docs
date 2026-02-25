@@ -58,7 +58,7 @@ In this way, the main bodies of multiple users can be rendered onto the same bac
 
 The overall architecture of the in-Room business of this best practice is shown in the following figure. Since the developer's business backend only manages the Room list and does not involve in-Room business, it is not reflected in the following figure. Where:
 
-<Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/sdk-doc/Pics/ZegoObjectSegmentation/structure.jpeg" /></Frame>
+<Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/core_products/real-time-voice-video/en/architecture/structure_en.jpeg" /></Frame>
 
 ## Prerequisites
 
@@ -77,7 +77,19 @@ The implementation process mainly includes 6 steps, namely initializing SDK, joi
 - Before managing mic positions in the Room, you need to initialize the ZIM SDK first and set the notification callback to listen for ZIM events. For interface call details, please refer to "2. Create ZIM Instance" and "3. Use EventHandler Protocol" in [Instant Messaging - Implement Basic Message Send and Receive](/zim-android/send-and-receive-messages#3-实现基本收发消息).
 - Before implementing object segmentation, you need to initialize the ZEGO Express SDK first and set the notification callback at the same time to listen for Express events. For interface call details, please refer to "Initialization" in [Video Call - Implementing Video Call](/real-time-video-android-java/quick-start/implementing-video-call#初始化).
 
+```mermaid
+sequenceDiagram
+    participant ZIM SDK
+    participant App
+    participant ZEGO Express SDK
+    note over ZIM SDK,ZEGO Express SDK: Join room
+    App->>ZEGO Express SDK: Login RTC room<br/>[loginRoom]
+    App->>ZIM SDK: Login ZIM service<br/>[login]
+    App->>ZIM SDK: Create/join ZIM room<br/>[createRoom / joinRoom]
+```
+{/*
 <Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/sdk-doc/Pics/ZegoObjectSegmentation/init_Android.png" /></Frame>
+*/}
 
 ### Join Room
 
@@ -86,14 +98,41 @@ The implementation process mainly includes 6 steps, namely initializing SDK, joi
     1. Login to the ZIM service. For interface calls, please refer to "Login ZIM" in [Instant Messaging - Implement Basic Message Send and Receive](/zim-android/send-and-receive-messages#4-登录-zim).
     2. Users need to create or join a ZIM Room. For details, please refer to "Create Room, Join Room" in [Instant Messaging - Room Management](/zim-android/guides/room/manage-rooms#创建房间加入房间).
 
+```mermaid
+sequenceDiagram
+    participant ZIM_SDK as ZIM SDK
+    participant App
+    participant ZEGO_Express_SDK as ZEGO Express SDK
+    note over ZIM_SDK,ZEGO_Express_SDK: Join room
+    App->>ZEGO_Express_SDK: Login RTC room<br/>loginRoom
+    App->>ZIM_SDK: Login ZIM service<br/>loginWithUserInfo
+    App->>ZIM_SDK: Create/join ZIM room<br/>createRoom/joinRoom
+```
+{/*
 <Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/sdk-doc/Pics/ZegoObjectSegmentation/joinRoom_Android.png" /></Frame>
+*/}
 
 ### Manage Mic Positions
 
 - After joining the ZIM Room, users can understand the mic position information in the Room by querying all Room attributes. For interface call details, please refer to "Get Room Attributes" in [Instant Messaging - Room Attribute Management](/zim-android/guides/room/room-properties#获取房间属性).
 - If users need to get on the mic, they can modify the mic position information by modifying Room attributes. For interface call details, please refer to "Set Room Attributes" in [Instant Messaging - Room Attribute Management](/zim-android/guides/room/room-properties#获取房间属性).
 
+```mermaid
+sequenceDiagram
+    participant ZIM SDK
+    participant App
+    participant ZEGO Express SDK
+
+    note over ZIM SDK,ZEGO Express SDK: Manage mic positions
+
+    App->>ZIM SDK: Query all room attributes (includes mic position info)<br/>[queryRoomAllAttributesByRoomID]
+    ZIM SDK-->>App: Return all room attributes<br/>[ZIMRoomAttributesQueriedCallback]
+    App->>ZIM SDK: Set room attributes (join mic)<br/>[setRoomAttributes]
+    ZIM SDK-->>App: Notify user that local has joined mic<br/>[roomAttributesUpdated]
+```
+{/*
 <Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/sdk-doc/Pics/ZegoObjectSegmentation/micManagement_Android.png" /></Frame>
+*/}
 
 ### Use Object Segmentation
 
@@ -113,7 +152,22 @@ The implementation process mainly includes 6 steps, namely initializing SDK, joi
     Since the RTC Room is only related to publishing stream, developers can also preview the effect of object segmentation outside the RTC Room.
     </Note>
 
+```mermaid
+sequenceDiagram
+    participant ZIM SDK
+    participant App
+    participant ZEGO Express SDK
+    note over ZIM SDK, ZEGO Express SDK: Use subject segmentation
+    App->>ZEGO Express SDK: Set alpha channel <br/>[enableAlphaChannelVideoEncoder]
+    App->>ZEGO Express SDK: Enable screen mirror <br/>[setVideoMirrorMode]
+    App->>ZEGO Express SDK: Set captured video orientation <br/>[setAppOrientationMode]
+    App->>ZEGO Express SDK: Start preview and publish stream <br/>[startPreview & startPublishingStream] <br/>For preview only, set TextureView's opaque to transparent
+    App->>ZEGO Express SDK: Enable subject segmentation <br/>[enableVideoObjectSegmentation]
+    ZEGO Express SDK-->>App: Notify subject segmentation result <br/>[onVideoObjectSegmentationStateChanged]
+```
+{/*
 <Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/sdk-doc/Pics/ZegoObjectSegmentation/previewAndPublishing_Android.png" /></Frame>
+*/}
 
 
 ### Playing Stream
@@ -128,7 +182,20 @@ After the user receives the ZIM event notification and learns that someone has g
 2. Play the video stream that has implemented object segmentation from the other party, thereby achieving the visual effect of two users having a face-to-face dialogue in "the same space". For interface call details, please refer to "Start Playing Stream" in [Video Call - Object Segmentation](/real-time-video-android-java/video/object-segmentation#9可选在拉流端设置-alpha-通道渲染并拉流).
 3. If you need to stop playing stream, for interface call details, please refer to "Stop Audio and Video Call" in [Video Call - Implementing Video Call](/real-time-video-android-java/quick-start/implementing-video-call#停止音视频通话).
 
+```mermaid
+sequenceDiagram
+    participant ZIM SDK
+    participant App
+    participant ZEGO Express SDK
+
+    note over ZIM SDK,ZEGO Express SDK: Play stream
+    ZIM SDK-->>App: Notify that other users have joined mic in room<br/>[roomAttributesUpdated]
+    App->>ZEGO Express SDK: Start playing stream<br/>[startPlayingStream] <br/>Call setBackgroundColor to set the backgroundColor property of the rendering View to clearColor (transparent)
+    App->>ZEGO Express SDK: Stop playing stream<br/>[stopPlayingStream]
+```
+{/*
 <Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/sdk-doc/Pics/ZegoObjectSegmentation/playingStream_Android.png" /></Frame>
+*/}
 
 ### Leave Room
 
@@ -137,4 +204,18 @@ After the user receives the ZIM event notification and learns that someone has g
 3. Leave the RTC Room. For interface call details, please refer to "Stop Audio and Video Call" in [Video Call - Implementing Video Call](/real-time-video-android-java/quick-start/implementing-video-call#停止音视频通话).
 
 
+```mermaid
+sequenceDiagram
+    participant ZIM SDK
+    participant App
+    participant ZEGO Express SDK
+
+    note over ZIM SDK, ZEGO Express SDK: Logout room
+    App->>ZEGO Express SDK: Stop preview <br/> [stopPreview]
+    App->>ZEGO Express SDK: Stop publishing stream <br/> [stopPublishingStream]
+    App->>ZIM SDK: Leave ZIM room <br/> [leaveRoom]
+    App->>ZEGO Express SDK: Logout RTC room <br/> [logoutRoom]
+```
+{/*
 <Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/sdk-doc/Pics/ZegoObjectSegmentation/logoutRoom_iOS.png" /></Frame>
+*/}

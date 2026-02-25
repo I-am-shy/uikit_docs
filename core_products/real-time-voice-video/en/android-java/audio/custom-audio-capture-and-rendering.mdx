@@ -49,7 +49,28 @@ Before implementing custom audio capture and rendering, please ensure:
 
 The following figure shows the API interface call sequence diagram:
 
+```mermaid
+sequenceDiagram
+    participant ClientApp
+    participant ZEGO Express SDK
+
+    ClientApp->>ZEGO Express SDK: Create engine <br/> [createEngineWithProfile]
+
+    ClientApp->>ZEGO Express SDK: Enable custom audio capture and render <br/> [enableCustomAudioIO]
+
+    ClientApp->>ZEGO Express SDK: Login room <br/> [loginRoom]
+
+    ClientApp->>ZEGO Express SDK: Start publishing stream <br/> [startPublishingStream]
+
+    ClientApp->>ZEGO Express SDK: Capture audio data <br/> [sendCustomAudioCaptureAACData, sendCustomAudioCapturePCMData]
+
+    ClientApp->>ZEGO Express SDK: Start playing stream <br/> [startPlayingStream]
+
+    ClientApp->>ZEGO Express SDK: Render audio data <br/> [fetchCustomAudioRenderPCMData]
+```
+{/*
 <Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/sdk-doc/Pics/Express/custom_audio_capture_render_android.png" /></Frame>
+*/}
 
 ### 1 Initialize SDK
 

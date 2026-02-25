@@ -24,7 +24,48 @@ If the room connection is interrupted due to poor network quality, the SDK will 
 
 #### Room Status Description
 
+```mermaid
+sequenceDiagram
+    participant APP
+    participant ZEGO Express SDK
+
+    note over APP,ZEGO Express SDK: Create ZegoExpressEngine instance
+    APP->>ZEGO Express SDK: [createEngineWithProfile]
+
+    note over APP,ZEGO Express SDK: Set recording info callback
+    APP->>ZEGO Express SDK: [setDataRecordEventHandler]
+
+    note over APP,ZEGO Express SDK: Login room
+    APP->>ZEGO Express SDK: [loginRoom]
+
+    note over APP,ZEGO Express SDK: Start publishing stream or preview to start data capture<br/>(enable microphone, camera)
+    APP->>ZEGO Express SDK: [startPublishingStream / startPreview]
+
+    note over APP,ZEGO Express SDK: Start recording
+    APP->>ZEGO Express SDK: [startRecordingCapturedData]
+
+    note over APP,ZEGO Express SDK: Handle recording info callback notifications
+    ZEGO Express SDK-->>APP: [onCapturedDataRecordStateUpdate]
+    loop Continuously trigger onCapturedDataRecordProgressUpdate callback
+        ZEGO Express SDK-->>APP: [onCapturedDataRecordProgressUpdate]
+    end
+
+    note over APP,ZEGO Express SDK: Stop recording
+    APP->>ZEGO Express SDK: [stopRecordingCapturedData]
+    ZEGO Express SDK-->>APP: [onCapturedDataRecordStateUpdate]
+
+    note over APP,ZEGO Express SDK: Stop publishing stream or preview
+    APP->>ZEGO Express SDK: [stopPublishingStream / stopPreview]
+
+    note over APP,ZEGO Express SDK: Logout room
+    APP->>ZEGO Express SDK: [logoutRoom]
+
+    note over APP,ZEGO Express SDK: Destroy engine
+    APP->>ZEGO Express SDK: [destroyEngine]
+```
+{/*
 <Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/sdk-doc/Pics/Express/Android/express_roomstate_change_android.png" /></Frame>
+*/}
 
 Room connection statuses will transform into each other. Developers need to judge various situations and handle corresponding logic by combining reason (i.e., room connection status) and errorCode.
 
@@ -167,7 +208,7 @@ The following figure takes the case where user A and user B have logged in to th
 
 #### Case 1: Successfully reconnect before the ZEGO server determines that user A's heartbeat has timed out
 
-<Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/sdk-doc/Pics/FAQ/reconnect1_unity3d.png" /></Frame>
+<Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/core_products/real-time-voice-video/en/architecture/reconnect1_unity3d_en.png" /></Frame>
 
 If user A is briefly disconnected but successfully reconnects within 90s, then user B will not receive the [OnRoomUserUpdate](@OnRoomUserUpdate) callback notification.
 
@@ -179,7 +220,7 @@ If user A is briefly disconnected but successfully reconnects within 90s, then u
 
 #### Case 2: Successfully reconnect after the ZEGO server determines that user A's heartbeat has timed out
 
-<Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/sdk-doc/Pics/FAQ/reconnect2_unity3d.png" /></Frame>
+<Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/core_products/real-time-voice-video/en/architecture/reconnect2_unity3d_en.png" /></Frame>
 
 - The situations at T0, T1, T2, T3 are the same as T0, T1, T2, T3 in [Case 1: Successfully reconnect before the ZEGO server determines that user A's heartbeat has timed out](/real-time-video-u3d-cs/room/room-connection-status).
 
@@ -191,7 +232,7 @@ If user A is briefly disconnected but successfully reconnects within 90s, then u
 
 #### Case 3: User A fails to reconnect
 
-<Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/sdk-doc/Pics/FAQ/reconnect3_unity3d.png" /></Frame>
+<Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/core_products/real-time-voice-video/en/architecture/reconnect3_unity3d_en.png" /></Frame>
 
 - The situations at T0, T1, T2, T3 are the same as T0, T1, T2, T3 in [Case 1: Successfully reconnect before the ZEGO server determines that user A's heartbeat has timed out](/real-time-video-u3d-cs/room/room-connection-status).
 

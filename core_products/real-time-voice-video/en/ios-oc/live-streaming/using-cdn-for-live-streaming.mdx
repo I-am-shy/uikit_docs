@@ -20,7 +20,7 @@ When initiating relay to CDN or direct publish to CDN, please note that CDN has 
 
 Relay to CDN refers to the process of pushing audio/video streams from the ZEGO audio/video cloud to ZEGO's own CDN or third-party CDNs.
 
-<Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/sdk-doc/Pics/Common/ZegoExpressEngine/relay_cdn.png" /></Frame>
+<Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/core_products/real-time-voice-video/en/architecture/relay_cdn_en.jpeg" /></Frame>
 
 Relay to CDN includes the following three methods:
 
@@ -48,9 +48,16 @@ Relay to CDN includes the following three methods:
 
 Direct publish to CDN refers to the process of pushing audio/video streams directly from the local client to the CDN, where users can directly watch from web pages or third-party players through the playing stream URL address. However, since the direct publish to CDN function does not go through the ZEGO real-time audio/video cloud during network transmission, developers cannot use ZEGO's real-time audio/video services.
 
+```mermaid
+graph LR
+    A[Host] -->|"Push audio/video stream directly to CDN<br/>[enablePublishDirectToCDN]"| B[CDN]
+    B -->|"Play stream<br/>[startPlayingStream]"| C[Audience]
+```
+{/*
 <Frame width="512" height="auto" caption="">
   <img src="https://doc-media.zego.im/sdk-doc/Pics/Android/streamByCdn/direct_to_cdn.png" />
 </Frame>
+*/}
 
 ### Feature Comparison
 

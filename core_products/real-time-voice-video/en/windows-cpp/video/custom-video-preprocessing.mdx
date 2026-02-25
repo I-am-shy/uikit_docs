@@ -12,7 +12,7 @@ date: "2024-07-11"
 
 Video pre-processing is a process between capture and encoding. After developers capture video data themselves and obtain the video data captured by the SDK, they can perform video pre-processing through the basic AI effects and watermark features that come with the SDK. If the SDK cannot meet the developers' needs (for example, the AI effects effect cannot meet expectations), they can also work with the ZEGO Effects SDK to perform some special processing on the video, such as AI effects, adding accessories, etc. This process is custom video pre-processing.
 
-<Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/sdk-doc/Pics/Common/ZegoExpressEngine/video_pre_processing.png" /></Frame>
+<Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/core_products/real-time-voice-video/en/architecture/video_pre_processing_en.png" /></Frame>
 
 Compared with custom video capture, the advantage of custom video pre-processing is that developers do not need to manage the device input source, but only need to operate on the raw data thrown out by the ZEGO Express SDK, and then send it back to the ZEGO Express SDK.
 
@@ -39,7 +39,26 @@ Before performing custom video pre-processing, ensure that:
 
 The flow and interface calls for custom video pre-processing are as follows:
 
+```mermaid
+sequenceDiagram
+    participant App as Client App
+    participant SDK as ZEGO Express SDK
+
+    App->>SDK: Initialize Express SDK <br/> [createEngine]
+    App->>SDK: Set custom video render configuration <br/> [enableCustomVideoRender]
+    App->>SDK: Set render callback handler,<br>implement callback methods <br/> [setCustomVideoRenderHandler]
+    App->>SDK: Login room <br/> [loginRoom]
+
+    critical Call publish/play stream interfaces to get video data, then perform custom rendering
+        App->>SDK: Start preview, publish stream <br/> [startPreview, startPublishingStream]
+        SDK-->>App: Local preview captured video data notification <br/> [onCapturedVideoFrameRawData]
+        App->>SDK: Play stream <br/> [startPlayingStream]
+        SDK-->>App: Remote play stream video data notification <br/> [onRemoteVideoFrameRawData]
+    end
+```
+{/*
 <Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/sdk-doc/Pics/Common/ZegoExpressEngine/custom_video_process_win_new.png" /></Frame>
+*/}
 
 1. Initialize the Express SDK and login to the room.
 

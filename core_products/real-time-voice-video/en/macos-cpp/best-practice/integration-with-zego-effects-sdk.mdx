@@ -39,13 +39,28 @@ To facilitate developers in implementing the combination of the two, ZEGO provid
 
 The principle of using ZEGO Effects SDK and ZEGO Express SDK together to perform real-time AI Effects processing on video data is shown in the following figure:
 <Frame width="512" height="auto" caption="">
-  <img src="https://doc-media.zego.im/sdk-doc/Pics/Common/ZegoExpressEngine/video_pre_processing.png" />
+  <img src="https://doc-media.zego.im/core_products/real-time-voice-video/en/architecture/video_pre_processing_en.png" />
 </Frame>
 
 Through the above process, the specific implementation steps are shown in the following figure:
+```mermaid
+sequenceDiagram
+    participant Client
+    participant ZEGO Effects SDK
+    participant ZEGO Express SDK
+
+    Client->>ZEGO Effects SDK: 1. Initialize ZEGO Effects SDK
+    Client->>ZEGO Express SDK: 1. Initialize ZEGO Express SDK
+    Client->>ZEGO Express SDK: 2. Get raw video data
+    ZEGO Express SDK<<->>ZEGO Effects SDK: 3. Pass raw data to Effects SDK for AI processing<br>and return processed data to Express SDK
+    Client->>ZEGO Express SDK: 4. Client publishes processed video data
+    ZEGO Express SDK->>Client: 5. Other clients play processed data, play video
+```
+{/*
 <Frame width="512" height="auto" caption="">
   <img src="https://doc-media.zego.im/sdk-doc/Pics/ZegoEffects/Apple/RTC_AI_bestPractise3.png" />
 </Frame>
+*/}
 
 1. Initialize ZEGO Effects SDK and ZEGO Express SDK. There is no timing restriction on initialization.
 2. Obtain original video data, which can be obtained through [Custom Video Capture](/real-time-video-macos-cpp/video/custom-video-capture) or [Custom Video Pre-processing](/real-time-video-macos-cpp/video/custom-video-preprocessing) of ZEGO Express SDK.
