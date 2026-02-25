@@ -208,7 +208,7 @@ The following figure takes the case where user A and user B have logged in to th
 
 #### Case 1: Successfully reconnect before the ZEGO server determines that user A's heartbeat has timed out
 
-<Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/sdk-doc/Pics/FAQ/reconnect1_unity3d.png" /></Frame>
+<Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/core_products/real-time-voice-video/en/architecture/reconnect1_unity3d_en.png" /></Frame>
 
 If user A is briefly disconnected but successfully reconnects within 90s, then user B will not receive the [OnRoomUserUpdate](@OnRoomUserUpdate) callback notification.
 
@@ -220,7 +220,7 @@ If user A is briefly disconnected but successfully reconnects within 90s, then u
 
 #### Case 2: Successfully reconnect after the ZEGO server determines that user A's heartbeat has timed out
 
-<Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/sdk-doc/Pics/FAQ/reconnect2_unity3d.png" /></Frame>
+<Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/core_products/real-time-voice-video/en/architecture/reconnect2_unity3d_en.png" /></Frame>
 
 - The situations at T0, T1, T2, T3 are the same as T0, T1, T2, T3 in [Case 1: Successfully reconnect before the ZEGO server determines that user A's heartbeat has timed out](/real-time-video-u3d-cs/room/room-connection-status).
 
@@ -232,7 +232,7 @@ If user A is briefly disconnected but successfully reconnects within 90s, then u
 
 #### Case 3: User A fails to reconnect
 
-<Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/sdk-doc/Pics/FAQ/reconnect3_unity3d.png" /></Frame>
+<Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/core_products/real-time-voice-video/en/architecture/reconnect3_unity3d_en.png" /></Frame>
 
 - The situations at T0, T1, T2, T3 are the same as T0, T1, T2, T3 in [Case 1: Successfully reconnect before the ZEGO server determines that user A's heartbeat has timed out](/real-time-video-u3d-cs/room/room-connection-status).
 

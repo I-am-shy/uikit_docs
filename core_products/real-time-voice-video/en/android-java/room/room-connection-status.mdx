@@ -224,7 +224,7 @@ The following diagram takes the situation where user A and user B have logged in
 
 #### Case 1: Reconnection succeeds before the ZEGO server determines that user A's heartbeat has timed out
 
-<Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/sdk-doc/Pics/FAQ/roomconnect1.png" /></Frame>
+<Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/core_products/real-time-voice-video/en/architecture/roomconnect1_en.png" /></Frame>
 
 If user A is briefly disconnected but reconnects successfully within 90s, then user B will not receive the [onRoomUserUpdate](@onRoomUserUpdate) callback notification.
 
@@ -236,7 +236,7 @@ If user A is briefly disconnected but reconnects successfully within 90s, then u
 
 #### Case 2: Reconnection succeeds after the ZEGO server determines that user A's heartbeat has timed out
 
-<Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/sdk-doc/Pics/FAQ/connect3.jpg" /></Frame>
+<Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/core_products/real-time-voice-video/en/architecture/connect3_en.png" /></Frame>
 
 
 - The situations at T0, T1, T2, and T3 are the same as T0, T1, T2, and T3 in [Case 1: Reconnection succeeds before the ZEGO server determines that user A's heartbeat has timed out](/real-time-video-android-java/room/room-connection-status).
@@ -249,7 +249,7 @@ If user A is briefly disconnected but reconnects successfully within 90s, then u
 
 #### Case 3: User A fails to reconnect
 
-<Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/sdk-doc/Pics/FAQ/Reconnect3.png" /></Frame>
+<Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/core_products/real-time-voice-video/en/architecture/Reconnect3_en.png" /></Frame>
 
 - The situations at T0, T1, T2, and T3 are the same as T0, T1, T2, and T3 in [Case 1: Reconnection succeeds before the ZEGO server determines that user A's heartbeat has timed out](/real-time-video-android-java/room/room-connection-status).
 

@@ -32,7 +32,7 @@ Range Voice
 <p>Listeners in the room have range limitations on the distance they can receive audio. If a speaker is farther away than this range, they cannot be heard. To ensure voice clarity, when more than 20 people nearby are speaking, only the voices of the 20 speakers closest to the listener can be heard.</p>
 <p>Suppose the maximum range for audio reception is set to R, and the distance between the speaker and the listener is r, then:</p>
 <ul><li>When r &lt; R, it means the speaker is within the normal range, and the listener can hear the sound.</li><li>When r ≥ R, it means the speaker is beyond the maximum range, and the listener cannot hear the sound.</li></ul>
-<Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/sdk-doc/Pics/Common/RangeAudio/AudioRange.png" /></Frame>
+<Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/core_products/real-time-voice-video/en/architecture/AudioRange_en.jpeg" /></Frame>
 <p>The above figure only shows the example when the range voice mode is "World". For more information on sound reachability under different mode combinations, please refer to <a href="#set-common-voice-mode">Set Common Voice Mode</a>.</p>
 </td>
 </tr>
@@ -253,7 +253,7 @@ Developers can call the [updateSelfPosition](@updateSelfPosition) interface to s
   </tr>
 </tbody></table>
 
-<Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/sdk-doc/Pics/Common/RangeAudio/Coordinate_System.png" /></Frame>
+<Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/core_products/real-time-voice-video/en/architecture/Coordinate_System_en.jpeg" /></Frame>
 
 ```cpp
 // Self's coordinates in the world coordinate system, in the order of front, right, up.

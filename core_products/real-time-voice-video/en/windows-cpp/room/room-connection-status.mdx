@@ -160,7 +160,7 @@ The following diagram takes the case where user A and user B have logged in to t
 
 **Case 1: Successful reconnection before the ZEGO server determines that user A's heartbeat has timed out**
 
-<Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/sdk-doc/Pics/FAQ/roomconnect1.png" /></Frame>
+<Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/core_products/real-time-voice-video/en/architecture/roomconnect1_en.png" /></Frame>
 
 If user A briefly disconnects, but successfully reconnects within 90s, then user B will not receive the callback notification of [onRoomUserUpdate](@onRoomUserUpdate).
 
@@ -172,7 +172,7 @@ If user A briefly disconnects, but successfully reconnects within 90s, then user
 
 **Case 2: Successful reconnection after the ZEGO server determines that user A's heartbeat has timed out**
 
-<Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/sdk-doc/Pics/FAQ/connect3.jpg" /></Frame>
+<Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/core_products/real-time-voice-video/en/architecture/connect3_en.png" /></Frame>
 
 - The situations at moments T0, T1, T2, T3 are the same as T0, T1, T2, T3 in [Case 1: Successful reconnection before the server determines that user A's heartbeat has timed out](/real-time-video-windows-cpp/room/room-connection-status).
 
@@ -184,7 +184,7 @@ If user A briefly disconnects, but successfully reconnects within 90s, then user
 
 **Case 3: User A fails to reconnect**
 
-<Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/sdk-doc/Pics/FAQ/Reconnect3.png" /></Frame>
+<Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/core_products/real-time-voice-video/en/architecture/Reconnect3_en.png" /></Frame>
 
 - The situations at moments T0, T1, T2, T3 are the same as T0, T1, T2, T3 in [Case 1: Successful reconnection before the ZEGO server determines that user A's heartbeat has timed out](/real-time-video-windows-cpp/room/room-connection-status).
 

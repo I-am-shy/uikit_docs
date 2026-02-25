@@ -207,7 +207,7 @@ this.ZegoExpressInstance.on('onRoomStateChanged', (roomID: string, reason: ZegoR
 
 **情况一：在 ZEGO 服务端判断用户 A 心跳超时前重连成功**
 
-<Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/sdk-doc/Pics/FAQ/roomconnect1.png" /></Frame>
+<Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/core_products/real-time-voice-video/en/architecture/roomconnect1_en.png" /></Frame>
 
 如果用户 A 短暂断线，但是在 90s 内重连成功了，那么用户 B 不会收到 [onRoomUserUpdate](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/ets_ohos/interfaces/_zegoexpresseventhandler_.zegoeventlistener.html#onroomuserupdate) 的回调通知。
 
@@ -219,7 +219,7 @@ this.ZegoExpressInstance.on('onRoomStateChanged', (roomID: string, reason: ZegoR
 
 **情况二：在 ZEGO 服务端判断用户 A 心跳超时后重连成功**
 
-<Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/sdk-doc/Pics/FAQ/connect3.jpg" /></Frame>
+<Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/core_products/real-time-voice-video/en/architecture/connect3_en.png" /></Frame>
 
 
 - T0、T1、T2、T3 时刻的情况同 [情况一：在 ZEGO 服务端判断用户 A 心跳超时前重连成功](/real-time-video-harmonyos-arkts/room/room-connection-status) 中的 T0、T1、T2、T3。
@@ -232,7 +232,7 @@ this.ZegoExpressInstance.on('onRoomStateChanged', (roomID: string, reason: ZegoR
 
 **情况三：用户 A 重连失败**
 
-<Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/sdk-doc/Pics/FAQ/Reconnect3.png" /></Frame>
+<Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/core_products/real-time-voice-video/en/architecture/Reconnect3_en.png" /></Frame>
 
 - T0、T1、T2、T3 时刻的情况同 [情况一：在 ZEGO 服务端判断用户 A 心跳超时前重连成功](/real-time-video-harmonyos-arkts/room/room-connection-status) 中的 T0、T1、T2、T3。
 

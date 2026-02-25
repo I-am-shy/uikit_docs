@@ -188,7 +188,7 @@ The following diagram takes the situation where user A and user B have logged in
 
 #### Case 1: Successful Reconnection Before ZEGO Server Determines User A's Heartbeat Timeout
 
-<Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/sdk-doc/Pics/FAQ/reconnect_web_1.png" /></Frame>
+<Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/core_products/real-time-voice-video/en/architecture/reconnect_web_1_en.png" /></Frame>
 
 If user A briefly disconnects but reconnects successfully within 90s, user B will not receive the [roomUserUpdate](@roomUserUpdate) callback notification.
 
@@ -201,7 +201,7 @@ If user A briefly disconnects but reconnects successfully within 90s, user B wil
 
 #### Case 2: Successful Reconnection After ZEGO Server Determines User A's Heartbeat Timeout
 
-<Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/sdk-doc/Pics/FAQ/reconnect_web_2.png" /></Frame>
+<Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/core_products/real-time-voice-video/en/architecture/reconnect_web_2_en.png" /></Frame>
 
 - T0, T1, T2, T3 moments are the same as T0, T1, T2, T3 in [Case 1: Successful Reconnection Before ZEGO Server Determines User A's Heartbeat Timeout](/real-time-video-web/room/room-connection-status).
 - T4' ≈ T3 + 90s: User B receives the [roomUserUpdate](@roomUserUpdate) callback at this time to notify that user A has disconnected.
@@ -210,7 +210,7 @@ If user A briefly disconnects but reconnects successfully within 90s, user B wil
 
 #### Case 3: User A Fails to Reconnect
 
-<Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/sdk-doc/Pics/FAQ/reconnect_web_3.png" /></Frame>
+<Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/core_products/real-time-voice-video/en/architecture/reconnect_web_3_en.png" /></Frame>
 
 
 - T0, T1, T2, T3 moments are the same as T0, T1, T2, T3 in [Case 1: Successful Reconnection Before ZEGO Server Determines User A's Heartbeat Timeout](/real-time-video-web/room/room-connection-status).

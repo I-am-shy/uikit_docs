@@ -205,7 +205,7 @@ The following figure takes the case where user A and user B have logged in to th
 
 **Case 1: Successful reconnection before ZEGO server judges user A's heartbeat timeout**
 
-<Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/sdk-doc/Pics/FAQ/roomconnect1.png" /></Frame>
+<Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/core_products/real-time-voice-video/en/architecture/roomconnect1_en.png" /></Frame>
 
 If user A is briefly disconnected but successfully reconnects within 90s, then user B will not receive the callback notification of [onRoomUserUpdate](https://www.zegocloud.com/docs/unique-api/express-video-sdk/en/dart_flutter/zego_express_engine/ZegoExpressEngine/onRoomUserUpdate.html).
 
@@ -217,7 +217,7 @@ If user A is briefly disconnected but successfully reconnects within 90s, then u
 
 **Case 2: Successful reconnection after ZEGO server judges user A's heartbeat timeout**
 
-<Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/sdk-doc/Pics/FAQ/connect3.jpg" /></Frame>
+<Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/core_products/real-time-voice-video/en/architecture/connect3_en.png" /></Frame>
 
 - T0, T1, T2, T3 are the same as [Case 1: Successful reconnection before ZEGO server judges user A's heartbeat timeout](/real-time-video-flutter/room/room-connection-status) in T0, T1, T2, T3.
 
@@ -229,7 +229,7 @@ If user A is briefly disconnected but successfully reconnects within 90s, then u
 
 **Case 3: User A reconnection fails**
 
-<Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/sdk-doc/Pics/FAQ/Reconnect3.png" /></Frame>
+<Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/core_products/real-time-voice-video/en/architecture/Reconnect3_en.png" /></Frame>
 
 - T0, T1, T2, T3 are the same as [Case 1: Successful reconnection before ZEGO server judges user A's heartbeat timeout](/real-time-video-flutter/room/room-connection-status) in T0, T1, T2, T3.
 
