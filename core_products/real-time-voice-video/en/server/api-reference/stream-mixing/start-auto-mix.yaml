@@ -33,7 +33,7 @@ paths:
 
         Before implementing Stream Mixing, please ensure:
 
-        - You have created a project in the [ZEGOCLOUD Console](https://console.zego.im) and applied for a valid AppId and ServerSecret. For details, please refer to [Console - Project Information](/console/project-info).
+        - You have created a project in the [ZEGOCLOUD Console](https://console.zegocloud.com) and applied for a valid AppId and ServerSecret. For details, please refer to [Console - Project Information](/console/project-info).
         - You have self-serviced enabled the "Stream Mixing" service permission in the [ZEGOCLOUD Console](https://console.zego.im). For details, please refer to [Console - Service Configuration - Stream Mixing](/console/service-configuration/enable-stream-mixing-service), or contact ZEGOCLOUD Technical Support to enable it.
         - You have initiated publishing and subscribing Streams in the Room through your own client. For details, please refer to [Implementing Video Call](/real-time-video-android-java/quick-start/implementing-video-call).
         - If you want to automatically create the corresponding Room when it doesn't exist during auto Stream Mixing creation, please contact ZEGOCLOUD Technical Support to enable this feature.

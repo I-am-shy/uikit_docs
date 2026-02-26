@@ -21,12 +21,12 @@ paths:
         Express supports custom scene template configuration for logging into scenes with corresponding configurations.
         When the system's pre-configured templates cannot meet your business needs, you can create custom templates and set related parameters through this server API.
 
-        <Warning title="Note">
+        <Warning title="Warning">
         The limit for custom templates is 50, if you need more templates, please contact ZEGOCLOUD Technical Support.
         </Warning>
         <Note title="Call frequency limit">All rooms under the same AppID are limited to 50 times/second</Note>
 
-        <Note title="Description">
+        <Note title="Note">
         In the test environment (see the IsTest common parameter description), the stream ID needs to be prefixed with "zegotest-AppId-". For example, if the stream ID is "test" and the AppId is "123456789" in the test environment, the stream ID should be "zegotest-123456789-test".
         </Note>
         ```
@@ -38,7 +38,7 @@ paths:
         (LeftBottomX, LeftBottomZ)-------------------------------------
 
         ```
-        <Warning title="Note">
+        <Warning title="Warning">
         After the template configuration is changed, scenes using this template will not take effect immediately. You need to wait for the scene to be destroyed (the scene will be automatically destroyed after all users exit for 10 minutes) and recreate it to take effect.
         </Warning>
       operationId: set-scene-template
@@ -51,12 +51,12 @@ paths:
             > https://metaworld-api.zego.im/?Action=SetSceneTemplate
           required: true
           schema: { type: string, enum: [SetSceneTemplate] }
-        # 公共参数
+        # Common parameters
         - $ref: '../shared-components.yaml#/components/parameters/SignatureNonce'
         - $ref: '../shared-components.yaml#/components/parameters/Timestamp'
         - $ref: '../shared-components.yaml#/components/parameters/Signature'
         - $ref: '../shared-components.yaml#/components/parameters/SignatureVersion'
-        # 业务参数（按 mdx）
+        # Business parameters (per mdx)
         - name: AppId
           in: query
           required: true

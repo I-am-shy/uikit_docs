@@ -12,7 +12,7 @@ In audio/video streaming applications, in addition to publishing and playing aud
 
 It is generally used for application scenarios such as precise video layout, remote lyric synchronization, live quiz, etc.
 
-<Note title="Description">
+<Note title="Note">
 
 
 For related concepts and principles of SEI, please refer to [How to understand and use SEI (Supplemental Enhancement Information)](https://doc-en.zego.im/faq/sei?product=ExpressVideo&platform=web).
@@ -76,7 +76,7 @@ Stream playing side:
 3. Call the [startPlayingStream](@startPlayingStream) interface to play the stream.
 4. After successful stream playing, when receiving the SEI information sent by the stream publishing side, the [playerRecvSEI](@playerRecvSEI) callback will be triggered.
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 - The SEI function is currently only supported in Chrome 87 and above, Safari 15.4 and above, and Firefox 117 and above.
@@ -97,7 +97,7 @@ Stream playing side:
 
 - When the App sends this type of SEI, it can fill in a business-specific uuid (16 bytes in length). When the receiving side uses the SDK to parse SEI with payload type of 5, it will filter out SEI with matching uuid based on the set filter string and throw it to the business. If no filter string is set, the SDK will throw all received SEI to the developer.
 
-<Note title="Description">
+<Note title="Note">
 
 
 This step is only required when developers use third-party decoders to decode SEI.

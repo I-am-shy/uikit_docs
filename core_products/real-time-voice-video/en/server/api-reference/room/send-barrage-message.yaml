@@ -52,13 +52,13 @@ paths:
             enum: [SendBarrageMessage]
           style: form
           explode: true
-        # 公共参数
+        # Common parameters
         - $ref: '../shared-components.yaml#/components/parameters/AppId'
         - $ref: '../shared-components.yaml#/components/parameters/SignatureNonce'
         - $ref: '../shared-components.yaml#/components/parameters/Timestamp'
         - $ref: '../shared-components.yaml#/components/parameters/Signature'
         - $ref: '../shared-components.yaml#/components/parameters/SignatureVersion'
-        # 业务参数
+        # Business parameters
         - name: RoomId
           in: query
           description: Room ID.

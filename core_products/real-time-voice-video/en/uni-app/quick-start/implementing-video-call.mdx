@@ -32,7 +32,7 @@ date: "2025-01-21"
 - 已在项目中集成 ZEGO Express SDK，实现基本的实时音视频功能，详情请参考 [快速开始 - 集成](/real-time-video-uniapp/quick-start/integrating-sdk)。
 - 已在 [ZEGO 控制台](https://console.zego.im) 创建项目，并申请有效的 AppID 和 AppSign，详情请参考 [控制台 - 项目管理](/console/project-info) 中的“项目信息”。
 
-<Warning title="注意">
+<Warning title="Warning">
 
 SDK 同时也支持 Token 鉴权，若您对项目安全性有更高要求，建议您升级鉴权方式，详情请参考 [如何从 AppSign 鉴权升级为 Token 鉴权](http://doc-zh.zego.im/faq/token_upgrade?product=ExpressVideo)。
 </Warning>
@@ -108,14 +108,14 @@ sequenceDiagram
 
 调用 [createEngineWithProfile](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/javascript_uni-app/classes/_zegoexpressengine_.zegoexpressengine.html#createenginewithprofile) 接口，将申请到的 AppID 和 AppSign 传入参数 “appID” 和 “appSign”，创建引擎单例对象。
 
-<Warning title="注意">
+<Warning title="Warning">
 
 
 SDK 同时也支持 Token 鉴权，若您对项目安全性有更高要求，建议您升级鉴权方式，可参考 [如何从 AppSign 鉴权升级为 Token 鉴权](http://doc-zh.zego.im/faq/token_upgrade?product=ExpressVideo)。
 
 </Warning>
 
-<Warning title="注意">如果是语音场景，请务必调用 `enableCamera(false)` 关闭摄像头，避免启动视频采集推流产生额外的视频流量。</Warning>
+<Warning title="Warning">如果是语音场景，请务必调用 `enableCamera(false)` 关闭摄像头，避免启动视频采集推流产生额外的视频流量。</Warning>
 
 ```javascript
 // 导入 ZEGO Express SDK
@@ -137,7 +137,7 @@ ZegoExpressEngine.createEngineWithProfile(profile)
 
 创建引擎后开发者可根据实际需要，调用引擎实例的 [on ](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/javascript_uni-app/classes/_zegoexpressengine_.zegoexpressengine.html#on) 方法设置回调。
 
-<Warning title="注意">
+<Warning title="Warning">
 
 
 为避免错过事件通知，建议在创建引擎后立即注册回调
@@ -179,7 +179,7 @@ ZegoExpressEngine.instance().loginRoom('room1', {'userID': 'id1', 'userName': 'u
 
 - [roomStreamUpdate](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/javascript_uni-app/interfaces/_zegoexpresseventhandler_.zegoeventlistener.html#roomstreamupdate)：流状态更新回调，登录房间后，当房间内有用户新推送或删除音视频流时，SDK 会通过该回调通知。
 
-<Warning title="注意">
+<Warning title="Warning">
 
 
 - 只有调用 [loginRoom](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/javascript_uni-app/classes/_zegoexpressengine_.zegoexpressengine.html#loginroom) 接口登录房间时传入 [ZegoRoomConfig](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/javascript_uni-app/classes/_zegoexpressdefines_.zegoroomconfig.html) 配置，且 “isUserStatusNotify” 参数取值为 “true” 时，用户才能收到 [roomUserUpdate](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/javascript_uni-app/interfaces/_zegoexpresseventhandler_.zegoeventlistener.html#roomuserupdate) 回调。
@@ -213,7 +213,7 @@ ZegoExpressEngine.instance().on('roomStreamUpdate', (roomID, updateType, streamL
 
 调用 [startPublishingStream ](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/javascript_uni-app/classes/_zegoexpressengine_.zegoexpressengine.html#startpublishingstream) 接口，传入流 ID 参数 “streamID”，向远端用户发送本端的音视频流。
 
-<Warning title="注意">
+<Warning title="Warning">
 
 
 同一个 AppID 内，需保证 “streamID” 全局唯一。如果同一个 AppID 内，不同用户各推了一条 “streamID” 相同的流，会导致后推流的用户推流失败。
@@ -271,7 +271,7 @@ ZegoExpressEngine.instance().on("publisherStateUpdate", (streamID, state, errorC
 });
 ```
 
-<Note title="说明">如果您需要了解 ZEGO Express SDK 的摄像头/视频/麦克风/音频/扬声器相关接口，请参考 [常见问题 - 如何实现开关摄像头/视频画面/麦克风/音频/扬声器？](http://doc-zh.zego.im/faq/How_to_switch_devices)。</Note>
+<Note title="Note">如果您需要了解 ZEGO Express SDK 的摄像头/视频/麦克风/音频/扬声器相关接口，请参考 [常见问题 - 如何实现开关摄像头/视频画面/麦克风/音频/扬声器？](http://doc-zh.zego.im/faq/How_to_switch_devices)。</Note>
 
 <a id="PlayingStream"></a>
 
@@ -285,7 +285,7 @@ ZegoExpressEngine.instance().on("publisherStateUpdate", (streamID, state, errorC
 * 在 uni-app 的 App 环境中，若 `startPlayingStream` 调用成功，则无返回值，可使用 `<zego-remote-view>` 标签设置远端视频流视图。
 * 在 uni-app 的 Web 环境中，若 `startPlayingStream` 调用成功，会返回一个 MediaStream 对象，开发者可以用返回的 MediaStream 赋值给 video 元素的 srcObject 属性设置远端视频流视图。
 
-<Note title="说明">
+<Note title="Note">
 
 
 
@@ -358,7 +358,7 @@ ZegoExpressEngine.instance().stopPreview();
 
 调用 [stopPlayingStream ](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/javascript_uni-app/classes/_zegoexpressengine_.zegoexpressengine.html#stopplayingstream) 接口，停止拉取远端的音视频流。
 
-<Warning title="注意">
+<Warning title="Warning">
 
 
 如果开发者通过 [roomStreamUpdate](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/javascript_uni-app/interfaces/_zegoexpresseventhandler_.zegoeventlistener.html#roomstreamupdate) 回调收到了音视频流 “减少” 的通知，请及时调用 [stopPlayingStream ](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/javascript_uni-app/classes/_zegoexpressengine_.zegoexpressengine.html#stopplayingstream) 接口停止拉流，避免拉到空流、产生额外的成本；或者，开发者可以根据自己的业务需求，选择合适的时机，主动调用 [stopPlayingStream ](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/javascript_uni-app/classes/_zegoexpressengine_.zegoexpressengine.html#stopplayingstream) 接口停止拉流。
@@ -393,7 +393,7 @@ ZegoExpressEngine.instance().logoutRoom('room1');
 ZegoExpressEngine.destroyEngine();
 ```
 
-<Note title="说明">
+<Note title="Note">
 
 
 根据实际需要，可在销毁引擎时通过 “await” 关键字，进行异步等待以确保设备硬件资源被释放完成。

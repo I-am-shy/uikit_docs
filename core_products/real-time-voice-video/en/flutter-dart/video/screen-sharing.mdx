@@ -44,7 +44,7 @@ Before implementing Screen Sharing functionality, please ensure:
 
 ## Usage Steps
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
  During screen capture, only iOS and Android platforms support simultaneous video and audio capture; other platforms only support video capture. If audio capture is required, developers need to implement the relevant logic themselves.
@@ -57,7 +57,7 @@ Before implementing Screen Sharing functionality, please ensure:
 
 - (Required) On Android, a popup will prompt the user to allow the app to record the screen before recording. Please authorize.
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
     When using the screen recording feature on Android, please be sure to [obtain user screen recording authorization](/real-time-video-android-java/video/screen-sharing#1required-obtain-user-screen-recording-authorization), otherwise the feature will not be available.
@@ -83,7 +83,7 @@ Only Chrome browser supports plugin-based screen sharing. When the browser used 
 
 ### 2 Windows and macOS need to get window (including screen) list information
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 Android, iOS, and Web platforms can skip this step.
@@ -100,7 +100,7 @@ List<ZegoScreenCaptureSourceInfo> list = await ZegoExpressEngine.instance.getScr
 
 ### 3 Create screen sharing source
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 - Windows and macOS platforms must create screen sharing source objects using the window ID and window type from the window information above, otherwise creation will fail.
@@ -122,7 +122,7 @@ ZegoScreenCaptureSource source = await ZegoExpressEngine.instance.createScreenCa
 
 ### 4 Set capture source to screen sharing source
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 
@@ -399,7 +399,7 @@ source.stopCapture();
 
 When screen sharing, you can call the [enableHightLight]([enableHightLight](https://doc-zh.zego.im/unique-api/express-video-sdkhttps://doc-zh.zego.im/article/dart_flutter/zego_express_engine/ZegoScreenCaptureSource/enableHightLight.html)) interface to enable border for screen regions or windows, and set the border color and width.
 
-<Warning title="Note">
+<Warning title="Warning">
 
 - Android, iOS, and Web platforms ignore this feature.
 - On Windows platform, some system windows (such as Task Manager, windows of programs started with administrator privileges, etc.) may not be able to display borders due to permission restrictions. It is recommended to start the application with administrator privileges.

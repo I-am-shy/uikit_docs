@@ -18,14 +18,14 @@ date: "2024-05-06"
     - 准备一台可以连接到互联网的 Windows 或 macOS 计算机。
     - 使用最新版本的 Chrome 浏览器。
 
-<Note title="说明">
+<Note title="Note">
 
 
 - 浏览器的兼容性，请参考 [ZEGO Express Web SDK 支持哪些浏览器？](https://doc-zh.zego.im/faq/browser_support)。
 
 </Note>
 
-<Warning title="注意">
+<Warning title="Warning">
 
 - 如果您只需要使用 uni-app 开发 Web 平台应用，建议使用 [Web SDK](https://doc-zh.zego.im/article/overview?key=ExpressVideoSDK&platform=web&language=javascript) 以获得更及时的功能更新。
 - 如果您使用uni-app同时开发原生端及 Web，请先联系技术支持。
@@ -48,7 +48,7 @@ date: "2024-05-06"
 
 ### 集成 SDK
 
-<Warning title="注意">
+<Warning title="Warning">
 uni-app SDK 视频相关的画面是基于原生 view 进行渲染的，只能使用 nvue。
 </Warning>
 
@@ -77,7 +77,7 @@ uni-app SDK 视频相关的画面是基于原生 view 进行渲染的，只能�
 
 1. 单击项目目录的 “manifest.json” 文件后，单击 “App 原生插件配置” 中的“选择本地插件”或“选择云端插件”。
 
-<Note title="说明">
+<Note title="Note">
 
 
     其他常见问题，请参考 [在 Windows 平台上集成 Express uni-app SDK 后，使用 dev 证书云打包运行 iOS 应用时出错，该如何处理？](https://doc-zh.zego.im/faq/RTC_uniapp_packing_within_Windows?product=ExpressVideo&platform=uni-app)
@@ -96,7 +96,7 @@ uni-app SDK 视频相关的画面是基于原生 view 进行渲染的，只能�
 
 #### 制作自定义调试基座
 
-<Note title="说明">
+<Note title="Note">
 
 
 uni-app 官方自定义调试基座使用说明请参考 [什么是自定义调试基座及使用说明](https://uniapp.dcloud.net.cn/tutorial/run/run-app.html#customplayground)。
@@ -172,7 +172,7 @@ uni-app 官方自定义调试基座使用说明请参考 [什么是自定义调�
 <uses-feature android:name="android.hardware.camera.autofocus" />
 ```
 
-<Warning title="注意">
+<Warning title="Warning">
 
 
 由于 Android 6.0 在一些比较重要的权限上要求必须申请动态权限。因此还需要参考执行如下代码，`permission.js` 文件可以在示例代码中查看。
@@ -240,7 +240,7 @@ BLUETOOTH
 <td>
 连接蓝牙设备时需要使用该权限。
 
-<Warning title="注意">
+<Warning title="Warning">
 <p>仅 Android 6.0 以下版本需要声明，Android 6.0 及以上版本无需声明。</p>
 </Warning>
 
@@ -264,7 +264,7 @@ BLUETOOTH
 </tr>
 </tbody></table>
 
-<Note title="说明">
+<Note title="Note">
 
 
 其中非必要权限 “android.permission.READ_PHONE_STATE” 仅用于实现 SDK 的打断事件处理，因此只需在 AndroidMainfest.xml 文件中进行声明即可，不需要动态申请（业务方有需求则另外处理）。

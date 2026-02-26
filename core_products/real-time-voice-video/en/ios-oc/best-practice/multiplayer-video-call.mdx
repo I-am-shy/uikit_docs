@@ -164,7 +164,7 @@ The "updateType" parameter in the callback indicates the type of user change in 
 
 When a user logs in to the room for the first time, if there are other users in this room, the newly logged-in user will receive the added type user list through this callback, that is, the callback where "updateType" is "ZegoUpdateTypeADD". This user list is the users already existing in the room.
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 - Only when status notification is allowed when logging in to the room with [loginRoom](@loginRoom), that is, when "isUserStatusNotify" in [ZegoRoomConfig](@-ZegoRoomConfig) is set to "true" (default is "false"), can you listen to the [onRoomUserUpdate](@onRoomUserUpdate) callback.

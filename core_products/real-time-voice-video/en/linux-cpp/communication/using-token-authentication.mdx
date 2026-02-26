@@ -22,7 +22,7 @@ Authentication refers to verifying whether users have permission to access the s
 
 Basic authentication Token is enabled by default. Permission authentication Token (i.e., room ID and publish stream ID permission bits) needs to be enabled by contacting ZEGO Technical Support.
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 - Only ZEGO Express SDK version 2.17.3 and above supports using Token authentication as described in this document.
@@ -201,7 +201,7 @@ To further improve security, permission authentication Token opens room ID and p
 - Only verify publish permission: Verify permission when publishing stream, do not verify permission when logging in.
 - Verify both login and publish permissions: Verify permissions when both logging in and publishing stream.
 
-<Warning title="Note">
+<Warning title="Warning">
 When generating permission authentication Token, "RoomId" must be passed in.
 </Warning>
 
@@ -267,7 +267,7 @@ func main() {
 </Tabs>
 
 
-<Warning title="Note">
+<Warning title="Warning">
 
 When running the Java source code for generating Token, if the "java.security.InvalidKeyException:illegal Key Size" exception prompt appears, please refer to [Related FAQ Document](https://doc-zh.zego.im/faq/java_illegal_key_size_solution?product=ExpressVideo&platform=all) to solve it.
 
@@ -276,7 +276,7 @@ When running the Java source code for generating Token, if the "java.security.In
 
 Users carry the obtained Token, user, and roomID information to login to the corresponding room through the [loginRoom](@loginRoom) interface.
 
-<Warning title="Note">
+<Warning title="Warning">
 
 The userID used when calling the [loginRoom](@loginRoom) interface to login to the room must be consistent with the userID used when "4.2 Generate Token on server".
 
@@ -302,7 +302,7 @@ engine->renewToken(token);
 
 ### 4 Token Expiration Handling Mechanism
 
-<Warning title="Note">
+<Warning title="Warning">
 
 Token expiration may cause issues such as abnormal publishing and playing streams. Please strictly follow the instructions below to handle expired Tokens in time.
 
@@ -314,7 +314,7 @@ After receiving the Token about to expire callback or receiving the Token expire
   - Logged in users will not be kicked out of the room.
   - Currently successful publishing and playing streams will not be affected. However, after stopping publishing stream, you cannot publish stream again unless you update Token.
 
-<Note title="Description">
+<Note title="Note">
 
 
 ZEGO also provides another Token expiration handling method. You can contact ZEGO Technical Support to configure:
@@ -340,7 +340,7 @@ void onRoomTokenWillExpire(const std::string& /*roomID*/, int /*remainTimeInSeco
 <Accordion title="Generate Token on Client and Use (Not Recommended)" defaultOpen="false">
 If you cannot issue Token through the server during development, you can first use client code to generate Token, and complete the docking after the server development is completed.
 
-<Warning title="Note">
+<Warning title="Warning">
 
 - When the App goes online, do not generate Token on the client, otherwise your ServerSecret will be exposed to risk.
 - To ensure security, it is strongly recommended that you use the server to generate Token, otherwise there is a risk of ServerSecret being stolen.

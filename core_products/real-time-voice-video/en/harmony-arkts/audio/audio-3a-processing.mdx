@@ -15,7 +15,7 @@ date: "2025-03-05"
 - AGC（自动增益控制）：开启该功能后，SDK 能够自动调节麦克风音量，适应远近拾音，保持音量稳定。
 - ANS（降噪）：识别声音中的背景噪声并进行消除，开启该功能后可以使人声更加清晰。同时您可以开启音乐场景检测，实时无消耗识别通讯和音乐场景，在音乐场景对人声以及音乐的音质进一步保真。
 
-<Warning title="注意">
+<Warning title="Warning">
 
 
 如需使用音乐场景检测能力，请联系 ZEGO 技术支持进行特殊编包与配置。
@@ -50,7 +50,7 @@ SDK 中音频 3A 处理的默认配置和推荐配置如下：
 
 ### 设置 AEC（回声消除）
 
-<Warning title="注意">
+<Warning title="Warning">
 
 
 [enableAEC](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/ets_ohos/classes/_zegoexpressengine_.zegoexpressengine.html#enableaec)、[enableHeadphoneAEC](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/ets_ohos/classes/_zegoexpressengine_.zegoexpressengine.html#enableheadphoneaec) 和 [setAECMode](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/ets_ohos/classes/_zegoexpressengine_.zegoexpressengine.html#setaecmode) 都需要在 [startPublishingStream](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/ets_ohos/classes/_zegoexpressengine_.zegoexpressengine.html#startpublishingstream)、[startPlayingStream](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/ets_ohos/classes/_zegoexpressengine_.zegoexpressengine.html#startplayingstream)、[startPreview](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/ets_ohos/classes/_zegoexpressengine_.zegoexpressengine.html#startpreview) 这些接口之前调用才有效。
@@ -90,7 +90,7 @@ this.ZegoExpressInstance.setAECMode(ZegoAECMode.Medium);
 
 ### 设置 AGC （自动增益控制）
 
-<Warning title="注意">
+<Warning title="Warning">
 
 
 [enableAGC](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/ets_ohos/classes/_zegoexpressengine_.zegoexpressengine.html#enableagc) 需要在 [startPublishingStream](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/ets_ohos/classes/_zegoexpressengine_.zegoexpressengine.html#startpublishingstream)、[startPlayingStream](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/ets_ohos/classes/_zegoexpressengine_.zegoexpressengine.html#startplayingstream)、[startPreview](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/ets_ohos/classes/_zegoexpressengine_.zegoexpressengine.html#startpreview) 这些接口之前调用才有效。
@@ -109,7 +109,7 @@ this.ZegoExpressInstance.enableAGC(true);
 
 ### 设置 ANS (噪声抑制)
 
-<Warning title="注意">
+<Warning title="Warning">
 
 
 [enableANS](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/ets_ohos/classes/_zegoexpressengine_.zegoexpressengine.html#enableans)、[enableTransientANS](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/ets_ohos/classes/_zegoexpressengine_.zegoexpressengine.html#enabletransientans) 和 [setANSMode](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/ets_ohos/classes/_zegoexpressengine_.zegoexpressengine.html#setansmode) 都需要在 [startPublishingStream](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/ets_ohos/classes/_zegoexpressengine_.zegoexpressengine.html#startpublishingstream)、[startPlayingStream](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/ets_ohos/classes/_zegoexpressengine_.zegoexpressengine.html#startplayingstream)、[startPreview](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/ets_ohos/classes/_zegoexpressengine_.zegoexpressengine.html#startpreview) 这些接口之前调用才有效。

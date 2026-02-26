@@ -97,7 +97,7 @@ paths:
           </tr>
         </tbody></table>
 
-        <Warning title="Note">
+        <Warning title="Warning">
         After calling this interface, the audio and video streams that are currently being pushed will be forbidden from pushing, and the stream IDs will be recorded in the background database; non-existent streams will be directly recorded in the background database, and the interface will normally return successfully.
         </Warning>
 
@@ -105,7 +105,7 @@ paths:
 
 
 
-        <Note title="Description">
+        <Note title="Note">
         In the test environment (see the IsTest common parameter description for details), the stream ID needs to be prefixed with "zegotest-AppId-". For example, if the stream ID is "test", and the AppId is "123456789" in the test environment, the stream ID should be "zegotest-123456789-test".
         </Note>
       operationId: forbid-rtc-streams

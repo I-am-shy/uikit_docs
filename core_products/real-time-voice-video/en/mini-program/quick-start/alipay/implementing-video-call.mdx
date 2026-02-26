@@ -23,7 +23,7 @@ date: "2025-01-21"
 
 更多相关概念请参考 [术语说明](/glossary/term-explanation)。
 
-<Warning title="注意">
+<Warning title="Warning">
 目前支付宝小程序仅支持 1v1 音视频通话。
 </Warning>
 
@@ -75,7 +75,7 @@ sequenceDiagram
 
     [服务器 IP 白名单](https://opendocs.alipay.com/common/02kg65)：在 “开放平台控制台 > 对应应用概览页 > 开发设置 > 开发信息 > 服务器IP白名单”，点击 “设置/查看”，进入 IP 白名单管理页面，按照协议分类，将 ZEGO 的 LogUrl、以及用户业务需要用到的地址填到指定的“服务器 IP 白名单”中，详情请参考 [控制台 - 项目信息](/console/project-info)。
 
-<Warning title="注意">
+<Warning title="Warning">
 
 
     [ZEGO 控制台](https://console.zego.im/) 提供的 LogUrl 地址格式为：`https://xxxxxxxxxx.com/httplog`。在 [支付宝平台](https://openhome.alipay.com/develop/manage) 填写时，不能直接复制原地址，需要删除原地址的 “/httplog”，应填入地址的格式为：xxxxxxxxxx.com。
@@ -183,7 +183,7 @@ sequenceDiagram
 // 初始化实例，server 参数可直接填空字符串
 zg = new ZegoExpressEngine(appID, server);
 ```
-<Warning title="注意">
+<Warning title="Warning">
 若使用 3.6.0 及以上版本 SDK，`server` 参数可填写控制台获取的`Server 地址`或者直接填空字符串。
 </Warning>
 
@@ -191,7 +191,7 @@ zg = new ZegoExpressEngine(appID, server);
 
 创建引擎后，开发者可根据实际需要，通过引擎实例的 [on](https://doc-zh.zego.im/article/api?doc=Express_Video_SDK_API~javascript_wxxcx~class~ZegoExpressEngine#on)  方法设置回调。
 
-<Warning title="注意">
+<Warning title="Warning">
 
 
 为避免错过事件通知，建议在创建引擎后立即监听回调
@@ -271,7 +271,7 @@ zg.on('roomStateUpdate', (roomID, state, errorCode, extendedData) => {
 
 [roomUserUpdate](@roomUserUpdate)：同一房间内的其他用户进出房间时，您可通过此回调收到通知。登录房间后，当房间内有用户新增或删除时，SDK 会通过该回调通知。
 
-<Warning title="注意">
+<Warning title="Warning">
 
 
 只有调用 [loginRoom](@loginRoom) 接口登录房间时传入 [ZegoRoomConfig](@-ZegoRoomConfig) 配置，且 “userUpdate” 参数取值为 “true” 时，用户才能收到 [roomUserUpdate](@roomUserUpdate) 回调。
@@ -379,7 +379,7 @@ roomID 和 user 的参数由您本地生成，但是需要满足以下条件：
 - 同一个 AppID 内，需保证 “userID” 全局唯一，建议开发者将 “userID” 与自己业务的账号系统进行关联。
 - “userID” 必须与生成 token 时传入的 userID 保持一致，否则登录失败。
 
-<Warning title="注意">
+<Warning title="Warning">
 
 
 为避免错过任何通知，您需要在登录房间前先设置所有的监听回调（如房间状态、用户状态、流状态、推拉流状态等），具体请参考 [ 常见通知回调 ](/real-time-video-miniprogram/quick-start/alipay/implementing-video-call)。
@@ -459,7 +459,7 @@ this.setData({
 
 远端用户推送的 “streamID” 可以从 [roomStreamUpdate](@roomStreamUpdate) 回调中获得，具体回调设置请参考 [常见通知回调](/real-time-video-miniprogram/quick-start/alipay/implementing-video-call) 中的“房间内流状态变更的通知”。
 
-<Warning title="注意">
+<Warning title="Warning">
 
 
 如果您的业务场景中需要拉空流，请联系 ZEGO 技术支持进行特殊配制。
@@ -558,7 +558,7 @@ zg.on("roomStreamUpdate", async (roomID, updateType, streamList) => {
 
 调用 [stopPlayingStream](@stopPlayingStream) 方法停止拉流，并重新渲染 [\<rtc-room> 组件](https://opendocs.alipay.com/pre-open/08757t?pathHash=d1fc6c9f)。
 
-<Warning title="注意">
+<Warning title="Warning">
 
 
 如果开发者通过 [roomStreamUpdate](@roomStreamUpdate) 回调收到了音视频流 “减少” 的通知，请及时调用 [stopPlayingStream](@stopPlayingStream) 接口停止拉流，避免拉到空流、产生额外的成本；或者，开发者可以根据自己的业务需求，选择合适的时机，主动调用 [stopPlayingStream](@stopPlayingStream) 接口停止拉流。

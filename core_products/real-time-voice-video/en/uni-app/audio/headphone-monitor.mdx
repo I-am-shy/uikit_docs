@@ -37,7 +37,7 @@ ZEGO Express SDK 提供了耳返和双声道的功能，开发者可根据需要
 
 开启预览后或者开始推流后调用 [enableHeadphoneMonitor](@enableHeadphoneMonitor) 开启采集监听即耳返，主播方讲话后，会听到自己的声音。
 
-<Note title="说明">
+<Note title="Note">
 
 
 开启耳返后，在连接上耳麦时耳返功能才实际生效。
@@ -63,7 +63,7 @@ engine.setHeadphoneMonitorVolume(100);
 
 ### 设置声道
 
-<Warning title="注意">
+<Warning title="Warning">
 
 
 [setAudioConfig](@setAudioConfig) 和 [setAudioCaptureStereoMode](@setAudioCaptureStereoMode) 都需要在 [startPublishingStream](@startPublishingStream)、[startPlayingStream](@startPlayingStream)、[startPreview](@startPreview)、[createMediaPlayer](@createMediaPlayer) 和 [createAudioEffectPlayer](@createAudioEffectPlayer) 之前调用才有效。
@@ -93,7 +93,7 @@ ZegoExpressEngine.getEngine().setAudioCaptureStereoMode(ZegoAudioCaptureStereoMo
 
 请参考 [快速开始 - 实现流程]() 的 “3.3 推流”，此时所推流的音频是双声道，拉流端无需做额外的配置，直接拉流即可播放双声道音频。
 
-<Note title="说明">
+<Note title="Note">
 
 
 双声道采集需要推流端使用支持双声道采集的设备作为音频输入源，一般手机的麦克风不支持采集双声道。

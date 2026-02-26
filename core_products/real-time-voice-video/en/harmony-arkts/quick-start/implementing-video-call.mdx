@@ -94,7 +94,7 @@ Row()
 
 调用 [createEngine ](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/ets_ohos/classes/_zegoexpressengine_.zegoexpressengine.html#createengine) 方法，将 [前提条件](/real-time-video-harmonyos-arkts/quick-start/implementing-video-call) 中申请到的 AppID 传入参数 “appID”，创建引擎单例对象。
 
-<Note title="说明">
+<Note title="Note">
 
 
 如果需要将日志信息输出到 DevEco Studio 的 HiLog 窗口，可参考 [常见问题](/real-time-video-harmonyos-arkts/quick-start/implementing-video-call) 中的“鸿蒙系统如何打印调试日志？”实现。
@@ -141,7 +141,7 @@ ZegoExpressEngine.createEngine(profile).then((engineInst) => {
 
 创建引擎后，您可以通过引擎实例的[on](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/ets_ohos/classes/_zegoexpressengine_.zegoexpressengine.html#on)方法注册回调。
 
-<Warning title="注意">
+<Warning title="Warning">
 
 
 为避免错过事件通知，建议在创建引擎后立即注册回调
@@ -196,7 +196,7 @@ this.ZegoExpressInstance.on('onRoomStateUpdate', (roomID: string, state: ZegoRoo
 
 **其他用户进出房间的通知**
 
-<Warning title="注意">
+<Warning title="Warning">
 
 
 只有在调用 [loginRoom ](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/ets_ohos/classes/_zegoexpressengine_.zegoexpressengine.html#loginroom) 接口登录房间时传的 [ZegoRoomConfig ](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/ets_ohos/classes/_zegoexpressdefines_.zegoroomconfig.html) 中的 “isUserStatusNotify” 参数为 “true” 时，用户才能收到 [onRoomUserUpdate ](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/ets_ohos/interfaces/_zegoexpresseventhandler_.zegoeventlistener.html#onroomuserupdate) 回调。
@@ -289,7 +289,7 @@ this.ZegoExpressInstance.on('onPlayerStateUpdate', (streamID: string, state: Zeg
 - 同一个 AppID 内，需保证 “roomID” 全局唯一。
 - 同一个 AppID 内，需保证 “userID” 全局唯一，建议开发者将其设置成一个有意义的值，可将 “userID” 与自己业务账号系统进行关联。
 
-<Warning title="注意">
+<Warning title="Warning">
 
 
 ZegoUser 的构造方法 [public ZegoUser(String userID) ](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/ets_ohos/classes/_zegoexpressdefines_.zegouser.html) 会将 “userName” 设为与传的参数 “userID” 一样。“userID” 不能为 “null”，否则会导致登录房间失败。
@@ -345,7 +345,7 @@ this.ZegoExpressInstance.on('onRoomStateUpdate', (roomID: string, state: ZegoRoo
 <Accordion title="设置预览视图并启动本地预览" defaultOpen="false">
 如果希望看到本端的画面，可调用 [startPreview ](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/ets_ohos/classes/_zegoexpressengine_.zegoexpressengine.html#startpreview) 接口设置预览视图，并启动本地预览。
 
-<Note title="说明">
+<Note title="Note">
 
 
 无论是否调用 [startPreview ](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/ets_ohos/classes/_zegoexpressengine_.zegoexpressengine.html#startpreview) 预览，都可以将自己的音视频流推送到 ZEGO 音视频云。
@@ -371,7 +371,7 @@ this.ZegoExpressInstance.startPreview(view, ZegoPublishChannel.Main);
 “streamID” 由您本地生成，但是需要保证：
 同一个 AppID 下，“streamID” 全局唯一。如果同一个 AppID 下，不同用户各推了一条 “streamID” 相同的流，会导致后推流的用户推流失败。
 
-<Note title="说明">
+<Note title="Note">
 
 
 此处在登录房间成功后（即 [onRoomStateUpdate ](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/ets_ohos/interfaces/_zegoexpresseventhandler_.zegoeventlistener.html#onroomstateupdate) 回调通知开发者当前用户的连接状态为 “Connected”），立即进行推流。在实现具体业务时，您可选择其他时机进行推流，只要保证当前房间连接状态是连接成功的即可。

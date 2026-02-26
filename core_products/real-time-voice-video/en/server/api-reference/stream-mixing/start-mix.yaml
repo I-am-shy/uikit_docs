@@ -31,7 +31,7 @@ paths:
 
         Before implementing Stream Mixing, ensure that:
 
-        - You have created a project in the [ZEGOCLOUD Console](https://console.zego.im) and applied for a valid AppId and ServerSecret. For details, please refer to [Console - Project Information](/console/project-info).
+        - You have created a project in the [ZEGOCLOUD Console](https://console.zegocloud.com) and applied for a valid AppId and ServerSecret. For details, please refer to [Console - Project Information](/console/project-info).
         - You have enabled the "Stream Mixing" service permission in the [ZEGOCLOUD Console](https://console.zego.im). For details, please refer to [Console - Service Configuration - Stream Mixing](/console/service-configuration/enable-stream-mixing-service), or contact ZEGOCLOUD technical support to enable it.
         - You have initiated publish stream and play stream in the Room through your own client. For details, please refer to [Implementing Video Call](/real-time-video-android-java/quick-start/implementing-video-call).
 
@@ -773,7 +773,7 @@ paths:
         <Note title="Rate Limit">100 requests/second</Note>
         ## Parameter Description
 
-        <Note title="Description">
+        <Note title="Note">
 
         In the test environment (see IsTest common parameter description for details), for the Stream IDs of `input streams` and `output streams`:
 
@@ -781,7 +781,7 @@ paths:
         - If obtained through SDK interfaces or server-side API interfaces, there is no need to add the "zegotest-AppId-" prefix.
 
         </Note>
-        <Note title="Description">
+        <Note title="Note">
         For all request parameters below, parameters of type "String" only support numbers, English characters, and '~', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '_', '+', '=', '-', '`', ';', ''', ',', '.', '\<', '\>', '/', ''.
         </Note>
         The following parameter description includes all parameters for the Start Stream Mixing interface, including some advanced features (e.g., setting watermarks, background images, setting extended parameters, etc.).
@@ -887,7 +887,7 @@ components:
     RectInfo:
       type: object
       description: |
-        <b>🔁Call this interface again to dynamically update this parameter and all sub-properties</b>。<br/> Input stream position information. The position reference of the input stream is as follows:<img src="https://doc-media.zego.im/sdk-doc/Pics/server_v2/mixStream_Coordinate.png"/><ul><li><b>When the fields (Top, Left, Bottom, Right) under this parameter are not filled in, it defaults to pure audio Stream Mixing.</b></li><li><b>When the input stream resolution does not match the corresponding input stream canvas width and height, rendering will be performed with reference to RenderMode.</b></li></ul>
+        <b>🔁Call this interface again to dynamically update this parameter and all sub-properties</b>.<br/> Input stream position information. The position reference of the input stream is as follows:<img src="https://doc-media.zego.im/sdk-doc/Pics/server_v2/mixStream_Coordinate.png"/><ul><li><b>When the fields (Top, Left, Bottom, Right) under this parameter are not filled in, it defaults to pure audio Stream Mixing.</b></li><li><b>When the input stream resolution does not match the corresponding input stream canvas width and height, rendering will be performed with reference to RenderMode.</b></li></ul>
       properties:
         Layer:
           type: integer

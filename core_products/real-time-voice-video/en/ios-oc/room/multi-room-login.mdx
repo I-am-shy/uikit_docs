@@ -121,7 +121,7 @@ Pass in parameters such as room ID (roomID) and call the [loginRoom](@loginRoom)
 
 Pass in parameters such as stream ID (streamID) and room ID (roomID), and call the [startPublishingStream](https://www.zegocloud.com/docs/article/api?doc=Express_Video_SDK_API~ObjectiveC_ios~class~zego-express-engine&jumpType=route#start-publishing-stream-config-channel) interface (with "ZegoPublisherConfig" parameter) to publish stream in the specified room.
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 
@@ -141,7 +141,7 @@ config.roomID = @"multi_room_01";
 
 Pass in parameters such as stream ID (streamID) and room ID (roomID), and call the [startPlayingStream](https://www.zegocloud.com/docs/article/api?doc=Express_Video_SDK_API~ObjectiveC_ios~class~zego-express-engine&jumpType=route#start-playing-stream-canvas-config) interface (with "ZegoPlayerConfig" parameter) to play stream in the specified room.
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 In multi-room mode, you must use [ZegoPlayerConfig](@-ZegoPlayerConfig) to specify the "roomID" associated with "streamID". After exiting the specified room, the stream playing operation corresponding to that room will stop.

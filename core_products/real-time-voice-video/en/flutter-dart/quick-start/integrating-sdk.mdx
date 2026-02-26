@@ -23,7 +23,7 @@ Please configure the development environment as follows:
 
 After configuring the Flutter environment in any of the above development environments, run `flutter doctor` in the terminal, and complete the relevant undownloaded dependencies according to the prompts.
 
-<Note title="Description">
+<Note title="Note">
 
 
 <p>Flutter SDK supports developing iOS, Android, Windows, macOS, and Web programs, but the number of interfaces and integration methods for Web are somewhat different from other platforms. For details, please refer to the README.md file in the <a href="https://github.com/zegoim/zego-express-flutter-sdk/">SDK package</a>.</p>
@@ -54,7 +54,7 @@ Please refer to [Flutter Documentation - Get Started](https://flutter.dev/docs/g
       zego_express_engine: ^3.10.3
     ```
 
-<Note title="Description">
+<Note title="Note">
 
 
     The version number in the above code is only an example and not the latest version. For the latest version number, please refer to [Download](/real-time-video-flutter/client-sdk/download-sdk).
@@ -85,7 +85,7 @@ Set the permissions required by the application according to actual needs.
 
 Go to the "app/src/main" directory, open the "AndroidManifest.xml" file, and add permissions.
 
-<Note title="Description">
+<Note title="Note">
 
 
 If obfuscation is enabled during the release APK build (flutter build apk) (enabled by default), you need to configure ZEGOCLOUD-related classes to prevent obfuscation. Please refer to [FAQ](/real-time-video-flutter/quick-start/integrating-sdk).
@@ -189,7 +189,7 @@ The specific permission descriptions are as follows:
 </tr>
 </tbody></table>
 
-<Note title="Description">
+<Note title="Note">
 
 The optional permission "android.permission.READ_PHONE_STATE" is only used to implement the SDK's interrupt event handling, so it only needs to be declared in the AndroidMainfest.xml file and does not need to be applied dynamically (if the business side has requirements, handle it separately).
 
@@ -215,7 +215,7 @@ The optional permission "android.permission.READ_PHONE_STATE" is only used to im
 
     <Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/sdk-doc/Pics/iOS/ZegoExpressEngine/Common/privacy-description-done.png" /></Frame>
 
-<Note title="Description">
+<Note title="Note">
 
 
     If you use Platform View and the Flutter version is lower than 1.22, you need to add other descriptions for iOS. Please refer to [FAQ](/real-time-video-flutter/quick-start/integrating-sdk).

@@ -79,7 +79,7 @@ Before implementing stream mixing functionality, please ensure:
 - You have integrated ZEGO Express SDK in the project and implemented basic audio/video publishing and playing functions. For details, please refer to [Quick Start - Integration](/real-time-video-ios-oc/quick-start/integrating-sdk) and [Quick Start - Implementation Flow](/real-time-video-ios-oc/quick-start/implementing-video-call).
 
 
-<Warning title="Note">
+<Warning title="Warning">
 Stream mixing functionality is not enabled by default. Please enable it yourself in the [ZEGOCLOUD Console](https://console.zegocloud.com) before use (for enabling steps, please refer to "Stream Mixing" in [Project Management - Service Configuration](/console/service-configuration/enable-stream-mixing-service)), or contact ZEGOCLOUD Technical Support to enable.
 </Warning>
 
@@ -105,7 +105,7 @@ The following describes how to use SDK to implement manual stream mixing.
 
 Please refer to "Create Engine" and "Login Room" in [Quick Start - Implementation Flow](/real-time-video-ios-oc/quick-start/implementing-video-call) to complete room login.
 
-<Warning title="Note">
+<Warning title="Warning">
 
 - The prerequisite for stream mixing is that there must be existing streams in the room.
 - You can initiate mixing of all existing streams in the room, whether these streams are published by you or by other users.
@@ -208,7 +208,7 @@ The default value of the audio bitrate [bitrate](@bitrate-ZegoMixerAudioConfig) 
 According to the actual business scenario, define the input video stream [ZegoMixerInput](@-ZegoMixerInput) list, and set the "layout" parameter of each input video stream to layout the screen of each input stream. The ZEGO real-time audio and video cloud server will mix the input streams and output them in a mixed stream in one screen.
 
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 - By default, supports up to 9 input streams. If you need to input more streams, please contact ZEGOCLOUD Technical Support to confirm and configure.
@@ -245,7 +245,7 @@ The layout of the input stream takes the upper left corner of the output mixed s
   </tr>
 </tbody></table>
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 The above parameters may vary on different development platforms. Please refer to the documentation of each platform for details.
@@ -434,7 +434,7 @@ If you need the URL of the background image, please contact ZEGOCLOUD Technical 
 #### (Optional) Set stream mixing sound level callback
 
 <Accordion title="Stream mixing sound level callback settings" defaultOpen="false">
-<Warning title="Note">
+<Warning title="Warning">
 
 In video scenarios, it is not recommended to turn on the sound level switch, otherwise the playing stream end pulling HLS protocol streams may encounter compatibility issues.
 </Warning>
@@ -477,7 +477,7 @@ audioConfig.codecID = ZegoAudioCodecIDLow3;
 
 After completing the configuration of the [ZegoMixerTask](https://www.zegocloud.com/docs/article/api?doc=Express_Video_SDK_API~ObjectiveC_ios~class~zego-mixer-task) stream mixing task object, call the start stream mixing interface to start this stream mixing task, and handle the logic of failed to start the stream mixing task in the callback Block.
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 If you need to play mixed stream CDN resources on the Web end, when using CDN recording, please choose AAC-LC for audio encoding. Since some browsers (such as Google Chrome and Microsoft Edge) do not support the HE-AAC audio encoding format, it will cause the recorded file to be unable to play.
@@ -499,7 +499,7 @@ If you need to play mixed stream CDN resources on the Web end, when using CDN re
 
 When the stream mixing information changes, such as the input stream list of stream mixing increases or decreases, adjust the stream mixing video output bitrate, etc., modify the parameters of this stream mixing task object, and then call the [startMixerTask](https://www.zegocloud.com/docs/article/api?doc=Express_Video_SDK_API~ObjectiveC_ios~class~zego-express-engine#start-mixer-task-callback) interface again to update the configuration.
 
-<Warning title="Note">
+<Warning title="Warning">
 
 When updating stream mixing task configuration, "taskID" cannot be changed.
 </Warning>
@@ -547,7 +547,7 @@ NSArray<ZegoMixerInput *> *inputArray = @[firstInput, secondInput, thirdInput];
 
 Please refer to "Create Engine" and "Login Room" in [Quick Start - Implementation Flow](/real-time-video-ios-oc/quick-start/implementing-video-call) to complete initialization and room login.
 
-<Warning title="Note">
+<Warning title="Warning">
 
 - The prerequisite for automatic stream mixing is that the target room exists.
 - The user who initiates automatic stream mixing can mix streams published by other users in the room (only audio streams can be mixed), without having to login to the room or publish stream in the room.
@@ -638,7 +638,7 @@ NSArray<ZegoMixerOutput *> *outputArray = @[[ZegoMixerOutput alloc] initWithTarg
 #### (Optional) Set automatic stream mixing sound level callback
 
 <Accordion title="Automatic stream mixing sound level callback settings" defaultOpen="false">
-<Warning title="Note">
+<Warning title="Warning">
 
 
 In video scenarios, it is not recommended to turn on the sound level switch, otherwise the playing stream end pulling HLS protocol streams may encounter compatibility issues.
@@ -669,7 +669,7 @@ After completing the configuration of the [ZegoAutoMixerTask ](@-ZegoAutoMixerTa
 
 Call the [stopAutoMixerTask ](@stopAutoMixerTask) interface to stop automatic stream mixing.
 
-<Warning title="Note">
+<Warning title="Warning">
 
 Before starting the next automatic stream mixing task in the same room, please call the [stopAutoMixerTask ](@stopAutoMixerTask) interface to end the previous automatic stream mixing task to avoid the situation where the audience is still pulling the output stream of the previous automatic stream mixing task when a host has already started the next automatic stream mixing task with other hosts for mixing. If the user does not actively end the current automatic stream mixing task, the task will automatically end after the room is closed.
 </Warning>

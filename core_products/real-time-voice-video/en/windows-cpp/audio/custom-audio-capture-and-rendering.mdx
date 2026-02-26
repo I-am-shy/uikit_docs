@@ -4,7 +4,7 @@ date: "2024-02-27"
 ---
 # Custom Audio Capture and Rendering
 - - -
- 
+
 ## Introduction
 
 ### Custom Audio Capture
@@ -18,7 +18,7 @@ In the following situations, it is recommended to use the custom audio capture f
 
 When customers have their own rendering needs, for example, doing special applications or processing on the obtained raw PCM data before rendering, it is recommended to use the SDK's custom audio rendering feature.
 
-<Warning title="Note">
+<Warning title="Warning">
 Audio capture and rendering are divided into 3 situations:
 
 - Internal capture, internal rendering
@@ -67,7 +67,7 @@ Please refer to "Create the engine" in [Quick Start - Implementation Process](/r
 
 ### 2 Enable custom audio capture and rendering
 
-<Warning title="Note">
+<Warning title="Warning">
 [enableCustomAudioIO](@enableCustomAudioIO) needs to be called before [startPublishingStream](@startPublishingStream), [startPlayingStream](@startPlayingStream), [startPreview](@startPreview), [createMediaPlayer](@createMediaPlayer), [createAudioEffectPlayer](@createAudioEffectPlayer), and [createRealTimeSequentialDataManager](@createRealTimeSequentialDataManager) to take effect.
 </Warning>
 

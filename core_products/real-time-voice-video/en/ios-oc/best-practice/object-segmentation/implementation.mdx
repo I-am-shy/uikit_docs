@@ -74,8 +74,8 @@ The implementation flow mainly includes 6 steps: initializing SDK, joining room,
 
 ### 1 Initialize SDK
 
-- Before managing mic positions in the room, you need to initialize the ZIM SDK first and set notification callbacks to listen to ZIM events. For interface call details, please refer to "Create ZIM Instance" and "Use EventHandler Protocol" in [Instant Messaging - Implement Basic Message Sending and Receiving](/zim-ios/send-and-receive-messages#3-实现基本收发消息).
-- Before implementing object segmentation, you need to initialize the ZEGO Express SDK first and set notification callbacks to listen to Express events. For interface calls, please refer to "Initialize" in [Real-time Audio and Video - Implementing Video Call](/real-time-video-ios-oc/quick-start/implementing-video-call#初始化).
+- Before managing mic positions in the room, you need to initialize the ZIM SDK first and set notification callbacks to listen to ZIM events. For interface call details, please refer to "Create ZIM Instance" and "Use EventHandler Protocol" in [Instant Messaging - Implement Basic Message Sending and Receiving](/zim-ios/send-and-receive-messages#3-implement-basic-send-and-receive).
+- Before implementing object segmentation, you need to initialize the ZEGO Express SDK first and set notification callbacks to listen to Express events. For interface calls, please refer to "Initialize" in [Real-time Audio and Video - Implementing Video Call](/real-time-video-ios-oc/quick-start/implementing-video-call#1-initialization).
 
 ```mermaid
 sequenceDiagram
@@ -93,10 +93,10 @@ sequenceDiagram
 
 ### 2 Join room
 
-- To implement publishing stream, users need to log in to the RTC room first. For interface call details, please refer to "Login Room" in [Real-time Audio and Video - Implementing Video Call](/real-time-video-ios-oc/quick-start/implementing-video-call#登录房间).
+- To implement publishing stream, users need to log in to the RTC room first. For interface call details, please refer to "Login Room" in [Real-time Audio and Video - Implementing Video Call](/real-time-video-ios-oc/quick-start/implementing-video-call#2-login-room).
 - This best practice implements the business logic of users getting on and off the mic by modifying ZIM room attributes. Therefore, users need to:
     1. Log in to the ZIM service. For interface call details, please refer to "Login ZIM" in [Instant Messaging - Implement Basic Message Sending and Receiving](/zim-ios/send-and-receive-messages#login).
-    2. Users need to create or join a ZIM room. For details, please refer to "Create Room, Join Room" in [Instant Messaging - Room Management](/zim-ios/guides/room/manage-rooms#创建房间加入房间).
+    2. Users need to create or join a ZIM room. For details, please refer to "Create Room, Join Room" in [Instant Messaging - Room Management](/zim-ios/guides/room/manage-rooms#create-room-join-room).
 
 ```mermaid
 sequenceDiagram
@@ -114,8 +114,8 @@ sequenceDiagram
 
 ### 3 Manage mic positions
 
-- After joining the ZIM room, users can understand the mic position information in the room by querying all room attributes. For interface call details, please refer to "Get Room Attributes" in [Instant Messaging - Room Attribute Management](/zim-ios/guides/room/room-properties#获取房间属性).
-- If users need to get on the mic, they can modify the mic position information by modifying room attributes. For interface call details, please refer to "Set Room Attributes" in [Instant Messaging - Room Attribute Management](/zim-ios/guides/room/room-properties#设置房间属性).
+- After joining the ZIM room, users can understand the mic position information in the room by querying all room attributes. For interface call details, please refer to "Get Room Attributes" in [Instant Messaging - Room Attribute Management](/zim-ios/guides/room/room-properties#get-room-attributes).
+- If users need to get on the mic, they can modify the mic position information by modifying room attributes. For interface call details, please refer to "Set Room Attributes" in [Instant Messaging - Room Attribute Management](/zim-ios/guides/room/room-properties#set-room-attributes).
 
 ```mermaid
 sequenceDiagram
@@ -136,17 +136,17 @@ sequenceDiagram
 
 ### 4 Use object segmentation
 
-1. To transmit the image segmented by object when publishing stream, you need to set the alpha channel. Please refer to "Use Alpha Channel to Transmit Segmented Subject" in [Real-time Audio and Video - Object Segmentation](/real-time-video-ios-oc/video/object-segmentation#7可选使用-alpha-通道传输分割出的主体) to learn how to call [enableAlphaChannelVideoEncoder](@enableAlphaChannelVideoEncoder) to set the alpha channel.
+1. To transmit the image segmented by object when publishing stream, you need to set the alpha channel. Please refer to "Use Alpha Channel to Transmit Segmented Subject" in [Real-time Audio and Video - Object Segmentation](/real-time-video-ios-oc/video/object-segmentation#7-optional-use-alpha-channel-to-transmit-segmented-subject) to learn how to call [enableAlphaChannelVideoEncoder](@enableAlphaChannelVideoEncoder) to set the alpha channel.
 
-2. Since the picture captured by the mobile phone's front camera is opposite to the actual left and right, you need to enable screen mirroring to obtain the correct direction picture when previewing or playing stream. For interface call details, please refer to "Set Mirror Mode" in [Real-time Audio and Video - Common Video Configuration](/real-time-video-ios-oc/video/common-video-configuration#设置镜像模式).
+2. Since the picture captured by the mobile phone's front camera is opposite to the actual left and right, you need to enable screen mirroring to obtain the correct direction picture when previewing or playing stream. For interface call details, please refer to "Set Mirror Mode" in [Real-time Audio and Video - Common Video Configuration](/real-time-video-ios-oc/video/common-video-configuration#set-mirror-mode).
 
 3. For the aesthetic angle of the picture when rotating the mobile phone screen, you need to set the orientation of the captured video. For interface call details, please refer to [Real-time Audio and Video - Video Capture Rotation](/real-time-video-ios-oc/video/video-capture-rotation).
 
-4. If you need to preview the local picture, you first need to set the backgroundColor property of the View used for rendering to clearColor (transparent color). For interface call details, please refer to "Special Settings for View" in [Real-time Audio and Video - Object Segmentation](/real-time-video-ios-oc/video/object-segmentation#2-对-view-进行特殊设置).
+4. If you need to preview the local picture, you first need to set the backgroundColor property of the View used for rendering to clearColor (transparent color). For interface call details, please refer to "Special Settings for View" in [Real-time Audio and Video - Object Segmentation](/real-time-video-ios-oc/video/object-segmentation#2-special-settings-for-view).
 
-    Preview and publish local picture. For interface call details, please refer to "Start Preview and Publishing Stream" in [Real-time Audio and Video - Object Segmentation](/real-time-video-ios-oc/video/object-segmentation#8-开始预览和推流).
+    Preview and publish local picture. For interface call details, please refer to "Start Preview and Publishing Stream" in [Real-time Audio and Video - Object Segmentation](/real-time-video-ios-oc/video/object-segmentation#8-start-preview-and-publishing-stream).
 
-5. Enable object segmentation and receive segmentation results. For interface call details, please refer to "Listen to Object Segmentation Status Callback" and "Use Object Segmentation to Implement Multiple Business Functions" in [Real-time Audio and Video - Object Segmentation](/real-time-video-ios-oc/video/object-segmentation#5-监听主体分割状态回调).
+5. Enable object segmentation and receive segmentation results. For interface call details, please refer to "Listen to Object Segmentation Status Callback" and "Use Object Segmentation to Implement Multiple Business Functions" in [Real-time Audio and Video - Object Segmentation](/real-time-video-ios-oc/video/object-segmentation#5-listen-to-object-segmentation-status-callback).
 
     <Note title="Note">
 
@@ -177,7 +177,7 @@ sequenceDiagram
 ### 5 Play stream
 
 After the user receives the ZIM event notification and learns that someone has gotten on the mic in the room:
-1. Call the real-time audio and video interface to set the backgroundColor property of the View used for rendering to clearColor (transparent color). For interface call details, please refer to "Special Settings for View" in [Real-time Audio and Video - Object Segmentation](/real-time-video-ios-oc/video/object-segmentation#2-对-view-进行特殊设置).
+1. Call the real-time audio and video interface to set the backgroundColor property of the View used for rendering to clearColor (transparent color). For interface call details, please refer to "Special Settings for View" in [Real-time Audio and Video - Object Segmentation](/real-time-video-ios-oc/video/object-segmentation#2-special-settings-for-view).
 
     <Note title="Note">
 
@@ -185,8 +185,8 @@ After the user receives the ZIM event notification and learns that someone has g
     If the View settings were implemented during preview, this step can be omitted.
     </Note>
 
-2. Play the video stream of the other party that has implemented object segmentation, thereby achieving the visual effect of two users being in the "same space" facing each other for dialogue. For interface call details, please refer to "Start Playing Stream" in [Real-time Audio and Video - Object Segmentation](/real-time-video-ios-oc/video/object-segmentation#9可选在拉流端设置-alpha-通道渲染并拉流).
-3. If you need to stop playing stream, for interface call details, please refer to "Stop Audio and Video Call" in [Real-time Audio and Video - Implementing Video Call](/real-time-video-ios-oc/quick-start/implementing-video-call#6-停止音视频通话).
+2. Play the video stream of the other party that has implemented object segmentation, thereby achieving the visual effect of two users being in the "same space" facing each other for dialogue. For interface call details, please refer to "Start Playing Stream" in [Real-time Audio and Video - Object Segmentation](/real-time-video-ios-oc/video/object-segmentation#9-optional-set-alpha-channel-rendering-at-playing-end-and-play-stream).
+3. If you need to stop playing stream, for interface call details, please refer to "Stop Audio and Video Call" in [Real-time Audio and Video - Implementing Video Call](/real-time-video-ios-oc/quick-start/implementing-video-call#6-stop-audio-and-video-call).
 
 ```mermaid
 sequenceDiagram
@@ -205,9 +205,9 @@ sequenceDiagram
 
 ### 6 Leave room
 
-1. Stop preview and publishing stream. For interface call details, please refer to "Stop Audio and Video Call" in [Real-time Audio and Video - Implementing Video Call](/real-time-video-ios-oc/quick-start/implementing-video-call#6-停止音视频通话).
-2. Leave the ZIM room. For interface call details, please refer to "Leave Room" in [Instant Messaging - Room Management](/zim-ios/guides/room/manage-rooms#离开房间).
-3. Log out of the RTC room. For interface call details, please refer to "Stop Audio and Video Call" in [Real-time Audio and Video - Implementing Video Call](/real-time-video-ios-oc/quick-start/implementing-video-call#6-停止音视频通话).
+1. Stop preview and publishing stream. For interface call details, please refer to "Stop Audio and Video Call" in [Real-time Audio and Video - Implementing Video Call](/real-time-video-ios-oc/quick-start/implementing-video-call#6-stop-audio-and-video-call).
+2. Leave the ZIM room. For interface call details, please refer to "Leave Room" in [Instant Messaging - Room Management](/zim-ios/guides/room/manage-rooms#leave-room).
+3. Log out of the RTC room. For interface call details, please refer to "Stop Audio and Video Call" in [Real-time Audio and Video - Implementing Video Call](/real-time-video-ios-oc/quick-start/implementing-video-call#6-stop-audio-and-video-call).
 
 ```mermaid
 sequenceDiagram

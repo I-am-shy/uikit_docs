@@ -21,7 +21,7 @@ paths:
       description: |
         Call this API to stop stream mixing. For related callbacks, please refer to [Stream Mixing End Callback](/real-time-video-server/callback/stream-mixing/stopped).
 
-        <Warning title="Note">
+        <Warning title="Warning">
         - When the current stream mixing task (hereinafter referred to as "Stream Mixing Task A") is still in progress, if the developer starts a new stream mixing task (hereinafter referred to as "Stream Mixing Task B"), Stream Mixing Task A will not stop automatically. Only after 90 seconds from when all input streams of Stream Mixing Task A no longer exist, will it automatically end.
         - When using the stream mixing function of ZEGO Audio/Video Cloud Service, developers should pay attention: when starting Stream Mixing Task B, Stream Mixing Task A should be stopped, to avoid the situation where the host has already started Stream Mixing Task B to mix with other hosts, but the audience is still pulling the output stream of Stream Mixing Task A.
         </Warning>
@@ -41,7 +41,7 @@ paths:
             enum: [StopMix]
           style: form
           explode: true
-        # 公共参数（Query）
+        # Common parameters (Query)
         - $ref: '../shared-components.yaml#/components/parameters/AppId'
         - $ref: '../shared-components.yaml#/components/parameters/SignatureNonce'
         - $ref: '../shared-components.yaml#/components/parameters/Timestamp'
@@ -69,16 +69,16 @@ components:
       properties:
         TaskId:
           type: string
-          description: Stream mixing task ID, which needs to be consistent with the TaskId passed in when starting stream mixing。
+          description: Stream mixing task ID, which needs to be consistent with the TaskId passed in when starting stream mixing.
           example: "2213699902971205739"
         Sequence:
           type: integer
           format: int32
-          description: Sequence number of the stream mixing task, used to ensure sequence, parameter modification of the same task needs to ensure the sequence number increments。
+          description: Sequence number of the stream mixing task, used to ensure sequence, parameter modification of the same task needs to ensure the sequence number increments.
           example: 1
         UserId:
           type: string
-          description: User ID。When enabling stream mixing task ownership, stopping the stream mixing task of a certain TaskId must input the UserId specified when starting the stream mixing task 。
+          description: User ID. When enabling stream mixing task ownership, stopping the stream mixing task of a certain TaskId must input the UserId specified when starting the stream mixing task.
           example: "456"
     StopMixResponse:
       type: object
@@ -103,10 +103,10 @@ components:
           example: 0
         Message:
           type: string
-          description: Operation result description。
+          description: Operation result description.
           example: "success"
         RequestId:
           type: string
-          description: Request ID。
+          description: Request ID.
           example: "8472822294336370476"
 

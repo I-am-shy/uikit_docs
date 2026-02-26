@@ -19,7 +19,7 @@ date: "2024-09-27"
 
 ZEGO Express SDK 从 **2.11.0** 版本起，新增游戏语音模块，主要包括：范围语音、3D 音效、小队语音。
 
-<Warning title="注意">
+<Warning title="Warning">
 本功能不支持在 WebGL 环境中运行使用。
 </Warning>
 
@@ -52,7 +52,7 @@ ZEGO Express SDK 从 **2.11.0** 版本起，新增游戏语音模块，主要包
 <p>玩家可以选择加入小队，并支持在房间内自由切换“全世界”、“仅小队”、“隐秘小队”语音模式。</p>
 <ul><li>全世界：玩家能与世界范围内其他玩家互相通话，同时能够与队友相互通话。</li><li>仅小队：玩家仅与队友互相通话。</li><li>隐秘小队：玩家可与队友互相通话，能且仅能听到世界范围内其他玩家的语音。</li></ul>
 
-<Note title="说明">
+<Note title="Note">
 队友之间的通话不受“范围”和 “3D 音效” 的影响，详情请查看 <a href="#设置语音模式">设置语音模式</a>。
 </Note>
 
@@ -84,7 +84,7 @@ ZEGO Express SDK 从 **2.11.0** 版本起，新增游戏语音模块，主要包
 
 ## 注意事项
 
-<Warning title="注意">
+<Warning title="Warning">
 使用范围语音功能时请务必关注如下注意事项，以免影响接入。
 </Warning>
 
@@ -180,7 +180,7 @@ rangeAudio.onRangeAudioMicrophoneStateUpdate = OnRangeAudioMicrophoneStateUpdate
 
 传入用户 ID 参数 userID 和 userName 创建 ZegoUser 用户对象后，调用 [LoginRoom](@LoginRoom) 接口，传入房间 ID 参数 roomID 和用户参数 user，登录房间。
 
-<Warning title="注意">
+<Warning title="Warning">
 - 同一个 AppID 内，需保证 roomID 全局唯一。
 - 同一个 AppID 内，需保证 userID 全局唯一，建议开发者将其设置成一个有意义的值，可将 userID 与自己业务账号系统进行关联。
 - userID 不能为空，否则会导致登录房间失败。
@@ -197,7 +197,7 @@ ZegoRoomConfig roomConfig = new ZegoRoomConfig();
 engine.LoginRoom("123",user,roomConfig);
 ```
 
-<Note title="说明">
+<Note title="Note">
 当用户已成功登录房间后，如果应用异常退出，在重启应用后，开发者需先调用 [LogoutRoom](@LogoutRoom) 接口退出房间，再调用 [LoginRoom](@LoginRoom) 接口重新登录房间。
 </Note>
 
@@ -207,7 +207,7 @@ engine.LoginRoom("123",user,roomConfig);
 
 开发者可以通过调用 [UpdateSelfPosition](@UpdateSelfPosition-ZegoRangeAudio) 接口，设置听者自身的所在位置和方位，或者在自身方位发生变化时更新自己在世界坐标系中的位置和朝向。
 
-<Note title="说明">
+<Note title="Note">
 - 在调用 [EnableSpeaker](@EnableSpeaker-ZegoRangeAudio) 打开扬声器之前如果没有调用该接口设置位置信息，则无法接收除小队以外其他人的声音。
 - 自身坐标系三个轴的坐标值可以通过第三方 3D 引擎的旋转角度换算矩阵得到。
 </Note>
@@ -257,7 +257,7 @@ rangeAudio.UpdateSelfPosition(position, axisForward, axisRight, axisUp);
 
 登录房间成功后，可以通过调用 [UpdateAudioSource](@UpdateAudioSource-ZegoRangeAudio) 接口，添加或更新发声者的位置信息。
 
-<Warning title="注意">
+<Warning title="Warning">
 
 - 全世界模式下：需要更新房间内，收听者和所有发声者的位置。隐秘小队模式下：需要更新房间内，所有在音频接收范围内，且为全世界模式的发声者的位置。如果未设置发声者位置，或者发声者超出收听者范围，会出现听不到声音的情况。
 - 这里发声者指的是房间内其他人，收听者指的是自己。
@@ -293,7 +293,7 @@ param.max = reciveRangeMax;
 rangeAudio.SetAudioReceiveRange(param);
 ```
 
-<Note title="说明">
+<Note title="Note">
 如果不设置音频接收距离，则表示只能接收本小队内的成员声音，无法接收小队外的所有声音。设置后，小队内的语音，不会受到音频接收距离的限制，也不会有 3D 音效。
 </Note>
 </Accordion>
@@ -304,7 +304,7 @@ rangeAudio.SetAudioReceiveRange(param);
 <Accordion title="请根据业务需要，选择是否开启 3D 音效。" defaultOpen="false">
 调用 [EnableSpatializer](@EnableSpatializer-ZegoRangeAudio) 接口设置 3D 音效，enable 取值为 true 时表示开启 3D 音效，此时房间内非小队成员的音频，会随着发声者离自身的距离和方向的变化而产生空间感的变化，为 false 时表示关闭 3D 音效。（可随时开启或关闭）
 
-<Warning title="注意">
+<Warning title="Warning">
 该功能只对小队以外的人生效。
 </Warning>
 
@@ -324,7 +324,7 @@ rangeAudio.EnableSpatializer(true);
 
 - 调用 [EnableSpeaker](@EnableSpeaker-ZegoRangeAudio) 接口设置是否开启扬声器，enable 取值为 true 时表示开启，此时将会自动拉取房间内的音频流，为 false 时表示关闭。（可随时开启或关闭）
 
-<Warning title="注意">
+<Warning title="Warning">
 调用 [EnableSpeaker](@EnableSpeaker-ZegoRangeAudio) 接口后，当超过最大拉流数限制（目前为 20 路）时，会优先拉取小队内成员音频流（需设置小队模式），再拉取世界内距离自身范围最近的音频流。
 
 </Warning>

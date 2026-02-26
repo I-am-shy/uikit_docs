@@ -37,7 +37,7 @@ date: "2024-02-28"
 
 ### 1 修改视频配置
 
-<Warning title="注意">
+<Warning title="Warning">
 
 
 - 需要在推流（[startPublishingStream](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/javascript_uni-app/classes/_zegoexpressengine_.zegoexpressengine.html#startpublishingstream)）前或预览（[startPreview](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/javascript_uni-app/classes/_zegoexpressengine_.zegoexpressengine.html#startpreview)）前设置好相关视频配置，在推流后仅支持编码分辨率和码率的修改。
@@ -72,7 +72,7 @@ videoConfig.bitrate = 600;
 ZegoExpressEngine.instance().setVideoConfig(videoConfig);
 ```
 
-<Note title="说明">
+<Note title="Note">
 
 
 移动端的宽高分辨率与 PC 端的宽高分辨率是相反的，例如移动端 360p 的分辨率为 360 × 640，而 PC 端 360p 的分辨率为 640 × 360。
@@ -106,7 +106,7 @@ ZegoExpressEngine.instance().setVideoConfig(ZegoVideoConfigPreset.Preset1080P)
 
 ### 2 修改视频视图模式
 
-<Warning title="注意">
+<Warning title="Warning">
 
 
 设置视频视图模式前，需先停止预览或拉流，否则无法生效。
@@ -160,7 +160,7 @@ export default {
 
 ### 3 设置镜像模式
 
-<Warning title="注意">
+<Warning title="Warning">
 
 
 - 该功能在推流前、后设置均可，设置后即时生效。

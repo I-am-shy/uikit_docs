@@ -43,7 +43,7 @@ When using the mixing function, the SDK pushes the stream to the ZEGO server. Th
 
 - Ensure there are already streams in the room.
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 The mixing function is not enabled by default. Please enable it yourself in the [ZEGOCLOUD Console](https://console.zegocloud.com) before use (for enabling steps, please refer to "Mixing" in [Project Management - Service Configuration](/console/service-configuration/enable-stream-mixing-service)), or contact ZEGOCLOUD Technical Support to enable it.
@@ -111,7 +111,7 @@ Create a [ZegoMixerInput ](@-ZegoMixerInput) object to set mixing input informat
 
 The input stream supports setting up to 9 streams.
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 When the mixed stream is an audio stream (that is, the "contentType" parameter is set to audio mixing type), the SDK does not process layout fields internally, so there is no need to pay attention to the "layout" parameter.
@@ -223,7 +223,7 @@ let task = {
 
 After the mixing task is created, call the [startMixerTask ](@startMixerTask) interface to start the mixing task. If an exception occurs when requesting to enable the mixing task, such as the input stream of the mixing does not exist, the error code will be given from the callback callback.
 
-<Warning title="Note">
+<Warning title="Warning">
 If you need to play mixed CDN resources on the Web end, when using CDN recording, please choose AAC-LC for audio encoding. Since some browsers (such as Google Chrome and Microsoft Edge) are incompatible with HE-AAC audio encoding format, recorded files will not be playable.
 </Warning>
 
@@ -241,7 +241,7 @@ zgEngine.startMixerTask(task).then(function (errorCode, extendedData){
 
 When the mixing information changes, such as adding or removing input stream lists for mixing, adjusting mixing video output bitrate, etc., modify the parameters of the mixing task object and call the [startMixerTask ](@startMixerTask) interface again to update the configuration.
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 When updating the configuration of the mixing task, "taskID" cannot be changed.
@@ -255,7 +255,7 @@ When updating the configuration of the mixing task, "taskID" cannot be changed.
 
 Call the [stopMixerTask ](@stopMixerTask) interface to stop the mixing task.
 
-<Warning title="Note">
+<Warning title="Warning">
 When starting the next mixing task, it is recommended to stop the previous mixing task first to avoid the situation where the host has already started the next mixing task to mix with other hosts, but the audience is still pulling the output stream of the previous mixing task.
 </Warning>
 

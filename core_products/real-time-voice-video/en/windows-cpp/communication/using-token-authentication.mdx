@@ -372,7 +372,7 @@ Token expiration may cause issues such as abnormal publishing and playing. Pleas
 
 30 seconds before Token expires, SDK will send a notification through the [onRoomTokenWillExpire](@onRoomTokenWillExpire) callback; after Token expires, when logging in to the room again, you will receive error code `1002078` (Token expired) through `onDebugError` or `onRoomStateChanged`.
 
-After receiving the Token即将过期 callback or receiving the Token expired error code, developers need to obtain a new valid Token from their own server and call the [renewToken](@renewToken) interface provided by SDK to update the Token.
+After receiving the Token is about to expire callback or receiving the Token expired error code, developers need to obtain a new valid Token from their own server and call the [renewToken](@renewToken) interface provided by SDK to update the Token.
 
 If you have integrated ZEGO Express SDK version **2.17.0** or above, and after Token expires, if you do not call the [renewToken](@renewToken) interface to update the Token, when the permission expires:
   - Logged in users will not be kicked out of the room.
@@ -398,7 +398,7 @@ void onRoomTokenWillExpire(const std::string& /*roomID*/, int /*remainTimeInSeco
 <Accordion title="Handling Token expiration in mass-scale audio/video range scenario" defaultOpen="false">
 30 seconds before Token expires, SDK will send a notification through the [onSceneTokenWillExpire](@onSceneTokenWillExpire) callback; after Token expires, when logging in to the room again, you will receive error code `1002078` (Token expired) through `onDebugError` or `onRoomStateChanged`.
 
-After receiving the Token即将过期 callback or receiving the Token expired error code, developers need to obtain a new valid Token from their own server and call the [IZegoRangeScene.renewToken](@renewToken-IZegoRangeScene) interface provided by SDK to update the Token. If not handled, the Token expiration handling mechanism is as follows:
+After receiving the Token is about to expire callback or receiving the Token expired error code, developers need to obtain a new valid Token from their own server and call the [IZegoRangeScene.renewToken](@renewToken-IZegoRangeScene) interface provided by SDK to update the Token. If not handled, the Token expiration handling mechanism is as follows:
 
 - Logged in users will not be kicked out of the scenario.
 - Currently successful publishing and playing will not be affected, but will affect the user's next publishing and playing operations.

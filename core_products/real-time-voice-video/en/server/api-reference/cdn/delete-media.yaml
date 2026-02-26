@@ -18,8 +18,8 @@ paths:
       description:
         When users perform CDN recording, they will store the recorded media files on CDN servers, and users can call this interface to delete the file.
 
-        <Warning title="Note">
-        Before using this interface for the first time, please confirm whether CDN recording service has been activated. If not, please go to the [ZEGOCLOUD Console](https://console.zego.im) to activate it yourself, for details, please refer to [Console - Service Configuration - CDN](/console/service-configuration/activate-cdn-service), or contact ZEGOCLOUD Technical Support to activate it.
+        <Warning title="Warning">
+        Before using this interface for the first time, please confirm whether CDN recording service has been activated. If not, please go to the [ZEGOCLOUD Console](https://console.zegocloud.com) to activate it yourself, for details, please refer to [Console - Service Configuration - CDN](/console/service-configuration/activate-cdn-service), or contact ZEGOCLOUD Technical Support to activate it.
         </Warning>
         <Note title="Call frequency limit">All rooms under the same AppID are limited to 20 times/second</Note>
       operationId: delete-media

@@ -10,7 +10,7 @@ date: "2024-09-06"
 
 Subject segmentation is a value-added capability provided by Express SDK. It uses AI algorithms to recognize content in video frames and sets `transparency information` for each pixel. Pixels in the subject portion are set to "opaque", while pixels outside the subject portion are set to "transparent". Developers can use the transparency information of these pixels to process the subject and non-subject parts differently, thereby implementing various functions.
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 - The current official website SDK does not include "subject segmentation" related features. If needed, please contact ZEGOCLOUD Technical Support for special packaging and provide your AppID to enable relevant permissions.
@@ -114,7 +114,7 @@ Before using the subject segmentation feature, please ensure:
 
 ## Implementation Flow
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 - Enabling subject segmentation will consume additional system resources. To ensure user experience, currently only one channel's publishing stream can enable subject segmentation.
@@ -165,7 +165,7 @@ Before enabling subject segmentation, you need to set the view used for renderin
 <Accordion title="Implement custom rendering class" defaultOpen="false">
 Developers can perform custom rendering based on actual situations. Note that the raw video data contains an Alpha channel, and the raw data has not undergone Alpha premultiplication processing. Taking rendering captured data by drawing UIImage as an example:
 
-<Warning title="Note">
+<Warning title="Warning">
 Do not render directly in the callback, as it will block the callback thread and cause rendering abnormalities.
 </Warning>
 
@@ -194,7 +194,7 @@ Do not render directly in the callback, as it will block the callback thread and
 <Accordion title="Enable custom rendering" defaultOpen="false">
 Call the [enableCustomVideoRender](@enableCustomVideoRender) interface to set engine advanced configuration and enable custom rendering, and also call the [setCustomVideoRenderHandler](@setCustomVideoRenderHandler) interface to set custom video rendering callback. For details, please refer to [Custom Video Rendering](/real-time-video-ios-oc/video/custom-video-rendering).
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 When using custom rendering for subject segmentation, [bufferType|\_blank](@bufferType-ZegoCustomVideoRenderConfig) only supports the `ZegoVideoBufferType.RAW_DATA` type.
@@ -214,7 +214,7 @@ renderConfig.frameFormatSeries = ZegoVideoFrameFormatSeriesRGB;// Select RGB col
 
 Call the [onVideoObjectSegmentationStateChanged](@onVideoObjectSegmentationStateChanged) interface to listen for subject segmentation state callbacks.
 
-<Warning title="Note">
+<Warning title="Warning">
 The subject segmentation state callback depends on enabling preview or publishing stream. That is, to listen for the [onVideoObjectSegmentationStateChanged](@onVideoObjectSegmentationStateChanged) callback, you need to call preview [startPreview](@startPreview) or publish stream [startPublishingStream](@startPublishingStream).
 </Warning>
 
@@ -232,7 +232,7 @@ The subject segmentation state callback depends on enabling preview or publishin
 
 ### 6 Use subject segmentation to implement different business functions
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 If developers need to update the subject segmentation type or background processing type, they need to modify the configuration of [ZegoObjectSegmentationConfig](@-ZegoObjectSegmentationConfig) and call the [enableVideoObjectSegmentation](@enableVideoObjectSegmentation) interface again to enable subject segmentation. The update result will be notified to developers through the [onVideoObjectSegmentationStateChanged](@onVideoObjectSegmentationStateChanged) callback.
@@ -268,7 +268,7 @@ Virtual background supports two types of materials:
     - Video size: Maximum not exceeding 50 MB, recommended within 10 MB.
 
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 When using this feature, developers should pay attention to the aspect ratio of custom images and video materials, otherwise parts exceeding the view will be cropped.
@@ -297,7 +297,7 @@ config.backgroundConfig.videoURL= @"<video_path>";// Set background video path
 <a name="enableAlphaChannelVideoEncoder"></a>
 
 <Accordion title="Use subject segmentation to implement transparent background" defaultOpen="false">
-<Warning title="Note">
+<Warning title="Warning">
 
 
 If developers need to implement business functions similar to "presenter mode", they need to mix the "subject image" with the "video source content to be mixed" into one video stream on the business side.
@@ -318,7 +318,7 @@ config.backgroundConfig.processType = ZegoBackgroundProcessTypeTransparent;// Se
 <Accordion title="Use Alpha channel to transmit the segmented subject" defaultOpen="false">
 If the publishing end needs to transmit the segmented subject image to the playing end through the Alpha channel for subject rendering at the playing end, you need to first call the [enableAlphaChannelVideoEncoder](@enableAlphaChannelVideoEncoder) interface to set the encoder to support the transparency channel, then call the [startPublishingStream](@startPublishingStream) interface to publish stream, so that it can be smoothly transmitted to the playing end.
 
-<Warning title="Note">
+<Warning title="Warning">
 Currently only supports transparency channel data arranged below RGB or YUV data.
 </Warning>
 
@@ -369,7 +369,7 @@ Developers can also enable preview first, then enable subject segmentation. This
 ### 9 (Optional) Set Alpha channel rendering at the playing end and play stream
 
 <Accordion title="Set Alpha channel rendering at the playing end and start playing stream" defaultOpen="false">
-<Warning title="Note">
+<Warning title="Warning">
 
 
 Only when the publishing end has enabled Alpha channel transmission does the playing end need to enable Alpha channel rendering.

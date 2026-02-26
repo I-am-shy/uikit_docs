@@ -20,7 +20,7 @@ date: "2024-01-02"
 - 需要在较差的网络环境中保持连麦的流畅。
 - 需要根据网络状态自适应拉取视频流的质量。
 
-<Note title="说明">
+<Note title="Note">
 分层视频编码使用的是 ZEGO 的私有协议，拉流端只有从 ZEGO 服务器上才能拉取到不同分层的视频流。
 </Note>
 
@@ -65,7 +65,7 @@ date: "2024-01-02"
 
 在推流（[startPublishingStream](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/javascript_uni-app/classes/_zegoexpressengine_.zegoexpressengine.html#startpublishingstream)）前调用 [setVideoConfig](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/javascript_uni-app/classes/_zegoexpressengine_.zegoexpressengine.html#setvideoconfig) 设置 [ZegoVideoConfig](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/javascript_uni-app/classes/_zegoexpressdefines_.zegovideoconfig.html) 类中的参数 “codecID”，即可开启/关闭分层视频编码功能。
 
-<Warning title="注意">
+<Warning title="Warning">
 
 目前 Web 只支持设置 `ZegoVideoCodecID.Default` 及 `ZegoVideoCodecID.VP8`。
 
@@ -90,7 +90,7 @@ ZegoExpressEngine.instance().startPublishingStream(streamID);
 
 在推流端开启了分层视频编码后，拉流端在拉流前后均可调用 [setPlayStreamVideoType](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/javascript_uni-app/classes/_zegoexpressengine_.zegoexpressengine.html#setplaystreamvideotype) 接口，拉流端默认会根据网络情况拉取合适的视频分层，例如弱网只拉取基本层。开发者也可以传入具体的拉流参数以拉取特定的视频分层，目前支持的视频分层如下：
 
-<Warning title="注意">
+<Warning title="Warning">
 
 Web 目前不支持指定要拉取的分层视频。
 
@@ -113,7 +113,7 @@ ZegoExpressEngine.instance().startPlayingStream(playStreamID);
 
 由于少部分机型设备对硬件编码/解码的支持不佳，SDK 默认使用软件编码与软件解码的方式，若开发者有使用硬件编码的需求，可参照本节自行设置。
 
-<Warning title="注意">
+<Warning title="Warning">
 
 Web 目前不支持硬件编解码。
 
@@ -123,7 +123,7 @@ Web 目前不支持硬件编解码。
 
 #### 开启硬件编码
 
-<Warning title="注意">
+<Warning title="Warning">
 
 该功能需在推流前设置才能生效，如果在推流后设置，停止推流后重新推流才可以生效。
 
@@ -140,7 +140,7 @@ ZegoExpressEngine.instance().enableHardwareEncoder(true);
 
 #### 开启硬件解码
 
-<Warning title="注意">
+<Warning title="Warning">
 
 
 该功能需在拉流前设置才能生效，如果在拉流后设置，停止拉流后重新拉流才可以生效。
@@ -160,7 +160,7 @@ ZegoExpressEngine.instance().enableHardwareDecoder(true);
 
 在推流（[startPublishingStream](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/javascript_uni-app/classes/_zegoexpressengine_.zegoexpressengine.html#startpublishingstream)）前调用 [setVideoConfig](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/javascript_uni-app/classes/_zegoexpressengine_.zegoexpressengine.html#setvideoconfig) 接口设置 “ZegoVideoConfig” 类下的参数 “codecID”，即可设置视频编码方式。目前支持的视频编码方式如下：
 
-<Warning title="注意">
+<Warning title="Warning">
 
 
 目前 Web 仅支持 H.264、VP8，其他编码方式暂不支持。
@@ -206,7 +206,7 @@ ZegoExpressEngine.instance().startPublishingStream(streamID);
 
 分层视频编码基本层的分辨率宽高分别是扩展层的 50%，拉取基本层的码率大约为拉取扩展层码率的 25%，其他参数一致。
 
-<Warning title="注意">
+<Warning title="Warning">
 分层视频编码只会拉取一层，网络情况良好时，只拉扩展层，网络情况不好时，只拉取基础层。
 </Warning>
 ```

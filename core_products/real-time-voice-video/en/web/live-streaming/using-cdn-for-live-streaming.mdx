@@ -11,7 +11,7 @@ When the publishing end uses third-party publishing tools (such as OBS software,
 
 Relaying to CDN (Content Delivery Network) refers to the process of pushing audio and video streams from ZEGO Real-Time Audio and Video Cloud to CDN. Based on this feature, developers can integrate RTC products with CDN live streaming products, allowing users to directly watch and listen to live content from web pages or third-party players.
 
-<Warning title="注意">
+<Warning title="Warning">
 
 
 When initiating relay or direct publishing to CDN, please set the video encoding format to H.264.
@@ -41,7 +41,7 @@ Before using CDN live streaming, ensure that:
 - You have created a project in the [ZEGOCLOUD Console](https://console.zegocloud.com) and applied for a valid AppID and Server address. For details, please refer to [Console - Project Information](/console/project-info).
 - You have integrated the ZEGO Express SDK into your project and implemented basic audio and video stream publishing and playing functions. For details, please refer to [Quick Start - Integration](/real-time-video-web/quick-start/integrating-sdk) and [Quick Start - Implementation Process](/real-time-video-web/quick-start/implementing-video-call).
 
-<Warning title="注意">
+<Warning title="Warning">
 
 
 CDN live streaming is not enabled by default. Please enable it in the [ZEGOCLOUD Console](https://console.zegocloud.com) before use (for activation steps, please refer to "CDN" in [Project Management - Service Configuration](/console/service-configuration/activate-cdn-service)), or contact ZEGO Technical Support to enable it.
@@ -65,7 +65,7 @@ After the stream is successfully published, call the [addPublishCdnUrl](@addPubl
 
 // Stream ID used when publishing
 String streamID = "STREAM_ID"; // CDN URL to relay to, please fill in the actual URL. streamID is the stream name for publishing and can be customized
-String URL = "rtmp://推流域名/接入点/streamID";
+String URL = "rtmp://publishing-domain-name/access-point/streamID";
 const result = await zg.addPublishCdnUrl(streamID, targetURL);
 console.warn(result);
 ```
@@ -74,7 +74,7 @@ console.warn(result);
 
 Call the [removePublishCdnUrl](@removePublishCdnUrl) interface to remove the URL for dynamic relaying to CDN. **When calling the [removePublishCdnUrl](@removePublishCdnUrl) interface to stop relaying, please ensure that the current stream streamID exists.**
 
-<Note title="说明">
+<Note title="Note">
 
 
 - If developers need to relay to multiple CDN vendors, they can call the relaying API multiple times using the same stream ID (URLs must be different).
@@ -89,7 +89,7 @@ Call the [removePublishCdnUrl](@removePublishCdnUrl) interface to remove the URL
 // Stream ID used when publishing
 const streamID = "STREAM_ID";
 // CDN URL to stop relaying, please fill in the actual URL. streamID is the stream name for publishing
-const URL = "rtmp://推流域名/接入点/streamID";
+const URL = "rtmp://publishing-domain-name/access-point/streamID";
 const result = await zg.removePublishCdnUrl(streamID, targetURL);
 console.warn(result);
 ```
@@ -112,7 +112,7 @@ Developers can play streams using any of the following methods.
 
 ZEGO's self-developed web player plugin supports playing CDN live streaming in H.265 and H.264 formats. It can be quickly integrated into web applications, providing developers with stable and smooth CDN live streaming capabilities. For details, please refer to [Player Overview](/real-time-video-web/player-plugin/overview).
 
-<Warning title="注意">
+<Warning title="Warning">
 
 
 Currently, this player plugin only supports playing the FLV protocol.
@@ -133,7 +133,7 @@ Currently, this player plugin only supports playing the FLV protocol.
 
 #### Method 2: Play Stream Based on Browser Video Tag
 
-<Note title="说明">
+<Note title="Note">
 
 
 - Currently, playing rtmp addresses on the web platform depends on the flash plugin. If the browser does not support the flash plugin, the browser cannot play streams with rtmp addresses.
@@ -187,7 +187,7 @@ At this time, all live streams published by users using ZEGO Express SDK to ZEGO
 
 Starting from Express Web SDK version 3.3.0, you can play CDN live streams by using ZEGO's self-developed web [Player Plugin (version 1.3.0 and above)](/real-time-video-web/player-plugin/release-notes). This player plugin supports playing CDN live streaming in H.265 and H.264 formats, can be quickly integrated into web applications, and provides developers with stable and smooth CDN live streaming capabilities. For details, please refer to [Player Overview](/real-time-video-web/player-plugin/overview).
 
-<Warning title="注意">
+<Warning title="Warning">
 
 
 Currently, this player plugin only supports playing the FLV protocol.

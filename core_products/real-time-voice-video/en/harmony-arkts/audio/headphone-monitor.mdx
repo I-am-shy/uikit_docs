@@ -35,7 +35,7 @@ ZEGO Express SDK 提供了耳返和双声道的功能，开发者可根据需要
 
 开启预览后或者开始推流后调用 [enableHeadphoneMonitor](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/ets_ohos/classes/_zegoexpressengine_.zegoexpressengine.html#enableheadphonemonitor) 开启采集监听即耳返，主播方讲话后，会听到自己的声音。
 
-<Note title="说明">
+<Note title="Note">
 
 
 开启耳返后，在连接上耳麦时耳返功能才实际生效。
@@ -60,7 +60,7 @@ this.ZegoExpressInstance.setHeadphoneMonitorVolume(100);
 
 ### 设置声道
 
-<Warning title="注意">
+<Warning title="Warning">
 
 
 [setAudioConfig](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/ets_ohos/classes/_zegoexpressengine_.zegoexpressengine.html#setaudioconfig) 和 [setAudioCaptureStereoMode](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/ets_ohos/classes/_zegoexpressengine_.zegoexpressengine.html#setaudiocapturestereomode) 都需要在 [startPublishingStream](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/ets_ohos/classes/_zegoexpressengine_.zegoexpressengine.html#startpublishingstream)、[startPlayingStream](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/ets_ohos/classes/_zegoexpressengine_.zegoexpressengine.html#startplayingstream)、[startPreview](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/ets_ohos/classes/_zegoexpressengine_.zegoexpressengine.html#startpreview)、[createMediaPlayer](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/ets_ohos/classes/_zegoexpressengine_.zegoexpressengine.html#createmediaplayer) 之前调用才有效。
@@ -91,7 +91,7 @@ this.ZegoExpressInstance.setAudioCaptureStereoMode(ZegoAudioCaptureStereoMode.Al
 
 请参考 [快速开始 - 实现流程](/real-time-video-harmonyos-arkts/quick-start/implementing-video-call) 的 “预览自己的画面，并推送到 ZEGO 实时音视频云”，此时所推流的音频是双声道，拉流端无需做额外的配置，直接拉流即可播放双声道音频。
 
-<Note title="说明">
+<Note title="Note">
 
 
 双声道采集需要推流端使用支持双声道采集的设备作为音频输入源，一般手机的麦克风不支持采集双声道。

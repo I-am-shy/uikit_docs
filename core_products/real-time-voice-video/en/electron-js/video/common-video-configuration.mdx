@@ -33,7 +33,7 @@ Before setting video configurations, please ensure:
 
 By calling the [setVideoConfig](@setVideoConfig-ZegoExpressEngine) interface to modify video configuration, users can customize parameters or use preset values for setting.
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 You need to set relevant video configurations before publishing stream ([startPublishingStream](@startPublishingStream)) or preview ([startPreview](@startPreview)). After publishing stream, only encoding resolution and bitrate modifications are supported.
@@ -100,7 +100,7 @@ zgEngine.setVideoConfig(zgDefines.ZegoVideoConfigPreset.Preset270P);
 
 ### 2 Modify video view mode
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 Before setting the video view mode, you need to stop preview or stop playing stream first, otherwise it will not take effect.

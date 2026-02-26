@@ -18,7 +18,7 @@ paths:
       description: |
         Call this API to forbid CDN stream publishing. This is applicable to direct CDN publishing scenarios. For relay to CDN scenarios, please use the [stop relaying streams to CDN](/real-time-video-server/api-reference/media-service/delete-cdn-transfer-rule) API.
 
-        <Warning title="Note">
+        <Warning title="Warning">
         For first-time use of this API, please contact ZEGOCLOUD Technical Support for configuration.
         </Warning>
         <Note title="Rate Limit">For all rooms under the same AppID: 20 times/second</Note>

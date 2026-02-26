@@ -36,7 +36,7 @@ paths:
             enum: [StopAutoMix]
           style: form
           explode: true
-        # 公共参数（Query）
+        # Common parameters (Query)
         - $ref: '../shared-components.yaml#/components/parameters/AppId'
         - $ref: '../shared-components.yaml#/components/parameters/SignatureNonce'
         - $ref: '../shared-components.yaml#/components/parameters/Timestamp'
@@ -64,20 +64,20 @@ components:
       properties:
         TaskId:
           type: string
-          description: Stream mixing task ID, which needs to be consistent with the TaskId passed in when starting stream mixing。
+          description: Stream mixing task ID, which needs to be consistent with the TaskId passed in when starting stream mixing.
           example: "2213699902971205739"
         RoomId:
           type: string
-          description: Room ID。
+          description: Room ID.
           example: "room123"
         Sequence:
           type: integer
           format: int
-          description: Sequence number of the stream mixing task, used to ensure sequence, parameter modification of the same task needs to ensure the sequence number increments。
+          description: Sequence number of the stream mixing task, used to ensure sequence, parameter modification of the same task needs to ensure the sequence number increments.
           example: 1
         UserId:
           type: string
-          description: User ID。When enabling stream mixing task ownership, stopping the stream mixing task of a certain TaskId must input the UserId specified when starting the stream mixing task。
+          description: User ID. When enabling stream mixing task ownership, stopping the stream mixing task of a certain TaskId must input the UserId specified when starting the stream mixing task.
           example: "user1"
     StopAutoMixResponse:
       type: object
@@ -102,10 +102,10 @@ components:
           example: 0
         Message:
           type: string
-          description: Operation result description。
+          description: Operation result description.
           example: "success"
         RequestId:
           type: string
-          description: Request ID。
+          description: Request ID.
           example: "6351841974556802202"
 

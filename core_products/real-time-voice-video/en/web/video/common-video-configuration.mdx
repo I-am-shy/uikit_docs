@@ -57,7 +57,7 @@ Call the [createZegoStream](@createZegoStream) interface to create a [ZegoLocalS
 
   When capturing source data through a camera, use the "quality" parameter in the "camera" object to set the video quality. The combined values of this parameter are shown in the table below. Among them, 1, 2, and 3 are preset values. If the value is 4, it means that developers can customize the resolution, frame rate, and bitrate. For related settings, please refer to [How to Choose Video Resolution/Frame Rate/Bitrate](#how-to-choose-video-resolutionframe-ratebitrate) in this article.
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
   To be compatible with as many devices and browsers as possible for video screen capture, it is recommended to set the width and height of the resolution to a multiple of 8 when customizing video parameters.
@@ -241,7 +241,7 @@ When the actual transmission bitrate is low due to poor network, device and brow
 
 Therefore, if developers do not have high requirements for picture smoothness, it is recommended to maintain picture clarity by setting a low frame rate.
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 There is a common misconception here that the higher the bitrate, the better. In practical applications, a higher bitrate requires a higher resolution and frame rate to match. For example, for a resolution of 320 × 240 and a bitrate of 1000 kbps, an excessively high bitrate will occupy network bandwidth and video decoding resources, causing waste.

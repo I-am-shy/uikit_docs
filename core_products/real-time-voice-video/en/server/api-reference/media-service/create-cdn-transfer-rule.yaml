@@ -20,7 +20,7 @@ paths:
 
         If developers no longer need to relay streams to the CDN, please refer to [stop relaying streams to CDN](/real-time-video-server/api-reference/media-service/delete-cdn-transfer-rule).
 
-        <Warning title="Note">
+        <Warning title="Warning">
         If you are relaying RTC to CDN or stream mixing to CDN, ZEGOCLOUD server will automatically perform CDN authentication for you, and you do not need additional CDN authentication.
         </Warning>
         <Note title="Rate Limit">For all rooms under the same AppID: 10 times/second (test environment: 5 times/second)</Note>

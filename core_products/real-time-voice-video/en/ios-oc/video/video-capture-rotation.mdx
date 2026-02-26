@@ -10,7 +10,7 @@ date: "2024-01-02"
 
 ZEGO provides 4 capture rotation modes for mobile devices (fixed ratio mode, adaptive mode, alignment mode, and custom mode) to simplify the complex adaptation problems developers face when implementing multi-terminal rotation performance, such as camera angle, resolution, automatic rotation, status bar position adaptation, etc. You can configure different modes through the `setAppOrientationMode` interface according to rotation performance and business scenario requirements.
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 - To ensure the expected effect, the publishing and playing ends need to maintain the same mode during a call or in the same room.
@@ -45,7 +45,7 @@ In adaptive mode, regardless of the holding method or UI orientation, the image 
 
 **Advantages**: In adaptive mode, users can choose their favorite holding method for video calls, suitable for 1v1 or multiplayer video RTC scenarios. You can also implement live streaming business through stream mixing and forwarding.
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 - Adaptive mode does not support direct publishing to CDN. If you need live streaming, you can use the ZEGO stream mixing service to process multi-person picture rotation performance, and then forward to CDN. If necessary, please contact ZEGO technical support to enable this configuration.
@@ -64,7 +64,7 @@ In alignment mode, using the status bar as a reference, the video direction at t
 
 **Advantages**: Alignment mode is similar to adaptive mode, but users can combine the automatic rotation switch and holding method to actively adjust full-screen or aspect-ratio scaled picture performance, suitable for 1v1 or multiplayer video RTC scenarios.
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 - Alignment mode does not support direct publishing to CDN. If you need live streaming, you can use the ZEGO stream mixing service to process multi-person picture rotation performance, and then forward to CDN. If necessary, please contact ZEGO technical support to enable this configuration.
@@ -96,7 +96,7 @@ In custom mode, you can customize the video capture rotation performance form ac
 
 ## Implementation Flow
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 The following implementation flow only applies to fixed ratio mode, adaptive mode, and alignment mode. If you need to customize the video capture rotation mode, please refer to [How to customize video capture rotation mode?](http://doc-zh.zego.im/faq/express_video_capture_rotation?product=ExpressVideo&platform=ios)
@@ -106,7 +106,7 @@ The following implementation flow only applies to fixed ratio mode, adaptive mod
 
 The publishing end needs to call the [setAppOrientationMode](@setAppOrientationMode) interface to set any capture rotation mode.
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 Please call the [setAppOrientationMode](@setAppOrientationMode) interface immediately after calling [createEngineWithProfile](@createEngineWithProfile), and then call the [startPublishingStream](@startPublishingStream) or [startPreview](@startPreview) interface.
@@ -134,7 +134,7 @@ Please call the [setAppOrientationMode](@setAppOrientationMode) interface immedi
 
 **Only in adaptive mode**, the playing end needs to call the [setAppOrientationMode](@setAppOrientationMode) interface to set the adaptive mode before playing stream.
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 

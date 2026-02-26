@@ -70,7 +70,7 @@ For specific initialization and room login flow, please refer to "[Create Engine
 Please configure the corresponding features according to your needs.
 
 <Accordion title="Basic Face Beautification" defaultOpen="false">
-<Note title="Description">
+<Note title="Note">
 This feature is the basic face beautification functionality of ZEGO Effects SDK built into ZEGO Express SDK. It only includes four beautification effects: whitening, rosy, smoothing, and sharpening. For more advanced beautification features, please refer to [Using Real-time Audio/Video with AI Face Beautification](/real-time-video-ios-oc/best-practice/integration-with-zego-effects-sdk).
 </Note>
 
@@ -80,7 +80,7 @@ This feature is the basic face beautification functionality of ZEGO Effects SDK 
 
 If you need to use basic face beautification functionality, you must call the [startEffectsEnv](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/dart_flutter/zego_express_engine/ZegoExpressEnginePreprocess/startEffectsEnv.html) interface to initialize the beautification environment before [startPreview](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/dart_flutter/zego_express_engine/ZegoExpressEnginePublisher/startPreview.html) starts preview and [startPublishingStream](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/dart_flutter/zego_express_engine/ZegoExpressEnginePublisher/startPublishingStream.html) starts publishing.
 
-<Note title="Description">
+<Note title="Note">
 On the Web platform, you don't need to additionally enable the beautification environment. You can skip calling [startEffectsEnv](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/dart_flutter/zego_express_engine/ZegoExpressEnginePreprocess/startEffectsEnv.html).
 </Note>
 
@@ -93,7 +93,7 @@ ZegoExpressEngine.instance.startEffectsEnv();
 
 **Toggle Basic Face Beautification Effects**
 
-<Note title="Description">
+<Note title="Note">
 - There is no specific order for calling the [enableEffectsBeauty](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/dart_flutter/zego_express_engine/ZegoExpressEnginePreprocess/enableEffectsBeauty.html) interface and the [setEffectsBeautyParam](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/dart_flutter/zego_express_engine/ZegoExpressEnginePreprocess/setEffectsBeautyParam.html) interface.
 - On the Web platform, you need to execute [enableEffectsBeauty](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/dart_flutter/zego_express_engine/ZegoExpressEnginePreprocess/enableEffectsBeauty.html) and [setEffectsBeautyParam](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/dart_flutter/zego_express_engine/ZegoExpressEnginePreprocess/setEffectsBeautyParam.html) before publishing for beautification effects to take effect.
 </Note>
@@ -136,7 +136,7 @@ ZegoExpressEngine.instance.setEffectsBeautyParam(beautyParam);
 
 When calling the [enableEffectsBeauty](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/dart_flutter/zego_express_engine/ZegoExpressEnginePreprocess/enableEffectsBeauty.html) interface and setting it to "false", beautification effects will be disabled, but the beautification module will still occupy resources and consume performance. If you want to completely release resources and save performance consumption, you need to call the [stopEffectsEnv](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/dart_flutter/zego_express_engine/ZegoExpressEnginePreprocess/stopEffectsEnv.html) interface to destroy the beautification environment before preview and publishing.
 
-<Note title="Description">
+<Note title="Note">
 
 
 - When calling [destroyEngine](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/dart_flutter/zego_express_engine/ZegoExpressEngine/destroyEngine.html) to destroy the engine, the SDK will automatically destroy the beautification environment.
@@ -219,7 +219,7 @@ ZegoExpressEngine.instance.enableCameraAdaptiveFPS(true, minCamFPS, maxCamFPS, Z
 <Accordion title="Video Noise Reduction" defaultOpen="false">
 Call the [setVideoDenoiseParams](@setVideoDenoiseParams) interface to set video noise reduction parameters [ZegoVideoDenoiseParams](@-ZegoVideoDenoiseParams) including: video noise reduction mode [ZegoVideoDenoiseMode](@-ZegoVideoDenoiseMode) and video noise reduction intensity [ZegoVideoDenoiseStrength](@-ZegoVideoDenoiseStrength).
 
-<Warning title="Note">
+<Warning title="Warning">
 Video noise reduction functionality is not enabled by default, i.e., [ZegoVideoDenoiseMode](@-ZegoVideoDenoiseMode) defaults to `ZegoVideoDenoiseMode.off`.
 </Warning>
 

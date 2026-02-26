@@ -15,7 +15,7 @@ Before starting to integrate ZEGO Express SDK, please ensure that the developmen
 - libv4l2 (v4l utils).
 - CMake 3.7 or higher version.
 
-<Note title="Description">
+<Note title="Note">
 
 - SDK depends on libasound (ALSA) and libv4l2 (v4l utils).
 - CentOS (RHEL/Fedora) can be installed by executing `yum install alsa-lib-devel libv4l` command.
@@ -84,7 +84,7 @@ When integrating SDK using Qt + qmake, please download any version of [Qt](http:
         ```
 3. (Optional) The Linux SDK does not block the SIGPIPE signal. Developers need to choose whether to block the SIGPIPE signal according to the actual situation during actual development.
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
     In most cases, you need to block this signal, otherwise the client process will exit by default after receiving this signal. You can also directly ignore this signal: `signal(SIGPIPE,SIG_IGN);`.

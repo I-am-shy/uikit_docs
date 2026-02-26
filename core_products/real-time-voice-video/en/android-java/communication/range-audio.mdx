@@ -48,7 +48,7 @@ Common Voice Mode
 <td>
 <p>Players can choose to join a team and support freely switching between "World", "Team Only", and "Secret Team" voice modes within the room.</p>
 <ul><li>World: Players can communicate with other players in the world, and can also communicate with teammates.</li><li>Team Only: Players can only communicate with teammates.</li><li>Secret Team: Players can communicate with teammates, and can only hear voice from other players in the world range.</li></ul>
-<Note title="Description">
+<Note title="Note">
 <ul><li>Communication between teammates is not affected by "range" and "3D audio effects". For details, please see <a href="#optional-set-common-voice-mode">Set Common Voice Mode</a>.</li><li>If you want to customize voice send/receive capabilities, please refer to <a href="#optional-set-custom-voice-mode">Set Custom Voice Mode</a>.</li></ul>
 </Note>
 </td>
@@ -195,7 +195,7 @@ ZegoUser user = new ZegoUser("user1");
 engine.loginRoom("room1", user);
 ```
 
-<Note title="Description">
+<Note title="Note">
 
 
 When a user has successfully logged in to a room, if the application exits abnormally, after restarting the application, developers need to first call the [logoutRoom](@logoutRoom) interface to exit the room, then call the [loginRoom](@loginRoom) interface to log in to the room again.
@@ -207,7 +207,7 @@ When a user has successfully logged in to a room, if the application exits abnor
 
 Developers can call the [updateSelfPosition](@updateSelfPosition) interface to set the listener's own position and orientation, or update their position and facing direction in the world coordinate system when their own orientation changes.
 
-<Note title="Description">
+<Note title="Note">
 
 
 - If this interface is not called to set position information before calling [enableSpeaker](@enableSpeaker) to enable the speaker, you will not be able to receive sound from anyone other than teammates.
@@ -293,7 +293,7 @@ param.max = reciveRangeMax;
 rangeAudio.setAudioReceiveRange(param);
 ```
 
-<Note title="Description">
+<Note title="Note">
 
 
 If the audio receiving distance is not set, it means you can only receive voices from within your own team and cannot receive all sounds outside the team. After setting, voice within the team will not be limited by the audio receiving distance and will not have 3D audio effects.
@@ -325,7 +325,7 @@ Developers can use media player or audio effect player as sound sources and set 
 2. Set 3D audio effects for local players
     - Media Player:
 
-        <Note title="Description">
+        <Note title="Note">
 
 
         Please refer to [Media Player](/real-time-video-android-java/other/media-player) to learn how to create a media player and load media resources.
@@ -336,7 +336,7 @@ Developers can use media player or audio effect player as sound sources and set 
         3. Call the [loadResourceWithConfig](@loadResourceWithConfig) interface to load media resources.
     - Audio Effect Player:
 
-        <Note title="Description">
+        <Note title="Note">
 
 
         Please refer to [Audio Effect Player](/real-time-video-android-java/other/audio-effect-player) to learn how to create an audio effect player and load audio effect resources.

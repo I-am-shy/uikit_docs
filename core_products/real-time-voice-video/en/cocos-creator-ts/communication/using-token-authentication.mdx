@@ -19,7 +19,7 @@ Authentication refers to verifying whether users have permission to access the s
 
 ## Prerequisites
 
-<Warning title="Note">
+<Warning title="Warning">
 - Only ZEGO Express SDK version 2.17.0 and above supports using Token authentication as described in this document.
 - If you have integrated ZEGO Express SDK version before 2.17.0 (using AppSign authentication) and now want to upgrade to version 2.17.0 and use Token authentication, you can learn more about AppSign authentication and Token authentication through the [How to upgrade from AppSign authentication to Token authentication](https://doc-zh.zego.im/faq/token_upgrade) document.
 </Warning>
@@ -193,7 +193,7 @@ To further improve security, privilege authentication Token opens up two permiss
 - Only verify publish permission: Verify permission when publishing, do not verify permission when logging in.
 - Verify both login and publish permissions: Verify permissions when both logging in and publishing.
 
-<Warning title="Note">
+<Warning title="Warning">
 When generating a privilege authentication Token, you must pass in "RoomId".
 </Warning>
 
@@ -258,7 +258,7 @@ func main() {
 </Tab>
 </Tabs>
 
-<Warning title="Note">
+<Warning title="Warning">
 
 When running the Java source code for generating Token, if the "java.security.InvalidKeyException:illegal Key Size" exception prompt appears, please refer to [Related FAQ Document](https://doc-zh.zego.im/faq/java_illegal_key_size_solution?product=ExpressVideo&platform=all) to solve it.
 </Warning>
@@ -269,7 +269,7 @@ When running the Java source code for generating Token, if the "java.security.In
 
 Users carry the obtained Token and user, roomID information to log into the corresponding room.
 
-<Warning title="Note">
+<Warning title="Warning">
 
 The userID used when calling the [loginRoom](@loginRoom) interface to log into the room must be consistent with the userID used when "4.2 Generate Token on Server".
 </Warning>
@@ -291,7 +291,7 @@ this.engine.renewToken('your_room_id', token)
 
 ### 4 Handling Token Expiration
 
-<Warning title="Note">
+<Warning title="Warning">
 
 Token expiration may cause issues such as publishing and playing exceptions. Please strictly follow the instructions below to handle expired Tokens in a timely manner.
 </Warning>
@@ -325,7 +325,7 @@ onRoomTokenWillExpire(roomID: string, remainTimeInSecond: number): void {
 <Accordion title="Client-side Token Generation and Use (Not Recommended)" defaultOpen="false">
 If you cannot distribute Token through the server during development, you can first use client-side code to generate Token, and then complete the integration after the server development is completed.
 
-<Warning title="Note">
+<Warning title="Warning">
 
 - When the App goes online, do not generate Token on the client side, otherwise your ServerSecret will be at risk of exposure.
 - To ensure security, it is strongly recommended to use the server to generate Token, otherwise there is a risk of ServerSecret being stolen.

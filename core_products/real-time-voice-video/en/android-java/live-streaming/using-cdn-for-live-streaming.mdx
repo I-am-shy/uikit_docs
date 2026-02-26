@@ -122,7 +122,7 @@ For related source code, please check the files in the "/ZegoExpressExample/Adva
 
 ## Relay-to-CDN
 
-<Note title="Description">
+<Note title="Note">
 If you choose to use the direct-to-CDN feature, you do not need to perform all steps in this section. Please refer to [Direct-to-CDN](/real-time-video-android-java/live-streaming/using-cdn-for-live-streaming).
 </Note>
 
@@ -138,7 +138,7 @@ Please refer to [Quick Start - Implementation](/real-time-video-android-java/qui
 
 After successful publishing, call the [addPublishCdnUrl](@addPublishCdnUrl) interface to add a dynamically relayed CDN URL, which allows you to dynamically relay audio and video streams that have been successfully published to ZEGO real-time cloud to third-party CDNs. The supported relay address format is "rtmp".
 
-<Note title="Description">
+<Note title="Note">
 
 
 - If developers need to relay to multiple third-party CDN providers, they can call the [addPublishCdnUrl](@addPublishCdnUrl) interface multiple times using the same stream ID (URLs need to be different).
@@ -181,7 +181,7 @@ engine.addPublishCdnUrl(streamID, URL, new IZegoPublisherUpdateCdnUrlCallback() 
 
 Developers can register [onPublisherRelayCDNStateUpdate](@onPublisherRelayCDNStateUpdate) to get add/remove relay CDN address status callbacks. After ZEGO RTC server relays audio and video streams to CDN, if the CDN relay status changes, such as relay stopping or relay retrying, this callback will be received.
 
-<Note title="Description">
+<Note title="Note">
 
 
 Developers can use this callback to determine whether the audio and video streams relayed to CDN are normal:
@@ -332,7 +332,7 @@ engine.removePublishCdnUrl(streamID, URL, new IZegoPublisherUpdateCdnUrlCallback
 
 ## Direct-to-CDN
 
-<Note title="Description">
+<Note title="Note">
 
 
 If you choose to use the relay-to-CDN feature, you do not need to perform all steps in this section. Please refer to [Relay-to-CDN](/real-time-video-android-java/live-streaming/using-cdn-for-live-streaming).

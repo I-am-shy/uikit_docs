@@ -8,7 +8,7 @@ date: "2024-11-13"
 
 ## 功能简介
 
-<Warning title="注意">
+<Warning title="Warning">
 本文档适用于以下平台： Android、iOS。
 </Warning>
 
@@ -20,7 +20,7 @@ date: "2024-11-13"
 
 仅当 1v1 连麦场景中，SDK 会自动开启下行流量控制。拉流端将自己的网络情况通知给推流端，推流端估算自己的上行带宽和拉流端的下行带宽，并从上行、下行带宽的估值中取最小值来调整自己的上行码率，以保证连麦的流畅性。
 
-<Note title="说明">
+<Note title="Note">
 流量控制与分层视频编码的区别：
 
 * 流量控制：面向推流方，推流方网络环境差时为了保证正常推流主动降低推流的上行码率。
@@ -48,7 +48,7 @@ date: "2024-11-13"
 
 推流前调用 [enableTrafficControl](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/javascript_uni-app/classes/_zegoexpressengine_.zegoexpressengine.html#enabletrafficcontrol) 接口，通过 “enable” 参数开启流量控制，并通过 “property” 参数设置可调节的流量控制属性（码率、帧率、分辨率），支持选择多项，默认值为 “AdaptiveFPS”，即动态调整帧率。当上行带宽不足时，SDK 会根据当前网络环境，自动调整设置的属性以适应上行带宽。
 
-<Warning title="注意">
+<Warning title="Warning">
 当关闭流量控制开关后，已设置的流量控制属性 “property” 也将失效。
 </Warning>
 
@@ -63,7 +63,7 @@ ZegoExpressEngine.instance().enableTrafficControl(true, AdaptiveResolution | Ada
 
 ### 2 设置流量控制视频码率最小值
 
-<Note title="说明">
+<Note title="Note">
 本节操作仅适用于音视频场景，纯音频场景下无需设置。
 </Note>
 
@@ -71,7 +71,7 @@ ZegoExpressEngine.instance().enableTrafficControl(true, AdaptiveResolution | Ada
 
 开启流量控制后，调用 [setMinVideoBitrateForTrafficControl](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/javascript_uni-app/classes/_zegoexpressengine_.zegoexpressengine.html#setminvideobitratefortrafficcontrol) 方法设置视频码率最小值（默认值为 “0”），可以使 SDK 在网络未达到发送视频的最小码率时采用该方法设置视频发送模式（不发送视频或以极低的帧率发送）。
 
-<Warning title="注意">
+<Warning title="Warning">
 可以在初始化 SDK 后的任意时间调用，但需要开启流量控制后该设置才生效。
 </Warning>
 

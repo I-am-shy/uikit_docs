@@ -39,7 +39,7 @@ await this.engine.startEffectsEnv();
 
 ### 开关基础美颜效果
 
-<Note title="说明">
+<Note title="Note">
 
 
 [enableEffectsBeauty](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/javascript_uni-app/classes/_zegoexpressengine_.zegoexpressengine.html#enableeffectsbeauty) 接口和 [setEffectsBeautyParam](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/javascript_uni-app/classes/_zegoexpressengine_.zegoexpressengine.html#seteffectsbeautyparam) 接口的调用时序无先后之分。
@@ -87,7 +87,7 @@ await this.engine.setEffectsBeautyParam(beautyParam);
 
 当调用 [enableEffectsBeauty](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/javascript_uni-app/classes/_zegoexpressengine_.zegoexpressengine.html#enableeffectsbeauty) 接口设为 “false” 时，会关闭美颜效果，但美颜模块还是会占用资源并消耗性能。如果想彻底释放资源，节省性能消耗，则需要在预览和推流前调用 [stopEffectsEnv](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/javascript_uni-app/classes/_zegoexpressengine_.zegoexpressengine.html#stopeffectsenv) 接口销毁美颜环境。
 
-<Note title="说明">
+<Note title="Note">
 
 
 

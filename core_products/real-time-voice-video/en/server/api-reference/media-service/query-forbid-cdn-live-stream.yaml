@@ -18,7 +18,7 @@ paths:
       description: |
         Call this API to query the list of URLs that are forbidden from publishing streams to the CDN.
 
-        <Warning title="Note">
+        <Warning title="Warning">
         For first-time use of this API, please contact ZEGOCLOUD Technical Support for configuration.
         </Warning>
         <Note title="Rate Limit">For all rooms under the same AppID: 20 times/second</Note>

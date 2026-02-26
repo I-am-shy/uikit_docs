@@ -43,7 +43,7 @@ Before implementing basic real-time audio/video functionality, please ensure:
 - You have integrated ZEGO Express SDK in the project and implemented basic real-time audio/video functionality. For details, please refer to [Quick Start - Integration](/real-time-video-cocos-creator/quick-start/integrating-sdk).
 - You have created a project in the [ZEGO Console](https://console.zegocloud.com) and applied for a valid AppID and AppSign. For details, please refer to "Project Information" in [Console - Project Management](/console/project-info).
 
-<Warning title="Note">
+<Warning title="Warning">
 
 The SDK also supports Token authentication. If you have higher security requirements for the project, it is recommended to upgrade the authentication method. For details, please refer to [How to upgrade from AppSign authentication to Token authentication](http://doc-zh.zego.im/faq/token_upgrade?product=ExpressVideo).
 </Warning>
@@ -93,7 +93,7 @@ Call the [createEngine](@createEngine) interface and pass the applied AppID and 
 
 Select an appropriate scenario based on the actual audio/video business of the App. For details, please refer to [Scenario-based Audio/Video Configuration](/real-time-video-cocos-creator/quick-start/scenario-based-audio-video-configuration) documentation, and pass the selected scenario enumeration to the parameter **scenario**.
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 The SDK also supports Token authentication. If you have higher security requirements for the project, it is recommended to upgrade the authentication method. For details, please refer to [How to upgrade from AppSign authentication to Token authentication](http://doc-zh.zego.im/faq/token_upgrade?product=ExpressVideo).
@@ -101,7 +101,7 @@ The SDK also supports Token authentication. If you have higher security requirem
 </Warning>
 
 
-<Warning title="Note">If it is a voice scenario, please be sure to call `enableCamera(false)` to turn off the camera to avoid starting video capture and publishing, which generates additional video traffic.</Warning>
+<Warning title="Warning">If it is a voice scenario, please be sure to call `enableCamera(false)` to turn off the camera to avoid starting video capture and publishing, which generates additional video traffic.</Warning>
 
 ```ts
 // Define SDK engine object
@@ -119,7 +119,7 @@ this.engine = ZegoExpressEngine.createEngine(profile, this)
 
 You can listen to and handle event callbacks of interest by implementing a class that implements the [ZegoEventHandler](@-ZegoEventHandler) interface and implementing the required callback methods. Then pass the instantiated object as the `eventHandler` parameter to the [createEngine](@createEngine) method or pass it to [setEventHandler](https://doc-zh.zego.im/article/api?doc=Express_Video_SDK_API~typescript_cocos-creator~class~ZegoExpressEngine#set-event-handler) to register callbacks.
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 It is recommended to register callbacks immediately after creating the engine to avoid delaying registration and missing event notifications.
@@ -149,7 +149,7 @@ Class 'NewComponent' incorrectly implements interface 'ZegoEventHandler'.
 
 Therefore, you need to implement the [onDebugError](@onDebugError) function.
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 
@@ -214,7 +214,7 @@ According to actual needs, listen to the event notifications you care about afte
 
 - [onRoomStreamUpdate](@onRoomStreamUpdate) Stream status update callback. After logging into the room, when users in the room add or remove audio/video streams, the SDK will notify through this callback.
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 - Only when calling the [loginRoom](@loginRoom) interface to log into the room and passing in [ZegoRoomConfig](@-ZegoRoomConfig) configuration with the `isUserStatusNotify` parameter set to `true` can users receive the [onRoomUserUpdate](@onRoomUserUpdate) callback.
@@ -249,7 +249,7 @@ onRoomStreamUpdate(roomID: string, updateType: ZegoUpdateType, streamList: ZegoS
 
 Call the [startPublishingStream](@startPublishingStream) interface and pass the stream ID parameter `streamID` to send the local audio/video stream to remote users.
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 Within the same AppID, ensure that streamID is globally unique. If within the same AppID, different users each publish a stream with the same streamID, the user who publishes later will fail to publish.
@@ -440,7 +440,7 @@ this.engine.stopPreview()
 
 Call the [stopPlayingStream](@stopPlayingStream) interface to stop playing remote published audio/video streams.
 
-<Warning title="Note">
+<Warning title="Warning">
 If developers receive a "decrease" notification for audio/video streams through the [onRoomStreamUpdate](@onRoomStreamUpdate) callback, please call the [stopPlayingStream](@stopPlayingStream) interface in time to stop playing to avoid playing empty streams and generating additional costs; or, developers can choose an appropriate time according to their own business needs and actively call the [stopPlayingStream](@stopPlayingStream) interface to stop playing.
 </Warning>
 

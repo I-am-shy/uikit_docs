@@ -30,7 +30,7 @@ paths:
 
         Before implementing single-stream transcoding, ensure that:
 
-        - You have created a project in the [ZEGOCLOUD Console](https://console.zego.im) and applied for a valid AppId and ServerSecret. For details, please refer to [Console - Project Information](/console/project-info).
+        - You have created a project in the [ZEGOCLOUD Console](https://console.zegocloud.com) and applied for a valid AppId and ServerSecret. For details, please refer to [Console - Project Information](/console/project-info).
         - You have enabled the "Stream Mixing" service permission in the [ZEGOCLOUD Console](https://console.zego.im). For details, please refer to [Console - Service Configuration - Stream Mixing](/console/service-configuration/enable-stream-mixing-service), or contact ZEGOCLOUD technical support to enable it.
 
         <Note title="Rate Limit">100 requests/second</Note>

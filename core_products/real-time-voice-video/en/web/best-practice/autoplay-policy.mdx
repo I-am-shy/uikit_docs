@@ -37,7 +37,7 @@ Use the media stream playback component [ZegoStreamView](/article/api?doc=Expres
 
 2. Listen for the autoplay failure error event. When autoplay fails, display a dialog or button to guide the user to interact with the page, then call the [ZegoStreamView.resume](/article/api?doc=Express_Video_SDK_API~javascript_web~class~ZegoStreamView#resume) interface to resume playback.
 
-  <Warning title="Note">
+  <Warning title="Warning">
 
   Performing the above operations in most browsers can avoid autoplay failures. However, since there are differences in autoplay policy implementations among browser vendors, even if users are guided to interact with the page in advance or set mute, autoplay failure errors cannot be completely avoided. For example, in iOS Safari browser, WeChat browser and its mini program's Webview, autoplay restrictions are relatively strict, **so the handling in step 2 as a fallback strategy must be retained**.
   </Warning>

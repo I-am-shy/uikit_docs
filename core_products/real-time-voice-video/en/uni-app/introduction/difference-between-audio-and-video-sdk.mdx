@@ -16,11 +16,11 @@ date: "2024-04-03"
     - 在实时音视频 SDK 中的效果为：启动麦克风、启动摄像头，并且如果有在视图模板中，使用 `<zego-local-view>` 视图标签，则 SDK 会在该视图中渲染预览画面。
     - 在实时语音 SDK 中的效果为：启动麦克风。开发者可以在调用此 API 时，不使用 `<zego-local-view>` 视图标签。
 
-<Warning title="注意">
+<Warning title="Warning">
 
 
 
-在实时语音 Flutter / Electron / uni-app / Unity3D / React-Native SDK 上调用 `startPreview` 时，仍然会启动摄像头；开发者可以在调用 `startPreview` 前，先调用 `enableCamera` 关闭摄像头，以避免 SDK 请求摄像头权限。 
+在实时语音 Flutter / Electron / uni-app / Unity3D / React-Native SDK 上调用 `startPreview` 时，仍然会启动摄像头；开发者可以在调用 `startPreview` 前，先调用 `enableCamera` 关闭摄像头，以避免 SDK 请求摄像头权限。
 
 </Warning>
 
@@ -31,7 +31,7 @@ date: "2024-04-03"
     - 在实时音视频 SDK 中的效果为：开始拉流，播放拉到的流的音频，并且如果开发者在视图模板中使用 `<zego-remote-view>` 视图标签，则 SDK 会在该视图中渲染拉到的流的视频画面。
     - 在实时语音 SDK 中的效果为：开始拉流，播放拉到的流的音频。开发者可以在调用此 API 时，不使用 `<zego-remote-view>` 视图标签。
 
-<Warning title="注意">
+<Warning title="Warning">
 
 
 

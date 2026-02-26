@@ -10,7 +10,7 @@ date: "2024-09-06"
 
 Object Segmentation is a value-added capability provided by the Express SDK. It uses AI algorithms to identify content in video frames and set `transparency information` for each pixel. Pixels in the main subject area are set to "opaque", while pixels outside the main subject area are set to "transparent". Developers can use this transparency information to apply different processing to the main subject and background areas, enabling various features.
 
-<Warning title="Note">
+<Warning title="Warning">
 - The official SDK does not include "Object Segmentation" related features. If needed, please contact ZEGOCLOUD Technical Support for a special build and provide your AppID to enable the relevant permissions.
 - "Object Segmentation" is a paid feature. Please contact ZEGOCLOUD sales for trial access or official pricing information.
 </Warning>
@@ -103,7 +103,7 @@ Before using the Object Segmentation feature, ensure that:
 
 ## Implementation Flow
 
-<Warning title="Note">
+<Warning title="Warning">
 - Enabling Object Segmentation will consume additional system resources. To ensure user experience, currently only one channel's published stream can have Object Segmentation enabled.
 - If using custom pre-processing third-party filters, ensure that the third-party filters support Alpha channel pass-through functionality.
 </Warning>
@@ -163,7 +163,7 @@ For the specific flow of initialization and room login, refer to "[Create Engine
 
 Call the [videoObjectSegmentationStateChanged](https://www.zegocloud.com/docs/unique-api/express-video-sdk/en/javascript_react-native/interfaces/_zegoexpresseventhandler_.zegoeventlistener.html#videoobjectsegmentationstatechanged) interface to listen for Object Segmentation state callbacks.
 
-<Warning title="Note">
+<Warning title="Warning">
 The Object Segmentation state callback depends on starting preview or publishing stream. That is, to listen for the [videoObjectSegmentationStateChanged](https://www.zegocloud.com/docs/unique-api/express-video-sdk/en/javascript_react-native/interfaces/_zegoexpresseventhandler_.zegoeventlistener.html#videoobjectsegmentationstatechanged) callback, you need to call preview [startPreview](https://www.zegocloud.com/docs/unique-api/express-video-sdk/en/javascript_react-native/classes/_zegoexpressengine_.zegoexpressengine.html#startpreview) or publishing stream [startPublishingStream](https://www.zegocloud.com/docs/unique-api/express-video-sdk/en/javascript_react-native/classes/_zegoexpressengine_.zegoexpressengine.html#startpublishingstream).
 </Warning>
 
@@ -178,7 +178,7 @@ ZegoExpressEngine.instance().on('videoObjectSegmentationStateChanged', (state, c
 
 ### Use Object Segmentation to Implement Different Business Features
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 If developers need to update the Object Segmentation type or background processing type, they need to modify the [ZegoObjectSegmentationConfig](https://www.zegocloud.com/docs/unique-api/express-video-sdk/en/javascript_react-native/classes/_zegoexpressdefines_.zegoobjectsegmentationconfig.html) configuration and call the [enableVideoObjectSegmentation](https://www.zegocloud.com/docs/unique-api/express-video-sdk/en/javascript_react-native/classes/_zegoexpressengine_.zegoexpressengine.html#enablevideoobjectsegmentation) interface again to enable Object Segmentation. The Object Segmentation effect will be updated, and the result will be notified to developers through the [videoObjectSegmentationStateChanged](https://www.zegocloud.com/docs/unique-api/express-video-sdk/en/javascript_react-native/interfaces/_zegoexpresseventhandler_.zegoeventlistener.html#videoobjectsegmentationstatechanged) callback.
@@ -204,7 +204,7 @@ ZegoExpressEngine.instance().enableVideoObjectSegmentation(enable, config, ZegoP
 #### Virtual Background
 
 <Accordion title="Implement virtual background using Object Segmentation" defaultOpen="false">
-<Warning title="Note">
+<Warning title="Warning">
 - When using this feature, developers should pay attention to the aspect ratio of custom images, otherwise parts of the image that exceed the view will be cropped.
 - Currently supports "PNG" and "JPEG" image formats, i.e., image files with ".png", ".jpg", and ".jpeg" extensions.
 </Warning>
@@ -227,7 +227,7 @@ ZegoExpressEngine.instance().enableVideoObjectSegmentation(enable, config, ZegoP
 <a name="enableAlphaChannelVideoEncoder"></a>
 
 <Accordion title="Implement transparent background using Object Segmentation" defaultOpen="false">
-<Warning title="Note">
+<Warning title="Warning">
 
 
 If developers need to implement business functions similar to "Presenter Mode", they need to mix the "main subject video" with "video content to be mixed" into a single video stream on the business side.
@@ -252,7 +252,7 @@ ZegoExpressEngine.instance().enableVideoObjectSegmentation(enable, config, ZegoP
 <Accordion title="Use Alpha Channel to transmit segmented subject" defaultOpen="false">
 If the publishing stream side needs to transmit the segmented subject video to the playing stream side through the Alpha channel for subject rendering, first call the [enableAlphaChannelVideoEncoder](https://www.zegocloud.com/docs/unique-api/express-video-sdk/en/javascript_react-native/classes/_zegoexpressengine_.zegoexpressengine.html#enablealphachannelvideoencoder) interface to set the encoder to support the transparent channel, then call the [startPublishingStream](https://www.zegocloud.com/docs/unique-api/express-video-sdk/en/javascript_react-native/classes/_zegoexpressengine_.zegoexpressengine.html#startpublishingstream) interface to publish the stream for smooth transmission to the playing stream side.
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 Currently only supports transparent channel data arranged below RGB or YUV data.
@@ -296,7 +296,7 @@ ZegoExpressEngine.instance().startPublishingStream(streamID);
 ### (Optional) Set Alpha Channel Rendering on Playing Stream Side and Start Playing Stream
 
 <Accordion title="Set Alpha Channel rendering on playing stream side and start playing stream" defaultOpen="false">
-<Warning title="Note">
+<Warning title="Warning">
 
 
 Alpha channel rendering on the playing stream side is only required when the publishing stream side has enabled Alpha channel transmission.

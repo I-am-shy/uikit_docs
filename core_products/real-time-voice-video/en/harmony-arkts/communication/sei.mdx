@@ -12,7 +12,7 @@ date: "2024-02-02"
 
 一般可用于视频画面的精准布局、远端歌词同步、直播答题等应用场景。
 
-<Note title="说明">
+<Note title="Note">
 
 
 SEI 的相关概念及原理请参考 [如何理解和使用 SEI（媒体补充增强信息）](https://doc-zh.zego.im/faq/sei?product=ExpressVideo&platform=web)。
@@ -70,7 +70,7 @@ sequenceDiagram
 3. 调用 [startPlayingStream](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/ets_ohos/classes/_zegoexpressengine_.zegoexpressengine.html#startplayingstream) 接口拉流。
 4. 在拉流成功后，接收到推流端发送的 SEI 信息之后触发 [onPlayerRecvSEI](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/ets_ohos/interfaces/_zegoexpresseventhandler_.zegoeventlistener.html#onplayerrecvsei) 回调。
 
-<Warning title="注意">
+<Warning title="Warning">
 
 
 - SDK 目前支持在 H.264 编码的视频中进行传输 SEI 信息。

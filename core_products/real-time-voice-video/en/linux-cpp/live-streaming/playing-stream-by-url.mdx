@@ -63,7 +63,7 @@ Start playing stream by calling the [startPlayingStream](https://doc-zh.zego.im/
 
 When playing stream, if an error occurs, please refer to [Stream Playing Error Codes](/real-time-video-linux-cpp/client-sdk/error-code).
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 - Before playing stream by URL, please ensure you have logged in the room.
@@ -94,7 +94,7 @@ engine->stopPlayingStream(streamID);
 <Accordion title="Listen to Stream Playing Related Event Notifications" defaultOpen="false">
 You can listen to the result of stream playing from CDN through [onPlayerStateUpdate](https://doc-zh.zego.im/article/api?doc=Express_Video_SDK_API~CPP_linux~class~zego-express-i-zego-event-handler#on-player-state-update).
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 If you are not using ZEGO SDK for publishing, but using third-party publishing tools to publish directly, but using ZEGO SDK for playing, in this scenario the publishing end has not used ZEGO SDK to join the room, and the playing end will not receive the [onRoomStreamUpdate](@onRoomStreamUpdate) callback by default. You can use the [Add Room Stream](/real-time-video-server/api-reference/room/add-stream) and [Delete Room Stream](/real-time-video-server/api-reference/room/delete-stream) functions to let the playing end receive the [onRoomStreamUpdate ](@onRoomStreamUpdate) callback.

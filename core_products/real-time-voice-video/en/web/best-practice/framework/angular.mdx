@@ -111,7 +111,7 @@ Create a [ZegoExpressEngine ](https://doc-zh.zego.im/article/api?doc=Express_Vid
 
 <Note title="Note">
 - "server" is the access server address. For information on how to obtain it, please refer to
-[Console - Project Information](/console/project-info#配置信息) .
+[Console - Project Information](/console/project-info#configuration-information).
 - For SDK version 3.6.0 and above, server can be set to an empty string, null, undefined, or any arbitrary string, but cannot be left empty.
 </Note>
 
@@ -164,7 +164,7 @@ this.zg.on('roomStateChanged', (roomID, reason, errorCode, extendData) => {
 <Accordion title="Check compatibility" defaultOpen="false">
 Before implementing stream publishing and playing functionality, developers can call the [checkSystemRequirements](https://doc-zh.zego.im/article/api?doc=Express_Video_SDK_API~javascript_web~class~ZegoExpressEngine#check-system-requirements) interface to check browser compatibility.
 
-For browser versions supported by the SDK, please refer to "Prepare Environment" in [Download Example Source Code](/real-time-video-web/quick-start/run-example-code#准备环境).
+For browser versions supported by the SDK, please refer to "Prepare Environment" in [Download Example Source Code](/real-time-video-web/quick-start/run-example-code#prepare-environment).
 
 ```js
 const result = await this.zg.checkSystemRequirements();
@@ -196,7 +196,7 @@ Logging into a room requires a Token for identity verification. For information 
 
 Call the [loginRoom ](https://doc-zh.zego.im/article/api?doc=Express_Video_SDK_API~javascript_web~class~ZegoExpressEngine#login-room) interface, pass in the room ID parameter "roomID", "token", and the user parameter "user", and log in to the room by passing in the "config" parameter according to the actual situation.
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 - Before logging into a room, please register all callbacks that need to be monitored after logging into the room. After successfully logging into the room, you can receive relevant callbacks.
@@ -225,7 +225,7 @@ According to actual application needs, listen to event notifications of interest
 
 - [roomStreamUpdate](https://doc-zh.zego.im/article/api?doc=Express_Video_SDK_API~javascript_web~interface~ZegoRTCEvent#room-stream-update): Stream status update callback. After logging into the room, when users add or delete audio/video streams in the room, the SDK will notify through this callback.
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 
@@ -288,7 +288,7 @@ this.zg.on('roomStreamUpdate', async (roomID, updateType, streamList, extendedDa
 
 1. Before starting to publish a stream, you need to create a local audio/video stream. Call the [createZegoStream](https://doc-zh.zego.im/article/api?doc=Express_Video_SDK_API~javascript_web~class~ZegoExpressEngine#create-zego-stream) interface, which by default captures camera footage and microphone sound.
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 After calling the [createZegoStream](https://doc-zh.zego.im/article/api?doc=Express_Video_SDK_API~javascript_web~class~ZegoExpressEngine#create-zego-stream) interface, you need to wait for the ZEGO server to return the media stream object before performing subsequent operations.
@@ -337,7 +337,7 @@ You can set audio/video related capture parameters through the following propert
 
 Call the [startPublishingStream](https://doc-zh.zego.im/article/api?doc=Express_Video_SDK_API~javascript_web~class~ZegoExpressEngine#start-publishing-stream) interface, pass in the stream ID parameter "streamID" and the stream object "localStream" obtained from creating the stream, and send the local audio/video stream to remote users.
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 - The value of the "streamID" parameter is customizable and must be globally unique within the entire AppID.
@@ -404,7 +404,7 @@ const remoteView = this.zg.createRemoteStreamView(this.remoteStream);
 remoteView.play("remote-video", {enableAutoplayDialog:true});
 ```
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 "streamID" must be globally unique within the entire AppID.

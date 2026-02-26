@@ -238,7 +238,7 @@ Specific scenario recommendations are as follows:
 </tbody></table>
 
 
-<Warning title="Note">
+<Warning title="Warning">
 
 - When playing streams on Web, there is no need to specify the encoding format. The SDK will automatically select the format based on the publishing encoding.
 - When Web selects VP8 encoding format and interoperates with Native UDP, Native needs to specify VP8 encoding format (supported by default build).
@@ -247,7 +247,7 @@ Specific scenario recommendations are as follows:
 
 Regardless of choosing H.264 or VP8, compatibility detection must first be performed on the browser being used. Developers can check browser compatibility through the [checkSystemRequirements](https://doc-zh.zego.im/article/api?doc=Express_Video_SDK_API~javascript_web~class~ZegoExpressEngine#check-system-requirements) interface, which is also a prerequisite for the SDK to automatically select encoding.
 
-<Note title="Description">
+<Note title="Note">
 
 Transcoding refers to converting video signals from one format to another. ZEGO services support conversion of audio and video encoding formats, resolution, bitrate, etc. Developers can refer to the [Stream Mixing Transcoding Example Demo](https://zegodev.github.io/zego-express-webrtc-sample/vp8/index.html). For questions, please contact ZEGOCLOUD Technical Support.
 

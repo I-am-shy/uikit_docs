@@ -29,7 +29,7 @@ Before listening to volume changes, ensure that:
 
 1. Listen to the sound wave callback interface and register the [soundLevelUpdate](@soundLevelUpdate) callback to receive changes in stream volume.
 
-<Note title="Description">
+<Note title="Note">
 
 
     Sound wave refers to the volume of a stream.
@@ -64,7 +64,7 @@ Before listening to volume changes, ensure that:
 
 1. Listen to the player plugin sound wave callback interface and register the [onSoundLevelUpdate](@onSoundLevelUpdate) callback to receive changes in stream volume.
 
-<Warning title="注意">
+<Warning title="Warning">
 
 In the Safari browser, when using MSE (Media Source Extensions) decoding to play audio, you cannot get the sound wave. If you need to get the sound wave, avoid using MSE decoding in the Safari browser.
 
@@ -139,7 +139,7 @@ player.enableSoundLevelMonitor(false);
     ```
 3. Play the stream based on the mixed streamID. If you need to get the mixed stream volume value, you need to enable SEI. For details, please refer to [Supplemental Enhancement Information (SEI)](/real-time-video-web/communication/sei).
 
-<Warning title="注意">
+<Warning title="Warning">
 
     The function of playing streams based on mixed streamID is not enabled by default. Please enable it by yourself in the [ZEGOCLOUD Console](https://console.zegocloud.com) before using it (for enabling steps, please refer to [Service Configuration - Stream Mixing](/console/service-configuration/enable-stream-mixing-service)), or contact ZEGO technical support to enable it.
 

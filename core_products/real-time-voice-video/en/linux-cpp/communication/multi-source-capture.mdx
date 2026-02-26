@@ -30,7 +30,7 @@ Before using multi-source capture functionality, please ensure:
 
 ## Implementation Flow
 
-<Warning title="Note">
+<Warning title="Warning">
 
 Real-time audio products only support setting audio capture sources.
 
@@ -62,7 +62,7 @@ auto engine = ZegoExpressSDK::createEngine(profile, nullptr);
 engine->setVideoSource(ZEGO_VIDEO_SOURCE_TYPE_CAMERA);
 ```
 
-<Note title="Description">
+<Note title="Note">
 
 - If you need to use custom video capture as the video capture source, you need to set the video capture source type to [ZegoVideoSourceTypeCustom](@ZegoVideoSourceTypeCustom), call the [enableCustomVideoCapture](@enableCustomVideoCapture) interface to set the video frame data type to be sent, and call the [sendCustomVideoCaptureRawData](@sendCustomVideoCaptureRawData) or [sendCustomVideoCaptureEncodedData](@sendCustomVideoCaptureEncodedData) interface to send video frame data to the SDK. For details, please refer to [Advanced Features - Custom Video Capture](/real-time-video-linux-cpp/video/custom-video-capture).
 - If you need to use media player as the video capture source, you need to call the [createMediaPlayer](@createMediaPlayer) interface to create a media player first, then call the [setVideoSource](@setVideoSource) interface to set the video capture source type to [ZegoVideoSourceTypePlayer](@ZegoVideoSourceTypePlayer) and set the media player instance index used by the video capture source, and then use the newly created media player to load resources and play. For details, please refer to [Media Player](/real-time-video-linux-cpp/other/media-player).
@@ -78,7 +78,7 @@ engine->setVideoSource(ZEGO_VIDEO_SOURCE_TYPE_CAMERA);
 engine->setAudioSource(ZEGO_AUDIO_SOURCE_TYPE_MICROPHONE);
 ```
 
-<Note title="Description">
+<Note title="Note">
 
 
 - If you need to use custom audio capture as the audio capture source, you need to set the audio capture source type to [ZegoAudioSourceTypeCustom](@ZegoAudioSourceTypeCustom), and call interfaces such as [sendCustomAudioCaptureAACData](@sendCustomAudioCaptureAACData) or [sendCustomAudioCapturePCMData](@sendCustomAudioCapturePCMData) to send audio data to the SDK. For details, please refer to [Advanced Features - Custom Audio Capture and Rendering](/real-time-video-linux-cpp/audio/custom-audio-capture-and-rendering).

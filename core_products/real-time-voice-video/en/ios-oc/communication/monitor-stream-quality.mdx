@@ -64,7 +64,7 @@ Different versions of the [onNetworkQuality](@onNetworkQuality) callback have di
 </tbody></table>
 
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 
@@ -326,7 +326,7 @@ In the case of not publishing stream, after calling the publishing interface, wh
 
 You can register [onPublisherCapturedVideoFirstFrame](@onPublisherCapturedVideoFirstFrame) to receive the video first frame callback. After the publishing interface is called successfully, this callback will be received when the SDK captures the first frame of video data.
 
-<Note title="Description">
+<Note title="Note">
 In the case of not publishing stream or not previewing, after calling the publishing or preview interface, when the engine of the SDK's internal audio/video module starts, the video data of the local device will be captured and this callback will be received. You can use this callback to determine whether the SDK actually captures video data. If this callback is not received, it means the video capture device is occupied or abnormal.
 </Note>
 
@@ -358,7 +358,7 @@ You can register [onPlayerRecvVideoFirstFrame](@onPlayerRecvVideoFirstFrame) to 
 
 You can register [onPlayerRenderVideoFirstFrame](@onPlayerRenderVideoFirstFrame) to listen for the playing stream end video render first frame callback. After the playing interface is called successfully, this callback will be received when the SDK plays and renders the first frame of video data.
 
-<Note title="Description">
+<Note title="Note">
 You can use this callback to calculate first frame time or update the UI components of the playing stream.
 </Note>
 
@@ -373,7 +373,7 @@ You can use this callback to calculate first frame time or update the UI compone
 
 You can register [onPublisherVideoSizeChanged](@onPublisherVideoSizeChanged) to listen for the capture video size change callback. After the stream is successfully published, if the video capture resolution changes during publishing, this callback will be received.
 
-<Note title="Description">
+<Note title="Note">
 
 When not publishing stream or not previewing, for the first publishing or first preview, when the engine of the SDK's internal audio/video module starts, the video data of the local device will be captured, and the capture resolution will change at this time.
 
@@ -390,7 +390,7 @@ You can use this callback to remove cover operations on the local preview UI and
 
 You can register [onPlayerVideoSizeChanged](@onPlayerVideoSizeChanged) to get playing stream resolution change notifications. After the stream is successfully played, if the video resolution changes during playing, this callback will be received, and users can adjust the display based on the final resolution of the stream.
 
-<Note title="Description">
+<Note title="Note">
 
 - If the played stream only has audio data, this callback will not be received.
 - If the publishing stream end triggers the SDK's internal flow control due to network issues, it may dynamically reduce the publishing stream end's encoding resolution, and this callback will also be received.

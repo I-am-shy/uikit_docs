@@ -6,155 +6,155 @@ date: "2024-01-02"
 
 - - -
 
-## 功能简介
+## Feature Overview
 
-### 功能描述
+### Feature Description
 
-H.265 是一种高效的视频编码标准，旨在有限带宽下传输更高质量的网络视频。开发者可以在编码或混流时输出 H.265 格式的视频码流。
+H.265 is an efficient video coding standard designed to transmit higher quality network video over limited bandwidth. Developers can output H.265 format video streams during encoding or stream mixing.
 
-<Note title="说明">
-- ZEGO Express SDK 从 2.12.0 版本（2021-09-09 发布）开始支持该功能。
-- 如果您需要支持 H.265 视频编码，则需要将线上的 ZEGO Express SDK 都升级到 2.12.0 或以上版本，否则线上版本解码 H.265 可能会出现异常。
+<Note title="Note">
+- ZEGO Express SDK has supported this feature since version 2.12.0 (released on 2021-09-09).
+- If you need to support H.265 video encoding, you need to upgrade all online ZEGO Express SDK versions to 2.12.0 or above, otherwise the online version may experience anomalies when decoding H.265.
 </Note>
 
-H.265 和 H.264 的区别如下：
+The differences between H.265 and H.264 are as follows:
 
 <table>
 
   <tbody><tr>
-    <th>差异项</th>
+    <th>Difference Item</th>
     <th>H.264</th>
     <th>H.265</th>
   </tr>
   <tr>
-    <td>同等画质下的码率</td>
+    <td>Bitrate at same picture quality</td>
     <td>-</td>
-    <td>H.265 相比于 H.264 可以节约 30% 码率（实测值）。</td>
+    <td>H.265 can save 30% bitrate compared to H.264 (measured value).</td>
   </tr>
   <tr>
-    <td>软编性能</td>
+    <td>Software encoding performance</td>
     <td>-</td>
-    <td>H.265&nbsp;消耗的算力是 H.264 的 3 倍左右。</td>
+    <td>H.265 consumes about 3 times the computing power of H.264.</td>
   </tr>
   <tr>
-    <td>软解性能</td>
+    <td>Software decoding performance</td>
     <td>-</td>
-    <td>H.265&nbsp;消耗的算力是 H.264 的 1.5 倍左右。</td>
+    <td>H.265 consumes about 1.5 times the computing power of H.264.</td>
   </tr>
   <tr>
-    <td>硬件生态</td>
-    <td>所有机型基本都支持硬编和硬解。</td>
-    <td>大部分机型都支持硬编，绝大部分机型都支持硬解。</td>
+    <td>Hardware ecosystem</td>
+    <td>Basically all device models support hardware encoding and decoding.</td>
+    <td>Most device models support hardware encoding, and the vast majority of device models support hardware decoding.</td>
   </tr>
   <tr>
-    <td>混流输出</td>
-    <td>支持。</td>
-    <td>支持，但价格比 H.264 混流输出更贵，详情可咨询 ZEGO 商务人员。</td>
+    <td>Stream mixing output</td>
+    <td>Supported.</td>
+    <td>Supported, but the price is more expensive than H.264 stream mixing output. For details, please consult ZEGO business personnel.</td>
   </tr>
   <tr>
-    <td>适用场景</td>
-    <td>所有场景。</td>
-    <td>推荐在直播和音视频互动场景使用。</td>
+    <td>Applicable scenarios</td>
+    <td>All scenarios.</td>
+    <td>Recommended for live streaming and audio/video interactive scenarios.</td>
   </tr>
 </tbody></table>
 
 
-### 应用场景
- 在如下应用场景中，可使用 H.265 进行编码：
+### Application Scenarios
+ H.265 encoding can be used in the following application scenarios:
 
 <table>
 
 <tbody><tr>
-<th>应用场景类型</th>
-<th>说明</th>
+<th>Application Scenario Type</th>
+<th>Description</th>
 </tr>
 <tr>
-<td>秀场直播、电商直播、互动直播、游戏直播</td>
-<td>通过 H.265 编码，将码率降低 30% 码率（实测值），分发给万千观众，极大降低 CDN 分发成本。</td>
+<td>Show live streaming, e-commerce live streaming, interactive live streaming, gaming live streaming</td>
+<td>Through H.265 encoding, reduce the bitrate by 30% (measured value) and distribute to thousands of viewers, greatly reducing CDN distribution costs.</td>
 </tr>
 <tr>
-<td>视频通话、视频会议、在线教育</td>
-<td>通过 H.265 编码，在同等码率下，提高画面清晰度，让这些场景通话效果更好。</td>
+<td>Video call, video conference, online education</td>
+<td>Through H.265 encoding, improve picture clarity at the same bitrate, making call effects better in these scenarios.</td>
 </tr>
 </tbody></table>
-<Warning title="注意">
-目前 Web 和小程序平台，不支持 H.265 拉流。
+<Warning title="Warning">
+Currently, Web and Mini Program platforms do not support H.265 stream playing.
 </Warning>
 
 
-### 概念解释
+### Concept Explanation
 
-- 视频编码：通过特定的压缩技术，将原始视频格式的文件转换成另一种视频格式的方式，便于传输和存储。
-- 混流：是一种把多路音视频流从云端混合成一路流的技术，支持手动混流、自动混流和全自动混流三种方式，详情请参考 [混流](/real-time-video-windows-cpp/live-streaming/stream-mixing)。
-- 转推 CDN：将音视频流从 ZEGO 音视频云推送到 CDN 的过程，详情请参考 [通过 CDN 推流/拉流](/real-time-video-windows-cpp/live-streaming/using-cdn-for-live-streaming)。
-- 连麦：是房间内用户之间互动的一种形式，通过 [startPublishingStream](@startPublishingStream) 接口推自己流的同时，也调用 [startPlayingStream](@startPlayingStream) 接口拉对方的流，两个用户连麦成功之后即可进行互动通话。
+- Video encoding: A method of converting original video format files into another video format through specific compression technology for easy transmission and storage.
+- Stream mixing: A technology that mixes multiple audio and video streams from the cloud into one stream. It supports three methods: manual stream mixing, automatic stream mixing, and fully automatic stream mixing. For details, please refer to [Stream Mixing](/real-time-video-windows-cpp/live-streaming/stream-mixing).
+- Forward to CDN: The process of pushing audio and video streams from ZEGO audio and video cloud to CDN. For details, please refer to [Publish/Play Streams via CDN](/real-time-video-windows-cpp/live-streaming/using-cdn-for-live-streaming).
+- Co-hosting: A form of interaction between users in a room. By pushing your own stream through the [startPublishingStream](@startPublishingStream) interface while calling the [startPlayingStream](@startPlayingStream) interface to pull the other party's stream, two users can engage in interactive calls after successfully co-hosting.
 
-## 服务开通
+## Service Activation
 
-1. 使用混流输出 H.265 码流时，需要联系 ZEGO 技术支持开通服务。
-2. 使用混流输出 H.265 码流时，计费有变化，请联系 ZEGO 商务人员了解具体的费用情况。
+1. When using stream mixing to output H.265 streams, you need to contact ZEGO technical support to activate the service.
+2. When using stream mixing to output H.265 streams, there are changes in billing. Please contact ZEGO business personnel for specific pricing information.
 
-## 示例源码下载
+## Example Source Code Download
 
-请参考 [下载示例源码](/real-time-video-windows-cpp/quick-start/run-example-code) 获取源码。
+Please refer to [Download Example Source Code](/real-time-video-windows-cpp/quick-start/run-example-code) to obtain the source code.
 
-相关源码请查看 “/ZegoExpressExample/Examples/AdvancedStreaming/H265” 目录下的文件。
+For related source code, please check the files in the “/ZegoExpressExample/Examples/AdvancedStreaming/H265” directory.
 
-## 前提条件
+## Prerequisites
 
-在使用 H.265 编解码功能之前，请确保：
+Before using the H.265 encoding and decoding feature, please ensure:
 
-- 已在 [ZEGO 控制台](https://console.zego.im) 创建项目，并申请有效的 AppID 和 AppSign，详情请参考 [控制台 - 项目信息](/console/project-info)。
-- 已在项目中集成 ZEGO Express SDK，并实现了基本的音视频推拉流功能，详情请参考 [快速开始 - 集成](/real-time-video-windows-cpp/quick-start/integrating-sdk) 和 [快速开始 - 实现流程](/real-time-video-windows-cpp/quick-start/implementing-video-call)。
+- You have created a project in the [ZEGO Console](https://console.zego.im) and applied for a valid AppID and AppSign. For details, please refer to [Console - Project Information](/console/project-info).
+- You have integrated ZEGO Express SDK in your project and implemented basic audio and video streaming functionality. For details, please refer to [Quick Start - Integration](/real-time-video-windows-cpp/quick-start/integrating-sdk) and [Quick Start - Implementation](/real-time-video-windows-cpp/quick-start/implementing-video-call).
 
 
-## 实现方法
+## Implementation Method
 
-### 检测 H.265 编解码能力
+### Detect H.265 Encoding and Decoding Capabilities
 
-**检测 H.265 编码能力**
+**Detect H.265 Encoding Capability**
 
-一些老的或低端的移动机型，不支持 H.265 视频**编码**。此时开发者需要在**推流前**先通过 [isVideoEncoderSupported](@isVideoEncoderSupported) 接口判断本机是否支持 H.265 视频编码能力。如果支持，才能在推流前通过 [setVideoConfig](@setVideoConfig) 接口设置 H.265 视频编码类型，否则不生效。
+Some older or low-end mobile device models do not support H.265 video **encoding**. In this case, developers need to determine whether the local device supports H.265 video encoding capability through the [isVideoEncoderSupported](@isVideoEncoderSupported) interface **before streaming**. Only if supported, the H.265 video encoding type can be set through the [setVideoConfig](@setVideoConfig) interface before streaming, otherwise it will not take effect.
 
-**检测 H.265 解码能力**
+**Detect H.265 Decoding Capability**
 
-一些老的或低端的移动机型，不支持 H.265 视频**解码**。在支持拉不同视频码流的场景下，如 CDN 场景，开发者需要在**拉流前**先通过 [isVideoDecoderSupported](@isVideoDecoderSupported) 接口判断本机是否支持 H.265 视频解码能力。如果支持，才能拉 H.265 视频码流，否则只能拉其他格式的视频码流，例如 H.264。
+Some older or low-end mobile device models do not support H.265 video **decoding**. In scenarios that support pulling different video streams, such as CDN scenarios, developers need to determine whether the local device supports H.265 video decoding capability through the [isVideoDecoderSupported](@isVideoDecoderSupported) interface **before playing stream**. Only if supported, H.265 video streams can be pulled, otherwise only other format video streams can be pulled, such as H.264.
 
-### 连麦混流直播
+### Co-hosting Stream Mixing Live Streaming
 
-连麦混流直播包括如下两种实现方式，开发者可以根据实际情况按需接入：
-- 混出不同格式的码流（推荐）：混流服务直接输出一路 H.265 混流和一路 H.264 混流，该场景只需要在混流服务进行一次转码，无需 CDN 再转码。相比于混流推 CDN 转码，具有更高的清晰度，费用也更便宜，推荐使用。
-- 混流推 CDN 转码：混流服务直接输出一路 H.265 混流，需要通过 CDN 的转码能力，转出一路 H.265 和一路 H.264 码流。
+Co-hosting stream mixing live streaming includes the following two implementation methods. Developers can integrate as needed according to the actual situation:
+- Mix out streams of different formats (recommended): The stream mixing service directly outputs one H.265 mixed stream and one H.264 mixed stream. This scenario only requires one transcoding in the stream mixing service, without the need for CDN transcoding. Compared with stream mixing pushing to CDN for transcoding, it has higher clarity and lower cost, so it is recommended.
+- Stream mixing pushes to CDN for transcoding: The stream mixing service directly outputs one H.265 mixed stream, which needs to be transcoded by the CDN's transcoding capability to output one H.265 and one H.264 stream.
 
-<Warning title="注意">
-需要联系 ZEGO 技术支持开通 CDN 转码功能。
+<Warning title=”Warning”>
+You need to contact ZEGO technical support to activate the CDN transcoding feature.
 </Warning>
 
 
 
-**混出不同格式的码流（推荐）**
+**Mix out streams of different formats (recommended)**
 
-该场景下，混流服务通过 ZEGO 实时音视频云接收到主播和连麦嘉宾的推流后，直接输出一路 H.265 混流和一路 H.264 混流，并把两路流都推流到 CDN，观众可以根据自身终端设备是否支持 H.265 视频解码，选择从 CDN 拉 H.265 码流或 H.264 码流。
+In this scenario, after the stream mixing service receives the streams from the host and co-hosting guests through ZEGO real-time audio and video cloud, it directly outputs one H.265 mixed stream and one H.264 mixed stream, and pushes both streams to the CDN. The audience can choose to pull H.265 streams or H.264 streams from the CDN according to whether their terminal devices support H.265 video decoding.
 
-<Frame width="512" height="auto" caption="">
-  <img src="https://doc-media.zego.im/core_products/real-time-voice-video/en/architecture/Mix_en.jpeg" />
+<Frame width=”512” height=”auto” caption=””>
+  <img src=”https://doc-media.zego.im/core_products/real-time-voice-video/en/architecture/Mix_en.jpeg” />
 </Frame>
 
-- **主播端**
+- **Host Side**
 
-  1. 通过构造函数 [ZegoMixerTask](@-ZegoMixerTask) 新建一个混流任务对象，然后调用实例方法分别设置输入、输出等参数。
-  2. 通过混流任务对象 [ZegoMixerTask](@-ZegoMixerTask) 中的 [inputList](@inputList-ZegoMixerTask) 属性设置混流任务输入流列表（混流输入中流的编码格式支持 H.264 和 H.265 ），默认最多支持输入 9 路流，请自行处理流布局。
-  3. 通过混流任务对象 [ZegoMixerTask](@-ZegoMixerTask) 中的 [outputList](@outputList-ZegoMixerTask) 属性设置混流任务输出流列表。假设当前场景下，混流服务直接转码出一路 H.264 混流和一路 H.265混流，即混流输出视频编码格式为 H.264 和 H.265。
-  4. 调用 [startMixerTask](@startMixerTask) 接口发起混流任务。
-  5. 开发者通知 App 的业务服务端流已新增。
+  1. Create a new stream mixing task object through the constructor [ZegoMixerTask](@-ZegoMixerTask), and then call instance methods to set input, output and other parameters respectively.
+  2. Set the input stream list for the stream mixing task through the [inputList](@inputList-ZegoMixerTask) property in the stream mixing task object [ZegoMixerTask](@-ZegoMixerTask) (the encoding formats of streams in stream mixing input support H.264 and H.265), and supports up to 9 input streams by default. Please handle the stream layout yourself.
+  3. Set the output stream list for the stream mixing task through the [outputList](@outputList-ZegoMixerTask) property in the stream mixing task object [ZegoMixerTask](@-ZegoMixerTask). Assuming the current scenario, the stream mixing service directly transcodes out one H.264 mixed stream and one H.265 mixed stream, that is, the stream mixing output video encoding format is H.264 and H.265.
+  4. Call the [startMixerTask](@startMixerTask) interface to initiate the stream mixing task.
+  5. The developer notifies the app's business server that the stream has been added.
 
   ```cpp
-  // 调用 startMixerTask 发起混流
-  // 请输入 taskID
-  std::string taskID = "";
+  // Call startMixerTask to initiate stream mixing
+  // Please enter taskID
+  std::string taskID = “”;
   ZegoMixerTask task(mixerTaskID);
 
-  // 请自行设置 videoConfig
+  // Please set videoConfig yourself
   ZegoMixerVideoConfig videoConfig;
   videoConfig.fps = 15;
   videoConfig.height = 720;
@@ -164,17 +164,17 @@ H.265 和 H.264 的区别如下：
   ZegoMixerAudioConfig audioConfig;
   task.audioConfig = audioConfig;
 
-  // 注意，混流输入中流的编码格式支持 H.264 和 H.265, 请自行处理流布局及输入
+  // Note, the encoding formats of streams in stream mixing input support H.264 and H.265, please handle stream layout and input yourself
   task.inputList = {};
 
-  // 混流两路输出
-  // 注意: 输出 target 可以是 streamID 或 CDN 地址，二者在观众端处理方式不同，该场景推荐直接传入 stremaID
-  // 注意: ZegoMixerOutput 中的码率优先级高于 ZegoMixerVideoConfig 中的码率
-  std::string h264StreamID = ""; // 请输入 h264StreamID
-  std::string h265StreamID = ""; // 请输入 h265StreamID
-  // 请输入 h264 码率，此码率为当前分辨率帧率(720p, 15fps)的推荐码率
+  // Stream mixing two outputs
+  // Note: The output target can be streamID or CDN address, the two are handled differently on the audience side, in this scenario it is recommended to directly pass in stremaID
+  // Note: The bitrate in ZegoMixerOutput has higher priority than the bitrate in ZegoMixerVideoConfig
+  std::string h264StreamID = “”; // Please enter h264StreamID
+  std::string h265StreamID = “”; // Please enter h265StreamID
+  // Please enter h264 bitrate, this bitrate is the recommended bitrate for the current resolution and frame rate (720p, 15fps)
   int h264Bitrate = 2244;
-  // 请输入 h265 码率，此码率为当前分辨率帧率(720p, 15fps)的推荐码率
+  // Please enter h265 bitrate, this bitrate is the recommended bitrate for the current resolution and frame rate (720p, 15fps)
   int h265Bitrate = 1795;
 
   // H.264 target
@@ -194,64 +194,64 @@ H.265 和 H.264 的区别如下：
   };
 
   engine->startMixerTask(task, [=](int errorCode, std::string extendData){
-      // 混流任务回调
+      // Stream mixing task callback
   });
 
-  // 开发者通知 App 的业务服务端流已新增
+  // The developer notifies the app's business server that the stream has been added
   ```
 
-- **观众端**
+- **Audience Side**
 
-  1. 观众端从 App 的业务服务端收到流新增通知。
-  2. 调用 [isVideoDecoderSupported](@isVideoDecoderSupported) 接口查询观众端自身设备是否支持 H.265 解码格式。
-      - 若支持，则调用 [startPlayingStream](@startPlayingStream) 接口从 CDN 拉 H.265 码流。
-      - 若不支持，则调用 [startPlayingStream](@startPlayingStream) 接口从 CDN 拉 H.264 码流。
+  1. The audience side receives a stream addition notification from the app's business server.
+  2. Call the [isVideoDecoderSupported](@isVideoDecoderSupported) interface to query whether the audience side's own device supports H.265 decoding format.
+      - If supported, call the [startPlayingStream](@startPlayingStream) interface to pull H.265 streams from the CDN.
+      - If not supported, call the [startPlayingStream](@startPlayingStream) interface to pull H.264 streams from the CDN.
 
-  ```objc
-  // 从 App 的业务服务端收到流新增通知
+  ```cpp
+  // Receive stream addition notification from the app's business server
 
   bool h265DecodeSupport = engine->isVideoDecoderSupported(ZegoVideoCodecID::ZEGO_VIDEO_CODEC_ID_H265);;
   // h264StreamID
   std::string h264StreamID = "";
   // h265StreamID
   std::string h265StreamID = "";
-  //winId为窗口句柄
+  //winId is the window handle
   ZegoCanvas canvas((void*)ui->playView->winId());
 
   if (h265DecodeSupport) {
-      // 支持 H.265 解码
+      // Supports H.265 decoding
       engine->startPlayingStream(h265StreamID, &canvas);
 
   }
   else {
-      // 不支持 H.265 解码
+      // Does not support H.265 decoding
       engine->startPlayingStream(h264StreamID, &canvas);
   }
   ```
 
-**混流后推 CDN 再转码**
+**Stream mixing then push to CDN for transcoding**
 
-该场景下，混流服务通过 ZEGO 实时音视频云接收到主播和连麦嘉宾的推流后，直接输出一路 H.265 混流，并把这路混流推流到 CDN，通过 CDN 的转码能力，观众可以根据自身终端设备是否支持 H.265 视频解码，选择从 CDN 拉 H.265 码流或 H.264 码流。
+In this scenario, after the stream mixing service receives the streams from the host and co-hosting guests through ZEGO real-time audio and video cloud, it directly outputs one H.265 mixed stream and pushes this mixed stream to the CDN. Through the CDN's transcoding capability, the audience can choose to pull H.265 streams or H.264 streams from the CDN according to whether their terminal devices support H.265 video decoding.
 
 <Frame width="512" height="auto" caption="">
   <img src="https://doc-media.zego.im/core_products/real-time-voice-video/en/architecture/MixCDN_en.jpeg" />
 </Frame>
 
-- **主播端**
+- **Host Side**
 
-  1. 通过构造函数 [ZegoMixerTask](@-ZegoMixerTask) 新建一个混流任务对象，然后调用实例方法分别设置输入、输出等参数。
-  2. 通过混流任务对象 [ZegoMixerTask](@-ZegoMixerTask) 中的 [inputList](@inputList-ZegoMixerTask) 属性设置混流任务输入流列表（混流输入中流的编码格式支持 H.264 和 H.265 ），默认最多支持输入 9 路流，请自行处理流布局。
-  3. 通过混流任务对象 [ZegoMixerTask](@-ZegoMixerTask) 中的 [outputList](@outputList-ZegoMixerTask) 属性设置混流任务输出流列表。假设当前场景下，混流服务直接输出一路 H.265 混流，即混流输出视频编码格式为H.265。
-  4. 调用 [startMixerTask](@startMixerTask) 接口发起混流任务。
-  5. 开发者通知 App 的业务服务端流已新增。
+  1. Create a new stream mixing task object through the constructor [ZegoMixerTask](@-ZegoMixerTask), and then call instance methods to set input, output and other parameters respectively.
+  2. Set the input stream list for the stream mixing task through the [inputList](@inputList-ZegoMixerTask) property in the stream mixing task object [ZegoMixerTask](@-ZegoMixerTask) (the encoding formats of streams in stream mixing input support H.264 and H.265), and supports up to 9 input streams by default. Please handle the stream layout yourself.
+  3. Set the output stream list for the stream mixing task through the [outputList](@outputList-ZegoMixerTask) property in the stream mixing task object [ZegoMixerTask](@-ZegoMixerTask). Assuming the current scenario, the stream mixing service directly outputs one H.265 mixed stream, that is, the stream mixing output video encoding format is H.265.
+  4. Call the [startMixerTask](@startMixerTask) interface to initiate the stream mixing task.
+  5. The developer notifies the app's business server that the stream has been added.
 
   ```cpp
-  // 调用 startMixerTask 发起混流
-  // 请输入 taskID
+  // Call startMixerTask to initiate stream mixing
+  // Please enter taskID
   std::string taskID = "";
   ZegoMixerTask task(mixerTaskID);
 
-  // 请设置 videoConfig
+  // Please set videoConfig
   ZegoMixerVideoConfig videoConfig;
   videoConfig.fps = 15;
   videoConfig.height = 720;
@@ -261,13 +261,13 @@ H.265 和 H.264 的区别如下：
   ZegoMixerAudioConfig audioConfig;
   task.audioConfig = audioConfig;
 
-  // 注意，混流输入中流的编码格式支持 H.264 和 H.265
+  // Note, the encoding formats of streams in stream mixing input support H.264 and H.265
   task.inputList = {};
-  // 请输入 CDN URL
+  // Please enter CDN URL
   std::string publishCdnUrl = "";
-  // 请输入 h265 码率，此码率为当前分辨率帧率(720p, 15fps)的推荐码率
+  // Please enter h265 bitrate, this bitrate is the recommended bitrate for the current resolution and frame rate (720p, 15fps)
   int h265Bitrate = 1795;
-  // 注意，由于这里需要使用 CDN 转码， target 需要传入 CDN URL
+  // Note, since CDN transcoding is required here, the target needs to be passed in as CDN URL
   ZegoMixerOutput outputH265;
   outputH265.target = publishCdnUrl;
   outputH265.videoConfig.bitrate = h265Bitrate;
@@ -278,36 +278,36 @@ H.265 和 H.264 的区别如下：
   };
 
   engine->startMixerTask(task, [=](int errorCode, std::string extendData){
-      // 混流任务回调
+      // Stream mixing task callback
   });
 
-  // 开发者通知 App 的业务服务端流已新增
+  // The developer notifies the app's business server that the stream has been added
   ```
 
 
-- **观众端**
+- **Audience Side**
 
-  1. 观众端从 App 的业务服务端收到流新增通知。
-  2. 调用 [isVideoDecoderSupported](@isVideoDecoderSupported) 接口查询观众端自身设备是否支持 H.265 解码格式。
-      - 若支持，则调用 [startPlayingStream](@startPlayingStream) 接口从 CDN 拉 H.265 码流。
-      - 若不支持，则调用 [startPlayingStream](@startPlayingStream) 接口从 CDN 拉 H.264 码流。
+  1. The audience side receives a stream addition notification from the app's business server.
+  2. Call the [isVideoDecoderSupported](@isVideoDecoderSupported) interface to query whether the audience side's own device supports H.265 decoding format.
+      - If supported, call the [startPlayingStream](@startPlayingStream) interface to pull H.265 streams from the CDN.
+      - If not supported, call the [startPlayingStream](@startPlayingStream) interface to pull H.264 streams from the CDN.
 
   ```cpp
-  // 从 App 的业务服务端收到流新增通知
+  // Receive stream addition notification from the app's business server
   bool h265DecodeSupport = engine->isVideoDecoderSupported(ZegoVideoCodecID::ZEGO_VIDEO_CODEC_ID_H265);;
 
   std::string playStreamID = "";
-  //winId为窗口句柄
+  //winId is the window handle
   ZegoCanvas canvas((void*)ui->playView->winId());
 
   if (h265DecodeSupport) {
-      // 支持 H.265 解码
-      // 请填入 H.265 Url 地址
+      // Supports H.265 decoding
+      // Please fill in the H.265 URL address
       std::string h265Url = "";
 
-      // 注意: ZegoCDNConfig 和 ZegoPlayerConfig 中有其他的可配置项
+      // Note: ZegoCDNConfig and ZegoPlayerConfig have other configurable options
       ZegoCDNConfig cdnConfig;
-      // H.265 CDN 拉流地址
+      // H.265 CDN playing address
       cdnConfig.url = h265Url;
       ZegoPlayerConfig playerConfig;
       playerConfig.cdnConfig = &cdnConfig;
@@ -315,13 +315,13 @@ H.265 和 H.264 的区别如下：
 
     }
     else {
-        // 不支持 H.265 解码
-        // 请填入 H264 Url 地址
+        // Does not support H.265 decoding
+        // Please fill in the H264 URL address
         std::string h264Url = "";
 
-        // 注意: ZegoCDNConfig 和 ZegoPlayerConfig 中有其他的可配置项
+        // Note: ZegoCDNConfig and ZegoPlayerConfig have other configurable options
         ZegoCDNConfig cdnConfig;
-        // H.264 CDN 拉流地址
+        // H.264 CDN playing address
         cdnConfig.url = h264Url;
       ZegoPlayerConfig playerConfig;
       playerConfig.cdnConfig = &cdnConfig;
@@ -330,116 +330,116 @@ H.265 和 H.264 的区别如下：
   ```
 
 
-### 单主播直播
+### Single Host Live Streaming
 
-**实时网络转推 CDN 直播**
+**Real-time Network Forward to CDN Live Streaming**
 
-该场景具有以下两个特点：
+This scenario has the following two characteristics:
 
-- 主播通过 ZEGO 实时音视频云转推到 CDN，通过 CDN 的转码能力，观众可以根据自身终端设备是否支持 H.265 视频解码，选择从 CDN 拉 H.265 码流或 H.264 码流。
-- 主播推 H.265 码流时，连麦嘉宾从 ZEGO 实时音视频云直接拉流进行实时互动，此时要求连麦嘉宾的终端设备支持 H.265 视频解码能力。
+- The host forwards to the CDN through ZEGO real-time audio and video cloud. Through the CDN's transcoding capability, the audience can choose to pull H.265 streams or H.264 streams from the CDN according to whether their terminal devices support H.265 video decoding.
+- When the host pushes H.265 streams, co-hosting guests pull streams directly from ZEGO real-time audio and video cloud for real-time interaction. In this case, it is required that the co-hosting guests' terminal devices support H.265 video decoding capability.
 
 <Frame width="512" height="auto" caption="">
   <img src="https://doc-media.zego.im/core_products/real-time-voice-video/en/architecture/RetweetCDN_en.png" />
 </Frame>
 
-- **主播端**
+- **Host Side**
 
 <Steps>
 <Step>
-创建引擎后，调用 [enableHardwareEncoder](@enableHardwareEncoder) 接口开启硬件编码（若推流后更改配置，需要等下一次推流才生效），开启后会使用 GPU 进行编码，降低 CPU 使用率。
+After creating the engine, call the [enableHardwareEncoder](@enableHardwareEncoder) interface to enable hardware encoding (if the configuration is changed after streaming, it will take effect only from the next streaming). After enabling, GPU will be used for encoding, reducing CPU usage.
 </Step>
 <Step>
-调用 [isVideoEncoderSupported](@isVideoEncoderSupported) 接口查询主播端设备是否支持指定视频编码类型。
+Call the [isVideoEncoderSupported](@isVideoEncoderSupported) interface to query whether the host side device supports the specified video encoding type.
 </Step>
 <Step>
-推流前调用 [setVideoConfig](@setVideoConfig) 接口，通过 codecID 设置视频编码格式（若推流后更改配置，需要等下一次推流才生效）。如果设置了 H.265 编码，则：
+Before streaming, call the [setVideoConfig](@setVideoConfig) interface to set the video encoding format through codecID (if the configuration is changed after streaming, it will take effect only from the next streaming). If H.265 encoding is set, then:
 <Steps>
 <Step>
-可以调用 [enableH265EncodeFallback](@enableH265EncodeFallback) 接口开启 H.265 编码失败后自动降级到 H.264 编码（默认开启）。开启后，当不支持 H.265 编码或 H.265 编码失败时，SDK 内部会尝试降级使用 H.264 编码进行推流。关闭后，当不支持 H.265 编码或 H.265 编码失败时，直接推流失败。
+You can call the [enableH265EncodeFallback](@enableH265EncodeFallback) interface to enable automatic fallback to H.264 encoding when H.265 encoding fails (enabled by default). After enabling, when H.265 encoding is not supported or H.265 encoding fails, the SDK will internally try to downgrade to use H.264 encoding for streaming. After disabling, when H.265 encoding is not supported or H.265 encoding fails, streaming will directly fail.
 </Step>
 <Step>
-调用 [addPublishCdnUrl](@addPublishCdnUrl) 接口添加 ZEGO 实时音视频云的音视频流转推至 CDN 的 URL 地址。
+Call the [addPublishCdnUrl](@addPublishCdnUrl) interface to add the URL address for forwarding the audio and video streams from ZEGO real-time audio and video cloud to the CDN.
 </Step>
 <Step>
-调用 [startPublishingStream](@startPublishingStream) 接口开始推流，当推流成功后，同房间内其他用户可通过监听 [onRoomStreamUpdate](@onRoomStreamUpdate)  回调来获取流的新增情况。
+Call the [startPublishingStream](@startPublishingStream) interface to start streaming. After streaming is successful, other users in the same room can get the stream addition status by listening to the [onRoomStreamUpdate](@onRoomStreamUpdate) callback.
 </Step>
 <Step>
-开发者通知 App 的业务服务端该条推流的编码格式，以便通知拉流端根据不同的推流编码格式做相应的处理。
+The developer notifies the app's business server of the encoding format of this stream, so that the playing side can make corresponding processing according to different streaming encoding formats.
 </Step>
 </Steps>
 </Step>
 </Steps>
 
   ```cpp
-  // 移动端使用 H.265 编码需要开启硬件编码
+  // Mobile devices using H.265 encoding need to enable hardware encoding
   engine->enableHardwareEncoder(true);
   PrintLogToView("enableH265EncodeFallback:1");
   engine->enableH265EncodeFallback(true);
 
-  // 查询是否支持 H.265 编码
+  // Query whether H.265 encoding is supported
   bool h265EncoderSupport = engine->isVideoEncoderSupported(ZegoVideoCodecID::ZEGO_VIDEO_CODEC_ID_H265);;
 
   ZegoVideoConfig videoConfig;
   if (h265EncoderSupport) {
-      // 支持 H.265 编码
+      // Supports H.265 encoding
       videoConfig.codecID = ZegoVideoCodecID::ZEGO_VIDEO_CODEC_ID_H265;
   } else {
-      // 不支持 H.265 编码
+      // Does not support H.265 encoding
       videoConfig.codecID = ZegoVideoCodecID::ZEGO_VIDEO_CODEC_ID_DEFAULT;
   }
   engine->setVideoConfig(videoConfig);
 
   if (h265EncoderSupport) {
-      // 通过 enableH265EncodeFallback 选择是否开启 H.265 编码失败自动降级能力
+      // Choose whether to enable H.265 encoding failure automatic fallback capability through enableH265EncodeFallback
       engine->enableH265EncodeFallback(true);
   }
-  // 请输入 streamID
+  // Please enter streamID
   std::string publishStreamID = "";
-  // 请输入 CdnUrl
+  // Please enter CdnUrl
   std::string publishCdnUrl = "";
 
-  // 添加 CDN 转推地址
+  // Add CDN forwarding address
   engine->addPublishCdnUrl(publishStreamID, publishCdnUrl, [](int errorCode){
-      // 判断转推 CDN 地址是否添加成功
+      // Determine whether the forwarding CDN address was added successfully
   });
 
   engine->startPublishingStream(publishStreamID);
 
-  // 开发者通知 App 的业务服务端该条推流的编码格式，以便通知拉流端根据不同的推流编码格式做相应的处理
+  // The developer notifies the app's business server of the encoding format of this stream, so that the playing side can make corresponding processing according to different streaming encoding formats
   ```
 
-- **观众端**
+- **Audience Side**
 
-  1. 主播推流后，观众端通过 [onRoomStreamUpdate](@onRoomStreamUpdate) 接口收到流新增通知。
-  2. 观众端从 App 的业务服务端获取该条推流的编码格式。
-    - 如果是 H.264 格式，观众可以调用 [startPlayingStream](@startPlayingStream) 接口从 CDN 直接拉主播端的流。
-    - 如果是 H.265 格式，需要先调用 [isVideoDecoderSupported](@isVideoDecoderSupported) 接口查询观众端自身设备是否支持 H.265 解码格式。
-        - 若支持，则调用 [startPlayingStream](@startPlayingStream) 接口从 CDN 拉 H.265 码流。
-        - 若不支持，则调用 [startPlayingStream](@startPlayingStream) 接口从 CDN 拉 H.264 码流。
+  1. After the host starts streaming, the audience side receives a stream addition notification through the [onRoomStreamUpdate](@onRoomStreamUpdate) interface.
+  2. The audience side obtains the encoding format of this stream from the app's business server.
+    - If it is H.264 format, the audience can call the [startPlayingStream](@startPlayingStream) interface to pull the host's stream directly from the CDN.
+    - If it is H.265 format, they need to first call the [isVideoDecoderSupported](@isVideoDecoderSupported) interface to query whether the audience side's own device supports H.265 decoding format.
+        - If supported, call the [startPlayingStream](@startPlayingStream) interface to pull H.265 streams from the CDN.
+        - If not supported, call the [startPlayingStream](@startPlayingStream) interface to pull H.264 streams from the CDN.
 
   ```cpp
-  //收到流新增通知 onRoomStreamUpdate
+  //Receive stream addition notification onRoomStreamUpdate
   void H265::onRoomStreamUpdate(const std::string &currentRoomID, ZegoUpdateType updateType, const std::vector<ZegoStream> &streamList)
   {
-      // 从 App 的业务服务端获取该条流的编码格式
+      // Obtain the encoding format of this stream from the app's business server
       int videoCodecID = 0;
-      // 请输入 streamID
+      // Please enter streamID
       std::string playStreamID = "";
-      //winId为窗口句柄
+      //winId is the window handle
       ZegoCanvas canvas((void*)ui->playView->winId());
 
       if (videoCodecID == ZegoVideoCodecID::ZEGO_VIDEO_CODEC_ID_H265) {
-          // 编码格式为 H.265, 具体的降级策略需要配合进阶拉流
+          // Encoding format is H.265, specific fallback strategy needs to be coordinated with advanced playing
           BOOL h265DecoderSupport = engine->isVideoDecoderSupported(ZegoVideoCodecID::ZEGO_VIDEO_CODEC_ID_H265);
 
           if (h265DecoderSupport) {
-              // 支持 H.265 解码
-              // 请填入 H.265 Url 地址
+              // Supports H.265 decoding
+              // Please fill in the H.265 URL address
               std::string h265Url = "";
-              // 注意: ZegoCDNConfig 和 ZegoPlayerConfig 中有其他的可配置项
+              // Note: ZegoCDNConfig and ZegoPlayerConfig have other configurable options
               ZegoCDNConfig cdnConfig;
-              // H.265 CDN 拉流地址
+              // H.265 CDN playing address
               cdnConfig.url = h265Url;
               ZegoPlayerConfig playerConfig;
               playerConfig.cdnConfig = &cdnConfig;
@@ -447,12 +447,12 @@ H.265 和 H.264 的区别如下：
 
           }
           else {
-              // 不支持 H.265 解码
-              // 请填入 H264 Url 地址
+              // Does not support H.265 decoding
+              // Please fill in the H264 URL address
               std::string h264Url = "";
-              // 注意: ZegoCDNConfig 和 ZegoPlayerConfig 中有其他的可配置项
+              // Note: ZegoCDNConfig and ZegoPlayerConfig have other configurable options
               ZegoCDNConfig cdnConfig;
-              // H.264 CDN 拉流地址
+              // H.264 CDN playing address
               cdnConfig.url = h264Url;
               ZegoPlayerConfig playerConfig;
               playerConfig.cdnConfig = &cdnConfig;
@@ -460,45 +460,45 @@ H.265 和 H.264 的区别如下：
           }
       }
       else if (videoCodecID == ZegoVideoCodecID::ZEGO_VIDEO_CODEC_ID_DEFAULT) {
-          // 编码格式为 H.264
+          // Encoding format is H.264
           engine->startPlayingStream(playStreamID, canvas);
       }
   }
   ```
 
-- **连麦嘉宾端**
+- **Co-hosting Guest Side**
 
-  1. 主播推流后，连麦嘉宾通过 [onRoomStreamUpdate](@onRoomStreamUpdate) 接口收到流的新增通知。
-  2. 连麦嘉宾从 App 的业务服务端获取该条推流的编码格式。
-    - 如果是 H.264 格式，连麦嘉宾可以调用 [startPlayingStream](@startPlayingStream) 接口从 ZEGO 实时音视频云直接拉主播端的流。
-    - 如果是 H.265 格式，需要先调用 [isVideoDecoderSupported](@isVideoDecoderSupported) 接口查询自身设备是否支持 H.265 解码格式。
-        - 若支持，则调用 [startPlayingStream](@startPlayingStream) 接口从 ZEGO 实时音视频云 拉 H.265 码流。
-        - 若不支持，则提示本终端设备不支持拉该流。
+  1. After the host starts streaming, the co-hosting guest receives a stream addition notification through the [onRoomStreamUpdate](@onRoomStreamUpdate) interface.
+  2. The co-hosting guest obtains the encoding format of this stream from the app's business server.
+    - If it is H.264 format, the co-hosting guest can call the [startPlayingStream](@startPlayingStream) interface to pull the host's stream directly from ZEGO real-time audio and video cloud.
+    - If it is H.265 format, they need to first call the [isVideoDecoderSupported](@isVideoDecoderSupported) interface to query whether their own device supports H.265 decoding format.
+        - If supported, call the [startPlayingStream](@startPlayingStream) interface to pull H.265 streams from ZEGO real-time audio and video cloud.
+        - If not supported, prompt that this terminal device does not support pulling this stream.
 
   ```cpp
-  //收到流新增通知 onRoomStreamUpdate
+  //Receive stream addition notification onRoomStreamUpdate
   void H265::onRoomStreamUpdate(const std::string &currentRoomID, ZegoUpdateType updateType, const std::vector<ZegoStream> &streamList)
   {
-      // 从 App 的业务服务端获取该条流的编码格式
+      // Obtain the encoding format of this stream from the app's business server
       int videoCodecID = 0;
-      // 请输入 streamID
+      // Please enter streamID
       std::string playStreamID = "";
-      //winId为窗口句柄
+      //winId is the window handle
       ZegoCanvas canvas((void*)ui->playView->winId());
       ZegoPlayerConfig playerConfig;
-      playerConfig.resourceMode = ZEGO_STREAM_RESOURCE_MODE_ONLY_RTC; // 仅从 RTC 拉流
+      playerConfig.resourceMode = ZEGO_STREAM_RESOURCE_MODE_ONLY_RTC; // Only pull streams from RTC
 
       if (videoCodecID == ZegoVideoCodecID::ZEGO_VIDEO_CODEC_ID_H265) {
-          // 编码格式为 H.265, 具体的降级策略需要配合进阶拉流
+          // Encoding format is H.265, specific fallback strategy needs to be coordinated with advanced playing
           bool h265DecoderSupport = engine_->isVideoDecoderSupported(ZegoVideoCodecID::ZEGO_VIDEO_CODEC_ID_H265);
 
           if (h265DecoderSupport) {
-              // 支持 H.265 解码
+              // Supports H.265 decoding
               engine_->startPlayingStream(playStreamID, &canvas, playerConfig);
           }
       }
       else if (videoCodecID == ZegoVideoCodecID::ZEGO_VIDEO_CODEC_ID_DEFAULT) {
-          // 编码格式为 H.264
+          // Encoding format is H.264
           engine_->startPlayingStream(playStreamID, &canvas, playerConfig);
       }
   }
@@ -506,42 +506,42 @@ H.265 和 H.264 的区别如下：
 
 
 
-### 录制
+### Recording
 
-如果进行本地服务端录制、云端录制、数据流录制时使用了 H.265 编解码功能，则会影响录制文件的生成，详情如下：
+If you use H.265 encoding and decoding functionality when performing local server recording, cloud recording, or data stream recording, it will affect the generation of recording files. Details are as follows:
 
-在对推流（H.265 视频编码码流）进行录制时，有可能因为 H.265 编码失败而触发编码降级，此时会收到 [onPublisherVideoEncoderChanged](@onPublisherVideoEncoderChanged) 回调，表示视频编码格式发生变更。
+When recording streams (H.265 video encoded streams), encoding downgrade may be triggered due to H.265 encoding failure. At this time, you will receive the [onPublisherVideoEncoderChanged](@onPublisherVideoEncoderChanged) callback, indicating that the video encoding format has changed.
 
-该场景下，为了避免对录制文件造成损坏，SDK 内部会结束并保存当前的录制任务，并自动重启一个新的录制任务。新录制任务的录制文件路径会重新生成，避免覆盖原始录制文件。新文件的生成规则为给原始的录制文件名基础上加一个时间戳：
+In this scenario, to avoid damaging the recording files, the SDK will internally end and save the current recording task and automatically restart a new recording task. The recording file path of the new recording task will be regenerated to avoid overwriting the original recording file. The new file generation rule is to add a timestamp to the original recording file name:
 
-例如，开发者传入的原始录制文件路径为：/user/data/mediarecord.mp4，则新的录制文件为: /user/data/mediarecord_1626880634948.mp4，其中 1626880634948 为当前时间戳。
-
-
-<Note title="说明">
+For example, if the original recording file path passed in by the developer is: /user/data/mediarecord.mp4, then the new recording file is: /user/data/mediarecord_1626880634948.mp4, where 1626880634948 is the current timestamp.
 
 
-如果开发者在录制期间收到过 [onPublisherVideoEncoderChanged](@onPublisherVideoEncoderChanged) 回调，需要在录制结束后，收集录制文件存储路径下的其他文件。
+<Note title="Note">
+
+
+If the developer has received the [onPublisherVideoEncoderChanged](@onPublisherVideoEncoderChanged) callback during recording, they need to collect other files in the recording file storage path after recording ends.
 </Note>
 
 
-## 常见问题
+## FAQ
 
-1. **H.265 在硬编出现错误怎么办？**
+1. **What to do if H.265 hardware encoding encounters an error?**
 
-可以调用 [enableH265EncodeFallback](@enableH265EncodeFallback) 接口开启降级功能（默认开启），若 H.265 硬编失败则降级成 H.264，若同时在使用录制功能，则录制文件变为两份。
+You can call the [enableH265EncodeFallback](@enableH265EncodeFallback) interface to enable the fallback function (enabled by default). If H.265 hardware encoding fails, it will downgrade to H.264. If you are using the recording function at the same time, the recording files will become two copies.
 
-2. **H.265 是否会自动从硬解降到软解？**
+2. **Will H.265 automatically downgrade from hardware decoding to software decoding?**
 
-会的，若解码时发现硬解失败，会自动降级成软解。
+Yes, if hardware decoding fails during decoding, it will automatically downgrade to software decoding.
 
-3. **H.265 如何收费？**
+3. **How is H.265 priced?**
 
-客户端开启 H.265 功能不需要收费，但是混流输出 H.265 需要收取混流费用，比混流输出 H.264 价格更贵，详情可咨询 ZEGO 商务人员。
+Enabling H.265 functionality on the client side does not require additional fees, but stream mixing output H.265 requires stream mixing fees, which is more expensive than stream mixing output H.264. For details, please consult ZEGO business personnel.
 
-4. **混流输入 H.265 流，输出 H.264 流时，计费是否有变化？**
+4. **Is there any change in billing when mixing H.265 stream input and H.264 stream output?**
 
-没有变化，按输出 H.264 计费。
+No change, billing is based on H.264 output.
 
-5. **H.265 解码对于硬件的要求是什么？**
+5. **What are the hardware requirements for H.265 decoding?**
 
-目前市场上所有机型都支持 H.265 解码，经测试大概在 2013 年之前的低端机型解码可能会有帧率波动。
+Currently, all device models on the market support H.265 decoding. Testing shows that low-end device models from before 2013 may experience frame rate fluctuations during decoding.

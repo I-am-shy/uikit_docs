@@ -20,7 +20,7 @@ Single stream transcoding refers to converting a single original stream into tra
 
 ## Prerequisites
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 The single stream transcoding function is currently in beta testing. For access, please contact ZEGO business personnel or ZEGO technical support.
@@ -58,7 +58,7 @@ Please contact ZEGO technical support to add a transcoding template and obtain t
 
 Currently supported transcoding parameters are: template ID, resolution, bitrate, frame rate, and video encoding format.
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 - Currently only video-related parameters are supported.
@@ -101,7 +101,7 @@ Currently supported transcoding parameters are: template ID, resolution, bitrate
 
 For specific flow, please refer to the [Create Engine](/real-time-video-web/quick-start/implementing-video-call) and [Log in to Room](/real-time-video-web/quick-start/implementing-video-call) sections of the "Implementing Video Call" document.
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 Before implementing single stream transcoding, there needs to be an existing stream in the Room.
@@ -114,7 +114,7 @@ Before implementing single stream transcoding, there needs to be an existing str
 
 Configure the [ZegoWebPlayOption > codecTemplateID](https://doc-zh.zego.im/article/api?doc=Express_Video_SDK_API~javascript_web~interface~ZegoWebPlayOption#codec-template-id) property, fill in the transcoding template ID obtained in [Step 1 Add transcoding configuration template](/real-time-video-web/live-streaming/single-stream-transcoding), and start Stream Playing.
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 CDN Stream Playing must also use the [startPlayingStream](@startPlayingStream) method and cannot directly use URL to pull streams, otherwise single stream transcoding cannot be triggered.

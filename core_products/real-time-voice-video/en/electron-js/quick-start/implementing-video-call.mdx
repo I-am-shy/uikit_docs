@@ -34,7 +34,7 @@ Before implementing basic real-time audio and video functionality, please ensure
 - ZEGO Express SDK has been integrated into the project to implement basic real-time audio and video functionality. For details, please refer to [Quick Start - Integration](/real-time-video-electron-js/quick-start/integrating-sdk).
 - A project has been created in the [ZEGOCLOUD Console](https://console.zegocloud.com), and valid AppID and AppSign have been applied for. For details, please refer to "Project Information" in [Console - Project Management](/console/project-info).
 
-<Warning title="Note">
+<Warning title="Warning">
 
 The SDK also supports Token authentication. If you have higher security requirements for your project, it is recommended to upgrade the authentication method. For details, please refer to [How to upgrade from AppSign authentication to Token authentication](https://www.zegocloud.com/docs/faq/token_upgrade?product=ExpressVideo).
 </Warning>
@@ -121,14 +121,14 @@ Before starting, it is recommended that developers add the following interface e
 
 Use the [createEngine](@createEngine) method to pass the applied AppID and AppSign to the parameters "appID" and "appSign".
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 The SDK also supports Token authentication. If you have higher security requirements for your project, it is recommended to upgrade the authentication method. For details, please refer to [How to upgrade from AppSign authentication to Token authentication](https://www.zegocloud.com/docs/faq/token_upgrade?product=ExpressVideo).
 
 </Warning>
 
-<Warning title="Note">If it is an audio scenario, be sure to call `enableCamera(false)` to turn off the camera to avoid starting video capture and publishing streams that generate additional video traffic.</Warning>
+<Warning title="Warning">If it is an audio scenario, be sure to call `enableCamera(false)` to turn off the camera to avoid starting video capture and publishing streams that generate additional video traffic.</Warning>
 
 ```js
 // Import ZegoExpressEngine
@@ -155,7 +155,7 @@ zgEngine.createEngine(profile)
 
 For callback registration and unregistration, please refer to [Set Callbacks](/real-time-video-electron-js/quick-start/setting-callback)
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 To avoid missing event notifications, it is recommended to register callbacks immediately after creating the engine
@@ -201,7 +201,7 @@ According to actual application needs, listen to event notifications of interest
 
 - [onRoomStreamUpdate](/real-time-video-electron-js/quick-start/setting-callback): Stream state update callback. After logging in to the room, when users in the room add or delete audio and video streams, the SDK will notify through this callback.
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 - Only when the [loginRoom](@loginRoom) interface is called to login to the room with the [ZegoRoomConfig](@-ZegoRoomConfig) configuration, and the "isUserStatusNotify" parameter value is "true", users can receive the [onRoomUserUpdate](/real-time-video-electron-js/quick-start/setting-callback) callback.
@@ -239,7 +239,7 @@ zgEngine.on("onRoomStreamUpdate", (param)=>{
 
 Call the [startPublishingStream](@startPublishingStream) interface, pass in the stream ID parameter "streamID", to send the local audio and video stream to remote users.
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 Within the same AppID, "streamID" must be globally unique. If within the same AppID, different users each publish a stream with the same "streamID", it will cause the later publishing user to fail to publish the stream.
@@ -345,7 +345,7 @@ zgEngine.stopPreview();
 
 Call the [stopPlayingStream](@stopPlayingStream) interface to stop pulling the remote audio and video stream.
 
-<Warning title="Note">
+<Warning title="Warning">
 If the developer receives a notification of "decrease" in audio and video streams through the [onRoomStreamUpdate](@onRoomStreamUpdate) callback, please call the [stopPlayingStream](@stopPlayingStream) interface in time to stop playing to avoid pulling empty streams and generating additional costs; or, the developer can choose the appropriate timing according to their business needs and actively call the [stopPlayingStream](@stopPlayingStream) interface to stop playing.
 </Warning>
 
@@ -392,7 +392,7 @@ zgEngine.destroyEngine();
 
 4. **Integrating the SDK on the Linux operating system, and applications packaged using electron-builder or other packaging tools report an error `sand-box`. How to solve this?**
 
-    <Warning title="Note">
+    <Warning title="Warning">
     If you need to use the Linux platform, please contact ZEGOCLOUD Technical Support.
     </Warning>
 

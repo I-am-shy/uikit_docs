@@ -33,7 +33,7 @@ date: "2025-12-19"
     相关 API 请参考： [onPublisherQualityUpdate](@onPublisherQualityUpdate)
 
 4. setDummyCaptureImagePath 支持传入网络图片地址
-    
+
 
     相关 API 请参考： [setDummyCaptureImagePath](@setDummyCaptureImagePath)
 
@@ -41,7 +41,7 @@ date: "2025-12-19"
 
     switchPlayingStream 接口新增 switchTimeout 参数。
 
-    <Note title="说明">
+    <Note title="Note">
     假设存在 A、B 、C流：
     - 当 SDK 正在拉流 A 时，A 切换到 B 再切换到C且在 switchTimeout 超时时间内切流均未成功，只有最后切换的 C 的 onPlayerSwitched 回调会返回切流失败的通知。
     - 当 SDK 正在拉流 A 且又切换到 A 时，switchTimeout 参数不生效，SDK 将按拉流超时时间来执行重试逻辑。
@@ -80,7 +80,7 @@ date: "2025-12-19"
 **问题修复**
 
 1. 修复投屏到电视后漏回声的问题
-    
+
 
 ---
 
@@ -96,13 +96,13 @@ date: "2025-12-19"
 
     相关 API 请参考：[setAudioSource](@setAudioSource)、[startScreenCapture](@startScreenCapture)、[updateScreenCaptureConfig](@updateScreenCaptureConfig)
 
-2. 屏幕共享提供启动回调和异常中断回调 
+2. 屏幕共享提供启动回调和异常中断回调
 
     启动屏幕共享时，可通过  `onScreenCaptureStart`  监听屏幕共享是否启动成功和 `onScreenCaptureExceptionOccurred` 监听屏幕共享启动失败或中途断开异常。
 
     相关 API 请参考：[onScreenCaptureStart](@onScreenCaptureStart)、[onScreenCaptureExceptionOccurred](@onScreenCaptureExceptionOccurred)
 
-3. 屏幕共享支持设置画面固定横竖屏朝向 
+3. 屏幕共享支持设置画面固定横竖屏朝向
 
     `ZegoScreenCaptureConfig` 新增了 `ZegoScreenCaptureOrientation` 参数，用于设置屏幕共享画面固定横竖屏朝向。
 
@@ -110,11 +110,11 @@ date: "2025-12-19"
 
 4. 屏幕共享支持音频包共享系统声音
 
-    <Warning title="注意">
+    <Warning title="Warning">
     如需使用本功能，请联系 ZEGO 技术支持。
     </Warning>
 
-5. 新增静态图片采集视频源 
+5. 新增静态图片采集视频源
 
     通过设置 [setVideoSource](@setVideoSource) 视频源为 `Picture`，即可推流一张指定的图片。
 
@@ -130,7 +130,7 @@ date: "2025-12-19"
 
 8. 媒体播放器边下边播支持分片文件存储，避免一次性申请内存过大
 
-    <Warning title="注意">
+    <Warning title="Warning">
     如需使用本功能，请联系 ZEGO 技术支持。
     </Warning>
 
@@ -144,7 +144,7 @@ date: "2025-12-19"
 
     新增 OpenGL 3 相关接口，在处理自定义视频时可以进行 OpenGL 3 的纹理绘制渲染。
 
-    <Warning title="注意">
+    <Warning title="Warning">
     如需使用本功能，请联系 ZEGO 技术支持。
     </Warning>
 
@@ -153,11 +153,11 @@ date: "2025-12-19"
 
     当无线网络质量较差时（未断开），可以主动切换到移动数据。
 
-    <Warning title="注意">
+    <Warning title="Warning">
     如需使用本功能，请联系 ZEGO 技术支持。
     </Warning>
 
-    
+
 
 12. 新增非主线程（ UI 线程）的音视频首帧耗时回调接口，可在主线程阻塞时更准确地统计首帧耗时
 
@@ -166,19 +166,19 @@ date: "2025-12-19"
 
 13. 支持接入微帧264编码器
 
-    <Warning title="注意">
+    <Warning title="Warning">
     如需使用本功能，请联系 ZEGO 技术支持。
     </Warning>
 
 14. 新增拉流链路上各环节数据指标的回调
 
-    <Warning title="注意">
+    <Warning title="Warning">
     如需使用本功能，请联系 ZEGO 技术支持。
     </Warning>
 
 15. SDK 播放器支持 HLS 协议 拉流且支持分辨率自适应
 
-    <Warning title="注意">
+    <Warning title="Warning">
     如需使用本功能，请联系 ZEGO 技术支持。
     </Warning>
 
@@ -192,7 +192,7 @@ date: "2025-12-19"
 
 17. 播放器拉混流可以将混流拆分成多个原始流渲染到多个画面
 
-    <Warning title="注意">
+    <Warning title="Warning">
     如需使用本功能，请联系 ZEGO 技术支持。
     </Warning>
 
@@ -201,13 +201,13 @@ date: "2025-12-19"
 
     支持通过云端控制的方式下发云代理配置。当云端控制配置完成且SDK 拉取到最新的云端控制信息，新的云代理配置能够立即生效。
 
-    <Warning title="注意">
+    <Warning title="Warning">
     如需使用本功能，请联系 ZEGO 技术支持。
     </Warning>
 
 19. 推拉流功能新增国密算法加密
 
-    <Warning title="注意">
+    <Warning title="Warning">
     如需使用本功能，请联系 ZEGO 技术支持。
     </Warning>
 
@@ -221,7 +221,7 @@ date: "2025-12-19"
 
 **改进优化**
 
-1. SDK 内的 curl 库升级为 8.14.1 版本 
+1. SDK 内的 curl 库升级为 8.14.1 版本
 
 2. 优化开启主体分割切换背景类型为视频时占用内存过大的问题
 
@@ -251,7 +251,7 @@ date: "2025-12-19"
 
 2. 支持自定义 CDN 拉流超时等待时间
 
-    <Warning title="注意">
+    <Warning title="Warning">
     如需使用本功能，请联系 ZEGO 技术支持。
     </Warning>
 
@@ -271,7 +271,7 @@ date: "2025-12-19"
 
 5. 支持动态设置设备低延迟模式
 
-    <Warning title="注意">
+    <Warning title="Warning">
 
     如需使用此功能，请联系 ZEGO 技术支持。
     </Warning>
@@ -298,7 +298,7 @@ date: "2025-12-19"
 
 5. 优化双声道音频编码
 
-    <Warning title="注意">
+    <Warning title="Warning">
 
     如需使用本功能，请联系 ZEGO 技术支持。
     </Warning>
@@ -372,7 +372,7 @@ date: "2025-12-19"
 
 1. 支持赛事解说场景的音画精准同步
 
-    <Warning title="注意">
+    <Warning title="Warning">
     如需使用该功能，请联系 ZEGO 技术支持。
     </Warning>
 
@@ -388,7 +388,7 @@ date: "2025-12-19"
 
     人脸识别功能支持后置摄像头，且新增回调 [onPublisherFaceDetectInfo](@onPublisherFaceDetectInfo) 支持获取人脸个数和坐标信息。
 
-    <Note title="说明">该回调仅当摄像头启动和人脸个数变化时触发，无法与自定义视频前处理配合使用。</Note>
+    <Note title="Note">该回调仅当摄像头启动和人脸个数变化时触发，无法与自定义视频前处理配合使用。</Note>
 
 
     相关 API 请参考 [enableFaceDetection](@enableFaceDetection), [onPublisherFaceDetectInfo](@onPublisherFaceDetectInfo)
@@ -397,7 +397,7 @@ date: "2025-12-19"
 
 1. 优化直推 CDN 时因弱网导致的本地录制卡顿现象
 
-    <Warning title="注意">
+    <Warning title="Warning">
 
 
     如需使用该功能，请联系 ZEGO 技术支持。
@@ -428,7 +428,7 @@ date: "2025-12-19"
 
 1. 新增 AI 低照度增强功能
 
-    <Warning title="注意">
+    <Warning title="Warning">
 
 
     如需使用该功能，请联系 ZEGO 技术支持。
@@ -449,7 +449,7 @@ date: "2025-12-19"
 3. 媒体播放器播放在线资源时，支持缓存资源文件
 
     开发者可通过配置 [ZegoMediaPlayerResource-onlineResourceCachePath](@onlineResourceCachePath-ZegoMediaPlayerResource) 参数，设置缓存资源文件路径。此外可通过 [ZegoMediaPlayerResource-maxCachePendingLength](@maxCachePendingLength-ZegoMediaPlayerResource) 参数设置从当前播放时间点，最多可预缓存的数据长度（单位 bytes）。从而使媒体播放器播放在线资源时，可以减少用户资源下载频次，提高资源复用率与用户体验。
-    <Warning title="注意">
+    <Warning title="Warning">
 
     生成缓存文件的同时，SDK 同时会生成一个 ".info "后缀的文件，用于记录缓存信息（如缓存的起始位置等）。用户使用该功能时，需要自行负责清理"缓存文件"及"缓存信息文件"。
     </Warning>
@@ -512,7 +512,7 @@ date: "2025-12-19"
 
 1. 新增 AI 回声消除（AEC）
 
-    <Warning title="注意">
+    <Warning title="Warning">
 
 
     如需使用该功能，请联系 ZEGO 技术支持。
@@ -530,7 +530,7 @@ date: "2025-12-19"
 
 3. 支持返回摄像头采集的人脸识别状态
 
-    <Warning title="注意">
+    <Warning title="Warning">
 
 
     如需使用该功能，请联系 ZEGO 技术支持。
@@ -624,7 +624,7 @@ date: "2025-12-19"
 
 1. Express SDK 升级 NDK 依赖至  NDK r25c
 
-        <Warning title="注意">
+        <Warning title="Warning">
 
 
         升级后开发者需进行兼容性测试，防止出现不兼容等问题。如测试遇到兼容性问题或需使用旧版本 NDK，请联系 ZEGO 技术支持。
@@ -638,7 +638,7 @@ date: "2025-12-19"
 
 3. 删除 AndroidManifest.xml 文件中声明的屏幕共享默认权限
 
-        <Warning title="注意">
+        <Warning title="Warning">
 
 
         - 若开发者在 3.17.0 版本之后，实现屏幕共享能力时没有声明权限，本次更新后必需主动声明权限，否则会出现兼容性问题。
@@ -2052,7 +2052,7 @@ date: "2025-12-19"
 **发布日期： 2022-10-28**
 
 
-<Warning title="注意">
+<Warning title="Warning">
 
 
 本次更新包含不兼容改动，详情请参考 [v3.0.0 升级指南](/real-time-video-android-java/client-sdk/upgrade-guide/upgrade-to-v3)。

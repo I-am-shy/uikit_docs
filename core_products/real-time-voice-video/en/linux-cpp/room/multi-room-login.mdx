@@ -162,7 +162,7 @@ engine->loginRoom("roomID", user);
 
 Pass in parameters such as Stream ID (streamID) and Room ID (roomID), and call the [startPublishingStream](@startPublishingStream) (with "ZegoPublisherConfig" parameter) interface to publish stream in the specified room.
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 In multi-room mode, you must use [ZegoPublisherConfig](@-ZegoPublisherConfig) to specify the "roomID" associated with the "streamID". After exiting the specified room, the corresponding stream publishing operation for that room will stop.
@@ -183,7 +183,7 @@ engine->startPublishingStream("streamID", config);
 
 Pass in parameters such as Stream ID (streamID) and Room ID (roomID), and call the [startPlayingStream](@startPlayingStream) (with "ZegoPlayerConfig" parameter) interface to play stream in the specified room.
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 In multi-room mode, you must use [ZegoPlayerConfig](@-ZegoPlayerConfig) to specify the "roomID" associated with the "streamID". After exiting the specified room, the corresponding stream playing operation for that room will stop.

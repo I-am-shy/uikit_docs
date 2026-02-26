@@ -56,7 +56,7 @@ Start playing stream by calling the [startPlayingStream](@startPlayingStream) in
 
 When playing stream, if an error occurs, please refer to [Common Error Codes - 1004xxx Playing Stream Related Error Codes](/real-time-video-ios-oc/client-sdk/error-code#1004xxx-playing-stream-related-error-codes).
 
-<Warning title="Note">
+<Warning title="Warning">
 
 - Before playing stream by URL, ensure you have logged in to the room.
 - When playing stream by URL, you cannot play stream by directly filling in the stream ID. The actual playing stream content is based on the URL.
@@ -84,7 +84,7 @@ To stop playing stream, call the [stopPlayingStream](@stopPlayingStream) interfa
 <Accordion title="Listen to playing stream related event notifications" defaultOpen="false">
 You can listen to the result of playing stream from CDN through [onPlayerStateUpdate](@onPlayerStateUpdate).
 
-<Warning title="Note">
+<Warning title="Warning">
 
 If you are not using ZEGO SDK for publishing, but using third-party publishing tools to publish directly, but using ZEGO SDK for playing stream, in this scenario the publishing end has not used ZEGO SDK to join the room, and the playing end will not receive the [onRoomStreamUpdate](@onRoomStreamUpdate) callback by default. You can use the [Add Room Stream](/real-time-video-server/api-reference/room/add-stream) and [Delete Room Stream](/real-time-video-server/api-reference/room/delete-stream) features to allow the playing end to receive the [onRoomStreamUpdate](@onRoomStreamUpdate) callback.
 </Warning>

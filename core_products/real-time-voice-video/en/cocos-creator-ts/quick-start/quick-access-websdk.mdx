@@ -69,7 +69,7 @@ To facilitate the implementation of basic real-time audio and video functions, y
 
 1. Create and initialize an instance of [ZegoExpressEngine ](https://doc-zh.zego.im/article/api?doc=Express_Video_SDK_API~javascript_web~class~ZegoExpressEngine), and pass your project's AppID to the "appID" parameter and Server to the "server" parameter.
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
   The instance of ZegoExpressEngine cannot be processed by the framework in a reactive manner, otherwise unpredictable problems will occur.
@@ -81,7 +81,7 @@ To facilitate the implementation of basic real-time audio and video functions, y
 
 2. The SDK provides notification callbacks such as room connection status, audio/video stream changes, user entry/exit, etc.
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
   To avoid missing any notifications, it is recommended to listen to callbacks immediately after creating the engine.
@@ -324,7 +324,7 @@ The temporary Token is only for debugging. Before official launch, please genera
 
 Call the [loginRoom ](https://doc-zh.zego.im/article/api?doc=Express_Video_SDK_API~javascript_web~class~ZegoExpressEngine#login-room) interface, pass in the room ID parameter "roomID", "token" and user parameter "user", pass in the parameter "config" according to the actual situation, and log in to the room. If the room does not exist, calling this interface will create and log in to this room.
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 - The values of the "roomID", "userID" and "userName" parameters are all customizable, among which "userName" is not required.
@@ -534,7 +534,7 @@ zg.on('roomStreamUpdate', async (roomID, updateType, streamList, extendedData) =
 });
 ```
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 - Due to the autoplay restriction policy of some browsers, using the [ZegoStreamView](https://doc-zh.zego.im/article/api?doc=Express_Video_SDK_API~javascript_web~class~ZegoStreamView) media stream playback component to play media streams may be blocked. By default, the SDK will pop up a prompt on the interface to resume playback.
@@ -573,7 +573,7 @@ zg.destroyStream(localStream)
 
 Call the [stopPlayingStream](https://doc-zh.zego.im/article/api?doc=Express_Video_SDK_API~javascript_web~class~ZegoExpressEngine#start-playing-stream) interface to stop playing the audio and video stream published by remote users.
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 If the developer receives the "decrease" notification of audio and video stream through the [roomStreamUpdate](https://doc-zh.zego.im/article/api?doc=Express_Video_SDK_API~javascript_web~interface~ZegoRTCEvent#room-stream-update) callback, please call the [stopPlayingStream](https://doc-zh.zego.im/article/api?doc=Express_Video_SDK_API~javascript_web~class~ZegoExpressEngine#start-playing-stream) interface in time to stop playing stream, to avoid playing empty streams and generating additional costs; or, developers can choose the appropriate timing according to their own business needs and actively call the [stopPlayingStream ](https://doc-zh.zego.im/article/api?doc=Express_Video_SDK_API~javascript_web~class~ZegoExpressEngine#stop-playing-stream) interface to stop playing stream.

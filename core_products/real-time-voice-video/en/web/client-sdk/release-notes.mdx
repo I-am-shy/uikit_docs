@@ -34,7 +34,7 @@ date: "2025-10-24"
 
     相关 API 请参考：[sendTransparentMessage](@sendTransparentMessage)
 
-4. 新增 WebRTC 支持 H265 
+4. 新增 WebRTC 支持 H265
 
     WebRTC 新增支持 H265 功能，当前只有较高版本的浏览器支持（例如 Chrome 136 及以上版本），可通过 [checkSystemRequirements](@checkSystemRequirements) 接口判断当前浏览器是否支持 H265 功能。
 
@@ -50,7 +50,7 @@ date: "2025-10-24"
 
     - 优化了日志本地存储功能，支持设置本地日志存储的大小和文件数量。
 
-    <Warning title="注意">
+    <Warning title="Warning">
     3.11.0 版本起默认开启日志本地存储功能。
     </Warning>
 
@@ -61,16 +61,16 @@ date: "2025-10-24"
 **问题修复**
 
 1. 修复微信浏览器版本较低时拉流解码异常的问题
-    
+
 
 2. 修复 web 拉 H265 自动转码时未接收到设备状态的问题
-    
+
 
 3. 修复拉流渲染组件销毁时未及时销毁媒体元素的问题
-    
+
 
 4. 浏览器没有使用 audio 标签播放声音时，无法用 audioContext 渲染声音的问题
-    
+
 
 ---
 
@@ -113,7 +113,7 @@ date: "2025-10-24"
 
 1. 所有网络请求支持 IPv6 协议
 
-    <Warning title="注意">
+    <Warning title="Warning">
 
 
     如需使用该功能，请联系 ZEGO 技术支持。
@@ -126,7 +126,7 @@ date: "2025-10-24"
 
 2. 支持单流转码功能
 
-    <Warning title="注意">
+    <Warning title="Warning">
 
 
     如需使用该功能，请联系 ZEGO 技术支持。
@@ -207,7 +207,7 @@ date: "2025-10-24"
 
 5. 新增编码兼容策略，设备异常时自动切换编码格式
 
-    <Warning title="注意">
+    <Warning title="Warning">
 
 
     - 如需使用该功能，请联系 ZEGO 技术支持设置。
@@ -248,7 +248,7 @@ date: "2025-10-24"
 
     新增拉流音轨（[playerAudioTrackUpdate](@playerAudioTrackUpdate)）和视轨（[playerVideoTrackUpdate](@playerVideoTrackUpdate)）更新回调。通过该回调获取拉流的音轨和视轨，然后根据需求进行音频和视频的渲染处理。
 
-    <Note title="说明">
+    <Note title="Note">
 
 
     如果没有对音视频渲染特殊处理的需求，不建议使用该回调，大部分场景推荐用 [ZegoStreamView](@-ZegoStreamView) 进行渲染。
@@ -672,7 +672,7 @@ date: "2025-10-24"
 
 1. 新增创建媒体流、更新媒体流等接口，优化音视频通话逻辑
 
-    <Warning title="注意">
+    <Warning title="Warning">
 
 
     - Express SDK 3.0.0 版本优化了 SDK 的内部逻辑，提高了 SDK 稳定性、音视频通话质量、以及 API 接口的易用性，ZEGO 强烈推荐您使用 3.0.0 或以上版本的 SDK。
@@ -1553,7 +1553,7 @@ date: "2025-10-24"
 
     相关 API 请参考 [getCameras](@getCameras)、[getMicrophones](@getMicrophones)、[getSpeakers](@getSpeakers)、[enumDevices](@enumDevices)
 
-    <Warning title="注意">
+    <Warning title="Warning">
 
 
 
@@ -1737,7 +1737,7 @@ date: "2025-10-24"
 
 2. 新增 Token 过期管理机制
 
-    <Warning title="注意">
+    <Warning title="Warning">
 
 
     使用此功能需要升级 SDK 并联系 ZEGO 技术支持配置。
@@ -1898,7 +1898,7 @@ date: "2025-10-24"
 
 2. 新增多房间功能
 
-    <Warning title="注意">
+    <Warning title="Warning">
 
 
     需要联系 ZEGO 技术支持开通该功能。
@@ -1954,7 +1954,7 @@ date: "2025-10-24"
 
     由于浏览器的默认策略，推流的开始码率默认由 300 kbps 缓慢上升到目标码率，导致拉流端最初接收到的画面较模糊。开发者通过设置 “startBitrate” 参数的取值为 “target”，可以使推流的开始码率快速上升到已设置的目标码率。（当设置的目标码率过高而且网络状态差的情况下，推流视频可能会出现卡顿或花屏）
 
-    <Warning title="注意">
+    <Warning title="Warning">
 
 
     该功能只在未开启硬件加速的 Chrome 内核浏览器中有效。
@@ -2015,7 +2015,7 @@ date: "2025-10-24"
 
 2. 新增 token 过期回调 [tokenWillExpire](@tokenWillExpire) 和 token 更新接口 [renewToken](@renewToken)
 
-    <Warning title="注意">
+    <Warning title="Warning">
 
 
     SDK 当前版本已支持该回调和接口，预计 2021-06-10 才可正式使用。
@@ -2035,7 +2035,7 @@ date: "2025-10-24"
 
 3. token 版本升级，支持 token 分功能鉴权
 
-    <Warning title="注意">
+    <Warning title="Warning">
 
 
     SDK 当前版本已支持该鉴权功能，但预计 2021-06-10 才可正式使用。

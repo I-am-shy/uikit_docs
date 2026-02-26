@@ -39,7 +39,7 @@ You can listen to the [networkQuality](@networkQuality) callback to receive upst
 - When "userID" is "" (empty string), it represents your own network quality. When "userID" is not "" (empty string), it represents reports for other users in the room.
 - You can estimate the network status of remote publishing users. If a remote publishing user's heartbeat is lost once, their network quality will be reported as "unknown". If the heartbeat is lost 3 times, their network quality will be reported as "die".
 
-<Warning title="Note">
+<Warning title="Warning">
 [networkQuality](@NetworkQuality) is not applicable for live streaming scenarios using CDN.
 </Warning>
 

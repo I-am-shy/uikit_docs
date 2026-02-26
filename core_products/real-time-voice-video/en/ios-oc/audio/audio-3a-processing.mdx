@@ -16,7 +16,7 @@ During real-time audio and video calls or live streaming, 3A processing can be p
 - AGC (Automatic Gain Control): After enabling this feature, the SDK can automatically adjust the microphone volume to adapt to near and far sound pickup and maintain stable volume.
 - ANS (Noise Suppression): Identify background noise in the sound and eliminate it. After enabling this feature, the human voice can be clearer. At the same time, you can enable music scene detection to identify communication and music scenes in real time without consumption, and further improve the fidelity of human voice and music sound quality in music scenes. If users need a more aggressive noise suppression strategy, they can use the [Scenario-based AI Noise Suppression](/real-time-video-ios-oc/audio/scenario-based-ai-noise-reduction) feature.
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 If you need to use music scene detection capabilities, please contact ZEGO technical support for special packaging and configuration.
@@ -57,7 +57,7 @@ Before using audio 3A processing, please ensure:
 
 ### Set AEC (Echo Cancellation)
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 [enableAEC](@enableAEC), [enableHeadphoneAEC](@enableHeadphoneAEC), and [setAECMode](@setAECMode) all need to be called before [startPublishingStream](@startPublishingStream), [startPlayingStream](@startPlayingStream), [startPreview](@startPreview), [createMediaPlayer](@createMediaPlayer), [createAudioEffectPlayer](@createAudioEffectPlayer), and [createRealTimeSequentialDataManager](@createRealTimeSequentialDataManager) interfaces to take effect.
@@ -77,7 +77,7 @@ Developers can complete echo cancellation related settings according to the foll
     |ZegoAECModeMedium|Moderate echo cancellation, may slightly affect sound quality a little bit, but residual echo will be less.|
     |ZegoAECModeSoft|Comfortable echo cancellation, echo cancellation basically will not affect the sound quality of the sound, may sometimes leave a little residual echo, but will not affect normal listening.|
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 Express SDK supports AI echo cancellation, which further improves the fidelity of human voice on the basis of effectively eliminating echo. If you need to use AI echo cancellation feature, please contact ZEGO technical support for special packaging first.
@@ -97,7 +97,7 @@ Taking setting moderate echo cancellation as an example:
 
 ### Set AGC (Automatic Gain Control)
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 [enableAGC](@enableAGC) needs to be called before [startPublishingStream](@startPublishingStream), [startPlayingStream](@startPlayingStream), [startPreview](@startPreview), [createMediaPlayer](@createMediaPlayer), [createAudioEffectPlayer](@createAudioEffectPlayer), and [createRealTimeSequentialDataManager](@createRealTimeSequentialDataManager) interfaces to take effect.
@@ -112,7 +112,7 @@ Call the [enableAGC](@enableAGC) interface to enable automatic gain control. Aft
 
 ### Set ANS (Noise Suppression)
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 [enableANS](@enableANS), [enableTransientANS](@enableTransientANS), and [setANSMode](@setANSMode) all need to be called before [startPublishingStream](@startPublishingStream), [startPlayingStream](@startPlayingStream), [startPreview](@startPreview), [createMediaPlayer](@createMediaPlayer), [createAudioEffectPlayer](@createAudioEffectPlayer), and [createRealTimeSequentialDataManager](@createRealTimeSequentialDataManager) interfaces to take effect.
@@ -134,7 +134,7 @@ Developers can complete noise suppression related settings according to the foll
     |ZegoANSModeMedium|Moderate noise suppression, may damage some sound quality, but has good noise suppression effect.|
     |ZegoANSModeSoft|Light noise suppression, basically will not damage sound quality, but will leave some noise.|
 
-    <Warning title="Note">
+    <Warning title="Warning">
 
 
     Express SDK supports AI mode noise suppression, and provides three modes: lightweight mode, balanced mode, and low-latency mode. It effectively eliminates transient noises such as keyboards, coughing, wind, car horns, etc. on the basis of eliminating steady-state noise. For details, please refer to [Scenario-based AI Noise Suppression](/real-time-video-ios-oc/audio/scenario-based-ai-noise-reduction).

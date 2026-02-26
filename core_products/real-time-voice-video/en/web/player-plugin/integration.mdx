@@ -17,7 +17,7 @@ Local Download
 Try It Out
 </Card>
 </CardGroup>
-<Warning title="Note">
+<Warning title="Warning">
 - The Player Plugin is currently in the Beta public testing phase and only supports the Web platform. If you have any questions or business requirements, please contact ZEGO technical support.
 - The Player Plugin must be used with Express SDK version 3.0.0 or above.
 </Warning>
@@ -101,7 +101,7 @@ Test project root directory
 1. After importing the Player Plugin package with the \<script> tag, the prototype of ZegoExpressPlayer will be mounted on the global object of the current runtime environment. You can instantiate the Player Plugin in a JS file.
 2. Initialize the Player and perform Authentication. Otherwise, you cannot continue to use other interfaces of the Player.
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 - If you have successfully logged into the Room through the Express Web SDK's [loginRoom](@loginRoom) interface, you do not need to authenticate the Player Plugin again here.
@@ -128,7 +128,7 @@ const res = await player.verify(token, userID); // Player authentication, return
 
 Call the Player instance interface to control the Player state and receive callback notifications from the Player. You can play CDN live streams by setting the URL address.
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 Currently, this Player Plugin only supports the FLV protocol.

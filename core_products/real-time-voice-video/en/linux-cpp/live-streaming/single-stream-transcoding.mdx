@@ -21,7 +21,7 @@ Single stream transcoding refers to the process of converting a single original 
 
 ## Prerequisites
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 The single stream transcoding function is currently in beta testing. If you need to integrate it, please contact ZEGO business personnel or ZEGO Technical Support.
@@ -36,7 +36,7 @@ Before using the single stream transcoding function, please ensure:
 
 - You need to use [L3 Play Stream](/real-time-video-linux-cpp/live-streaming/low-latency-live-streaming), [Relay to CDN Play Stream (play by streamID)](/real-time-video-linux-cpp/live-streaming/using-cdn-for-live-streaming) or RTC Play Stream, and have not used the stream mixing function.
 
-<Note title="Description">
+<Note title="Note">
 
 
 For scenarios that have already used the stream mixing function, you can directly implement outputting multiple streams with different resolutions based on the stream mixing interface, without triggering single stream transcoding.
@@ -61,7 +61,7 @@ Please contact ZEGO Technical Support to add a transcoding template and obtain t
 
 The currently supported transcoding parameters are: template ID, resolution, bitrate, frame rate, and video encoding format.
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 - Currently only supports configuring video-related parameters.
@@ -105,7 +105,7 @@ The currently supported transcoding parameters are: template ID, resolution, bit
 
 For the specific flow, please refer to the [Create Engine](/real-time-video-linux-cpp/quick-start/implementing-video-call) and [Login Room](/real-time-video-linux-cpp/quick-start/implementing-video-call) sections of the "Implementing Video Call" document.
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 Before implementing single stream transcoding, there needs to be an existing stream in the room.

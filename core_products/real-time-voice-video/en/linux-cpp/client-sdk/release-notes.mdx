@@ -21,14 +21,14 @@ date: "2025-12-19"
 相关 API 请参考： [onPublisherQualityUpdate](@onPublisherQualityUpdate)
 
 2. setDummyCaptureImagePath 支持传入网络图片地址
-    
+
 
 相关 API 请参考： [setDummyCaptureImagePath](@setDummyCaptureImagePath)
 
 3. switchPlayingStream 支持设置超时时间
 
     switchPlayingStream 接口新增 switchTimeout 参数。
-    <Note title="说明">
+    <Note title="Note">
     假设存在 A、B 、C流：
     - 当 SDK 正在拉流 A 时，A 切换到 B 再切换到C且在 switchTimeout 超时时间内切流均未成功，只有最后切换的 C 的 onPlayerSwitched 回调会返回切流失败的通知。
     - 当 SDK 正在拉流 A 且又切换到 A 时，switchTimeout 参数不生效，SDK 将按拉流超时时间来执行重试逻辑。
@@ -72,7 +72,7 @@ date: "2025-12-19"
 
 **新增功能**
 
-1. 新增静态图片采集视频源 
+1. 新增静态图片采集视频源
 
     通过设置 [setVideoSource](@setVideoSource) 视频源为 `Picture`，即可推流一张指定的图片。
 
@@ -88,7 +88,7 @@ date: "2025-12-19"
 
 4. 媒体播放器边下边播支持分片文件存储，避免一次性申请内存过大
 
-    <Warning title="注意">
+    <Warning title="Warning">
     如需使用本功能，请联系 ZEGO 技术支持。
     </Warning>
 
@@ -105,19 +105,19 @@ date: "2025-12-19"
 
 7. 支持接入微帧264编码器
 
-    <Warning title="注意">
+    <Warning title="Warning">
     如需使用本功能，请联系 ZEGO 技术支持。
     </Warning>
 
 8. 新增拉流链路上各环节数据指标的回调
 
-    <Warning title="注意">
+    <Warning title="Warning">
     如需使用本功能，请联系 ZEGO 技术支持。
     </Warning>
 
 9. SDK 播放器支持 HLS 协议 拉流且支持分辨率自适应
 
-    <Warning title="注意">
+    <Warning title="Warning">
     如需使用本功能，请联系 ZEGO 技术支持。
     </Warning>
 
@@ -128,19 +128,19 @@ date: "2025-12-19"
 
     支持通过云端控制的方式下发云代理配置。当云端控制配置完成且SDK 拉取到最新的云端控制信息，新的云代理配置能够立即生效。
 
-    <Warning title="注意">
+    <Warning title="Warning">
     如需使用本功能，请联系 ZEGO 技术支持。
     </Warning>
 
 11. 推拉流功能新增国密算法加密
 
-    <Warning title="注意">
+    <Warning title="Warning">
     如需使用本功能，请联系 ZEGO 技术支持。
     </Warning>
 
 12. 支持第三方音频数据的混音功能
 
-    相关 API  请参考：[enableAudioMixing](@enableAudioMixing)、[setAudioMixingVolume](@setAudioMixingVolume)、[muteLocalAudioMixing](@muteLocalAudioMixing) 
+    相关 API  请参考：[enableAudioMixing](@enableAudioMixing)、[setAudioMixingVolume](@setAudioMixingVolume)、[muteLocalAudioMixing](@muteLocalAudioMixing)
 
 13. 支持 WMA 编码器
 
@@ -148,7 +148,7 @@ date: "2025-12-19"
 
 **改进优化**
 
-1. SDK 内的 curl 库升级为 8.14.1 版本 
+1. SDK 内的 curl 库升级为 8.14.1 版本
 
 2. 优化开启主体分割切换背景类型为视频时占用内存过大的问题
 
@@ -171,7 +171,7 @@ date: "2025-12-19"
 
 1. 支持自定义 CDN 拉流超时等待时间
 
-    <Warning title="注意">
+    <Warning title="Warning">
 
     如需使用本功能，请联系 ZEGO 技术支持。
 
@@ -209,7 +209,7 @@ date: "2025-12-19"
 
 4. 优化双声道音频编码
 
-    <Warning title="注意">
+    <Warning title="Warning">
 
 
     如需使用本功能，请联系 ZEGO 技术支持。
@@ -242,7 +242,7 @@ date: "2025-12-19"
 
 1. 支持赛事解说场景的音画精准同步
 
-    <Warning title="注意">
+    <Warning title="Warning">
 
 
     如需使用该功能，请联系 ZEGO 技术支持。
@@ -264,7 +264,7 @@ date: "2025-12-19"
 
 1. 优化直推 CDN 时因弱网导致的本地录制卡顿现象
 
-    <Warning title="注意">
+    <Warning title="Warning">
 
 
     如需使用该功能，请联系 ZEGO 技术支持。
@@ -300,7 +300,7 @@ date: "2025-12-19"
 
     开发者可通过配置 [ZegoMediaPlayerResource-onlineResourceCachePath](@onlineResourceCachePath-ZegoMediaPlayerResource) 参数，设置缓存资源文件路径。此外可通过 [ZegoMediaPlayerResource-maxCachePendingLength](@maxCachePendingLength-ZegoMediaPlayerResource) 参数设置从当前播放时间点，最多可预缓存的数据长度（单位 bytes）。从而使媒体播放器播放在线资源时，可以减少用户资源下载频次，提高资源复用率与用户体验。
 
-    <Warning title="注意">
+    <Warning title="Warning">
 
 
     生成缓存文件的同时，SDK 同时会生成一个 ".info "后缀的文件，用于记录缓存信息（如缓存的起始位置等）。用户使用该功能时，需要自行负责清理"缓存文件"及"缓存信息文件"。
@@ -364,7 +364,7 @@ date: "2025-12-19"
 
 1. 新增 AI 回声消除（AEC）
 
-    <Warning title="注意">
+    <Warning title="Warning">
 
 
     如需使用该功能，请联系 ZEGO 技术支持。
@@ -897,13 +897,13 @@ date: "2025-12-19"
 
 2. 单流转码功能支持 RTC 拉流
 
-    <Warning title="注意">
+    <Warning title="Warning">
 
     1. 如需使用该功能，请联系 ZEGO 技术支持。
 
     2. 转码会造成额外的延迟，不建议您在使用 RTC 拉流的麦上场景中使用该功能。
     </Warning>
-    
+
     RTC 拉流时，支持通过预设的转码模板触发单流转码任务，输出不同分辨率的转码流，详情请参考 [单流转码](/real-time-video-linux-cpp/live-streaming/single-stream-transcoding)。
 
     该功能可用于直播等场景中，观众可以基于网络质量、终端设备等，选择不同分辨率的流进行观看，确保播放的流畅性。
@@ -1405,7 +1405,7 @@ date: "2025-12-19"
 
 **发布日期： 2022-10-28**
 
-<Warning title="注意">
+<Warning title="Warning">
 
 
 本次更新包含不兼容改动，详情请参考 [v3.0.0 升级指南](/real-time-video-linux-cpp/client-sdk/upgrade-guide/upgrade-to-v3)。

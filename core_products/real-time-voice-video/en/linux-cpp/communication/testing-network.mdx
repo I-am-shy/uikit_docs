@@ -55,7 +55,7 @@ virtual void onNetworkSpeedTestError(int errorCode, ZegoNetworkSpeedTestType typ
 
 Create an instance of [ZegoNetworkSpeedTestConfig](https://doc-zh.zego.im/article/api?doc=Express_Video_SDK_API~CPP_linux~struct~zego-express-zego-network-speed-test-config) network speed test configuration, set whether to perform uplink and downlink speed tests and expected bitrate according to the actual situation, and call the [startNetworkSpeedTest](https://doc-zh.zego.im/article/api?doc=Express_Video_SDK_API~CPP_linux~class~zego-express-i-zego-express-engine#start-network-speed-test) interface to start network speed test.
 
-<Note title="Description">
+<Note title="Note">
 
 
 After calling the [startNetworkSpeedTest](https://doc-zh.zego.im/article/api?doc=Express_Video_SDK_API~CPP_linux~class~zego-express-i-zego-express-engine#start-network-speed-test) interface to start speed test, it supports speed test for 30 seconds by default (if you need to adjust the duration, please contact ZEGO technical support to modify dynamic configuration). After exceeding the time, the speed test will be forcibly ended. If you need to continue the speed test, please call this interface again.

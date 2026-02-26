@@ -18,7 +18,7 @@ paths:
       description: |
         Video stream moderation is an interactive extension service of ZEGOCLOUD's real-time audio/video products. Through the video stream moderation API, developers can invoke real-time video moderation to moderate audio and video content, including audio semantics and features (pitch, timbre, voiceprint, melody, etc.) recognition, and text semantics and content recognition in video frames. ZEGOCLOUD will send the recognition results to developers through [video stream moderation callback](/real-time-video-server/callback/moderation/video) or a configured custom callback URL. The start video stream moderation feature should be used in conjunction with [stop video stream moderation](/real-time-video-server/api-reference/moderation/stop-censor-video).
 
-        <Warning title="Note">
+        <Warning title="Warning">
         Before using this API, please refer to [Console - Cloud Market - Shumei Content Moderation](/console/cloud-market/shumei-moderation) and follow the on-page instructions to enable the relevant permissions for `Shumei Content Moderation`.
 
         </Warning>

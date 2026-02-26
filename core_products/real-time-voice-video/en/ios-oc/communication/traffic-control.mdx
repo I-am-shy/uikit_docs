@@ -19,9 +19,9 @@ When there is only one [RTC publishing stream](/glossary/term-explanation#rtc-æŽ
 
 ### 1 Enable traffic control
 
-Before publishing, call the [enableTrafficControl](https://doc-zh.zego.im/article/api?doc=Express_Video_SDK_API~ObjectiveC~class~zego-express-engine#enable-traffic-control-property) interface and set the `enable` parameter to true to enable traffic control, and set adjustable traffic control properties (bitrate, frame rate, resolution) through the `property` parameter. Multiple options are supported, and the default value is `ADAPTIVE_FPS`, which is adaptive (reducing) video frame rate. When uplink bandwidth is insufficient, the SDK will reduce the final uplink bitrate of publishing according to the current network environment and the set `property` parameter to adapt to the uplink bandwidth.
+Before publishing, call the [enableTrafficControl](/real-time-video-ios-oc/client-sdk/api-reference/class#enabletrafficcontrolproperty-zegoexpressengine-class) interface and set the `enable` parameter to true to enable traffic control, and set adjustable traffic control properties (bitrate, frame rate, resolution) through the `property` parameter. Multiple options are supported, and the default value is `ADAPTIVE_FPS`, which is adaptive (reducing) video frame rate. When uplink bandwidth is insufficient, the SDK will reduce the final uplink bitrate of publishing according to the current network environment and the set `property` parameter to adapt to the uplink bandwidth.
 
-<Warning title="Note">
+<Warning title="Warning">
 
 * Usage restrictions: Only supports RTC publishing.
 * When traffic control is disabled, the set traffic control property `property` will also become invalid.
@@ -37,7 +37,7 @@ Before publishing, call the [enableTrafficControl](https://doc-zh.zego.im/articl
 
 The SDK will automatically set traffic control properties suitable for the scenario based on the [`scenario`](/real-time-video-ios-oc/quick-start/scenario-based-audio-video-configuration) selected by the developer when [creating the engine](/real-time-video-ios-oc/quick-start/implementing-video-call). For example, the show live streaming scenario needs to ensure video smoothness, so adaptive (reducing) video resolution is recommended; the education scenario needs to ensure clarity, so adaptive (reducing) video frame rate is recommended.
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 The SDK will determine the current traffic control properties based on the order of interface calls, and the later call takes effect. That is, if traffic control properties are first set through `enableTrafficControl`, and then `setRoomScenario` is called to set `scenario`, the traffic control properties will change according to `scenario`.
@@ -48,11 +48,11 @@ The SDK will determine the current traffic control properties based on the order
 
 ### 3 Set the minimum video bitrate for traffic control (can be skipped for audio-only scenarios)
 
-After enabling traffic control, call the [setMinVideoBitrateForTrafficControl](https://doc-zh.zego.im/article/api?doc=Express_Video_SDK_API~ObjectiveC~class~zego-express-engine#set-min-video-bitrate-for-traffic-control-mode) method to set the minimum video bitrate (default value is "0") and video sending mode. This allows the SDK to not send video or send video at an extremely low frame rate when the network does not reach the minimum bitrate for sending video.
+After enabling traffic control, call the [setMinVideoBitrateForTrafficControl](/real-time-video-ios-oc/client-sdk/api-reference/class#setminvideobitratefortrafficcontrolmode-zegoexpressengine-class) method to set the minimum video bitrate (default value is "0") and video sending mode. This allows the SDK to not send video or send video at an extremely low frame rate when the network does not reach the minimum bitrate for sending video.
 
-<Warning title="Note">
+<Warning title="Warning">
 
-You can call [setMinVideoBitrateForTrafficControl](https://doc-zh.zego.im/article/api?doc=Express_Video_SDK_API~ObjectiveC~class~zego-express-engine#set-min-video-bitrate-for-traffic-control-mode) at any time after initializing the SDK and before publishing stream [startPublishingStream](@startPublishingStream), but this setting only takes effect after traffic control is enabled.
+You can call [setMinVideoBitrateForTrafficControl](/real-time-video-ios-oc/client-sdk/api-reference/class#setminvideobitratefortrafficcontrolmode-zegoexpressengine-class) at any time after initializing the SDK and before publishing stream [startPublishingStream](@startPublishingStream), but this setting only takes effect after traffic control is enabled.
 </Warning>
 
 ```objc

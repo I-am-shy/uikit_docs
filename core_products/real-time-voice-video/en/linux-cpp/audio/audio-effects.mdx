@@ -17,7 +17,7 @@ In live streaming, audio chat room, and Karaoke room scenarios, to increase fun 
 
 You can experience the SDK's preset vocal effects through the [Audio Effects DEMO](https://www.zego.im/audio-demo) provided by ZEGO.
 
-<Note title="Description">
+<Note title="Note">
 
 
 This function only applies to sounds captured by the SDK. Developers can dynamically adjust voice changer, reverb, reverb echo, and virtual stereo during calls or live streaming.
@@ -38,7 +38,7 @@ There are two ways to set voice changer: preset voice changer and custom voice c
 
 #### Set Preset Voice Changer
 
-<Note title="Description">
+<Note title="Note">
 
 
 
@@ -89,7 +89,7 @@ ZegoExpressSDK::getEngine()->setVoiceChangerPreset(ZEGO_VOICE_CHANGER_PRESET_MEN
 
 #### Set Custom Voice Changer
 
-<Note title="Description">
+<Note title="Note">
 
 
 
@@ -101,7 +101,7 @@ If you need to set preset voice changer, please refer to [Set Preset Voice Chang
 
 If the SDK's preset voice changer effects cannot meet requirements, developers can call the [ZegoVoiceChangerParam](https://doc-zh.zego.im/article/api?doc=Express_Video_SDK_API~CPP_linux~struct~zego-express-zego-voice-changer-param#zego-voice-changer-param) method and set custom voice changer through the pitch parameter `pitch`. The value range of this parameter is [-12.0, 12.0]. The larger the value, the sharper the sound. The default value is "0.0" (i.e., no voice changer).
 
-<Warning title="Note">
+<Warning title="Warning">
 
 For version 2.18.0 and earlier, the value range is [-8.0, 8.0].
 
@@ -121,7 +121,7 @@ There are two ways to set reverb: preset reverb and custom reverb.
 
 #### Set Preset Reverb
 
-<Note title="Description">
+<Note title="Note">
 
 
 
@@ -231,7 +231,7 @@ ZegoExpressSDK::getEngine()->setReverbPreset(ZEGO_REVERB_PRESET_LARGE_ROOM);
 
 #### Set Custom Reverb
 
-<Note title="Description">
+<Note title="Note">
 
 
 
@@ -258,7 +258,7 @@ reverbParam.stereoWidth = 0.0; // Stereo width (percentage), default value is 0%
 ZegoExpressSDK::getEngine()->setReverbAdvancedParam(reverbParam);
 ```
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 After setting custom reverb parameters, the preset reverb effect set when enabling reverb will become invalid. If you want to use SDK preset parameters again, you can use the [setReverbPreset](https://doc-zh.zego.im/article/api?doc=Express_Video_SDK_API~CPP_linux~class~zego-express-i-zego-express-engine#set-reverb-preset) preset enumeration method to set.

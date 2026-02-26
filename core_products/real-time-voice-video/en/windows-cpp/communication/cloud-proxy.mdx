@@ -10,7 +10,7 @@ date: "2024-01-30"
 
 By setting the SDK's cloud proxy interface, all traffic corresponding to the SDK is forwarded through the cloud proxy server to communicate with RTC, L3 ([Ultra-Low Latency Live Streaming](/real-time-video-windows-cpp/live-streaming/low-latency-live-streaming)).
 
-<Warning title="Note">
+<Warning title="Warning">
 
 - The "Cloud Proxy" feature is a `paid` feature. If you need to use this feature, please contact ZEGO business personnel for consultation.
 - After opening the cloud proxy service, if the enterprise has configured a firewall, you also need to add the IP, domain name, and port used by the cloud proxy to the enterprise firewall whitelist.
@@ -58,7 +58,7 @@ Apply to ZEGO Technical Support to open the cloud proxy service. After opening t
 
 Call [setCloudProxyConfig](@setCloudProxyConfig) to configure the cloud proxy.
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 This interface must be called before calling the [createEngine](@createEngine) interface to create the engine.

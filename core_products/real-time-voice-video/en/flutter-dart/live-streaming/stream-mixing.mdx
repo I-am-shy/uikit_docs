@@ -76,7 +76,7 @@ Before implementing stream mixing, make sure:
 - You have created a project in the [ZEGOCLOUD Console](https://console.zegocloud.com) and applied for a valid AppID and AppSign. For details, please refer to [Console - Project Information](/console/project-info).
 - You have integrated the ZEGO Express SDK into your project and implemented basic audio/video stream publishing and playing functions. For details, please refer to [Quick Start - Integration](/real-time-video-flutter/quick-start/integrating-sdk) and [Quick Start - Implementation Flow](/real-time-video-flutter/quick-start/implementing-video-call).
 
-<Warning title="注意">
+<Warning title="Warning">
 
 
 The stream mixing feature is not enabled by default. Please enable it in the [ZEGOCLOUD Console](https://console.zegocloud.com) before use (for enabling steps, please refer to "Stream Mixing" in [Project Management - Service Configuration](/console/service-configuration/enable-stream-mixing-service)), or contact ZEGOCLOUD technical support to enable it.
@@ -107,7 +107,7 @@ The following describes how to use SDK to implement manual mixing.
 
 Please refer to "Create Engine" and "Login to Room" in [Quick Start - Implementation Flow](/real-time-video-flutter/quick-start/implementing-video-call).
 
-<Warning title="注意">
+<Warning title="Warning">
 
 
 - The prerequisite for mixing is that there must be existing streams in the room.
@@ -131,7 +131,7 @@ ZegoMixerTask task = ZegoMixerTask("task1");
 
 ** (Optional) Set up mixing video configuration**
 
-<Accordion title="混流视频配置设置" defaultOpen="false">
+<Accordion title="Stream mixing video configuration settings" defaultOpen="false">
 Developers can call the [ZegoMixerVideoConfig](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/dart_flutter/zego_express_engine/ZegoMixerVideoConfig-class.html) method to configure video parameters (frame rate, bitrate, resolution) for the mixing task.
 
 If all streams to be mixed are audio-only, no configuration is needed.
@@ -149,7 +149,7 @@ task.videoConfig = videoConfig;
 
 ** (Optional) Set up mixing audio configuration**
 
-<Accordion title="混流音频配置设置" defaultOpen="false">
+<Accordion title="Stream mixing audio configuration settings" defaultOpen="false">
 Developers can call the [ZegoMixerAudioConfig](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/dart_flutter/zego_express_engine/ZegoMixerAudioConfig-class.html) method to configure audio bitrate, channel count, and audio encoding for the mixing task.
 
 The default value for audio bitrate [bitrate](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/dart_flutter/zego_express_engine/ZegoMixerAudioConfig-class.html) is 48 kbps.
@@ -168,7 +168,7 @@ task.audioConfig = audioConfig;
 
 Define the list of input video streams [ZegoMixerInput](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/dart_flutter/zego_express_engine/ZegoMixerInput-class.html) based on actual business scenarios, set the "layout" parameter for each input video stream to layout each input stream's frame, and the ZEGOCLOUD Video Call server will mix the input streams and output a mixed stream in one frame.
 
-<Warning title="注意">
+<Warning title="Warning">
 
 
 
@@ -211,7 +211,7 @@ The `Rect` parameter description is as follows:
   </tr>
 </tbody></table>
 
-<Warning title="注意">
+<Warning title="Warning">
 
 
 The above parameters may vary on different development platforms. Please refer to the documentation for each platform for specifics.
@@ -233,7 +233,7 @@ Developers can refer to the following example code to implement common mixing la
 
 The following layout examples are all described using 360×640 resolution.
 
-<Accordion title="混流布局示例 1：两个画面水平平铺" defaultOpen="false">
+<Accordion title="Stream mixing layout example 1: Two pictures horizontally tiled" defaultOpen="false">
 <Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/sdk-doc/Pics/Common/ZegoExpressEngine/mixstreamdemo1.png" /></Frame>
 
 ```dart
@@ -259,7 +259,7 @@ task.inputList = inputList;
 </Accordion>
 
 
-<Accordion title="混流布局示例 2：四个画面水平垂直平铺" defaultOpen="false">
+<Accordion title="Stream mixing layout example 2: Four pictures horizontally and vertically tiled" defaultOpen="false">
 <Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/sdk-doc/Pics/Common/ZegoExpressEngine/mixstreamdemo2.png" /></Frame>
 
 
@@ -294,7 +294,7 @@ task.inputList = inputList;
 </Accordion>
 
 
-<Accordion title="混流布局示例 3：一个大画面铺满和两个小画面悬浮" defaultOpen="false">
+<Accordion title="Stream mixing layout example 3: One large picture filled and two small pictures floating" defaultOpen="false">
 <Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/sdk-doc/Pics/Common/ZegoExpressEngine/mixstreamdemo3.png" /></Frame>
 
 
@@ -344,7 +344,7 @@ task.outputList = mixerOutputList;
 
 ** (Optional) Set up mixing image watermark**
 
-<Accordion title="混流图片水印设置" defaultOpen="false">
+<Accordion title="Stream mixing image watermark settings" defaultOpen="false">
 If you need the URL for the watermark image, please contact ZEGOCLOUD technical support to get it.
 
 The following code demonstrates setting a ZEGO image watermark placed in the upper-left corner of the frame:
@@ -362,7 +362,7 @@ task.watermark = watermark;
 
 ** (Optional) Set up mixing background image**
 
-<Accordion title="混流背景图片设置" defaultOpen="false">
+<Accordion title="Stream mixing background image settings" defaultOpen="false">
 If you need the URL for the background image, please contact ZEGOCLOUD technical support to get it.
 
 ```dart
@@ -372,8 +372,8 @@ task.backgroundImageURL = "preset-id://zegobg.png";
 
 ** (Optional) Set up mixing sound level callback**
 
-<Accordion title="混流声浪回调设置" defaultOpen="false">
-<Warning title="注意">
+<Accordion title="Stream mixing sound wave callback settings" defaultOpen="false">
+<Warning title="Warning">
 
 
 Web platform does not support setting mixing sound level callbacks. In video scenarios, it is not recommended to enable the sound level switch, otherwise, the playing end playing HLS protocol streams may experience compatibility issues.
@@ -392,12 +392,12 @@ task.enableSoundLevel = true;
 
 ** (Optional) Set up advanced configuration**
 
-<Accordion title="高级配置设置" defaultOpen="false">
+<Accordion title="Advanced configuration settings" defaultOpen="false">
 Advanced configuration applies to some customized requirements, such as: configuring video encoding format.
 
 If you need to know the specific supported configuration items, please contact ZEGOCLOUD technical support.
 
-<Warning title="注意">
+<Warning title="Warning">
 
 
 - Normal scenarios do not require setting advanced configuration.
@@ -424,7 +424,7 @@ task.audioConfig = audioConfig;
 
 After completing the configuration of the [ZegoMixerTask](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/dart_flutter/zego_express_engine/ZegoMixerTask-class.html) mixing task object, call the start mixing interface to start this mixing task, and handle the logic of starting the mixing task failure in the callback.
 
-<Warning title="注意">
+<Warning title="Warning">
 
 
 
@@ -449,7 +449,7 @@ ZegoExpressEngine.instance.startMixerTask(task).then((ZegoMixerStartResult resul
 
 When mixing information changes, such as adding or removing input streams in the mixing input list, adjusting mixing video output bitrate, etc., modify the parameters of this mixing task object, then call the [startMixerTask](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/dart_flutter/zego_express_engine/ZegoExpressEngineMixer/startMixerTask.html) interface again to update the configuration.
 
-<Warning title="注意">
+<Warning title="Warning">
 
 
 When updating mixing task configuration, "taskID" cannot be changed.
@@ -480,7 +480,7 @@ ZegoExpressEngine.instance.stopMixerTask("task1").then((ZegoMixerStopResult resu
 
 Please refer to "Create Engine" and "Login to Room" in [Quick Start - Implementation Flow](/real-time-video-flutter/quick-start/implementing-video-call) to complete initialization and room login.
 
-<Warning title="注意">
+<Warning title="Warning">
 
 
 - The prerequisite for auto mixing is that the target room exists.
@@ -510,7 +510,7 @@ task.roomID = "roomID1";
 
 ** (Optional) Set up auto mixing audio configuration**
 
-<Accordion title="自动混流音频配置" defaultOpen="false">
+<Accordion title="Automatic stream mixing audio configuration" defaultOpen="false">
 Set up auto mixing audio-related configurations through [ZegoMixerAudioConfig](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/dart_flutter/zego_express_engine/ZegoMixerAudioConfig-class.html), mainly including audio bitrate, channel count, and encoding ID.
 
 ```dart
@@ -561,8 +561,8 @@ task.outputList = outputList;
 
 ** (Optional) Set up auto mixing sound level callback**
 
-<Accordion title="自动混流声浪回调设置" defaultOpen="false">
-<Warning title="注意">
+<Accordion title="Automatic stream mixing sound wave callback settings" defaultOpen="false">
+<Warning title="Warning">
 
 
 In video scenarios, it is not recommended to enable the sound level switch, otherwise, the playing end playing HLS protocol streams may experience compatibility issues.
@@ -597,7 +597,7 @@ ZegoExpressEngine.instance.startAutoMixerTask(task).then((ZegoMixerStartResult r
 
 Call the [stopAutoMixerTask ](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/dart_flutter/zego_express_engine/ZegoExpressEngineMixer/stopAutoMixerTask.html) interface to stop auto mixing.
 
-<Warning title="注意">
+<Warning title="Warning">
 
 
 Before starting the next auto mixing task in the same room, please call the [stopAutoMixerTask ](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/dart_flutter/zego_express_engine/ZegoExpressEngineMixer/stopAutoMixerTask.html) interface to end the previous auto mixing task, to avoid the situation where when a host has already started the next auto mixing task to mix with other hosts, the audience is still playing the output stream of the previous auto mixing task. If the user does not actively end the current auto mixing task, the task will automatically end after the room is closed.

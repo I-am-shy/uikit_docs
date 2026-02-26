@@ -10,7 +10,7 @@ date: "2024-02-27"
 
 Custom audio processing is generally used to remove interference from speech. Since the SDK has already performed echo cancellation, noise suppression, and other processing on the collected audio raw data, developers usually do not need to process it again. If developers want to implement special functions through custom processing after collecting audio data or before rendering remote audio data (such as voice changing, voice beautification, etc.), they can refer to this document.
 
-<Note title="Description">
+<Note title="Note">
 
 
 The data for custom audio processing is the audio data after the original audio has been processed by 3A (AEC echo cancellation, AGC automatic gain control, ANS noise reduction):

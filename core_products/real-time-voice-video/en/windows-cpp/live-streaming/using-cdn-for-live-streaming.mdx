@@ -105,7 +105,7 @@ For relevant source code, please see files in the "/ZegoExpressExample/Examples/
 
 ## Relaying to CDN
 
-<Note title="Description">
+<Note title="Note">
 
 If you choose to use direct publishing to CDN function, you do not need to perform all steps in this section, please refer to [Direct Publishing to CDN](/real-time-video-windows-cpp/live-streaming/using-cdn-for-live-streaming).
 
@@ -123,7 +123,7 @@ Please refer to "Publishing Stream" in [Quick Start - Implementation](/real-time
 
 After publishing stream successfully, call the [addPublishCdnUrl](@addPublishCdnUrl) interface to add dynamically relaying to CDN URLs, which allows you to dynamically relay audio and video streams that have been successfully published to ZEGO real-time cloud to third-party CDNs. The supported relay address format is "rtmp".
 
-<Note title="Description">
+<Note title="Note">
 
 - If developers have the need to relay to multiple third-party CDN vendors, they can use the same stream ID to call the [addPublishCdnUrl](@addPublishCdnUrl) interface multiple times (URLs need to be different).
 - After developers relay to multiple third-party CDNs, when stopping relaying, they also need to call multiple times to stop all relayed streams.
@@ -180,7 +180,7 @@ engine->removePublishCdnUrl(streamID, URL, [=](int errorCode){
 ```
 
 ## Direct Publishing to CDN
-<Note title="Description">
+<Note title="Note">
 
 If you choose to use relaying to CDN function, you do not need to perform all steps in this section, please refer to [Relaying to CDN](/real-time-video-windows-cpp/live-streaming/using-cdn-for-live-streaming).
 

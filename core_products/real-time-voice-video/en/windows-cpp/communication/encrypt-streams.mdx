@@ -32,7 +32,7 @@ Before using the audio and video stream encryption feature, ensure that:
 
 Call the [setPublishStreamEncryptionKey](@setPublishStreamEncryptionKey) interface to set the encryption key for stream publishing. This interface takes effect whether called before or after publishing the stream. The encryption key is set by the developer, and the length only supports 16/24/32 bytes. When developers play encrypted streams, they need to provide a decryption key that matches the encryption key, otherwise the stream cannot be played successfully.
 
-<Warning title="Note">
+<Warning title="Warning">
 
 - This interface is only valid when publishing streams to the **ZEGO Video Call server** or **Low-Latency Live Streaming server**.
 - Supports calling [setPublishStreamEncryptionKey](@setPublishStreamEncryptionKey) during stream publishing to update the encryption key. Note that the decryption key on the playing end needs to be updated first before updating the encryption key on the publishing end.
@@ -51,7 +51,7 @@ engine->setPublishStreamEncryptionKey(key);
 
 Call the [setPlayStreamDecryptionKey](@setPlayStreamDecryptionKey) interface to set the decryption key for stream playing. This interface takes effect whether called before or after playing the stream.
 
-<Warning title="Note">
+<Warning title="Warning">
 
 - This interface is only valid when playing streams from the **ZEGO Video Call server** or **Low-Latency Live Streaming server**.
 - Supports calling [setPlayStreamDecryptionKey](@setPlayStreamDecryptionKey) during stream playing to update the decryption key. Note that the decryption key on the playing end needs to be updated first before updating the encryption key on the publishing end.

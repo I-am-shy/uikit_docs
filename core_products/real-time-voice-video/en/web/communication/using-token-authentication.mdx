@@ -21,7 +21,7 @@ Authentication refers to verifying whether a user has permission to access the s
 
 Basic authentication Token is enabled by default. For permission authentication Token (i.e., room ID and stream ID permission bits), please contact ZEGOCLOUD technical support to enable.
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 Only ZEGOCLOUD Express SDK version 2.14.0 and above supports using Token for authentication as described in this document.
@@ -156,7 +156,7 @@ Reference information for each language used to generate Token on the server in 
 </tr>
 </tbody></table>
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 - Temporary Token acquisition method: For developers' convenience, [ZEGOCLOUD Console](https://console.zego.im/) provides the function to generate temporary Tokens. Developers can directly obtain temporary Tokens for use. For details, please refer to [Console - Development Assistance](/console/development-assistance/temporary-token). However, in the developer's own online environment, Token must be generated through their own server.
@@ -265,7 +265,7 @@ func main() {
 </Tab>
 </Tabs>
 
-<Warning title="Note">
+<Warning title="Warning">
 
 When running the Java source code to generate Token, if "java.security.InvalidKeyException:illegal Key Size" exception appears, please refer to [Related FAQ](https://doc-zh.zego.im/faq/java_illegal_key_size_solution?product=ExpressVideo&platform=all) to solve.
 </Warning>
@@ -278,7 +278,7 @@ When running the Java source code to generate Token, if "java.security.InvalidKe
 
 The user carries the obtained Token and user, roomID information to log into the corresponding room through the [loginRoom](@loginRoom) interface.
 
-<Warning title="Note">
+<Warning title="Warning">
 
 The userID used when calling the [loginRoom](@loginRoom) interface to log into the room must be consistent with the userID used when "4.2 Generate Token on Server".
 </Warning>
@@ -300,7 +300,7 @@ zg.renewToken(token);
 
 ### 4 Handling Token Expiration
 
-<Warning title="Note">
+<Warning title="Warning">
 
 Token expiration may cause issues such as stream publishing/playing exceptions. Please strictly follow the instructions below to handle expired Tokens in a timely manner.
 </Warning>
@@ -313,7 +313,7 @@ If you are using ZEGOCLOUD Express SDK version **2.14.0** or above, and after To
   - Logged-in users will not be kicked out of the room.
   - Currently successful stream publishing/playing will not be affected. However, after stopping stream publishing, you cannot publish streams again unless the Token is updated.
 
-<Note title="Description">
+<Note title="Note">
 
 
 ZEGOCLOUD also provides another Token expiration handling method. You can contact ZEGOCLOUD technical support to configure:

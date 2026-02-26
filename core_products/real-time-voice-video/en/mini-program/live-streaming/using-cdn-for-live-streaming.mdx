@@ -16,7 +16,7 @@ date: "2024-01-02"
 
 为防止攻击者盗取或伪造您的推流 URL 地址，您可以参考 [CDN 推流鉴权](/real-time-video-miniprogram/live-streaming/cdn-stream-publishing-authentication)，提升您推流使用的安全性。
 
-<Warning title="注意">
+<Warning title="Warning">
 本功能仅支持在 `微信小程序` 上使用。
 </Warning>
 
@@ -33,7 +33,7 @@ date: "2024-01-02"
 
 在转推 CDN 前，请确保已在项目中实现了基本的音视频推拉流功能，详情请参考 [微信小程序 - 集成 SDK](/real-time-video-miniprogram/quick-start/we-chat/integrating-sdk) 和 [微信小程序 - 实现流程](/real-time-video-miniprogram/quick-start/we-chat/implementing-video-call)。
 
-<Warning title="注意">
+<Warning title="Warning">
 CDN 直播功能不是默认开启的，使用前请在 [ZEGO 控制台](https://console.zego.im) 自助开通（开通步骤请参考 [项目管理 - 服务配置](/console/service-configuration/activate-cdn-service) 中的“CDN”），或联系 ZEGO 技术支持开通。
 </Warning>
 
@@ -61,7 +61,7 @@ const result = await zg.addPublishCdnUrl(streamID, signature, targetURL);
 console.warn(result);
 ```
 
-<Warning title="注意">
+<Warning title="Warning">
 
 
 若开发者有转推到多家 CDN 厂商的需求，可使用同一个流 ID 多次调用转推 CDN 接口（URL 需不同）。
@@ -86,7 +86,7 @@ const result = await zg.removePublishCdnUrl(streamID, signature, targetURL);
 console.warn(result);
 ```
 
-<Warning title="注意">
+<Warning title="Warning">
 
 
 - 停止推流前，请先停止转推 CDN。

@@ -6,7 +6,7 @@ date: "2025-01-20"
 
 - - -
 
-<Warning title="注意">uniapp 平台的屏幕共享功能暂不支持 web 端。</Warning>
+<Warning title="Warning">uniapp 平台的屏幕共享功能暂不支持 web 端。</Warning>
 
 ## 功能简介
 
@@ -37,7 +37,7 @@ date: "2025-01-20"
 
 （必选）Android 在录制屏幕前，会弹窗提示用户是否允许应用录制屏幕，请进行授权。
 
-<Warning title="注意">
+<Warning title="Warning">
 请务必声明以下权限，否则将无法使用屏幕共享功能。
 </Warning>
 
@@ -103,7 +103,7 @@ ZegoExpressEngine.instance().startScreenCaptureInApp();
 
 ### 跨应用屏幕共享
 
-<Warning title="注意">
+<Warning title="Warning">
 
 
 跨应用屏幕共享是由 iOS 系统通过 Extension 扩展进程进行录制的，所以需要再额外创建扩展进程，以下步骤都需要在 Xcode 里实现，通过离线打包生成 App 产物，使用离线打包的前置条件请参考 Dcloud 官方文档 [App 离线打包](https://nativesupport.dcloud.net.cn/AppDocs/usesdk/ios.html)。
@@ -116,7 +116,7 @@ ZegoExpressEngine.instance().startScreenCaptureInApp();
 跨应用屏幕共享实现步骤如下：
 #### 新建 Broadcast Upload Extension (仅 iOS 支持)
 
-<Note title="说明">
+<Note title="Note">
 
 Broadcast Upload Extension 的内存使用限制为 50 MB，请勿在屏幕共享的 Extension 中进行额外的内存分配。
 
@@ -131,7 +131,7 @@ Broadcast Upload Extension 的内存使用限制为 50 MB，请勿在屏幕共�
 <Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/sdk-doc/Pics/iOS/ZegoExpressEngine/ShareScreen/share_screen_create_extension_ios.png" /></Frame>
 3. 在弹出的对话框中的 “Product Name” 一栏填写 “Broadcast Upload Extension” 的名字，例如 “ScreenShare”。选择 “Team”、“Language” 等信息后，单击 “Finish” 。
 
-<Note title="说明">
+<Note title="Note">
 
 
 无需勾选 “Include UI Extension”。
@@ -153,7 +153,7 @@ Broadcast Upload Extension 的内存使用限制为 50 MB，请勿在屏幕共�
 
 #### 获取屏幕数据
 
-<Note title="说明">
+<Note title="Note">
 
 
 如下系统回调的实现可以在 [下载示例源码](/real-time-video-uniapp/quick-start/run-example-code) 中的 “/ZegoExpressExample-iOS-OC/Topics/ScreenCapture/ZegoExpressExample-iOS-OC-Broadcast/SampleHandler.m” 文件中查看：
@@ -238,16 +238,16 @@ ZegoExpressEngine.instance().stopScreenCapture();
     若使用屏幕共享功能采集并推流音频，同时又在本机使用拉流功能，会导致 iOS 系统重复采集拉流音频，导致音频播放异常，建议使用 [muteAllPlayStreamAudio](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/javascript_uni-app/classes/_zegoexpressengineapp_.zegoexpressengine.html#muteallplaystreamaudio) 禁止拉取所有音频流。
 
 4. **Android 设备固定竖屏（禁止自动旋转）时，开启屏幕采集出现弹窗朝向异常、界面横竖屏切换，如何解决？**
-  
+
     因设备固定竖屏与 App 横屏界面冲突，导致屏幕采集时横竖屏快速切换，引发系统数据异常黑屏。解决方案：
-    
+
     - 方案一：通过 `tools:replace` 覆盖 SDK 配置
-    
+
       SDK 屏幕共享辅助 Activity 默认朝向为 “fullUser”，需在项目 AndroidManifest.xml 中修改：
       1. 在根节点（manifest 标签）添加 “tools” 工具命名空间；
       2. 找到上述 Activity 配置，将其屏幕朝向（screenOrientation）改为 “unspecified”，并添加 `tools:replace` 强制覆盖 SDK 默认配置。
       重新编译后，弹窗将与 App 横屏保持一致，避免切换黑屏。
-    
+
     - 方案二：开启设备自动旋转
-    
+
       进入设备「设置 > 显示 > 自动旋转屏幕」，开启后弹窗朝向将跟随 App 横屏，无切换黑屏问题。

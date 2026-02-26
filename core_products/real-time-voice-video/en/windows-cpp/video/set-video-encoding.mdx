@@ -150,7 +150,7 @@ Since a small number of device models have poor support for hardware encoding/de
 
 **Enable Hardware Encoding**
 
-<Warning title="Note">
+<Warning title="Warning">
 This function must be set before publishing stream to take effect. If set after publishing stream, it will take effect only after stopping publishing stream and republishing stream.
 </Warning>
 
@@ -163,7 +163,7 @@ engine->enableHardwareEncoder(true);
 
 **Enable Hardware Decoding**
 
-<Warning title="Note">
+<Warning title="Warning">
 This function must be set before playing stream to take effect. If set after playing stream, it will take effect only after stopping playing stream and replaying stream.
 </Warning>
 
@@ -209,7 +209,7 @@ engine->startPublishingStream(streamID);
 
     - In the relay to CDN scenario, since CDN playing stream does not use ZEGO's private protocol, the stream relayed by the ZEGO server to the CDN server does not support layered video encoding and video large and small stream encoding. You can only choose one from relay base layer or relay enhancement layer. The resolution, bitrate, and frame rate when playing stream from CDN depend on whether the relay is base layer or enhancement layer.
 
-        <Warning title="Note">
+        <Warning title="Warning">
         When relaying to CDN, the enhancement layer is relayed by default. If the business needs to relay the base layer to CDN, please contact ZEGOCLOUD Technical Support for configuration.
         </Warning>
 

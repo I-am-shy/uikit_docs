@@ -147,7 +147,7 @@ Developers can use this callback [onCapturedDataRecordStateUpdate](@onCapturedDa
 Developers can use this callback [onCapturedDataRecordProgressUpdate](@onCapturedDataRecordProgressUpdate) to determine file recording process progress or perform UI prompts on the user interface, etc.
 
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 The set recording callback information will only be received after calling [startRecordingCapturedData](https://www.zegocloud.com/docs/article/api?doc=Express_Video_SDK_API~Java~class~im-zego-zegoexpress-zego-express-engine#start-recording-captured-data) to start recording.
@@ -180,7 +180,7 @@ Developers need to call [startRecordingCapturedData](https://www.zegocloud.com/d
 
 If you want to record audio and video, specify it as "ZegoDataRecordType.DEFAULT" or "ZegoDataRecordType.AUDIO_AND_VIDEO". If you only want to record audio, select "ZegoDataRecordType.ONLY_AUDIO". If you only record pure video, select "ZegoDataRecordType.ONLY_VIDEO".
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 - In the recording configuration specified in [ZegoDataRecordConfig ](https://www.zegocloud.com/docs/article/api?doc=Express_Video_SDK_API~Java~class~im-zego-zegoexpress-entity-zego-data-record-config), the file path suffix must end with ".mp4", ".flv", or ".aac" to specify the recording file format.
@@ -207,7 +207,7 @@ engine.startRecordingCapturedData(config, ZegoPublishChannel.MAIN);
 
 Developers need to call [stopRecordingCapturedData](https://www.zegocloud.com/docs/article/api?doc=Express_Video_SDK_API~Java~class~im-zego-zegoexpress-zego-express-engine#stop-recording-captured-data) to end recording.
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 During the recording process, if exiting the Room [logoutRoom](https://www.zegocloud.com/docs/article/api?doc=Express_Video_SDK_API~Java~class~im-zego-zegoexpress-zego-express-engine#logout-room), the SDK will actively stop recording internally.
@@ -257,7 +257,7 @@ For playing recording files, you can choose two methods.
 
   This is due to the SDK's internal processing method and currently cannot be resolved. Users need to try their best to avoid this operation.
 
-8. **Does local media recording support recording sounds from "ZegoMediaPlayer/ZegoAudioPlayer/Mixing功能"?**
+8. **Does local media recording support recording sounds from "ZegoMediaPlayer/ZegoAudioPlayer/Mixing feature"?**
 
   It can record sounds from the above input sources, but only sounds mixed into the published stream will be recorded. If only played locally, they will not be recorded into the file.
 

@@ -22,7 +22,7 @@ paths:
 
         For example, when performing RTMP stream publishing through third-party publishing tools such as OBS, you need to perform publishing dispatch; when you need a third-party player to pull RTMP streams for playback, you need to perform playing dispatch.
 
-        <Warning title="Note">
+        <Warning title="Warning">
         For first-time use of this API, please contact ZEGOCLOUD Technical Support for configuration.
         </Warning>
         <Note title="Rate Limit">For the same AppID: 40 times/second</Note>

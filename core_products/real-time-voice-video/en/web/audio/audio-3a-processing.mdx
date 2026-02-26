@@ -67,7 +67,7 @@ Call the [createZegoStream](@createZegoStream) interface to create a [ZegoLocalS
 
 When capturing source data through camera and microphone, use the "ANS", "AGC", and "AEC" parameters in the [ZegoCaptureMicrophone](@-ZegoCaptureMicrophone) object to set noise suppression, automatic gain, and echo cancellation switches respectively. "true" means on, "false" means off.
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 - When creating a stream, you can only select one configuration mode from "camera", "screen", and "custom".
@@ -93,7 +93,7 @@ option = {
 const localStream = await zg.createZegoStream(option)
 ```
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 If you need to configure 3A processing during stream publishing after creating a stream, you can use [setAudioConfig](https://doc-zh.zego.im/article/api?doc=Express_Video_SDK_API~javascript_web~class~ZegoExpressEngine#set-audio-config) to modify it.

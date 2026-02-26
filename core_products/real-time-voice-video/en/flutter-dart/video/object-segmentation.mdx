@@ -11,7 +11,7 @@ date: "2024-09-06"
 
 Object Segmentation is a value-added capability provided by Express SDK. It uses AI algorithms to recognize content in video frames and sets `transparency information` for each pixel. Pixels of the main subject are set to "opaque", while pixels outside the main subject are set to "transparent". Developers can use the transparency information of these pixels to process the subject and non-subject parts of the image differently, thereby implementing different features.
 
-<Warning title="Note">
+<Warning title="Warning">
 - The current official SDK does not include "Object Segmentation" related features. If needed, please contact ZEGOCLOUD Technical Support for a special build and provide your AppID to enable relevant permissions.
 - "Object Segmentation" is a paid feature. For trial or formal pricing inquiries, please contact ZEGOCLOUD sales personnel.
 </Warning>
@@ -117,7 +117,7 @@ Before using the object segmentation feature, ensure:
 
 ## Implementation
 
-<Warning title="Note">
+<Warning title="Warning">
 
 - Enabling object segmentation will consume additional system resources. To ensure user experience, currently only one channel's publishing stream can have object segmentation enabled.
 - If using third-party filters through custom preprocessing, ensure that the third-party filters support Alpha channel passthrough.
@@ -166,7 +166,7 @@ For the specific process of initialization and room login, please refer to "[Cre
 
 Call the [onVideoObjectSegmentationStateChanged](https://www.zegocloud.com/docs/unique-api/express-video-sdk/en/dart_flutter/zego_express_engine/ZegoExpressEngine/onVideoObjectSegmentationStateChanged.html) interface to listen for object segmentation state callbacks.
 
-<Warning title="Note">
+<Warning title="Warning">
 The object segmentation state callback depends on enabling preview or publishing. That is, to listen to the [onVideoObjectSegmentationStateChanged](https://www.zegocloud.com/docs/unique-api/express-video-sdk/en/dart_flutter/zego_express_engine/ZegoExpressEngine/onVideoObjectSegmentationStateChanged.html) callback, you need to call preview [startPreview](https://www.zegocloud.com/docs/unique-api/express-video-sdk/en/dart_flutter/zego_express_engine/ZegoExpressEnginePublisher/startPreview.html) or publishing [startPublishingStream](https://www.zegocloud.com/docs/unique-api/express-video-sdk/en/dart_flutter/zego_express_engine/ZegoExpressEnginePublisher/startPublishingStream.html).
 </Warning>
 
@@ -182,7 +182,7 @@ ZegoExpressEngine.onVideoObjectSegmentationStateChanged = (state, channel, error
 
 ### Use Object Segmentation to Implement Different Business Features
 
-<Warning title="Note">
+<Warning title="Warning">
 If developers need to update the object segmentation type or background processing type, they need to modify the [ZegoObjectSegmentationConfig](https://www.zegocloud.com/docs/unique-api/express-video-sdk/en/dart_flutter/zego_express_engine/ZegoObjectSegmentationConfig-class.html) configuration and call the [enableVideoObjectSegmentation](https://www.zegocloud.com/docs/unique-api/express-video-sdk/en/dart_flutter/zego_express_engine/ZegoExpressEnginePublisher/enableVideoObjectSegmentation.html) interface again to enable object segmentation to update the object segmentation effect. The update result will be notified to developers through the [onVideoObjectSegmentationStateChanged](https://www.zegocloud.com/docs/unique-api/express-video-sdk/en/dart_flutter/zego_express_engine/ZegoExpressEngine/onVideoObjectSegmentationStateChanged.html) callback.
 </Warning>
 

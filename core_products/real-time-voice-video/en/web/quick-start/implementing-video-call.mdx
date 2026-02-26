@@ -173,7 +173,7 @@ To facilitate the implementation of basic real-time audio and video functions, y
 
 1. Create and initialize an instance of [ZegoExpressEngine ](https://doc-zh.zego.im/article/api?doc=Express_Video_SDK_API~javascript_web~class~ZegoExpressEngine), passing your project's `AppID` to the parameter "appID" and `Server address` to the parameter "server".
 
-<Warning title="注意">
+<Warning title="Warning">
 - If using SDK version 3.7.0 or above, the `server` parameter can be filled with the `Server address` obtained from the console or directly with an empty string.
 - The ZegoExpressEngine instance cannot be processed by frameworks in a reactive manner, otherwise unpredictable problems will occur. For example, in the Vue3 framework, you can mark the SDK instance through Vue3's markRaw interface to avoid being converted to a proxy.
 </Warning>
@@ -182,7 +182,7 @@ To facilitate the implementation of basic real-time audio and video functions, y
 
 2. The SDK provides notification callbacks such as room connection status, audio and video stream changes, and user entry/exit. After creating the engine, you can register callbacks through the engine instance's [on](https://doc-zh.zego.im/article/api?doc=Express_Video_SDK_API~javascript_web~class~ZegoExpressEngine#on) method.
 
-<Warning title="注意">
+<Warning title="Warning">
 
 
   To avoid missing event notifications, it is recommended to register callbacks immediately after creating the engine
@@ -405,7 +405,7 @@ You can also use the [online detection tool](https://zegodev.github.io/zego-expr
 
 Logging in to a room requires a Token for identity verification. Developers can directly obtain a temporary Token (valid for 24 hours) from the [ZEGO console](https://console.zego.im/dashboard) to use. For details, please refer to "Project Information" in [Console - Project Management](/console/project-info).
 
-<Note title="说明">
+<Note title="Note">
 
 
 Temporary Token is only for debugging. Before officially going online, please generate the Token from the developer's business server. For details, please refer to [Use Token for Authentication](/real-time-video-web/communication/using-token-authentication).
@@ -418,7 +418,7 @@ Temporary Token is only for debugging. Before officially going online, please ge
 
 Call the [loginRoom ](https://doc-zh.zego.im/article/api?doc=Express_Video_SDK_API~javascript_web~class~ZegoExpressEngine#login-room) interface, passing in the room ID parameter "roomID", "token" and user parameter "user", and pass in the parameter "config" according to the actual situation to log in to the room. If the room does not exist, calling this interface will create and log in to this room.
 
-<Warning title="注意">
+<Warning title="Warning">
 
 
 - The values of the "roomID", "userID" and "userName" parameters are all customized, among which "userName" is not required.
@@ -457,7 +457,7 @@ You can monitor the [roomStateChanged](@roomStateChanged) callback to check your
 
 1. Create a stream and preview your screen
 
-<Note title="说明">
+<Note title="Note">
 
 
 Regardless of whether you call preview or not, you can publish your audio and video stream to the ZEGO audio and video cloud.
@@ -475,7 +475,7 @@ Through localStream's [playVideo](@playVideo) and [playAudio](@playAudio) interf
 
 Call the [startPublishingStream](@startPublishingStream) interface, passing in "streamID" and the stream object "localStream" obtained from creating the stream, to send the local audio and video stream to remote users. You can know whether the publishing is successful by monitoring the [PublisherStateUpdateCallBack](@PublisherStateUpdateCallBack) callback.
 
-<Note title="说明">
+<Note title="Note">
 
 
 - "streamID" is generated locally by you, but you need to ensure that "streamID" is globally unique under the same AppID. If under the same AppID, different users each publish a stream with the same "streamID", the user who publishes later will fail to publish the stream.
@@ -526,7 +526,7 @@ When making a video call, we need to play other users' audio and video.
 
 When other users join the room, the SDK will trigger the [roomStreamUpdate](@roomStreamUpdate) callback to notify that a stream has been added to the room. Based on this, you can obtain other users' "streamID". At this time, call the [startPlayingStream](@startPlayingStream) interface according to the passed-in other users' "streamID" to play the remote audio and video screen that has already been published to the ZEGO server. You can know whether the audio and video have been successfully played by monitoring the [PlayerStateUpdateCallBack](@PlayerStateUpdateCallBack) callback. If you need to play streams from CDN, please refer to [Use CDN for Live Streaming](/real-time-video-web/live-streaming/using-cdn-for-live-streaming).
 
-<Warning title="注意">
+<Warning title="Warning">
 
 
 It is recommended to use [createRemoteStreamView](@createRemoteStreamView) to play media streams. Using audio or video tags to play media streams is not recommended.
@@ -559,7 +559,7 @@ zg.on('roomStreamUpdate', async (roomID, updateType, streamList, extendedData) =
 });
 ```
 
-<Warning title="注意">
+<Warning title="Warning">
 
 
 - Some browsers may block playing media streams using the [ZegoStreamView](@-ZegoStreamView) media stream player component due to autoplay restriction policies. The SDK will pop up a prompt on the interface by default to resume playback.
@@ -597,7 +597,7 @@ zg.destroyStream(localStream)
 
 Call the [stopPlayingStream](@stopPlayingStream) interface to stop playing the remote audio and video stream.
 
-<Warning title="注意">
+<Warning title="Warning">
 
 
 If the developer receives a notification of "reduction" of audio and video streams through the [roomStreamUpdate](@roomStreamUpdate) callback, please call the [stopPlayingStream ](@stopPlayingStream) interface in time to stop playing the stream to avoid playing empty streams and generating additional costs; or, the developer can choose the appropriate timing according to their own business needs and actively call the [stopPlayingStream ](@stopPlayingStream) interface to stop playing the stream.

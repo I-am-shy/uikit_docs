@@ -30,7 +30,7 @@ import Content from '/core_products/real-time-voice-video/zh/snippets/audio-effe
 
 调用 [ZegoExpressEngine](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/ets_ohos/classes/_zegoexpressengine_.zegoexpressengine.html) 的 [createAudioEffectPlayer](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/ets_ohos/classes/_zegoexpressengine_.zegoexpressengine.html#createaudioeffectplayer) 方法创建音效播放器实例。
 
-<Warning title="注意">
+<Warning title="Warning">
 
 
 引擎当前只支持同时创建一个实例，超出后将返回 `null`。
@@ -52,7 +52,7 @@ let audioEffectPlayer = engine.createAudioEffectPlayer();
 
 当加载的音效使用完成后，可以调用 [unloadResource](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/ets_ohos/classes/_zegoexpressdefines_.zegoaudioeffectplayer.html#unloadresource) 接口卸载，以释放相关资源。否则 SDK 将在 [ZegoAudioEffectPlayer](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/ets_ohos/classes/_zegoexpressdefines_.zegoaudioeffectplayer.html) 实例释放时会自动卸载已加载的音效。
 
-<Note title="说明">
+<Note title="Note">
 
 
 预加载为非必须操作，为了提高性能或者需要反复播放某个特定的音效时推荐使用。

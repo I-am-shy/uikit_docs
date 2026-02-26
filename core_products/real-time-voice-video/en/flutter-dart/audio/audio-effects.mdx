@@ -8,7 +8,7 @@ date: "2024-05-24"
 
 ## Function Overview
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 This document does not apply to the Web platform.
@@ -26,7 +26,7 @@ In live streaming, voice chat rooms, and karaoke rooms scenarios, to increase fu
 
 You can experience the SDK's preset voice effects through the [Sound Effects Experience DEMO](https://www.zego.im/audio-demo) provided by ZEGO.
 
-<Note title="Description">
+<Note title="Note">
 
 
 This function only applies to sound captured by the SDK. Developers can dynamically adjust voice changer, reverb, reverb echo, and virtual stereo during calls or live streaming.
@@ -59,7 +59,7 @@ There are two ways to set voice changer: preset voice changer and custom voice c
 
 **Set Preset Voice Changer**
 
-<Note title="Description">
+<Note title="Note">
 
 
 
@@ -110,7 +110,7 @@ ZegoExpressEngine.instance.setVoiceChangerPreset(ZegoVoiceChangerPreset.MenToChi
 
 **Set Custom Voice Changer**
 
-<Note title="Description">
+<Note title="Note">
 
 
 
@@ -122,7 +122,7 @@ If you need to set preset voice changer, please refer to [Set Preset Voice Chang
 
 If the SDK's preset voice changer effects cannot meet your needs, developers can call the [ZegoVoiceChangerParam ](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/dart_flutter/zego_express_engine/ZegoVoiceChangerParam-class.html) method and set custom voice changer through the pitch parameter "pitch". The value range of this parameter is [-12.0, 12.0]. The larger the value, the sharper the sound. The default value is "0.0" (i.e., no voice changer).
 
-<Warning title="Note">
+<Warning title="Warning">
 
 For versions 2.18.0 and earlier, the value range is [-8.0, 8.0].
 
@@ -141,7 +141,7 @@ There are two ways to set reverb: preset reverb and custom reverb.
 
 **Set Preset Reverb**
 
-<Note title="Description">
+<Note title="Note">
 
 
 
@@ -180,7 +180,7 @@ ZegoExpressEngine.instance.setReverbPreset(ZegoReverbPreset.LargeRoom);
 
 **Set Custom Reverb**
 
-<Note title="Description">
+<Note title="Note">
 
 
 
@@ -208,7 +208,7 @@ var reverbParam = ZegoReverbAdvancedParam(
 ZegoExpressEngine.instance.setReverbAdvancedParam(reverbParam);
 ```
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 When custom reverb parameters are set, the preset reverb effect set when enabling reverb will become invalid. If you want to use the SDK preset parameters again, you can use the [setReverbPreset ](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/dart_flutter/zego_express_engine/ZegoExpressEnginePreprocess/setReverbPreset.html) preset enumeration method to set.
@@ -252,7 +252,7 @@ ZegoExpressEngine.instance.setAudioConfig(audioConfig);
 
 After setting the audio encoding channel to dual channel, call the [enableVirtualStereo ](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/dart_flutter/zego_express_engine/ZegoExpressEnginePreprocess/enableVirtualStereo.html) method and set the virtual stereo source angle through the `enable` parameter to have a stereo effect. The angle range is 0 ~ 360. Generally, it can be set to 90 degrees (i.e., directly in front).
 
-<Note title="Description">
+<Note title="Note">
 
 
 

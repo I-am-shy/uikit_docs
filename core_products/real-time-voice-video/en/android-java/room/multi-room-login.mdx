@@ -11,7 +11,7 @@ date: "2024-01-02"
 The same user can join multiple rooms at the same time, and simultaneously publish streams, play streams, send real-time messages, and receive message callbacks in multiple rooms.
 
 
-<Note title="Description">
+<Note title="Note">
 
 - ZEGO Express SDK has supported this feature since version 2.9.0.
 - This feature is not enabled by default. If you need to use it, please contact ZEGO Technical Support to enable relevant permissions.
@@ -90,7 +90,7 @@ The implementation of specific functions is as follows:
 
 Before initializing the SDK, you must call the [setRoomMode](@setRoomMode) interface and use the [ZegoRoomMode](@-ZegoRoomMode) class to set the room mode to multi-room mode, that is, the "mode" value is "MULTI_ROOM".
 
-<Note title="Description">
+<Note title="Note">
 
 
 If you set multi-room mode without enabling the multi-room feature, logging in to the room will fail with an error, returning error code "1002036".
@@ -167,7 +167,7 @@ The implementation of sending and receiving real-time messages in multi-room and
 
 Pass in the room ID (roomID) and call the [logoutRoom](@logoutRoom__2) interface to leave the room.
 
-<Note title="Description">
+<Note title="Note">
 
 
 If you want to exit all logged-in rooms at once, you can directly call the [logoutRoom](@logoutRoom__2) interface without "roomID".

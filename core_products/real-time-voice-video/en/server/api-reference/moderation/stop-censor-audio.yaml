@@ -18,7 +18,7 @@ paths:
       description: |
         Call this API to end audio stream content moderation.
 
-        <Warning title="Note">
+        <Warning title="Warning">
         Before using this API, please refer to [Console - Cloud Market - Shumei Content Moderation](/console/cloud-market/shumei-moderation) and follow the on-page instructions to enable the relevant permissions for `Shumei Content Moderation`.
         </Warning>
 

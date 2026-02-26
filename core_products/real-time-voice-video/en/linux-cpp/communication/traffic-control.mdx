@@ -31,7 +31,7 @@ Before publishing, call the [enableTrafficControl](https://doc-zh.zego.im/articl
 
 In different scenarios, traffic control property settings are different. For example, show live streaming scenarios need to ensure video fluency, so resolution adaptation is recommended; education scenarios need to ensure clarity, so frame rate adaptation is recommended.
 
-<Warning title="Note">
+<Warning title="Warning">
 
 - After closing the traffic control switch, the set traffic control property property will also become invalid.
 - When the traffic control property contains adaptive resolution `ADAPTIVE_RESOLUTION`, only initial resolutions with `16:9` or `4:3` ratios are supported. If the initial resolution is other values, adaptive resolution cannot take effect, and the SDK will downgrade to directly reducing encoding bitrate. If local media recording is needed during using traffic control function, adaptive resolution will affect `MP4` format file recording. At this time, the format needs to be changed to `FLV`.

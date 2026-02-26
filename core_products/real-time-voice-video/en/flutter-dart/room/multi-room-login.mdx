@@ -131,7 +131,7 @@ ZegoExpressEngine.instance.loginRoom("room1", user);
 
 Pass in parameters such as stream ID (streamID) and room ID (roomID), and call the [startPublishingStream](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/dart_flutter/zego_express_engine/ZegoExpressEnginePublisher/startPublishingStream.html) interface (with "ZegoPublisherConfig" parameter) to publish streams in the specified room.
 
-<Warning title="Note">
+<Warning title="Warning">
 In multi-room mode, you must use [ZegoPublisherConfig](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/dart_flutter/zego_express_engine/ZegoPublisherConfig-class.html) to specify the "roomID" associated with the "streamID". After exiting the specified room, the streaming operation corresponding to that room will stop.
 
 </Warning>
@@ -151,7 +151,7 @@ ZegoExpressEngine.instance.startPublishingStream("stream1", config: config, chan
 
 Pass in parameters such as stream ID (streamID) and room ID (roomID), and call the [startPlayingStream](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/dart_flutter/zego_express_engine/ZegoExpressEnginePlayer/startPlayingStream.html) interface (with "ZegoPlayerConfig" parameter) to play streams in the specified room.
 
-<Warning title="Note">
+<Warning title="Warning">
 - In multi-room mode, you must use [ZegoPlayerConfig](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/dart_flutter/zego_express_engine/ZegoPlayerConfig-class.html) to specify the "roomID" associated with the "streamID". After exiting the specified room, the streaming operation corresponding to that room will stop.
 - On the Web platform, there is no difference between multi-room and single-room streaming methods. You do not need to pass in "roomID" and can pass in a unique "streamID" to play streams.
 </Warning>

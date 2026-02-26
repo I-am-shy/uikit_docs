@@ -116,7 +116,7 @@ Create a [ZegoExpressEngine ](https://doc-zh.zego.im/article/api?doc=Express_Vid
 
 <Note title="Note">
 - "server" is the access server address. For how to obtain it, please refer to
-[Console - Project Information](/console/project-info#配置信息) .
+[Console - Project Information](/console/project-info#configuration-information).
 - For SDK version 3.6.0 and above, server can be changed to an empty string, null, undefined, or any character, but cannot be left empty.
 </Note>
 
@@ -174,7 +174,7 @@ this.zg.on('roomStateChanged', (roomID, reason, errorCode, extendData) => {
 <Accordion title="Check compatibility" defaultOpen="false">
 Before implementing publishing/playing features, developers can call the [checkSystemRequirements](https://doc-zh.zego.im/article/api?doc=Express_Video_SDK_API~javascript_web~class~ZegoExpressEngine#check-system-requirements) interface to detect browser compatibility.
 
-For browser compatible versions supported by the SDK, please refer to "Prepare environment" in [Download example source code](/real-time-video-web/quick-start/run-example-code#准备环境).
+For browser compatible versions supported by the SDK, please refer to "Prepare environment" in [Download example source code](/real-time-video-web/quick-start/run-example-code#prepare-environment).
 
 ```js
 const result = await this.zg.checkSystemRequirements();
@@ -206,7 +206,7 @@ Logging into the room requires a Token for identity verification. For how to obt
 
 Call the [loginRoom ](https://doc-zh.zego.im/article/api?doc=Express_Video_SDK_API~javascript_web~class~ZegoExpressEngine#login-room) interface, pass in the room ID parameter "roomID", "token", and user parameter "user", and pass in the parameter "config" according to the actual situation to log into the room.
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 
@@ -235,7 +235,7 @@ According to actual application needs, listen for event notifications you want t
 
 - [roomStreamUpdate](https://doc-zh.zego.im/article/api?doc=Express_Video_SDK_API~javascript_web~interface~ZegoRTCEvent#room-stream-update): Stream state update callback. After logging into the room, when users add or remove audio and video streams in the room, the SDK will notify through this callback.
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 Usually, if a user wants to play videos published by other users, they can call the [startPlayingStream](https://doc-zh.zego.im/article/api?doc=Express_Video_SDK_API~javascript_web~class~ZegoExpressEngine#start-playing-stream) interface in the callback of stream state update (ADD) to play the remote audio and video stream published by remote users.
@@ -298,7 +298,7 @@ this.zg.on('roomStreamUpdate', async (roomID, updateType, streamList, extendedDa
 
 1. Before starting to publish, you need to create a local audio and video stream. Call the [createZegoStream](https://doc-zh.zego.im/article/api?doc=Express_Video_SDK_API~javascript_web~class~ZegoExpressEngine#create-zego-stream) interface. By default, it will capture camera images and microphone sounds.
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 After calling the [createZegoStream](https://doc-zh.zego.im/article/api?doc=Express_Video_SDK_API~javascript_web~class~ZegoExpressEngine#create-zego-stream) interface, you need to wait for the ZEGO server to return the stream object before performing subsequent operations.
@@ -338,7 +338,7 @@ You can set audio and video related capture parameters through the following pro
 
 Call the [startPublishingStream](https://doc-zh.zego.im/article/api?doc=Express_Video_SDK_API~javascript_web~class~ZegoExpressEngine#start-publishing-stream) interface, pass in the stream ID parameter "streamID" and the stream object "localStream" obtained from creating the stream, to send the local audio and video stream to remote users.
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 - The value of the "streamID" parameter is customized and must be globally unique within the entire AppID.
@@ -405,7 +405,7 @@ const remoteView = this.zg.createRemoteStreamView(remoteStream);
 remoteView.play("remote-video", {enableAutoplayDialog:true});
 ```
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 "streamID" must be globally unique within the entire AppID.

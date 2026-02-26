@@ -22,7 +22,7 @@ date: "2025-12-19"
     相关 API 请参考： [onPublisherQualityUpdate](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/dart_flutter/zego_express_engine/ZegoExpressEngine/onPublisherQualityUpdate.html)
 
 2. setDummyCaptureImagePath 支持传入网络图片地址
-    
+
 
     相关 API 请参考： [setDummyCaptureImagePath](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/dart_flutter/zego_express_engine/ZegoExpressEnginePublisher/setDummyCaptureImagePath.html)
 
@@ -30,7 +30,7 @@ date: "2025-12-19"
 
     switchPlayingStream 接口新增 switchTimeout 参数。
 
-    <Note title="说明">
+    <Note title="Note">
     假设存在 A、B、C 流：
     - 当 SDK 正在拉流 A 时，A 切换到 B 再切换到C且在 switchTimeout 超时时间内切流均未成功，只有最后切换的 C 的 onPlayerSwitched 回调会返回切流失败的通知。
     - 当 SDK 正在拉流 A 且又切换到 A 时，switchTimeout 参数不生效，SDK 将按拉流超时时间来执行重试逻辑。
@@ -104,13 +104,13 @@ date: "2025-12-19"
 
     相关 API 请参考：[setAudioSource](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/dart_flutter/zego_express_engine/ZegoExpressEnginePublisher/setAudioSource.html)、[startCapture](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/dart_flutter/zego_express_engine/ZegoScreenCaptureSource/startCapture.html)、[updateScreenCaptureConfig](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/dart_flutter/zego_express_engine/ZegoScreenCaptureSource/updateScreenCaptureConfig.html)
 
-2. 屏幕共享提供启动回调和异常中断回调 
+2. 屏幕共享提供启动回调和异常中断回调
 
     启动屏幕共享时，可通过  `onMobileScreenCaptureStart`  监听屏幕共享是否启动成功和 `onMobileScreenCaptureExceptionOccurred` 监听屏幕共享启动失败或中途断开异常。
 
     相关 API 请参考：[onMobileScreenCaptureStart](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/dart_flutter/zego_express_engine/ZegoExpressEngine/onMobileScreenCaptureStart.html)、[onMobileScreenCaptureExceptionOccurred](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/dart_flutter/zego_express_engine/ZegoExpressEngine/onMobileScreenCaptureExceptionOccurred.html)
 
-3. 屏幕共享支持设置画面固定横竖屏朝向 
+3. 屏幕共享支持设置画面固定横竖屏朝向
 
     `ZegoScreenCaptureConfig` 新增了 `ZegoScreenCaptureOrientation` 参数，用于设置屏幕共享画面固定横竖屏朝向。
 
@@ -118,15 +118,15 @@ date: "2025-12-19"
 
 4. 屏幕共享支持音频包共享系统声音
 
-    <Warning title="注意">
+    <Warning title="Warning">
     如需使用本功能，请联系 ZEGO 技术支持。
     </Warning>
 
-5. 支持使用指定音量模式启动屏幕共享 
+5. 支持使用指定音量模式启动屏幕共享
 
     `ZegoScreenCaptureConfig` 新增了 `ZegoScreenCaptureAudioDeviceMode` 参数，用于指定音频设备模式(通话音量或媒体音量)启动屏幕采集。
 
-    <Warning title="注意">
+    <Warning title="Warning">
       1. 只有当主路设置麦克风音频源时，音频设备模式才生效。
       2. 仅对开启屏幕采集的 [startCapture] 接口生效，对更新屏幕采集的 [updateScreenCapture] 接口没有作用。
       3. 采集过程中音频设备模式发生变化导致屏幕采集音频输出异常，可以通过 [onMobileScreenCaptureExceptionOccurred] 回调监听 AudioDeviceException，如有必要，需要重启采集。
@@ -136,7 +136,7 @@ date: "2025-12-19"
     相关 API 请参考：[startCapture](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/dart_flutter/zego_express_engine/ZegoScreenCaptureSource/startCapture.html)、[updateScreenCaptureConfig](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/dart_flutter/zego_express_engine/ZegoScreenCaptureSource/updateScreenCaptureConfig.html)
 
 
-6. 新增静态图片采集视频源 
+6. 新增静态图片采集视频源
 
     通过设置 [setVideoSource](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/dart_flutter/zego_express_engine/ZegoExpressEnginePublisher/setVideoSource.html) 视频源为 `Picture`，即可推流一张指定的图片。
 
@@ -152,7 +152,7 @@ date: "2025-12-19"
 
 9. 媒体播放器边下边播支持分片文件存储，避免一次性申请内存过大
 
-    <Warning title="注意">
+    <Warning title="Warning">
     如需使用本功能，请联系 ZEGO 技术支持。
     </Warning>
 
@@ -172,14 +172,14 @@ date: "2025-12-19"
 
 13. 支持接入微帧264编码器
 
-    <Warning title="注意">
+    <Warning title="Warning">
     如需使用本功能，请联系 ZEGO 技术支持。
     </Warning>
 
 
 14. 新增拉流链路上各环节数据指标的回调
 
-    <Warning title="注意">
+    <Warning title="Warning">
     如需使用本功能，请联系 ZEGO 技术支持。
     </Warning>
 
@@ -187,7 +187,7 @@ date: "2025-12-19"
 
 15. SDK 播放器支持 HLS 协议 拉流且支持分辨率自适应
 
-    <Warning title="注意">
+    <Warning title="Warning">
     如需使用本功能，请联系 ZEGO 技术支持。
     </Warning>
 
@@ -198,29 +198,29 @@ date: "2025-12-19"
 
     支持通过云端控制的方式下发云代理配置。当云端控制配置完成且SDK 拉取到最新的云端控制信息，新的云代理配置能够立即生效。
 
-    <Warning title="注意">
+    <Warning title="Warning">
     如需使用本功能，请联系 ZEGO 技术支持。
     </Warning>
-    
+
     相关 API 请参考：[setCloudProxyConfig](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/dart_flutter/zego_express_engine/ZegoExpressEngine/setCloudProxyConfig.html)
 
 
 18. 推拉流功能新增国密算法加密
 
-    <Warning title="注意">
+    <Warning title="Warning">
     如需使用本功能，请联系 ZEGO 技术支持。
     </Warning>
 
     相关 API 请参考：[startPublishingStream](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/dart_flutter/zego_express_engine/ZegoExpressEnginePublisher/startPublishingStream.html)、[addPublishCdnUrl](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/dart_flutter/zego_express_engine/ZegoExpressEnginePublisher/addPublishCdnUrl.html)、[removePublishCdnUrl](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/dart_flutter/zego_express_engine/ZegoExpressEnginePublisher/removePublishCdnUrl.html)
 
 19. 支持 WMA 编码器
-    
+
     媒体播放器，音效播放器支持播放 wma 格式的音频文件
 
 
 **改进优化**
 
-1. SDK 内的 curl 库升级为 8.14.1 版本 
+1. SDK 内的 curl 库升级为 8.14.1 版本
 
 2. 优化开启主体分割切换背景类型为视频时占用内存过大的问题
 
@@ -258,7 +258,7 @@ date: "2025-12-19"
 
     在桌面端使用屏幕共享时，可以为共享窗口添加一个高亮描边，并设置描边的颜色和宽度，提升共享窗口的识别度。详情请参考 [屏幕共享 - 描边](/real-time-video-flutter/video/screen-sharing#描边)。
 
-    <Warning title="注意">
+    <Warning title="Warning">
 
     Windows 平台部分系统窗口（例如任务管理器、以管理员权限启动的程序的窗口等）可能因权限限制无法显示描边，建议以管理员权限启动应用。
     </Warning>
@@ -269,7 +269,7 @@ date: "2025-12-19"
 
 2. 支持自定义 CDN 拉流超时等待时间
 
-    <Warning title="注意">
+    <Warning title="Warning">
 
 
     如需使用本功能，请联系 ZEGO 技术支持。
@@ -312,7 +312,7 @@ date: "2025-12-19"
 
 5. 优化双声道音频编码
 
-    <Warning title="注意">
+    <Warning title="Warning">
 
 
     如需使用本功能，请联系 ZEGO 技术支持。
@@ -354,11 +354,11 @@ date: "2025-12-19"
     | 获取与设置音频参数 | <ul><li>[getAudioConfig](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/dart_flutter/zego_express_engine/ZegoExpressEnginePublisher/getAudioConfig.html)</li><li>[setAudioConfig](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/dart_flutter/zego_express_engine/ZegoExpressEnginePublisher/setAudioConfig.html)</li></ul> |
     | 地理围栏 | [setGeoFence](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/dart_flutter/zego_express_engine/ZegoExpressEngine/setGeoFence.html) |
     | 云代理 | [setCloudProxyConfig ](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/dart_flutter/zego_express_engine/ZegoExpressEngine/setCloudProxyConfig.html) |
-    | 设置镜像模式 | [setVideoMirrorMode](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/dart_flutter/zego_express_engine/ZegoExpressEnginePublisher/setVideoMirrorMode.html)<br/><br/><Note title="说明">不支持设置推流镜像。</Note> |
+    | 设置镜像模式 | [setVideoMirrorMode](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/dart_flutter/zego_express_engine/ZegoExpressEnginePublisher/setVideoMirrorMode.html)<br/><br/><Note title="Note">不支持设置推流镜像。</Note> |
     | 设置推流端采集音量 | [setCaptureVolume](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/dart_flutter/zego_express_engine/ZegoExpressEnginePublisher/setCaptureVolume.html) |
     | 转推至 CDN | <ul><li>[addPublishCdnUrl](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/dart_flutter/zego_express_engine/ZegoExpressEnginePublisher/addPublishCdnUrl.html)</li><li>[removePublishCdnUrl](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/dart_flutter/zego_express_engine/ZegoExpressEnginePublisher/removePublishCdnUrl.html)</li></ul> |
     | 动态切换流控策略 | <ul><li>[enableTrafficControl](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/dart_flutter/zego_express_engine/ZegoExpressEnginePublisher/enableTrafficControl.html)</li><li>[setMinVideoBitrateForTrafficControl](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/dart_flutter/zego_express_engine/ZegoExpressEnginePublisher/setMinVideoBitrateForTrafficControl.html)</li><li>[setTrafficControlFocusOn](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/dart_flutter/zego_express_engine/ZegoExpressEnginePublisher/setTrafficControlFocusOn.html)</li></ul> |
-    | 设置拉流音量 | <ul><li>[setPlayVolume](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/dart_flutter/zego_express_engine/ZegoExpressEnginePlayer/setPlayVolume.html)</li><li>[setAllPlayStreamVolume](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/dart_flutter/zego_express_engine/ZegoExpressEnginePlayer/setAllPlayStreamVolume.html)</li></ul><br/><br/><Note title="说明">不支持设置超过 100，超过按 100 处理。</Note> |
+    | 设置拉流音量 | <ul><li>[setPlayVolume](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/dart_flutter/zego_express_engine/ZegoExpressEnginePlayer/setPlayVolume.html)</li><li>[setAllPlayStreamVolume](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/dart_flutter/zego_express_engine/ZegoExpressEnginePlayer/setAllPlayStreamVolume.html)</li></ul><br/><br/><Note title="Note">不支持设置超过 100，超过按 100 处理。</Note> |
     | 拉流是否接收所有音频数据 | [muteAllPlayAudioStreams](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/dart_flutter/zego_express_engine/ZegoExpressEnginePlayer/muteAllPlayAudioStreams.html) |
     | 拉流是否接收所有视频数据 | [muteAllPlayVideoStreams](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/dart_flutter/zego_express_engine/ZegoExpressEnginePlayer/muteAllPlayVideoStreams.html) |
     | 更新拉流视图 | [updatePlayingCanvas](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/dart_flutter/zego_express_engine/ZegoExpressEnginePlayer/updatePlayingCanvas.html) |
@@ -373,8 +373,8 @@ date: "2025-12-19"
     | 本地设备异常事件回调 | [onLocalDeviceExceptionOccurred](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/dart_flutter/zego_express_engine/ZegoExpressEngine/onLocalDeviceExceptionOccurred.html) |
     | 本地视频和音频设备状态变更事件回调 | <ul><li>[onVideoDeviceStateChanged](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/dart_flutter/zego_express_engine/ZegoExpressEngine/onVideoDeviceStateChanged.html)</li><li>[onAudioDeviceStateChanged](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/dart_flutter/zego_express_engine/ZegoExpressEngine/onAudioDeviceStateChanged.html)</li></ul> |
     | 获取音频原始数据 | <ul><li>[startAudioDataObserver](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/dart_flutter/zego_express_engine/ZegoExpressEngineCustomAudioIO/startAudioDataObserver.html)</li><li>[stopAudioDataObserver](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/dart_flutter/zego_express_engine/ZegoExpressEngineCustomAudioIO/stopAudioDataObserver.html)</li><li>[onMixedAudioData](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/dart_flutter/zego_express_engine/ZegoExpressEngine/onMixedAudioData.html)</li><li>[onPlayerAudioData](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/dart_flutter/zego_express_engine/ZegoExpressEngine/onPlayerAudioData.html)</li></ul> |
-    | 混流音浪回调 | [onMixerSoundLevelUpdate](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/dart_flutter/zego_express_engine/ZegoExpressEngine/onMixerSoundLevelUpdate.html)<br/><br/><Note title="说明">Web 端仅支持通过 SEI 获取混流音浪，请联系 ZEGO 技术支持开启配置，并调用接口时作防竞争码处理</Note> |
-    | 自动混流音浪回调 | [onAutoMixerSoundLevelUpdate](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/dart_flutter/zego_express_engine/ZegoExpressEngine/onAutoMixerSoundLevelUpdate.html)<br/><br/><Note title="说明">请联系 ZEGO 技术支持开启配置。</Note> |
+    | 混流音浪回调 | [onMixerSoundLevelUpdate](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/dart_flutter/zego_express_engine/ZegoExpressEngine/onMixerSoundLevelUpdate.html)<br/><br/><Note title="Note">Web 端仅支持通过 SEI 获取混流音浪，请联系 ZEGO 技术支持开启配置，并调用接口时作防竞争码处理</Note> |
+    | 自动混流音浪回调 | [onAutoMixerSoundLevelUpdate](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/dart_flutter/zego_express_engine/ZegoExpressEngine/onAutoMixerSoundLevelUpdate.html)<br/><br/><Note title="Note">请联系 ZEGO 技术支持开启配置。</Note> |
 
 **改进优化**
 
@@ -384,7 +384,7 @@ date: "2025-12-19"
 
 **问题修复**
 
-<Note title="说明">
+<Note title="Note">
 
 
 以下问题修复仅适用于 Web 平台接口。
@@ -418,7 +418,7 @@ date: "2025-12-19"
 
 1. 支持赛事解说场景的音画精准同步
 
-    <Warning title="注意">
+    <Warning title="Warning">
 
 
     如需使用该功能，请联系 ZEGO 技术支持。
@@ -440,13 +440,13 @@ date: "2025-12-19"
 
     人脸识别功能支持后置摄像头，且新增回调 [onPublisherFaceDetectInfo](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/dart_flutter/zego_express_engine/ZegoExpressEngine/onPublisherFaceDetectInfo.html) 支持获取人脸个数和坐标信息。
 
-    <Note title="说明">该回调仅当摄像头启动和人脸个数变化时触发，无法与自定义视频前处理配合使用。</Note>
+    <Note title="Note">该回调仅当摄像头启动和人脸个数变化时触发，无法与自定义视频前处理配合使用。</Note>
 
     相关 API 请参考 [enableFaceDetection](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/dart_flutter/zego_express_engine/ZegoExpressEnginePublisher/enableFaceDetection.html), [onPublisherFaceDetectInfo](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/dart_flutter/zego_express_engine/ZegoExpressEngine/onPublisherFaceDetectInfo.html)
 
 4. mac 端自定义渲染支持输出 RGBA 数据
 
-    <Warning title="注意">
+    <Warning title="Warning">
 
 
     如需使用该功能，请联系 ZEGO 技术支持。
@@ -462,7 +462,7 @@ date: "2025-12-19"
 
 1. 优化直推 CDN 时因弱网导致的本地录制卡顿现象
 
-    <Warning title="注意">
+    <Warning title="Warning">
 
 
     如需使用该功能，请联系 ZEGO 技术支持。
@@ -475,7 +475,7 @@ date: "2025-12-19"
 
 2. 优化在 iOS 端切换视频流时的闪烁问题，实现平滑过渡
 
-    <Warning title="注意">
+    <Warning title="Warning">
 
 
     如需使用该功能，请联系 ZEGO 技术支持。
@@ -527,7 +527,7 @@ date: "2025-12-19"
 
 1. 新增 AI 低照度增强功能
 
-    <Warning title="注意">
+    <Warning title="Warning">
 
 
     如需使用该功能，请联系 ZEGO 技术支持。
@@ -553,7 +553,7 @@ date: "2025-12-19"
 
     开发者可通过配置 [ZegoMediaPlayerResource-onlineResourceCachePath](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/dart_flutter/zego_express_engine/ZegoMediaPlayerResource/onlineResourceCachePath.html) 参数，设置缓存资源文件路径。此外可通过 [ZegoMediaPlayerResource-maxCachePendingLength](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/dart_flutter/zego_express_engine/ZegoMediaPlayerResource/maxCachePendingLength.html) 参数设置从当前播放时间点，最多可预缓存的数据长度（单位 bytes）。从而使媒体播放器播放在线资源时，可以减少用户资源下载频次，提高资源复用率与用户体验。
 
-    <Warning title="注意">
+    <Warning title="Warning">
 
 
     生成缓存文件的同时，SDK 同时会生成一个 ".info "后缀的文件，用于记录缓存信息（如缓存的起始位置等）。用户使用该功能时，需要自行负责清理"缓存文件"及"缓存信息文件"。
@@ -617,7 +617,7 @@ date: "2025-12-19"
 
 1. 新增 AI 回声消除（AEC）
 
-    <Warning title="注意">
+    <Warning title="Warning">
 
 
     如需使用该功能，请联系 ZEGO 技术支持。
@@ -2069,7 +2069,7 @@ date: "2025-12-19"
 
 **发布日期： 2022-12-06**
 
-<Warning title="注意">
+<Warning title="Warning">
 
 
 
@@ -2205,7 +2205,7 @@ date: "2025-12-19"
 
 **发布日期： 2022-10-25**
 
-<Warning title="注意">
+<Warning title="Warning">
 
 
 
@@ -2618,7 +2618,7 @@ date: "2025-12-19"
 
 1. 新增 AI 降噪功能
 
-    <Warning title="注意">
+    <Warning title="Warning">
 
 
     AI 降噪目前会对麦克风采集的音乐有较大损伤，包括人通过麦克风唱歌的声音。如需使用该功能，请联系 ZEGO 技术支持。
@@ -2804,7 +2804,7 @@ date: "2025-12-19"
 
 4. H.265 拉流支持自动降级
 
-    <Warning title="注意">
+    <Warning title="Warning">
 
 
 

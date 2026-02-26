@@ -16,7 +16,7 @@ The involved APIs are as follows:
     - In the Video Call SDK: Starts the microphone, starts the camera, and if a view is passed in the canvas parameter, the SDK will render the preview in that view.
     - In the Audio Call SDK: Starts the microphone. When calling this API, developers can set the canvas parameter to null, or if there is an overloaded function, use the overloaded function of this API without the canvas parameter.
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 When calling `startPreview` on the Audio Call Flutter / Electron / uni-app / Unity3D / Cocos Creator / React-Native SDK, the camera will still start; developers can call `enableCamera` to turn off the camera before calling `startPreview` to avoid the SDK requesting camera permissions.
@@ -27,7 +27,7 @@ When calling `startPreview` on the Audio Call Flutter / Electron / uni-app / Uni
     - In the Video Call SDK: Starts playing stream, plays the audio of the played stream, and if the developer passes a view in the canvas parameter, the SDK will render the video of the played stream in that view.
     - In the Audio Call SDK: Starts playing stream, plays the audio of the played stream. When calling this API, developers can set the canvas parameter to null, or if there is an overloaded function, use the overloaded function of this API without the canvas parameter.
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 

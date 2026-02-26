@@ -18,7 +18,7 @@ paths:
       description: |
         Call this interface to resume CDN streaming, applicable to direct push CDN scenarios. If you need to apply it to transfer push CDN scenarios, please use the [Enable Bypass Streaming](/real-time-video-server/api-reference/media-service/create-cdn-transfer-rule) interface.
 
-        <Warning title="Note">
+        <Warning title="Warning">
         When using this interface for the first time, you need to contact ZEGOCLOUD Technical Support for configuration.
         </Warning>
         <Note title="Call frequency limit">All rooms under the same AppID are limited to 20 times/second</Note>

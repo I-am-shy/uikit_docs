@@ -125,7 +125,7 @@ If you need to customize templates, please refer to [Server API - Scenario Templ
 
 Update user status and user commands through the [updateUserStatus](@updateUserStatus) and [updateUserCommand](@updateUserCommand) interfaces. Receive status information such as positions and commands of remote users within the AOI range through the [onUserStatusUpdate](@onUserStatusUpdate) and [onUserCommandUpdate](@onUserCommandUpdate) callbacks.
 
-<Note title="Description">
+<Note title="Note">
 
 - User status (status, S) is a full update, user commands are incremental updates (command, C), user status can be calculated from a previous user status through a series of user commands.
 - The model for user status updates should be Si->Ci->Ci+1->Ci+2->...Ci+j->S(i+1)->C(i+1)+1->C(i+1)+2->...C(i+1)+k->S(i+2)->C(i+2)->...
@@ -213,7 +213,7 @@ range_scene_->getRangeSceneItem()->bindItem(item_id, [](int errorCode, long long
 
 Update item status and item commands through the [updateItemStatus](@updateItemStatus) and [updateItemCommand](@updateItemCommand) interfaces. Receive status information such as positions and commands of remote items within the AOI range through the [onItemStatusUpdate](@onItemStatusUpdate) and [onItemCommandUpdate](@onItemCommandUpdate) callbacks.
 
-<Note title="Description">
+<Note title="Note">
 
 - Before updating item status and commands, you need to bind the item first.
 - Item status (status, S) is a full update, item commands are incremental updates (command, C), item status can be calculated from a previous item status through a series of item commands.

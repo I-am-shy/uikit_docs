@@ -11,7 +11,7 @@ date: "2025-01-21"
 
 本文将介绍如何快速实现一个简单的实时音视频通话。
 
-<Note title="说明">
+<Note title="Note">
 
 
 - ZEGO 提供了 \<zego-pusher> 和 \<zego-player>，可以帮助开发者更快地实现实时音视频。用户也可以选择使用微信原生小程序推拉流组件 \<live-pusher> 和 \<live-player> 进行推拉流，参考 [使用微信原生组件实现通话](/real-time-video-miniprogram/other/implementing-video-call-with-wechat-native-components)。
@@ -33,7 +33,7 @@ date: "2025-01-21"
 
 更多相关概念请参考 [术语说明](/glossary/term-explanation)。
 
-<Warning title="注意">
+<Warning title="Warning">
 
 如下实现流程支持的是 SDK 需为 2.10.0 及以上版本，如使用 2.10.0 以下版本的 SDK 请参考旧版方案 [实现视频通话](https://doc-zh.zego.im/article/14192)。
 
@@ -112,7 +112,7 @@ sequenceDiagram
 
 - [服务器域名配置](https://developers.weixin.qq.com/miniprogram/dev/framework/ability/network.html)：在“小程序后台 > 开发管理 > 开发设置 > 服务器域名”中，按照协议分类，将即构 `Server 地址`、`LogUrl`、以及用户业务需要用到的地址填到指定的“socket合法域名”或“request合法域名”中，详情请参考 [控制台 - 项目信息](/console/project-info)。
 
-<Warning title="注意">
+<Warning title="Warning">
 
 
     - 控制台提供的 `Server 地址`格式为：wss://xxxxxxxxxx.com/ws。在 [微信公众平台](https://mp.weixin.qq.com/?token=&lang=zh_CN) 填写时，不能直接复制原地址，需要删除原地址的 “/ws”，应填入地址的格式为：wss://xxxxxxxxxx.com。
@@ -185,7 +185,7 @@ sequenceDiagram
 zg = new ZegoExpressEngine(appID, server);
 ```
 
-<Warning title="注意">
+<Warning title="Warning">
 若使用 3.6.0 及以上版本 SDK，`server` 参数可填写控制台获取的`Server 地址`或者直接填空字符串。
 </Warning>
 
@@ -194,7 +194,7 @@ zg = new ZegoExpressEngine(appID, server);
 
 创建引擎后，开发者可根据实际需要，通过引擎实例的 [on](https://doc-zh.zego.im/article/api?doc=Express_Video_SDK_API~javascript_wxxcx~class~ZegoExpressEngine#on) 方法设置回调。
 
-<Warning title="注意">
+<Warning title="Warning">
 
 
 为避免错过事件通知，建议在创建引擎后立即监听回调
@@ -273,7 +273,7 @@ zg.on('roomStateUpdate', (roomID, state, errorCode, extendedData) => {
 
 [roomUserUpdate](@roomUserUpdate)：同一房间内的其他用户进出房间时，您可通过此回调收到通知。登录房间后，当房间内有用户新增或删除时，SDK 会通过该回调通知。
 
-<Warning title="注意">
+<Warning title="Warning">
 
 
 只有调用 [loginRoom](@loginRoom) 接口登录房间时传入 [ZegoRoomConfig](@-ZegoRoomConfig) 配置，且 “userUpdate” 参数取值为 “true” 时，用户才能收到 [roomUserUpdate](@roomUserUpdate) 回调。
@@ -371,7 +371,7 @@ roomID 和 user 的参数由您本地生成，但是需要满足以下条件：
 - 同一个 AppID 内，需保证 “userID” 全局唯一，建议开发者将 “userID” 与自己业务的账号系统进行关联。
 - “userID” 必须与生成 token 时传入的 userID 保持一致，否则登录失败。
 
-<Warning title="注意">
+<Warning title="Warning">
 
 
 
@@ -557,7 +557,7 @@ zg.getPusherInstance().stop();
 
 调用 SDK 的 [getPlayerInstance](@getPlayerInstance) 接口获取拉流实例，并调用推流实例的 [stop](https://doc-zh.zego.im/article/api?doc=Express_Video_SDK_API~javascript_wxxcx~class~ZegoWxLivePlayer#stop) 方法停止拉流。
 
-<Warning title="注意">
+<Warning title="Warning">
 如果开发者通过 [roomStreamUpdate](@roomStreamUpdate) 回调收到了音视频流 “减少” 的通知，请及时调用 [stop ](https://doc-zh.zego.im/article/api?doc=Express_Video_SDK_API~javascript_wxxcx~class~ZegoWxLivePlayer#stop) 接口停止拉流，避免拉到空流、产生额外的成本；或者，开发者可以根据自己的业务需求，选择合适的时机，主动调用 [stop](https://doc-zh.zego.im/article/api?doc=Express_Video_SDK_API~javascript_wxxcx~class~ZegoWxLivePlayer#stop) 接口停止拉流。
 
 </Warning>
@@ -606,7 +606,7 @@ sequenceDiagram
 <Frame width="auto" height="512" caption=""><img src="https://doc-media.zego.im/core_products/real-time-voice-video/zh/mini-program/quick-start/we-chat/express-sdk.png" /></Frame>
 */}
 
-{/* 
+{/*
 ```mermaid
 sequenceDiagram
     participant App as App

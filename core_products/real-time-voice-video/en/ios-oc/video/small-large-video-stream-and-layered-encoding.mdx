@@ -143,7 +143,7 @@ Setting "codecID" to "ZegoVideoCodecIDDefault", "ZegoVideoCodecIDVP8" or "ZegoVi
 
 Through the [setPublishDualStreamConfig](@setPublishDualStreamConfig) interface, set the resolution, frame rate, and bitrate of the large stream and small stream separately, and call the [startPublishingStream](@startPublishingStream) interface to start publishing stream.
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 - Must specify parameters for both large stream and small stream at the same time for the [setPublishDualStreamConfig](@setPublishDualStreamConfig) interface to take effect.
@@ -200,7 +200,7 @@ After the publishing end enables video large/small stream encoding, users at the
 
     - In the relay to CDN scenario, since CDN pulling does not use ZEGO's private protocol, the stream relayed by ZEGO servers to CDN servers does not support layered video encoding and video large/small stream encoding. You can only choose one from relaying the base layer or relaying the enhancement layer. The resolution, bitrate, and frame rate when pulling from CDN depend on whether the relayed layer is the base layer or the enhancement layer.
 
-        <Warning title="Note">
+        <Warning title="Warning">
 
 
         When relaying to CDN, the enhancement layer is relayed by default. If the business needs to relay the base layer to CDN, please contact ZEGOCLOUD Technical Support for configuration.

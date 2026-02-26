@@ -20,7 +20,7 @@ When developers encounter the following situations in co-hosting or stream mixin
 - Need to maintain smooth co-hosting in poor network environments.
 - Need to adaptively pull video stream quality based on network status.
 
-<Note title="Description">
+<Note title="Note">
 Layered video encoding uses ZEGO's proprietary protocol. The playing end can only pull video streams of different layers from the ZEGO server.
 </Note>
 
@@ -34,7 +34,7 @@ The most significant difference is that layered video encoding uses one encoder 
 
 For specific differences, advantages, and disadvantages, please refer to [Video Large and Small Stream and Layered Encoding](/real-time-video-flutter/video/small-large-video-stream-and-layered-encoding). Developers can choose layered video encoding or video large and small stream encoding based on the differences and specific business requirements.
 
-<Note title="Description">
+<Note title="Note">
 Video large and small stream encoding uses ZEGO's proprietary protocol. The playing end can only pull video streams of different layers from the ZEGO server.
 </Note>
 
@@ -152,7 +152,7 @@ Since a small number of device models do not support hardware encoding/decoding 
 
 **Enable Hardware Encoding**
 
-<Warning title="Note">
+<Warning title="Warning">
 This function must be set before publishing to take effect. If set after publishing, it will only take effect after stopping publishing and republishing.
 </Warning>
 
@@ -167,7 +167,7 @@ ZegoExpressEngine.instance.enableHardwareEncoder(true);
 
 **Enable Hardware Decoding**
 
-<Warning title="Note">
+<Warning title="Warning">
 This function must be set before playing to take effect. If set after playing, it will only take effect after stopping playing and replaying.
 </Warning>
 
@@ -222,7 +222,7 @@ ZegoExpressEngine.instance.startPublishingStream(streamID);
 
     - In the forward to CDN scenario, since CDN pulling does not use ZEGO's proprietary protocol, the stream forwarded by the ZEGO server to the CDN server does not support layered video encoding and video large and small stream encoding. You can only choose between forwarding the base layer or forwarding the enhancement layer. The resolution, bitrate, and frame rate when pulling from CDN depend on whether the base layer or the enhancement layer is forwarded.
 
-<Warning title="Note">
+<Warning title="Warning">
         When forwarding to CDN, the enhancement layer is forwarded by default. If the business needs to forward the base layer to CDN, please contact ZEGO technical support for configuration.
 </Warning>
 

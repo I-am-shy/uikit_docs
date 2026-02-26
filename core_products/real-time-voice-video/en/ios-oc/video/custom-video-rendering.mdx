@@ -78,7 +78,7 @@ sequenceDiagram
 The `bufferType` parameter is an enumeration [ZegoVideoBufferType](@-ZegoVideoBufferType), which can specify the custom video rendering video frame data type required by the developer. Currently, only the raw data type `ZegoVideoBufferTypeRawData`, CVPixelBuffer type `ZegoVideoBufferTypeCVPixelBuffer`, and `ZegoVideoBufferTypeEncodedData` are supported. Setting other unsupported enumeration values will not callback video frame data.
 
 The `frameFormatSeries` parameter is an enumeration [ZegoVideoFrameFormatSeries](@-ZegoVideoFrameFormatSeries), which can specify the custom video rendering video frame data format required by the developer. This parameter can only specify the RGB or YUV color space category. The specific data format varies between platforms and is subject to the parameters in the callback.
-<Warning title="Note">
+<Warning title="Warning">
 
 
 If the data format in the callback does not meet your expectations, please contact ZEGO technical support for assistance.
@@ -228,7 +228,7 @@ Call the [setCustomVideoRenderHandler](@setCustomVideoRenderHandler) interface t
     }
     ```
 
-<Note title="Description">
+<Note title="Note">
 The `flipMode` parameter in the local preview Capture video frame callback method is related to mirroring. It notifies developers whether they need to flip the video frame themselves to make the picture conform to the description of the [ZegoVideoMirrorMode](@-ZegoVideoMirrorMode) enumeration value set in [setVideoMirrorMode](@setVideoMirrorMode).
 </Note>
 

@@ -36,16 +36,16 @@ paths:
             enum: [GetMixTaskInfo]
           style: form
           explode: true
-        # 公共参数（Query）
+        # Common parameters (Query)
         - $ref: '../shared-components.yaml#/components/parameters/AppId'
         - $ref: '../shared-components.yaml#/components/parameters/SignatureNonce'
         - $ref: '../shared-components.yaml#/components/parameters/Timestamp'
         - $ref: '../shared-components.yaml#/components/parameters/Signature'
         - $ref: '../shared-components.yaml#/components/parameters/SignatureVersion'
-        # 业务参数
+        # Business parameters
         - name: TaskId
           in: query
-          description: Task ID, unique identifier of the stream mixing task。
+          description: Task ID, unique identifier of the stream mixing task.
           required: true
           schema:
             type: string
@@ -83,27 +83,27 @@ components:
           example: 0
         Message:
           type: string
-          description: Operation result description。
+          description: Operation result description.
           example: "success"
         RequestId:
           type: string
-          description: Request ID。
+          description: Request ID.
           example: "1864314306034131629"
         Data:
           type: object
-          description: Response data。
+          description: Response data.
           properties:
             TaskInfo:
               type: object
-              description: Stream mixing task information。
+              description: Stream mixing task information.
               properties:
                 TaskId:
                   type: string
-                  description: Stream mixing task ID。
+                  description: Stream mixing task ID.
                   example: "task_test_123"
                 MixDuration:
                   type: integer
                   format: int32
-                  description: Stream mixing task duration, unit seconds。
+                  description: Stream mixing task duration, unit seconds.
                   example: 13
 

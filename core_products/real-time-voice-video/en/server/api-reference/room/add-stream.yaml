@@ -21,7 +21,7 @@ paths:
       description: |
         Use this interface to add a stream to a specified Room. This is commonly used in "watch together" scenarios, such as adding a CDN live stream to a specified Room, allowing users in the Room to obtain the stream ID and enabling server-side control over the live content in the specified Room.
 
-        <Warning title="Note">
+        <Warning title="Warning">
         - When adding a stream to a specified Room, ensure that the Room exists. This interface cannot create a Room. If you want to automatically create the corresponding Room when adding a stream, please contact ZEGOCLOUD technical support to enable the related feature.
         - This interface is generally used together with [Delete Room Stream](/real-time-video-server/api-reference/room/delete-stream), for example, when the business needs to stop broadcasting a stream to a Room.
         </Warning>
@@ -61,13 +61,13 @@ paths:
             enum: [AddStream]
           style: form
           explode: true
-        # 公共参数
+        # Common parameters
         - $ref: '../shared-components.yaml#/components/parameters/AppId'
         - $ref: '../shared-components.yaml#/components/parameters/SignatureNonce'
         - $ref: '../shared-components.yaml#/components/parameters/Timestamp'
         - $ref: '../shared-components.yaml#/components/parameters/Signature'
         - $ref: '../shared-components.yaml#/components/parameters/SignatureVersion'
-        # 业务参数
+        # Business parameters
         - name: RoomId
           in: query
           description: Room ID.

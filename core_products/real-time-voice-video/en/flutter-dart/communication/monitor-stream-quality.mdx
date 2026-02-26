@@ -63,7 +63,7 @@ The callback logic varies by version:
 </tr>
 </tbody></table>
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 
@@ -308,7 +308,7 @@ Developers can roughly judge the user's playing network situation based on wheth
 
 You can register for [onPublisherCapturedAudioFirstFrame](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/dart_flutter/zego_express_engine/ZegoExpressEngine/onPublisherCapturedAudioFirstFrame.html) to receive the audio first frame callback. After successfully calling the publish stream interface, this callback will be received when the SDK captures the first frame of audio data.
 
-<Note title="Description">
+<Note title="Note">
 
 
 - When not publishing or previewing, on first publish or first preview (when the SDK's internal audio/video module engine starts), the SDK will capture the local device's audio data, and this callback will be received. Developers can use this callback to determine whether the SDK has actually captured audio data. If this callback is not received, it means the audio capture device is occupied or abnormal.
@@ -327,7 +327,7 @@ ZegoExpressEngine.onPublisherCapturedAudioFirstFrame = () {
 
 You can register for [onPublisherCapturedVideoFirstFrame](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/dart_flutter/zego_express_engine/ZegoExpressEngine/onPublisherCapturedVideoFirstFrame.html) to receive the video first frame callback. After successfully calling the publish stream interface, this callback will be received when the SDK captures the first frame of video data.
 
-<Note title="Description">
+<Note title="Note">
 
 
 - If the published stream only has audio data, this callback will not be received.
@@ -348,7 +348,7 @@ ZegoExpressEngine.onPublisherCapturedVideoFirstFrame = (ZegoPublishChannel chann
 
 Developers can register for [onPlayerRecvAudioFirstFrame](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/dart_flutter/zego_express_engine/ZegoExpressEngine/onPlayerRecvAudioFirstFrame.html) to monitor the playing side's audio receive first frame callback. After successfully calling the play stream interface, this callback will be received when the SDK plays the first frame of audio data.
 
-<Warning title="Note">
+<Warning title="Warning">
 
 - Web does not currently support the `onPlayerRecvAudioFirstFrame` interface.
 
@@ -366,7 +366,7 @@ ZegoExpressEngine.onPlayerRecvAudioFirstFrame = (String streamID) {
 
 You can register for [onPlayerRecvVideoFirstFrame](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/dart_flutter/zego_express_engine/ZegoExpressEngine/onPlayerRecvVideoFirstFrame.html) to monitor the playing side's video receive first frame callback. After successfully calling the play stream interface, this callback will be received when the SDK plays the first frame of video data.
 
-<Note title="Description">
+<Note title="Note">
 
 
 
@@ -388,7 +388,7 @@ ZegoExpressEngine.onPlayerRecvVideoFirstFrame = (String streamID) {
 
 You can register for [onPlayerRenderVideoFirstFrame](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/dart_flutter/zego_express_engine/ZegoExpressEngine/onPlayerRenderVideoFirstFrame.html) to monitor the playing side's rendered video first frame callback. After successfully calling the play stream interface, this callback will be received when the SDK plays and renders the first frame of video data.
 
-<Note title="Description">
+<Note title="Note">
 
 
 - If the played stream only has audio data, this callback will not be received.
@@ -411,7 +411,7 @@ ZegoExpressEngine.onPlayerRenderVideoFirstFrame = (String streamID) {
 
 You can register for [onPublisherVideoSizeChanged](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/dart_flutter/zego_express_engine/ZegoExpressEngine/onPublisherVideoSizeChanged.html) to monitor the capture video size change callback. After successfully publishing a stream, if the video capture resolution changes during publishing, this callback will be received.
 
-<Note title="Description">
+<Note title="Note">
 
 
 - If the published stream only has audio data, this callback will not be received.
@@ -431,7 +431,7 @@ ZegoExpressEngine.onPublisherVideoSizeChanged = (int width, int height, ZegoPubl
 
 You can register for [onPlayerVideoSizeChanged](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/dart_flutter/zego_express_engine/ZegoExpressEngine/onPlayerVideoSizeChanged.html) to receive playing resolution change notifications. After successfully playing a stream, if the video resolution changes during playing, this callback will be received. Users can adjust the display based on the stream's final resolution.
 
-<Note title="Description">
+<Note title="Note">
 
 
 - If the played stream only has audio data, this callback will not be received.

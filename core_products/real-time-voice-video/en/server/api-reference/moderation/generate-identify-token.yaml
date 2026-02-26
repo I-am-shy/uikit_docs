@@ -44,7 +44,7 @@ paths:
         2. Call this server API to obtain the `IdentifyToken`.
         3. Call these two service providers' audio/video moderation APIs (for details, please contact the service provider's technical support) to initiate a request, and assign the `IdentifyToken` to the `Token` parameter in the request.
 
-        <Warning title="Note">
+        <Warning title="Warning">
         - Each `IdentifyToken` can only be used for one moderation request. Before starting each moderation, please regenerate one `IdentifyToken` to use.
         - Different vendors may have differences from this document due to version updates or other reasons in actual use. It is recommended to confirm with technical support before use.
 

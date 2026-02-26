@@ -200,7 +200,7 @@ If you need to customize templates, please refer to [Server API - Scene Template
 
 Update user state and user commands through [updateUserStatus](@updateUserStatus) and [updateUserCommand](@updateUserCommand) interfaces. Receive state information such as remote user positions and commands within the AOI range through [onUserStatusUpdate](@onUserStatusUpdate) and [onUserCommandUpdate](@onUserCommandUpdate) callbacks.
 
-<Note title="Description">
+<Note title="Note">
 
 
 - User state (status, S) is a full update, user command is an incremental update (command, C). User state can be calculated from a previous user state through a series of user commands.
@@ -301,7 +301,7 @@ rangeScene.getRangeSceneItem().bindItem(itemID, new IZegoRangeSceneBindItemCallb
 
 Update item state and item commands through [updateItemStatus](@updateItemStatus) and [updateItemCommand](@updateItemCommand) interfaces. Receive state information such as remote item positions and commands within the AOI range through [onItemStatusUpdate](@onItemStatusUpdate) and [onItemCommandUpdate](@onItemCommandUpdate) callbacks.
 
-<Note title="Description">
+<Note title="Note">
 
 
 - Before updating item state and commands, you need to bind the item first.

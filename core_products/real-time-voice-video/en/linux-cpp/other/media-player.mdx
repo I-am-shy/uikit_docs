@@ -57,7 +57,7 @@ mediaPlayer->setEventHandler(eventHandler);
 
 Call the media player's [loadResource](https://doc-zh.zego.im/article/api?doc=Express_Video_SDK_API~CPP_linux~class~zego-express-i-zego-media-player#load-resource) to specify the media resource to play. It can be the absolute path of a local resource, such as `D:/Zego/your-movie.mp4`, or the URL of a network resource, such as `http://your.domain.com/your-movie.mp4`. Users can get the result of loading the file by passing in callback parameters.
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 If the media resource has already been [loadResource](@loadResource-IZegoMediaPlayer) or is playing, please call the [stop](@stop-IZegoMediaPlayer) interface to stop playing first, and then call the [loadResource](@loadResource-IZegoMediaPlayer) interface to load the media resource, otherwise the loading will fail.
@@ -186,7 +186,7 @@ auto videoHandler = std::make_shared<MyVideoHandler>();
 mediaPlayer->setVideoHandler(videoHandler);
 ```
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 The SDK currently does not support video rendering on the Linux platform. Users can implement custom rendering after obtaining the video data.

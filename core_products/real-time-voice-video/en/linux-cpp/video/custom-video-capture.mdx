@@ -62,7 +62,7 @@ sequenceDiagram
 7. Finally, stopping preview and publishing stream will trigger the [onStop](@onStop-IZegoCustomVideoCaptureHandler) custom video capture end callback notification.
 8. Stop capturing video.
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 When enabling custom video capture, you need to keep the [enableCamera](@enableCamera) interface at its default setting "True", otherwise there will be no video data for stream publishing.
@@ -144,7 +144,7 @@ The SDK will only accept video data passed by users after [onStart ](@onStart-IZ
 |Raw data type|ZEGO_VIDEO_BUFFER_TYPE_RAW_DATA|[sendCustomVideoCaptureRawData](https://doc-zh.zego.im/article/api?doc=Express_Video_SDK_API~CPP_linux~class~zego-express-i-zego-express-engine#send-custom-video-capture-raw-data) |
 |Encoded type| ZEGO_VIDEO_BUFFER_TYPE_ENCODED_DATA|[sendCustomVideoCaptureEncodedData](https://doc-zh.zego.im/article/api?doc=Express_Video_SDK_API~CPP_linux~class~zego-express-i-zego-express-engine#send-custom-video-capture-encoded-data) |
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 When performing external capture, if the data sent to the SDK through the [sendCustomVideoCaptureEncodedData](@sendCustomVideoCaptureEncodedData) interface is video frame encoded data, the SDK is only responsible for transmitting data and cannot preview. Developers need to preview themselves, and pre-processing effects like watermarks will not take effect.

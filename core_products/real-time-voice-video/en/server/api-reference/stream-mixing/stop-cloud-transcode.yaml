@@ -39,7 +39,7 @@ paths:
             enum: [StopCloudTranscode]
           style: form
           explode: true
-        # 公共参数（Query）
+        # Common parameters (Query)
         - $ref: '../shared-components.yaml#/components/parameters/AppId'
         - $ref: '../shared-components.yaml#/components/parameters/SignatureNonce'
         - $ref: '../shared-components.yaml#/components/parameters/Timestamp'
@@ -67,16 +67,16 @@ components:
       properties:
         TaskId:
           type: string
-          description: Task ID, unique identifier of the single stream transcoding task, customized by the developer。
+          description: Task ID, unique identifier of the single stream transcoding task, customized by the developer.
           example: "2213699902971205739"
         UserId:
           type: string
-          description: User ID。When enabling single stream transcoding task ownership, stopping the transcoding task of a certain TaskId must input the UserId specified when starting the single stream transcoding task <a href="/real-time-video-server/api-reference/stream-mixing/start-cloud-transcode" target="_blank">start single stream transcoding</a> task.
+          description: User ID. When enabling single stream transcoding task ownership, stopping the transcoding task of a certain TaskId must input the UserId specified when starting the single stream transcoding task <a href="/real-time-video-server/api-reference/stream-mixing/start-cloud-transcode" target="_blank">start single stream transcoding</a> task.
           example: "456"
         Sequence:
           type: integer
           format: int
-          description: Sequence number of the transcoding task, used to ensure sequence, parameter modification of the same task needs to ensure the sequence number increments。
+          description: Sequence number of the transcoding task, used to ensure sequence, parameter modification of the same task needs to ensure the sequence number increments.
     StopCloudTranscodeResponse:
       type: object
       properties:
@@ -98,10 +98,10 @@ components:
           example: 0
         Message:
           type: string
-          description: Operation result description。
+          description: Operation result description.
           example: "success"
         RequestId:
           type: string
-          description: Request ID。
+          description: Request ID.
           example: "8472822294336370476"
 

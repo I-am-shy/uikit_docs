@@ -12,7 +12,7 @@ Traffic control refers to the SDK dynamically adjusting the bitrate, frame rate,
 
 The principle of traffic control is to model the user's network environment and estimate the uplink bandwidth based on the current network situation. If the current uplink bandwidth is less than the set publishing bitrate, it will progressively reduce from video bitrate, resolution, frame rate, and audio bitrate through the configured options to reduce the final uplink bitrate of publishing, ensuring the smoothness of the live broadcast. After the network environment returns to normal, the uplink bitrate will also recover to the initial set value.
 
-When there is only one [RTC Publishing stream](/glossary/term-explanation#rtc-推流), only one [RTC Playing stream](/glossary/term-explanation#rtc-推流) or only one [L3 Playing stream](/glossary/term-explanation#拉流), the SDK will automatically enable downstream traffic control. The playing end notifies the publishing end of its network situation, the publishing end estimates its own uplink bandwidth and the playing end's downlink bandwidth, and takes the minimum value from the uplink and downlink bandwidth estimates to adjust its own uplink bitrate to ensure the smoothness of the connection.
+When there is only one [RTC Publishing stream](/glossary/term-explanation#rtc-publishing-stream), only one [RTC Playing stream](/glossary/term-explanation#rtc-playing-stream) or only one [L3 Playing stream](/glossary/term-explanation#playing-stream), the SDK will automatically enable downstream traffic control. The playing end notifies the publishing end of its network situation, the publishing end estimates its own uplink bandwidth and the playing end's downlink bandwidth, and takes the minimum value from the uplink and downlink bandwidth estimates to adjust its own uplink bitrate to ensure the smoothness of the connection.
 
 
 
@@ -23,7 +23,7 @@ When there is only one [RTC Publishing stream](/glossary/term-explanation#rtc-�
 
 Before publishing stream, call the [enableTrafficControl](https://doc-zh.zego.im/article/api?doc=Express_Video_SDK_API~javascript_electron~class~ZegoExpressEngine#enable-traffic-control) interface, enable traffic control through the "enable" parameter, and set adjustable traffic control properties (bitrate, frame rate, resolution) through the `property` parameter. Multiple selections are supported, the default value is `ADAPTIVE_FPS`, which is adaptive (reduce) video frame rate. When the uplink bandwidth is insufficient, the SDK will reduce the final uplink bitrate of publishing according to the current network environment and the set `property` parameter to adapt to the uplink bandwidth.
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 * Usage limitation: Only supports RTC publishing stream.
@@ -43,7 +43,7 @@ zgEngine.enableTrafficControl(true, zgDefines.ZegoTrafficControlProperty.Adaptiv
 
 The SDK will automatically set traffic control properties suitable for the scenario based on the [`scenario`](/real-time-video-electron-js/quick-start/scenario-based-audio-video-configuration) selected by the developer when [creating engine](/real-time-video-electron-js/quick-start/implementing-video-call). For example, the show live streaming scenario needs to ensure video smoothness, it is recommended to choose adaptive (reduce) video resolution; the education scenario needs to ensure clarity, it is recommended to choose adaptive (reduce) video frame rate.
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 The SDK determines the current traffic control properties based on the order of interface calls, and the later call takes effect. That is, if traffic control properties are set first through `enableTrafficControl`, and then `setRoomScenario` is called to set `scenario`, the traffic control properties will change according to `scenario`.
@@ -57,7 +57,7 @@ The SDK determines the current traffic control properties based on the order of 
 
 After enabling traffic control, call the [setMinVideoBitrateForTrafficControl](https://doc-zh.zego.im/article/api?doc=Express_Video_SDK_API~javascript_electron~class~ZegoExpressEngine#set-min-video-bitrate-for-traffic-control) method to set the minimum video bitrate (default value is "0") and video sending mode, which can make the SDK adopt the video sending mode set by this method (do not send video or send at a very low frame rate) when the network does not meet the minimum bitrate for sending video.
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 You can call [setMinVideoBitrateForTrafficControl](https://doc-zh.zego.im/article/api?doc=Express_Video_SDK_API~javascript_electron~class~ZegoExpressEngine#set-min-video-bitrate-for-traffic-control) at any time after initializing the SDK and before publishing stream [startPublishingStream](@startPublishingStream), but this setting only takes effect after traffic control is enabled.

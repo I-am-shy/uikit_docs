@@ -126,7 +126,7 @@ processConfig.bufferType = ZegoVideoBufferTypeCVPixelBuffer;
 1. Using the "ZegoVideoBufferTypeCVPixelBuffer" type video preprocessing method requires implementing the [onCapturedUnprocessedCVPixelBuffer](@onCapturedUnprocessedCVPixelBuffer) callback method. After the SDK obtains raw video data, it will notify the developer through the [onCapturedUnprocessedCVPixelBuffer](@onCapturedUnprocessedCVPixelBuffer) method.
 
 2. Developers can use Express SDK's built-in basic beautification, watermark and other features to process video data. For details, please refer to [Publishing Stream Video Enhancement](/real-time-video-ios-oc/video/publish-video-enhancement); can also be used with Effects SDK to implement more processing effects. For details, please refer to [Using Real-time Audio and Video with AI Beautification Together](/real-time-video-ios-oc/best-practice/integration-with-zego-effects-sdk).
-    <Warning title="Note">
+    <Warning title="Warning">
 
 
     If developers use third-party beautification libraries or pre-allocate memory, please:

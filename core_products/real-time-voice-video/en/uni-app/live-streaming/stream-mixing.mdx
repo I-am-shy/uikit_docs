@@ -78,7 +78,7 @@ ZEGO 支持手动混流、自动混流和全自动混流三种方式，三种混
 - 已在 [ZEGO 控制台](https://console.zego.im) 创建项目，并申请有效的 AppID 和 AppSign，详情请参考 [控制台 - 项目信息](/console/project-info)。
 - 已在项目中集成 ZEGO Express SDK，并实现了基本的音视频推拉流功能，详情请参考 [快速开始 - 集成](/real-time-video-uniapp/quick-start/integrating-sdk) 和 [快速开始 - 实现流程](/real-time-video-uniapp/quick-start/implementing-video-call)。
 
-<Warning title="注意">
+<Warning title="Warning">
 
 
 混流功能不是默认开启的，使用前请在 [ZEGO 控制台](https://console.zego.im) 自助开通（开通步骤请参考 [项目管理 - 服务配置](/console/service-configuration/enable-stream-mixing-service) 中的“混流”），或联系 ZEGO 技术支持开通。
@@ -110,7 +110,7 @@ ZEGO 支持手动混流、自动混流和全自动混流三种方式，三种混
 
 可参考 [快速开始 - 实现流程](/real-time-video-uniapp/quick-start/implementing-video-call) 的 “创建引擎” 和 “登录房间”。
 
-<Warning title="注意">
+<Warning title="Warning">
 
 
 - 混流的前置条件为房间内需要有已存在的流。
@@ -135,7 +135,7 @@ let task = {taskID: "task1"};
 #### （可选）设置混流视频配置
 
 <Accordion title="混流视频配置设置" defaultOpen="false">
-<Note title="说明">
+<Note title="Note">
 
 
 
@@ -179,7 +179,7 @@ task.audioConfig = audioConfig;
 
 根据实际业务场景，定义输入的视频流 [ZegoMixerInput](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/javascript_uni-app/classes/_zegoexpressdefines_.zegomixerinput.html) 列表，设置其中每条视频流的 “layout” 参数来对每条输入流的画面进行布局，由 ZEGO 实时音视频云服务器将输入流进行混合，输出在一个画面中的混流。
 
-<Warning title="注意">
+<Warning title="Warning">
 
 
 
@@ -221,7 +221,7 @@ task.audioConfig = audioConfig;
   </tr>
 </tbody></table>
 
-<Warning title="注意">
+<Warning title="Warning">
 
 
 以上参数在不同的开发平台可能有所差异，具体请以各端的文档为准。
@@ -321,7 +321,7 @@ task.outputList = [mixerOutput];
 #### （可选，Web 不支持）设置混流水印
 
 <Accordion title="混流水印设置" defaultOpen="false">
-<Note title="说明">
+<Note title="Note">
 
 
 
@@ -348,7 +348,7 @@ task.watermark = watermark;
 #### （可选，Web 不支持）设置混流背景图片
 
 <Accordion title="混流背景图片设置" defaultOpen="false">
-<Note title="说明">
+<Note title="Note">
 
 
 
@@ -368,7 +368,7 @@ task.backgroundImageURL = "preset-id://zegobg.png";
 #### （可选，Web 不支持）设置混流音量变化回调
 
 <Accordion title="混流音量变化回调设置" defaultOpen="false">
-<Warning title="注意">
+<Warning title="Warning">
 
 
 在视频场景中，不建议打开声浪开关，否则拉流端拉 HLS 协议的流可能会出现兼容性问题。
@@ -392,7 +392,7 @@ task.enableSoundLevel = true;
 
 如果需要了解具体支持的配置项信息，请联系 ZEGO 技术支持。
 
-<Note title="说明">
+<Note title="Note">
 
 
 普通场景无需设置高级配置。
@@ -416,7 +416,7 @@ task.audioConfig = audioConfig;
 
 完成了 [ZegoMixerTask](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/javascript_uni-app/classes/_zegoexpressdefines_.zegomixertask.html) 混流任务对象的配置后，调用开始混流的接口以启动这个混流任务，并在回调中处理启动混流任务失败的逻辑。
 
-<Warning title="注意">
+<Warning title="Warning">
 
 
 
@@ -439,7 +439,7 @@ if (result.errorCode == 0) {
 
 当混流信息发生变更时，例如混流的输入流列表发生增减、调整混流视频输出码率等，修改该混流任务对象的参数，然后再调用一次 [startMixerTask](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/javascript_uni-app/classes/_zegoexpressengine_.zegoexpressengine.html#startmixertask) 接口即可更新配置。
 
-<Warning title="注意">
+<Warning title="Warning">
 
 
 更新混流任务的配置时，“taskID” 不可更改。
@@ -460,7 +460,7 @@ let result =  await this.engine.stopMixerTask(task);
 
 ## 自动混流使用步骤
 
-<Warning title="注意">
+<Warning title="Warning">
 
 Web 目前不支持自动混流
 
@@ -472,7 +472,7 @@ Web 目前不支持自动混流
 
 请参考 [快速开始 - 实现流程](/real-time-video-uniapp/quick-start/implementing-video-call) 中的的 “创建引擎” 和 “登录房间” 完成初始化和房间登录。
 
-<Warning title="注意">
+<Warning title="Warning">
 
 - 自动混流的前置条件为目标房间存在。
 - 发起自动混流的用户可以混房间内已有的其他用户推的流（只能混音频流），而自己不用登录房间或者在房间内推流。
@@ -562,7 +562,7 @@ task.outputList = outputList;
 #### （可选）设置自动混流音量变化回调
 
 <Accordion title="自动混流音量变化回调设置" defaultOpen="false">
-<Warning title="注意">
+<Warning title="Warning">
 
 
 在视频场景中，不建议打开声浪开关，否则拉流端拉 HLS 协议的流可能会出现兼容性问题。
@@ -595,7 +595,7 @@ ZegoExpressEngine.instance().startAutoMixerTask(task).then((result) {
 
 调用 [stopAutoMixerTask ](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/javascript_uni-app/classes/_zegoexpressengine_.zegoexpressengine.html#stopautomixertask) 接口停止自动混流。
 
-<Warning title="注意">
+<Warning title="Warning">
 
 
 在同一个房间内开启下一个自动混流任务前，请先调用 [stopAutoMixerTask ](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/javascript_uni-app/classes/_zegoexpressengine_.zegoexpressengine.html#stopautomixertask) 接口结束上一次自动混流任务，以免造成当一个主播已经开启下一个自动混流任务与其他主播混流时，观众依然在一直拉上一个自动混流任务的输出流的情况。若用户未主动结束当前自动混流任务，该任务将在房间关闭后自动结束。

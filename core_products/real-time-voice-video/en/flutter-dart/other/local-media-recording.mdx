@@ -65,7 +65,7 @@ Record the live streaming audio and video and save them to ZEGO CDN.
 
 ## Solution 1: Client-side Local Recording
 
-<Warning title="Note">
+<Warning title="Warning">
 This document is not currently applicable to the Web platform.
 </Warning>
 
@@ -136,7 +136,7 @@ stateDiagram-v2
 
 Developers need to set [onCapturedDataRecordStateUpdate](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/dart_flutter/zego_express_engine/ZegoExpressEngine/onCapturedDataRecordStateUpdate.html) and [onCapturedDataRecordProgressUpdate](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/dart_flutter/zego_express_engine/ZegoExpressEngine/onCapturedDataRecordProgressUpdate.html) callbacks to receive recording information during the recording process.
 
-<Warning title="Note">
+<Warning title="Warning">
 You will receive the set recording callback information only after calling [startRecordingCapturedData](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/dart_flutter/zego_express_engine/ZegoExpressEngineRecord/startRecordingCapturedData.html) to start recording.
 </Warning>
 
@@ -166,7 +166,7 @@ Developers need to call [startRecordingCapturedData](https://doc-zh.zego.im/uniq
 
 If you want to record audio and video, specify it as `ZegoDataRecordType.Default` or `ZegoDataRecordType.AudioAndVideo`. If you only want to record audio, select `ZegoDataRecordType.OnlyAudio`. If you only want to record pure video, select `ZegoDataRecordType.OnlyVideo`.
 
-<Warning title="Note">
+<Warning title="Warning">
 
 - In the recording configuration specified in [ZegoDataRecordConfig](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/dart_flutter/zego_express_engine/ZegoDataRecordConfig-class.html), the file path extension must end with ".mp4", ".flv", or ".aac" to specify the recording file format.
 - The recording type [ZegoDataRecordType](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/dart_flutter/zego_express_engine/ZegoDataRecordType.html) is independent of the file extension.
@@ -195,7 +195,7 @@ ZegoExpressEngine.instance.startRecordingCapturedData(config, channel: ZegoPubli
 
 Developers need to call [stopRecordingCapturedData](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/dart_flutter/zego_express_engine/ZegoExpressEngineRecord/stopRecordingCapturedData.html) to end recording.
 
-<Warning title="Note">
+<Warning title="Warning">
 During recording, if you exit the room [logoutRoom](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/dart_flutter/zego_express_engine/ZegoExpressEngineRoom/logoutRoom.html), the SDK will automatically stop recording internally.
 </Warning>
 

@@ -61,7 +61,7 @@ ZegoExpressEngine.createEngine(profile).then((engineInst) => {
 
 建议在开发调试阶段调用 [enableDebugAssistant](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/ets_ohos/classes/_zegoexpressengine_.zegoexpressengine.html#enabledebugassistant) 接口开启 SDK 的调试助手功能，当后续调用其他 SDK 的接口时，既能输出日志到控制台，同时在接口调用出错时还会弹窗提醒，方便开发者第一时间发现问题并及时修正。
 
-<Warning title="注意">
+<Warning title="Warning">
 
 
 当开发完成，即将上线 App 前，请务必关闭此功能，以避免在线上环境发生潜藏错误时弹出 UI 弹窗。
@@ -78,7 +78,7 @@ this.ZegoExpressInstance.enableDebugAssistant(true);
 
 调用 [getSDKVersion](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/ets_ohos/classes/_zegoexpressengine_.zegoexpressengine.html#getsdkversion) 可获得 SDK 版本号。开发者可将 SDK 版本号信息作为 App 所使用的 Engine 的版本信息，以便统计线上各版本 App 对应的各版本 SDK。
 
-<Note title="说明">
+<Note title="Note">
 
 
 SDK 在运行过程中，当开发者发现与预期情况不符时，可将问题与相关日志提交给 ZEGO 技术支持定位，ZEGO 技术支持可能需要 Engine 的版本的信息来辅助定位问题。

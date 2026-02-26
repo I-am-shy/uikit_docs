@@ -96,7 +96,7 @@ sequenceDiagram
   <Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/sdk-doc/Pics/Web/ExpressSDK/Advanced_Features /Video_for_Multiple_Users_Web_new.png" /></Frame>
 */}
 
-<Note title="Description">
+<Note title="Note">
 
 
    ZEGO Express SDK supports multiplayer video calls. The above sequence diagram takes real-time video calls between 2 room members as an example. It is recommended that developers refer to the above process to design their own multiplayer real-time video call scenarios.
@@ -110,8 +110,8 @@ sequenceDiagram
 
 Create a [ZegoExpressEngine](@-ZegoExpressEngine) engine instance, pass the applied AppID to the parameter "appID", and pass the access server address to the parameter "server".
 
-<Note title="Description">
-- "server" is the access server address. For how to obtain it, please refer to [Console - Project Information](/console/project-info#配置信息).
+<Note title="Note">
+- "server" is the access server address. For how to obtain it, please refer to [Console - Project Information](/console/project-info#configuration-information).
 - For SDK version 3.6.0 and above, server can be changed to an empty string, null, undefined, or any character, but cannot be left empty.
 </Note>
 
@@ -141,7 +141,7 @@ To implement the multiplayer video call function, you need to listen to the addi
 
 #### Listen to User Changes in the Room
 
-<Warning title="注意">
+<Warning title="Warning">
 
 
 You can only listen to the [roomUserUpdate](@roomUserUpdate) callback when you set to focus on user changes when calling [loginRoom](@loginRoom) to log in to the room, that is, when "userUpdate" in [ZegoRoomConfig](@-ZegoRoomConfig) is set to "true" (the default value is "false").
@@ -176,7 +176,7 @@ zg.on('roomUserUpdate', (roomID, updateType, userList) => {
 
 #### Listen to Stream Changes in the Room
 
-<Warning title="注意">
+<Warning title="Warning">
 
 
 When a stream is deleted, if you are calling the [startPlayingStream](@startPlayingStream) interface to play the stream, please call the [stopPlayingStream](@stopPlayingStream) interface to stop playing the stream. Otherwise, the SDK will report a stream playing error.

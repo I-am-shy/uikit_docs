@@ -10,7 +10,7 @@ date: "2024-01-02"
 
 用户使用移动设备进行直播或视频通话时，可以采用不同的视频采集方向，ZEGO Express SDK 支持采集视频的方式如下：
 
-<Note title="说明">
+<Note title="Note">
 
 
 以下示例中“拉流端”渲染画面的模式以默认的 “AspectFit”（等比缩放，可能有黑边）方式，具体请参考 [ZegoViewMode](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/javascript_uni-app/enums/_zegoexpressdefines_.zegoviewmode.html)。
@@ -169,7 +169,7 @@ ZegoExpressEngine.instance().setVideoConfig(config);
 
 3. 在 App 平台调用 [setAppOrientation ](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/javascript_uni-app/classes/_zegoexpressengine_.zegoexpressengine.html#setapporientation) 接口设置视频的朝向，若逆时针旋转 90 度，则如下接口传参为 ZegoOrientation.LandscapeLeft。若顺时针旋转 90 度，则传参为 ZegoOrientation.LandscapeRight。
 
-<Warning title="注意">
+<Warning title="Warning">
 
 
 

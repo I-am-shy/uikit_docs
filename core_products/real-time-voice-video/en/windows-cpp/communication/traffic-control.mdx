@@ -12,7 +12,7 @@ Traffic control refers to the SDK dynamically adjusting the bitrate, frame rate,
 
 The principle of traffic control is based on the current network situation, modeling the user's network environment and estimating their uplink bandwidth. If the current uplink bandwidth is less than the set streaming bitrate, the SDK will progressively reduce it from video bitrate, resolution, frame rate, and audio bitrate through the configured options to reduce the final uplink bitrate of the stream, ensuring the smoothness of the live broadcast. After the network environment returns to normal, the uplink bitrate will also recover to the initial set value.
 
-When there is only one [RTC stream publishing](/glossary/term-explanation#rtc-推流), only one [RTC stream playing](/glossary/term-explanation#rtc-推流), or only one [L3 stream playing](/glossary/term-explanation#拉流), the SDK will automatically enable downlink traffic control. The playing end notifies the publishing end of its network situation, and the publishing end estimates its own uplink bandwidth and the downlink bandwidth of the playing end, and takes the minimum value from the uplink and downlink bandwidth estimates to adjust its own uplink bitrate to ensure the smoothness of the co-hosting.
+When there is only one [RTC stream publishing](/glossary/term-explanation#rtc-publishing-stream), only one [RTC stream playing](/glossary/term-explanation#rtc-playing-stream), or only one [L3 stream playing](/glossary/term-explanation#playing-stream), the SDK will automatically enable downlink traffic control. The playing end notifies the publishing end of its network situation, and the publishing end estimates its own uplink bandwidth and the downlink bandwidth of the playing end, and takes the minimum value from the uplink and downlink bandwidth estimates to adjust its own uplink bitrate to ensure the smoothness of the co-hosting.
 
 
 ## Usage Steps
@@ -21,7 +21,7 @@ When there is only one [RTC stream publishing](/glossary/term-explanation#rtc-�
 
 Before streaming, call the [enableTrafficControl](@enableTrafficControl) interface to enable traffic control through the `enable` parameter, and set the adjustable traffic control properties (bitrate, frame rate, resolution) through the `property` parameter. Multiple options can be selected, and the default value is `ADAPTIVE_FPS`, which is adaptive (reducing) video frame rate. When uplink bandwidth is insufficient, the SDK will reduce the final uplink bitrate of the stream according to the current network environment and the set `property` parameter to adapt to the uplink bandwidth.
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 * Usage restriction: Only supports RTC streaming.
@@ -39,7 +39,7 @@ ZegoExpressSDK::getEngine()->enableTrafficControl(true, ZEGO_TRAFFIC_CONTROL_PRO
 
 The SDK will automatically set traffic control properties suitable for the scenario based on the [`scenario`](/real-time-video-windows-cpp/quick-start/scenario-based-audio-video-configuration) selected by the developer when [creating the engine](/real-time-video-windows-cpp/quick-start/implementing-video-call). For example, the show live streaming scenario needs to ensure video smoothness, so adaptive (reducing) video resolution is recommended; the education scenario needs to ensure clarity, so adaptive (reducing) video frame rate is recommended.
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 The SDK will determine the current traffic control properties based on the order of interface calls, and the later call will take effect. That is, if traffic control properties are first set through `enableTrafficControl`, and then `setRoomScenario` is called to set `scenario`, the traffic control properties will change according to `scenario`.
@@ -49,7 +49,7 @@ The SDK will determine the current traffic control properties based on the order
 
 After enabling traffic control, call the [setMinVideoBitrateForTrafficControl](@setMinVideoBitrateForTrafficControl) method to set the minimum video bitrate (default value is "0") and the video sending mode, which allows the SDK to use the video sending mode set by this method (not sending video or sending at a very low frame rate) when the network does not reach the minimum bitrate for sending video.
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 [setMinVideoBitrateForTrafficControl](@setMinVideoBitrateForTrafficControl) can be called at any time after initializing the SDK and before starting to publish streams [startPublishingStream](@startPublishingStream), but the setting will only take effect after traffic control is enabled.

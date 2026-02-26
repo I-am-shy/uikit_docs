@@ -90,7 +90,7 @@ ZegoExpressEngine.instance().createMediaPlayer().then((player) => {
 
 调用 [createMediaPlayer](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/javascript_uni-app/classes/_zegoexpressengine_.zegoexpressengine.html#createmediaplayer) 创建媒体播放器后，通过 [loadResourceWithConfig](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/javascript_uni-app/classes/_zegoexpressdefines_.zegomediaplayer.html#loadresourcewithconfig) 接口，通过**文件路径**或**二进制内存数据**，播放拼接后的特效素材。
 
-<Warning title="注意">
+<Warning title="Warning">
 
 
 虽然 [loadResourceWithConfig](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/javascript_uni-app/classes/_zegoexpressdefines_.zegomediaplayer.html#loadresourcewithconfig) 接口支持通过版权音乐资源 ID 加载多媒体资源，但是版权音乐目前不支持视频，因此无法通过版权音乐资源 ID 加载方式来加载礼物特效。
@@ -162,7 +162,7 @@ this.mediaPlayer.stop();
 
 当播放视频资源时，使用 `<zego-mediaplayer-view>` 标签，并设置 `alphaBlend` 参数为 `true`，开启播放器透明效果，然后调用 [setPlayerView](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/javascript_uni-app/classes/_zegoexpressdefines_.zegomediaplayer.html#setplayerview) 接口设置视频的显示视图。
 
-<Warning title="注意">
+<Warning title="Warning">
 
 
 初次创建生效后，不可实时更改。如需更改，需要重新创建或刷新视图标签。

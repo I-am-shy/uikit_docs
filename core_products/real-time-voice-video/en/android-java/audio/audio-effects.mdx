@@ -17,7 +17,7 @@ In live streaming, voice chat room, and Karaoke room scenarios, to increase fun 
 
 You can experience the SDK's preset vocal effects through ZEGO's [Audio Effect Experience DEMO](https://www.zego.im/audio-demo).
 
-<Note title="Description">
+<Note title="Note">
 
 This feature only takes effect for sound captured by the SDK. Developers can dynamically adjust voice changer, reverb, reverb echo, and virtual stereo during calls or live streaming.
 </Note>
@@ -46,7 +46,7 @@ There are two ways to set voice changer: preset voice changer and custom voice c
 
 #### Set preset voice changer
 
-<Note title="Description">
+<Note title="Note">
 
 If you need to set custom voice changer, please refer to [Set Custom Voice Changer](/real-time-video-android-java/audio/audio-effects).
 </Note>
@@ -93,7 +93,7 @@ ZegoExpressEngine.getEngine().setVoiceChangerPreset(ZegoVoiceChangerPreset.MEN_T
 
 #### Set custom voice changer
 
-<Note title="Description">
+<Note title="Note">
 
 If you need to set preset voice changer, please refer to [Set Preset Voice Changer](/real-time-video-android-java/audio/audio-effects).
 </Note>
@@ -116,7 +116,7 @@ There are two ways to set reverb: preset reverb and custom reverb.
 
 #### Set preset reverb
 
-<Note title="Description">
+<Note title="Note">
 
 If you need to set custom reverb, please refer to [Set Custom Reverb](/real-time-video-android-java/audio/audio-effects).
 </Note>
@@ -227,7 +227,7 @@ ZegoExpressEngine.getEngine().setReverbPreset(ZegoReverbPreset.LARGE_ROOM);
 
 #### Set custom reverb
 
-<Note title="Description">
+<Note title="Note">
 
 If you need to set preset reverb, please refer to [Set Preset Reverb](/real-time-video-android-java/audio/audio-effects).
 </Note>
@@ -307,7 +307,7 @@ ZegoExpressEngine.getEngine().setAudioConfig(audioConfig);
 
 After setting the audio encoding channel to dual-channel, call the [enableVirtualStereo ](https://doc-zh.zego.im/article/api?doc=Express_Video_SDK_API~Java~class~im-zego-zegoexpress-zego-express-engine#enable-virtual-stereo) method, enable virtual stereo through the "enable" parameter, and set the sound source angle of virtual stereo through the "angle" parameter to achieve the stereo effect. The angle range is 0 to 360, generally can be set to 90 degrees (i.e., directly in front).
 
-<Note title="Description">
+<Note title="Note">
 
 Since version 2.15.0, the SDK has added support for omni-directional virtual stereo effects. The usage is to set the "angle" parameter to "-1".
 </Note>

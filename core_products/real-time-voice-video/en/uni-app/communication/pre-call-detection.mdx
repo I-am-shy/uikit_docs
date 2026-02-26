@@ -6,12 +6,12 @@
 
 为了保证实时通信体验，通话前可以进行网络与设备的检测，提前识别并排查问题。
 
-- 网络检测：检测网络环境，可用于判断或预测网络环境是否适合推/拉指定码率的流。   
+- 网络检测：检测网络环境，可用于判断或预测网络环境是否适合推/拉指定码率的流。
 - 设备检测：检测本地麦克风、摄像头以及扬声器是否能正常工作。
 
 本文将介绍如何使用 ZEGO SDK 接口，实现上述两个角度的检测。
 
-<Warning title="注意">
+<Warning title="Warning">
 
 
 **在H5中，设备检测功能暂不支持**
@@ -62,7 +62,7 @@ engine.startPreview();
 
 ZEGO SDK 自动检查麦克风权限。
 
-<Warning title="注意">
+<Warning title="Warning">
 <p>
 因为 Android 6.0 在一些比较重要的权限上要求必须申请动态权限，不能只通过 “AndroidMainfest.xml” 文件申请静态权限。因此还需要参考执行如下代码，其中 “requestPermissions” 是 “Activity” 的方法。
 </p>
@@ -130,7 +130,7 @@ graph TD
 
 #### 对应接口
 
-**1. 启动摄像头** 
+**1. 启动摄像头**
 
 调用 [startPreview](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/javascript_uni-app/classes/_zegoexpressengine_.zegoexpressengine.html#startpreview) 接口绑定摄像头预览画面的视图，在不推流的情况下启动视频采集并预览。
 
@@ -142,7 +142,7 @@ engine.startPreview();
 
 ZEGO SDK 会自动检查摄像头权限。
 
-<Warning title="注意">
+<Warning title="Warning">
 <p>
 因为 Android 6.0 在一些比较重要的权限上要求必须申请动态权限，不能只通过 “AndroidMainfest.xml” 文件申请静态权限。因此还需要参考执行如下代码，其中 “requestPermissions” 是 “Activity” 的方法。
 </p>
@@ -199,7 +199,7 @@ graph TD
 
 #### 对应接口
 
-**1. 使用媒体播放器播放音频文件** 
+**1. 使用媒体播放器播放音频文件**
 
 调用 [ZegoMediaPlayer](https://doc-zh.zego.im/article/api?doc=Express_Video_SDK_API~Java_android~class~im-zego-zegoexpress-zego-media-player&jumpType=route) 接口播放您用于测试的音频文件。
 

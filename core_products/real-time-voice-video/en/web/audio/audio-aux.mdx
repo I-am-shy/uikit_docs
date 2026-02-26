@@ -31,7 +31,7 @@ Before using audio mixing functionality, please ensure:
 <Accordion title="Before starting audio mixing, developers can choose whether to change the pitch of the media tag's audio as needed" defaultOpen="false">
 Before audio mixing, developers can change the pitch of audio data through the [setAudioChangerParam](@setAudioChangerParam) interface according to business needs. For example, in KTV solo scenarios, raise or lower the pitch of accompaniment while keeping the human voice unchanged.
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 - At the same time, data from one \<video> or \<audio> tag can only undergo one type of audio effect processing. Multiple types of processing cannot be performed simultaneously, i.e., voice changing, reverb, stereo, and pitch shifting can only choose one to use.
@@ -55,7 +55,7 @@ const result = await zg.setAudioChangerParam(
 
 After publishing the stream, call the [startMixingAudio](https://doc-zh.zego.im/article/api?doc=Express_Video_SDK_API~javascript_web~class~ZegoExpressEngine#start-mixing-audio) method to start audio mixing, and mix audio into the stream being published through `streamID` and `mediaList` (media tag list: `video` or `audio`).
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 - Control pause and resume operations of already mixed audio through `video` or `audio` media tags.
@@ -77,7 +77,7 @@ console.warn('Audio mixing', result);
 
 ### Stop Audio Mixing
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 - If the capability detection interface [checkSystemRequirements](@checkSystemRequirements) detects that `customCapture` is `false`, i.e., the browser does not support obtaining `MediaStream` from media elements, this interface cannot be used.

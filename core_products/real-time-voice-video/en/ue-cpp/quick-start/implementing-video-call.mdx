@@ -14,7 +14,7 @@ date: "2025-01-21"
 - 已在项目中集成 ZEGO Express SDK，实现基本的实时音视频功能，详情请参考 [快速开始 - 集成](/real-time-video-ue-cpp/quick-start/integrating-sdk)。
 - 已在 [ZEGO 控制台](https://console.zego.im) 创建项目，并申请有效的 AppID 和 AppSign，详情请参考 [控制台 - 项目管理](/console/project-info) 中的“项目信息”。
 
-<Warning title="注意">
+<Warning title="Warning">
 
 SDK 同时也支持 Token 鉴权，若您对项目安全性有更高要求，建议您升级鉴权方式，详情请参考 [如何从 AppSign 鉴权升级为 Token 鉴权](http://doc-zh.zego.im/faq/token_upgrade?product=ExpressVideo)。
 </Warning>
@@ -72,7 +72,7 @@ using namespace ZEGO::EXPRESS;
 
 根据 App 实际的音视频业务选择一个合适的场景，请参考 [场景化音视频配置](/real-time-video-ue-cpp/quick-start/scenario-based-audio-video-configuration) 文档，把选择好的场景枚举传入参数 "scenario"。
 
-<Warning title="注意">
+<Warning title="Warning">
 
 
 SDK 同时也支持 Token 鉴权，若您需要升级鉴权方式，可参考 [如何从 AppSign 鉴权升级为 Token 鉴权](http://doc-zh.zego.im/faq/token_upgrade?product=ExpressVideo)。
@@ -97,7 +97,7 @@ auto engine = ZegoExpressSDK::createEngine(profile, nullptr);
 
 您可以通过实现 [IZegoEventHandler ](https://doc-zh.zego.im/article/api?doc=Express_Audio_SDK_API~CPP_windows~class~zego-express-i-zego-event-handler)  接口的类并实现需要的回调方法，以监听并处理所关注的事件回调。然后将实例化对象作为`eventHandler`参数传递给 [createEngine ](https://doc-zh.zego.im/article/api?doc=Express_Audio_SDK_API~CPP~class~zego-express-zego-express-sdk#includes) 或者传递给 [setEventHandler ](https://doc-zh.zego.im/article/api?doc=Express_Audio_SDK_API~CPP_windows~class~zego-express-i-zego-audio-effect-player#set-event-handler) 注册回调。
 
-<Warning title="注意">
+<Warning title="Warning">
 
 
 建议在创建引擎时或创建引擎后就立即注册回调，避免延后注册错过事件通知。
@@ -210,7 +210,7 @@ void onRoomStreamUpdate(const std::string& roomID, ZegoUpdateType updateType, co
 
 调用 [startPublishingStream](https://doc-zh.zego.im/article/api?doc=Express_Audio_SDK_API~CPP~class~zego-express-i-zego-express-engine#start-publishing-stream)，传入流 ID 参数“streamID”，向远端用户发送本端的音视频流。
 
-<Warning title="注意">
+<Warning title="Warning">
 同一个 AppID 内，需保证 “streamID” 全局唯一。如果同一个 AppID 内，不同用户各推了一条 “streamID” 相同的流，会导致后推流的用户推流失败。
 </Warning>
 
@@ -236,7 +236,7 @@ virtual void onPublisherStateUpdate(const std::string& streamID, ZegoPublisherSt
 }
 ```
 
-<Note title="说明">
+<Note title="Note">
 
 
 如果您需要了解 Express 的麦克风/音频/扬声器相关接口，请参考 [常见问题 - 如何实现开关摄像头/视频画面/麦克风/音频/扬声器？](http://doc-zh.zego.im/faq/How_to_switch_devices)。
@@ -296,7 +296,7 @@ engine->stopPublishingStream();
 
 调用 [stopPlayingStream ](https://doc-zh.zego.im/article/api?doc=Express_Audio_SDK_API~CPP~class~zego-express-i-zego-express-engine#stop-playing-stream) 停止拉取远端推送的音视频流。
 
-<Warning title="注意">
+<Warning title="Warning">
 如果开发者通过 [onRoomStreamUpdate](@onRoomStreamUpdate) 回调收到了音视频流 “减少” 的通知，请及时调用 [stopPlayingStream](@stopPlayingStream) 接口停止拉流，避免拉到空流、产生额外的成本；或者，开发者可以根据自己的业务需求，选择合适的时机，主动调用 [stopPlayingStream](@stopPlayingStream) 接口停止拉流。
 </Warning>
 

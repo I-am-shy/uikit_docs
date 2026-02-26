@@ -48,7 +48,7 @@ date: "2024-01-12"
 - 推流：指把采集阶段封包好的内容传输到服务器的过程。
 - 拉流：指服务器将已有直播内容用指定地址进行拉取的过程。
 
-<Note title="说明">
+<Note title="Note">
 
 
 SEI 的相关概念及原理请参考 [常见问题 - 实时音视频](https://doc-zh.zego.im/faq/sei) 中的 “如何理解和使用 SEI（媒体补充增强信息）”。
@@ -274,7 +274,7 @@ ZegoExpressEngine.instance().on("playerStateUpdate", (streamID, state, errorCode
 
 ### 音视频首帧回调
 
-<Warning title="注意">
+<Warning title="Warning">
 
 
 在 Web 中，暂不支持音视频首帧回调的相关方法及回调。
@@ -288,7 +288,7 @@ ZegoExpressEngine.instance().on("playerStateUpdate", (streamID, state, errorCode
 
 开发者可通过注册 [publisherCapturedAudioFirstFrame](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/javascript_uni-app/interfaces/_zegoexpresseventhandler_.zegoeventlistener.html#publishercapturedaudiofirstframe) 接收音频首帧回调。调用推流接口成功后，SDK 采集到第一帧音频数据时会收到此回调。
 
-<Note title="说明">
+<Note title="Note">
 
 
 在未推流或未预览的情况下，首次推流或首次预览，即 SDK 内部的音视频模块的引擎启动时，会去采集本机设备的音频数据，会收到该回调。开发者可根据该回调判断 SDK 是否真的采集到音频数据，若未收到该回调，说明音频采集设备被占用或异常。
@@ -305,7 +305,7 @@ ZegoExpressEngine.instance().on("publisherCapturedAudioFirstFrame", () => {
 
 #### 推流端视频采集首帧回调
 
-<Note title="说明">
+<Note title="Note">
 
 
 
@@ -317,7 +317,7 @@ ZegoExpressEngine.instance().on("publisherCapturedAudioFirstFrame", () => {
 
 开发者可通过注册 [publisherCapturedVideoFirstFrame](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/javascript_uni-app/interfaces/_zegoexpresseventhandler_.zegoeventlistener.html#publishercapturedvideofirstframe) 接收视频首帧回调。调用推流接口成功后，SDK 采集到第一帧视频数据时会收到此回调。
 
-<Note title="说明">
+<Note title="Note">
 
 
 在未推流或未预览的情况下，首次推流或首次预览，即 SDK 内部的音视频模块的引擎启动时，会去采集本机设备的视频数据，会收到该回调。开发者可根据该回调判断 SDK 是否真的采集到视频数据，若未收到该回调，说明视频采集设备被占用或异常。
@@ -344,7 +344,7 @@ ZegoExpressEngine.instance().on("playerRecvAudioFirstFrame", (streamID) => {
 
 #### 拉流端视频接收首帧回调
 
-<Note title="说明">
+<Note title="Note">
 
 
 
@@ -367,7 +367,7 @@ ZegoExpressEngine.instance().on("playerRecvVideoFirstFrame", (streamID) => {
 
 开发者可通过注册 [playerRenderVideoFirstFrame](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/javascript_uni-app/interfaces/_zegoexpresseventhandler_.zegoeventlistener.html#playerrendervideofirstframe) 监听拉流端渲染完视频首帧回调。调用拉流接口成功后，SDK 拉流并渲染完第一帧视频数据后会收到此回调。
 
-<Note title="说明">
+<Note title="Note">
 
 
 开发者可用该回调来统计首帧耗时或更新播放流的 UI 组件。
@@ -384,7 +384,7 @@ ZegoExpressEngine.instance().on("playerRenderVideoFirstFrame", (streamID) => {
 
 ### 监控视频分辨率变化
 
-<Note title="说明">
+<Note title="Note">
 
 
 
@@ -397,7 +397,7 @@ ZegoExpressEngine.instance().on("playerRenderVideoFirstFrame", (streamID) => {
 
 #### 采集视频分辨率变更回调
 
-<Warning title="注意">
+<Warning title="Warning">
 
 
 在 Web 中，暂不支持采集视频分辨率变更回调。
@@ -409,7 +409,7 @@ ZegoExpressEngine.instance().on("playerRenderVideoFirstFrame", (streamID) => {
 
 开发者可通过注册 [publisherVideoSizeChanged](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/javascript_uni-app/interfaces/_zegoexpresseventhandler_.zegoeventlistener.html#publishervideosizechanged) 监听采集视频大小变更回调。推流成功后，在推流中途如果有改变视频采集分辨率发生变化将会收到此回调。
 
-<Note title="说明">
+<Note title="Note">
 
 
 当在未推流或未预览的情况下，首次推流或首次预览，即 SDK 内部的音视频模块的引擎启动时，会去采集本机设备的视频数据，此时采集分辨率会改变。
@@ -430,7 +430,7 @@ ZegoExpressEngine.instance().on("publisherVideoSizeChanged", (width, height, cha
 
 开发者可通过注册 [playerVideoSizeChanged](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/javascript_uni-app/interfaces/_zegoexpresseventhandler_.zegoeventlistener.html#playervideosizechanged) 获取拉流分辨率变更通知。拉流成功后，在拉流中途如果有视频分辨率发生变化将会收到此回调，用户可根据流的最终分辨率调整显示。
 
-<Note title="说明">
+<Note title="Note">
 
 
 - 若拉的是流只有音频数据，会收不到该回调。

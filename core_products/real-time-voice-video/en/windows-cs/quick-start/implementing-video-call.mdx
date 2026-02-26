@@ -92,7 +92,7 @@ Select an appropriate scenario based on the actual audio and video business of t
 
 Developers can choose to use anonymous functions to implement callback functions as needed, and assign them to the corresponding callback delegates of the engine instance to register callbacks.
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 To avoid missing event notifications, it is recommended to listen to callbacks immediately after creating the engine.
@@ -170,7 +170,7 @@ The meaning of ZegoRoomState is as follows:
 
 OnRoomUserUpdate: When other users in the same room enter or exit the room, you can receive notifications through this callback.
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 
@@ -287,7 +287,7 @@ The parameters "roomID" and "user" are generated locally by you, but need to mee
 - Within the same AppID, ensure that "roomID" is globally unique.
 - Within the same AppID, ensure that "userID" is globally unique. It is recommended that developers set it to a meaningful value and can associate "userID" with their own business account system.
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 ZegoUser cannot be the default value, otherwise it will cause login room failure.
@@ -307,7 +307,7 @@ config.isUserStatusNotify = true;
 engine.LoginRoom(room_id, user, config);
 ```
 
-<Warning title="Note">
+<Warning title="Warning">
 
 To avoid missing any notifications, you need to listen to callbacks before logging into the room.
 
@@ -390,7 +390,7 @@ OnRoomStreamUpdate: When other users in the same room publish audio and video st
 
 At this time, we can call StartPlayingStream in this callback, pass in other users' "streamID", and play the audio and video images published to the ZEGO server.
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 
@@ -449,7 +449,7 @@ engine.StopPreview();
 
 Call the StopPlayingStream interface to stop playing remote published audio and video streams.
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 If developers receive a notification of "reduction" of audio and video streams through the OnRoomStreamUpdate callback, please call the StopPlayingStream interface in time to stop playing streams to avoid playing empty streams and generating additional costs; or, developers can choose the appropriate timing according to their own business needs and actively call the StopPlayingStream interface to stop playing streams.

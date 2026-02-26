@@ -10,7 +10,7 @@ date: "2024-01-02"
 
 ZEGOCLOUD provides 4 capture rotation modes for mobile devices (Fixed Resolution Ratio mode, Adaption mode, Alignment mode, and Custom mode) to simplify the complex adaptation issues developers face when implementing multi-device rotation behaviors, such as camera angle, resolution, auto-rotation, and statusbar position adaptation. You can configure different modes through the [setAppOrientationMode](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/dart_flutter/zego_express_engine/ZegoExpressEnginePublisher/setAppOrientationMode.html) interface based on rotation behavior and business scenario requirements.
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 - To ensure expected results, both publishing and playing ends must maintain the same mode within a single call or the same room.
@@ -47,7 +47,7 @@ In Adaption mode, regardless of how the device is held or the UI orientation, th
 
 **Advantages**: In Adaption mode, users can choose their preferred way of holding the device for video calls. It is suitable for 1v1 or multi-person video RTC scenarios. You can also implement live streaming business through mixing and forwarding.
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 - Adaption mode does not support direct CDN push. If you need live streaming, you can use ZEGO mixing service to handle multi-person video rotation behavior before forwarding to CDN. If needed, please contact ZEGO technical support to enable this configuration.
@@ -67,7 +67,7 @@ In Alignment mode, using the statusbar as a reference, the video direction at th
 
 **Advantages**: Alignment mode is similar to Adaption mode, but users can actively adjust fullscreen or aspect-ratio scaled display by combining the auto-rotation switch and holding method. It is suitable for 1v1 or multi-person video RTC scenarios.
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 
@@ -102,7 +102,7 @@ In Custom mode, you can customize the video capture rotation behavior according 
 
 ## Implementation Flow
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 The following implementation flow only applies to Fixed Resolution Ratio mode, Adaption mode, and Alignment mode. If you need to customize video capture rotation, please refer to [Video Rotation](/real-time-video-flutter/video/video-rotation).
@@ -115,7 +115,7 @@ The following implementation flow only applies to Fixed Resolution Ratio mode, A
 
 The publishing end needs to call the [setAppOrientationMode](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/dart_flutter/zego_express_engine/ZegoExpressEnginePublisher/setAppOrientationMode.html) interface to set any capture rotation mode.
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 Please call the [setAppOrientationMode](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/dart_flutter/zego_express_engine/ZegoExpressEnginePublisher/setAppOrientationMode.html) interface immediately after calling [createEngineWithProfile](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/dart_flutter/zego_express_engine/ZegoExpressEngine/createEngineWithProfile.html), then call the [startPublishingStream](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/dart_flutter/zego_express_engine/ZegoExpressEnginePublisher/startPublishingStream.html) or [startPreview](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/dart_flutter/zego_express_engine/ZegoExpressEnginePublisher/startPreview.html) interface.
@@ -142,7 +142,7 @@ ZegoExpressEngine.instance.setAppOrientationMode(ZegoOrientationMode.Alignment);
 
 **Only in Adaption mode**, the playing end needs to call the [setAppOrientationMode](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/dart_flutter/zego_express_engine/ZegoExpressEnginePublisher/setAppOrientationMode.html) interface to set Adaption mode before playing streams.
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 

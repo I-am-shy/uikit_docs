@@ -20,7 +20,7 @@ date: "2024-01-02"
 - 需要在较差的网络环境中保持连麦的流畅。
 - 需要根据网络状态自适应拉取视频流的质量。
 
-<Note title="说明">
+<Note title="Note">
 
 
 分层视频编码使用的是 ZEGO 的私有协议，拉流端只有从 ZEGO 服务器上才能拉取到不同分层的视频流。
@@ -36,7 +36,7 @@ date: "2024-01-02"
 
 不同的是，分层视频编码使用 1 个编码器编出基本层和扩展层的码流；视频大小流编码使用 2 个编码器分别编出基本层和扩展层的码流。
 
-<Note title="说明">
+<Note title="Note">
 
 
 分层视频编码使用的是 ZEGO 的私有协议，拉流端只有从 ZEGO 服务器上才能拉取到不同分层的视频流。
@@ -127,7 +127,7 @@ this.ZegoExpressInstance.startPublishingStream(this.currentStreamID, publisherCo
 
 通过 [setPublishDualStreamConfig](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/ets_ohos/classes/_zegoexpressengine_.zegoexpressengine.html#setpublishdualstreamconfig) 接口，分别设置大流和小流的分辨率、帧率和码率等信息，并调用 [startPublishingStream](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/ets_ohos/classes/_zegoexpressengine_.zegoexpressengine.html#startpublishingstream) 接口开始推流。
 
-<Warning title="注意">
+<Warning title="Warning">
 
 
 - 必须同时指定大流、小流的参数，调用 [setPublishDualStreamConfig](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/ets_ohos/classes/_zegoexpressengine_.zegoexpressengine.html#setpublishdualstreamconfig) 接口才能生效。

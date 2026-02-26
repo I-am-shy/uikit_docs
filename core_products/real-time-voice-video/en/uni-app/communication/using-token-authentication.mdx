@@ -22,7 +22,7 @@ date: "2024-10-11"
 
 基础鉴权 Token 默认开通，权限认证 Token（即房间 ID 和推流 ID 权限位）请联系 ZEGO 技术支持开通。
 
-<Warning title="注意">
+<Warning title="Warning">
 
 
 - 仅 1.5.0 及以上版本 ZEGO Express SDK，支持参考本文档使用 Token 鉴权。
@@ -201,7 +201,7 @@ func main() {
 - 只校验推流权限：推流时校验权限，登录时不校验权限。
 - 同时校验登录和推流权限：登录和推流时均校验权限。
 
-<Warning title="注意">
+<Warning title="Warning">
 生成权限认证 Token 时必须传入 “RoomId”。
 </Warning>
 
@@ -266,7 +266,7 @@ func main() {
 </Tab>
 </Tabs>
 
-<Warning title="注意">
+<Warning title="Warning">
 
 运行生成 Token 的 Java 源码时，如果出现 “java.security.InvalidKeyException:illegal Key Size” 异常提示，请参考 [相关常见问题文档](https://doc-zh.zego.im/faq/java_illegal_key_size_solution?product=ExpressVideo&platform=all) 解决。
 </Warning>
@@ -275,7 +275,7 @@ func main() {
 
 用户携带获取到的 Token 和 user、roomID 信息，通过 [loginRoom](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/javascript_uni-app/classes/_zegoexpressengine_.zegoexpressengine.html#loginroom) 接口登录对应的房间。
 
-<Warning title="注意">
+<Warning title="Warning">
 调用 [loginRoom](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/javascript_uni-app/classes/_zegoexpressengine_.zegoexpressengine.html#loginroom) 接口登录房间时使用的 userID，必须和 “在服务端生成 Token” 时使用的 userID 保持一致。
 </Warning>
 
@@ -299,7 +299,7 @@ ZegoExpressEngine.instance().renewToken(roomID, token);
 
 ### 4 Token 过期时的处理方式
 
-<Warning title="注意">
+<Warning title="Warning">
 
 Token 过期可能导致推拉流异常等问题，请严格按照以下说明，及时处理过期 Token。
 </Warning>
@@ -311,7 +311,7 @@ Token 过期可能导致推拉流异常等问题，请严格按照以下说明�
   - 已登录的用户不会被踢出房间。
   - 当前已成功的推拉流不受影响。但是停止推流后无法再推流，除非更新 Token。
 
-<Note title="说明">
+<Note title="Note">
 ZEGO 还提供了另一种 Token 过期处理方式，您可以联系 ZEGO 技术支持配置：
   - 已登录的用户会被踢出房间，且只有更新 Token 后，才可以再次登录房间。
   - 当前已成功的推流会被停止。
@@ -332,7 +332,7 @@ ZegoExpressEngine.instance().on("roomTokenWillExpire", (roomID, remainTimeInSeco
 <Accordion title="客户端生成 Token 与使用（不推荐）" defaultOpen="false">
 若您在开发过程中还无法通过服务端下发 Token 时，可以先使用客户端代码生成 Token，待服务端开发完后，再完成对接。
 
-<Warning title="注意">
+<Warning title="Warning">
 
 - App 上线时，切勿在客户端生成 Token，否则您的 ServerSecret 将暴露在风险中。
 - 为保证安全性，强烈推荐您使用服务端生成 Token，否则会存在 ServerSecret 被窃取的风险。
