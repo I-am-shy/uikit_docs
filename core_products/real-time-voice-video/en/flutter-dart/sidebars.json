@@ -130,7 +130,7 @@
         },
         {
           "type": "doc",
-          "label": "发布日志",
+          "label": "Release Notes",
           "id": "client-sdk/release-notes",
           "articleID": 12552
         },
@@ -721,7 +721,7 @@
     },
     {
       "type": "doc",
-      "label": "Frequently Asked Questions",
+      "label": "FAQ",
       "id": "faq"
     }
   ]
