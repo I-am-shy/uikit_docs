@@ -12,7 +12,7 @@ ZEGO Express SDK supports publishing streams to CDN (Content Delivery Network), 
 
 To prevent attackers from stealing or forging your publishing URL addresses, you can refer to [CDN Stream Publishing Authentication](/real-time-video-android-java/live-streaming/cdn-stream-publishing-authentication) to improve the security of your publishing usage.
 
-<Warning title="Attention">
+<Warning title="Warning">
 When initiating relay-to-CDN or direct-to-CDN, please note that CDN has requirements for audio and video formats. The publishing end supports AAC and MP3 for audio, and H.264 and H.265 (requires CDN configuration) for video.
 </Warning>
 
@@ -108,7 +108,7 @@ Before using CDN for live streaming, please ensure:
 - You have integrated ZEGO Express SDK in your project and implemented basic audio and video publish/play stream functionality. For details, please refer to [Quick Start - Integration](/real-time-video-android-java/quick-start/integrating-sdk) and [Quick Start - Implementation](/real-time-video-android-java/quick-start/implementing-video-call).
 
 
-<Warning title="Attention">
+<Warning title="Warning">
 
 
 The CDN live streaming feature is not enabled by default. Please enable it yourself in the [ZEGOCLOUD Console](https://console.zegocloud.com) before use (for enabling steps, please refer to "CDN" in [Project Management - Service Configuration](/console/service-configuration/activate-cdn-service)), or contact ZEGO Technical Support to enable it.
@@ -307,7 +307,7 @@ updateReason values are as follows:
 
 Call the [removePublishCdnUrl](@removePublishCdnUrl) interface to remove the dynamically relayed CDN URL. **When calling the [removePublishCdnUrl](@removePublishCdnUrl) interface to stop relay, please ensure that the current stream streamID exists.**
 
-<Warning title="Attention">
+<Warning title="Warning">
 
 
 This interface will not stop the audio and video streams published to ZEGO real-time audio and video cloud.
@@ -342,7 +342,7 @@ If you choose to use the relay-to-CDN feature, you do not need to perform all st
 
 Before publishing, call the [enablePublishDirectToCDN](@enablePublishDirectToCDN) interface to publish audio and video streams directly to CDN.
 
-<Warning title="Attention">
+<Warning title="Warning">
 
 
 - After calling the [enablePublishDirectToCDN](@enablePublishDirectToCDN) interface, calling [addPublishCdnUrl](@addPublishCdnUrl) and [removePublishCdnUrl](@removePublishCdnUrl) to dynamically relay to CDN will no longer take effect, because these two interfaces relay or stop relaying audio and video streams from ZEGO real-time audio and video cloud to CDN. If audio and video streams are published directly to CDN, they cannot be dynamically relayed to CDN through ZEGO real-time audio and video cloud.

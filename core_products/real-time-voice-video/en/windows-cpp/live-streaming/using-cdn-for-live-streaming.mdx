@@ -12,7 +12,7 @@ ZEGO Express SDK supports publishing streams to CDN (Content Delivery Network), 
 
 To prevent attackers from stealing or forging your publishing URL addresses, you can refer to [CDN Stream Publishing Authentication](/real-time-video-windows-cpp/live-streaming/cdn-stream-publishing-authentication) to improve the security of your stream publishing usage.
 
-<Warning title="Attention">
+<Warning title="Warning">
 
 When initiating relay to CDN or direct publishing to CDN, please note that CDN has requirements for audio and video formats. The publishing end audio supports AAC and MP3, and video supports H.264 and H.265 (requires CDN configuration).
 
@@ -91,7 +91,7 @@ Before using CDN live streaming, ensure that:
 - You have created a project in the [ZEGOCLOUD Console](https://console.zegocloud.com) and applied for a valid AppID and AppSign. For details, please refer to [Console - Project Information](/console/project-info).
 - You have integrated ZEGO Express SDK into your project and implemented basic audio and video stream publishing and playing functionality. For details, please refer to [Quick Start - Integration](/real-time-video-windows-cpp/quick-start/integrating-sdk) and [Quick Start - Implementation](/real-time-video-windows-cpp/quick-start/implementing-video-call).
 
-<Warning title="Attention">
+<Warning title="Warning">
 
 The CDN live streaming function is not enabled by default. Please enable it yourself in the [ZEGOCLOUD Console](https://console.zegocloud.com) before use (for enabling steps, please refer to "CDN" in [Project Management - Service Configuration](/console/service-configuration/activate-cdn-service)), or contact ZEGO Technical Support to enable it.
 
@@ -157,7 +157,7 @@ If you need to listen to CDN callback state notifications, please refer to [Moni
 
 Call [removePublishCdnUrl](@removePublishCdnUrl) to delete the URL dynamically relayed to CDN. **When calling the [removePublishCdnUrl](@removePublishCdnUrl) interface to stop relaying, please ensure that the current stream streamID exists.**
 
-<Warning title="Attention">
+<Warning title="Warning">
 
 This interface will not stop the audio and video streams published to ZEGO real-time audio and video cloud.
 
@@ -190,7 +190,7 @@ If you choose to use relaying to CDN function, you do not need to perform all st
 
 Before publishing stream, call the [enablePublishDirectToCDN](@enablePublishDirectToCDN) interface to publish audio and video streams directly to CDN.
 
-<Warning title="Attention">
+<Warning title="Warning">
 
 - After calling the [enablePublishDirectToCDN](@enablePublishDirectToCDN) interface, calling [addPublishCdnUrl](@addPublishCdnUrl) and [removePublishCdnUrl](@removePublishCdnUrl) to dynamically relay to CDN will no longer take effect, because these two interfaces relay or stop relaying audio and video streams to CDN from ZEGO real-time audio and video cloud. If audio and video streams are published directly to CDN, they cannot be dynamically relayed to CDN through ZEGO real-time audio and video cloud again.
 - If calling the [enablePublishDirectToCDN](@enablePublishDirectToCDN) interface results in error code 1000038, possible problems are: domain configuration error, media network exception, or media network link is empty, please contact ZEGO Technical Support.

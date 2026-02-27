@@ -68,7 +68,7 @@ Call the [CreateEngine](@CreateEngine) interface, pass the applied AppID and App
 
 Developers can choose to use anonymous functions to implement callback functions as needed, and assign them to the corresponding callback delegates of the engine instance to register callbacks.
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 To avoid missing any notifications, it is recommended to listen for callbacks immediately after creating the engine
@@ -177,7 +177,7 @@ The meanings of ZegoRoomStateChangedReason states are as follows. For more infor
 
 [OnRoomUserUpdate](@OnRoomUserUpdate): When other users in the same room enter or leave the room, you can receive notifications through this callback. In the callback, the parameter [ZegoUpdateType](@-ZegoUpdateType) is ZegoUpdateType.ZegoUpdateTypeAdd, indicating that a user has entered the room; [ZegoUpdateType](@-ZegoUpdateType) is ZegoUpdateType.ZegoUpdateTypeDelete, indicating that a user has left the room.
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 - Only when the [isUserStatusNotify ](@isUserStatusNotify) parameter in the configuration [ZegoRoomConfig](@-ZegoRoomConfig) passed when logging in to the room [LoginRoom ](@LoginRoom) is true can users receive callbacks of other users in the room.
@@ -362,7 +362,7 @@ When other users in the same room push audio and video streams to the ZEGO audio
 
 In this callback, we can call the [StartPlayingStream](@StartPlayingStream) interface and pass in "streamID" to play the user's audio and video. You can know whether the audio and video are successfully played by listening to the [OnPlayerStateUpdate ](@OnPlayerStateUpdate) callback. You can use the following playing methods.
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 - Live streaming is not enabled by default. Please enable it by yourself in the ZEGOCLOUD Console or contact ZEGOCLOUD Technical Support. For details, please refer to [Enable Service](https://www.zegocloud.com/docs/article/21035#3_1).
@@ -480,7 +480,7 @@ engine.StopPreview();
 
 Call the [StopPlayingStream](@StopPlayingStream) interface to stop playing remote pushed audio and video streams.
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 If developers receive a notification of "decrease" in audio and video streams through the [OnRoomStreamUpdate](@OnRoomStreamUpdate) callback, please call the [StopPlayingStream ](@StopPlayingStream) interface in time to stop playing streams to avoid playing empty streams and generating additional costs; or, developers can choose the appropriate timing according to their business needs and actively call the [StopPlayingStream ](@StopPlayingStream) interface to stop playing streams.

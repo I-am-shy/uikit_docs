@@ -102,7 +102,7 @@ auto engine = ZegoExpressSDK::createEngine(profile, nullptr);
 
 You can listen to and handle event callbacks you care about by instantiating a class that implements the [IZegoEventHandler ](https://www.zegocloud.com/docs/api?doc=Express_Video_SDK_API~CPP_linux~class~zego-express-i-zego-event-handler) interface and implementing the required callback methods. Then pass the instantiated object as the `eventHandler` parameter to [createEngine ](@createEngine) or to [setEventHandler ](https://www.zegocloud.com/docs/api?doc=Express_Video_SDK_API~CPP_linux~class~zego-express-i-zego-express-engine#set-event-handler) to register the callback.
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 It is recommended to register the callback immediately when creating the engine or after creating the engine to avoid missing event notifications due to delayed registration.
@@ -185,7 +185,7 @@ The meanings of ZegoRoomStateChangedReason states are as follows:
 
 [onRoomUserUpdate](@onRoomUserUpdate): When other users in the same room enter or exit the room, you can receive notifications through this callback.
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 - Users can only receive callbacks for other users in the room only when the isUserStatusNotify parameter in the configuration [ZegoRoomConfig](@-ZegoRoomConfig) passed when logging in to the room [loginRoom](@loginRoom) is true.
@@ -267,7 +267,7 @@ void VideoTalk::onPlayerStateUpdate(const std::string &streamID, ZegoPlayerState
 
 Developers can get temporary Tokens (valid for 24 hours) in the [ZEGOCLOUD Console](https://console.zegocloud.com/dashboard). For details, please refer to [Console - Development Assistance](/console/development-assistance/temporary-token).
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 Temporary Tokens are only for debugging. When going live officially, please generate tokens from your business server. For details, please refer to [Use Token Authentication](/live-streaming-linux/communication/use-token-authentication). If the Token is incorrect, please refer to error codes 1002067 and 1003072 in the [Error Code](/live-streaming-linux/client-sdk/error-code) document to troubleshoot the problem.
@@ -283,7 +283,7 @@ Temporary Tokens are only for debugging. When going live officially, please gene
 - Within the same AppID, ensure that "roomID" is globally unique.
 - Within the same AppID, ensure that "userID" is globally unique. It is recommended that developers set it to a meaningful value and associate "userID" with their own business account system.
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 [ZegoUser ](@ZegoUser) cannot be the default value, otherwise it will cause login room failure.
@@ -384,7 +384,7 @@ When other users in the same room push audio and video streams to the ZEGO audio
 
 In this callback, we can call the [startPlayingStream](@startPlayingStream) interface and pass in "streamID" to play the user's audio and video. You can know whether the audio and video are successfully played by listening to the [onPlayerStateUpdate ](@onPlayerStateUpdate) callback.
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 - Live Streaming is not enabled by default. Please enable it yourself in the ZEGOCLOUD Console or contact ZEGOCLOUD Technical Support. For details, please refer to [Enable Service](https://www.zegocloud.com/docs/article/21031#3_1).
@@ -441,7 +441,7 @@ engine->stopPublishingStream();
 
 Call the [stopPlayingStream ](@stopPlayingStream) interface to stop playing the audio and video stream pushed by the remote end.
 
-<Warning title="Note">
+<Warning title="Warning">
 
 
 If the developer receives a notification of "decrease" in audio and video streams through the [onRoomStreamUpdate](@onRoomStreamUpdate) callback, please call the [stopPlayingStream ](@stopPlayingStream) interface in time to stop playing the stream to avoid playing empty streams and generating additional costs; or, developers can choose the appropriate timing according to their own business needs and actively call the [stopPlayingStream ](@stopPlayingStream) interface to stop playing the stream.
