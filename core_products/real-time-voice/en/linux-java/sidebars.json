@@ -68,7 +68,7 @@
   "mySidebar": [
     {
       "type": "category",
-      "label": "Product Introduction",
+      "label": "Introduction",
       "collapsed": false,
       "items": [
         {
@@ -85,7 +85,7 @@
         },
         {
           "type": "category",
-          "label": "Pricing Description",
+          "label": "Pricing",
           "collapsed": true,
           "items": [
             {

@@ -353,7 +353,7 @@
         },
         {
           "type": "doc",
-          "label": "RTMP 推流到 ZEGO 服务器",
+          "label": "RTMP Push Stream to ZEGO Server",
           "id": "live-streaming/obs-push",
           "articleID": 21269,
           "tag": {

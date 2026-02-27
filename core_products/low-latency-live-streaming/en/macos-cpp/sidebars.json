@@ -504,7 +504,7 @@
         },
         {
           "type": "doc",
-          "label": "Getting Raw Audio Data",
+          "label": "Get the Raw Audio Data",
           "id": "audio/get-audio-raw-data",
           "articleID": 21545,
           "tag": {

@@ -463,7 +463,7 @@
         },
         {
           "type": "doc",
-          "label": "Getting Raw Audio Data",
+          "label": "Get the Raw Audio Data",
           "id": "audio/get-audio-raw-data",
           "articleID": 5168,
           "tag": {
@@ -637,7 +637,7 @@
         },
         {
           "type": "doc",
-          "label": "RTMP 推流到 ZEGO 服务器",
+          "label": "RTMP Push Stream to ZEGO Server",
           "id": "live-streaming/obs-push",
           "articleID": 21268,
           "tag": {

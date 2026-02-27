@@ -184,7 +184,7 @@
         },
         {
           "type": "doc",
-          "label": "集成 SDK",
+          "label": "Integrate SDK",
           "id": "quick-start/integrating-sdk",
           "articleID": 3234
         },
@@ -283,7 +283,7 @@
         },
         {
           "type": "doc",
-          "label": "游戏语音",
+          "label": "Range Audio",
           "id": "communication/range-audio",
           "articleID": 14453,
           "tag": {
