@@ -87,8 +87,8 @@ The stream mixing feature is not enabled by default. Please enable it yourself i
 ## Implementation Flow
 
 The main flow of stream mixing is as follows:
-1. Users in the room publish stream A and stream B to the ZEGO real-time audio and video cloud server.
-2. The ZEGO real-time audio and video cloud server can configure to push mixed stream or separate stream A and stream B to the CDN server as needed. (Using RTMP protocol)
+1. Users in the room publish stream A and stream B to the ZEGOCLOUD server.
+2. The ZEGOCLOUD server can configure to push mixed stream or separate stream A and stream B to the CDN server as needed. (Using RTMP protocol)
 3. The playing end can play the mixed stream from the CDN server as needed, or play separate stream A and stream B (supporting RTMP, FLV, HLS and other protocols).
 
 
@@ -176,7 +176,7 @@ task.setAudioConfig(audioConfig);
 #### Set Mixing Input Streams
 
 
-According to actual business scenarios, define the input video stream [ZegoMixerInput](https://doc-zh.zego.im/article/api?doc=Express_Video_SDK_API~Java_android~class~im-zego-zegoexpress-entity-zego-mixer-input) list, set the "layout" parameter of each video stream to layout the image of each input stream, and the ZEGO real-time audio and video cloud server will mix the input streams and output the mixed stream in one image.
+According to actual business scenarios, define the input video stream [ZegoMixerInput](https://doc-zh.zego.im/article/api?doc=Express_Video_SDK_API~Java_android~class~im-zego-zegoexpress-entity-zego-mixer-input) list, set the "layout" parameter of each video stream to layout the image of each input stream, and the ZEGOCLOUD server will mix the input streams and output the mixed stream in one image.
 
 
 <Warning title="Warning">

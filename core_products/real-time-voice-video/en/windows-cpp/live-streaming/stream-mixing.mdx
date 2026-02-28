@@ -84,8 +84,8 @@ The stream mixing function is not enabled by default. Please enable it yourself 
 ## Implementation Flow
 
 The main flow of stream mixing is as follows:
-1. Users in the room publish stream A and stream B to the ZEGO real-time audio and video cloud server.
-2. ZEGO real-time audio and video cloud server can configure to publish mixed stream or separate stream A and stream B to CDN server as needed. (Using RTMP protocol)
+1. Users in the room publish stream A and stream B to the ZEGOCLOUD server.
+2. ZEGOCLOUD server can configure to publish mixed stream or separate stream A and stream B to CDN server as needed. (Using RTMP protocol)
 3. The playing end plays mixed streams from the CDN server as needed, or can also play separate stream A and stream B (supporting RTMP, FLV, HLS and other protocols).
 
 ## Manual Stream Mixing Usage Steps
@@ -169,7 +169,7 @@ task.audioConfig = audioConfig;
 <a name="5_2_4"></a>
 **Set Stream Mixing Input Streams**
 
-According to actual business scenarios, define the list of input video streams [ZegoMixerInput](@-ZegoMixerInput), and set the "layout" parameter for each input video stream to layout the picture of each input stream. The ZEGO real-time audio and video cloud server will mix the input streams and output them in one picture.
+According to actual business scenarios, define the list of input video streams [ZegoMixerInput](@-ZegoMixerInput), and set the "layout" parameter for each input video stream to layout the picture of each input stream. The ZEGOCLOUD server will mix the input streams and output them in one picture.
 
 <Warning title="Warning">
 

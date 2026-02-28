@@ -18,7 +18,7 @@ When initiating relay-to-CDN or direct-to-CDN, please note that CDN has requirem
 
 ### Relay-to-CDN
 
-Relay-to-CDN refers to the process of pushing audio and video streams from ZEGO real-time audio and video cloud to ZEGO's own CDN or third-party CDN.
+Relay-to-CDN refers to the process of pushing audio and video streams from ZEGOCLOUD to ZEGO's own CDN or third-party CDN.
 
 <Frame width="512" height="auto" caption=""><img src="https://doc-media.zego.im/core_products/real-time-voice-video/en/architecture/relay_cdn_en.jpeg" /></Frame>
 
@@ -32,11 +32,11 @@ Relay-to-CDN includes the following three methods:
 </tr>
 <tr>
 <td>Default Relay-to-CDN</td>
-<td>All live streams published by users using ZEGO Express SDK to ZEGO real-time audio and video cloud will be relayed to CDN. Currently only supports ZEGO's own CDN.</td>
+<td>All live streams published by users using ZEGO Express SDK to ZEGOCLOUD will be relayed to CDN. Currently only supports ZEGO's own CDN.</td>
 </tr>
 <tr>
 <td>Bypass Relay-to-CDN</td>
-<td>Developers can customize and specify streams on ZEGO real-time audio and video cloud to relay to CDN, supporting ZEGO's own CDN and third-party CDNs.</td>
+<td>Developers can customize and specify streams on ZEGOCLOUD to relay to CDN, supporting ZEGO's own CDN and third-party CDNs.</td>
 </tr>
 <tr>
 <td>Mixing Relay-to-CDN</td>
@@ -46,7 +46,7 @@ Relay-to-CDN includes the following three methods:
 
 ### Direct-to-CDN
 
-Direct-to-CDN refers to the process of pushing audio and video streams directly from the local client to the CDN. Users can directly watch from web pages or third-party players by playing the stream URL address. However, since the direct-to-CDN function does not go through ZEGO real-time audio and video cloud during network transmission, developers cannot use ZEGO's real-time audio and video services.
+Direct-to-CDN refers to the process of pushing audio and video streams directly from the local client to the CDN. Users can directly watch from web pages or third-party players by playing the stream URL address. However, since the direct-to-CDN function does not go through ZEGOCLOUD during network transmission, developers cannot use ZEGO's real-time audio and video services.
 
 ```mermaid
 graph LR
@@ -72,12 +72,12 @@ The descriptions and usage scenarios of the two functions are as follows:
 </tr>
 <tr>
 <td>Relay-to-CDN (Recommended)</td>
-<td>Publishing first goes through ZEGO real-time audio and video cloud, then is relayed to CDN by ZEGO real-time audio and video cloud. Can use real-time audio and video services provided by ZEGO, suitable for scenarios requiring co-hosting interaction.</td>
+<td>Publishing first goes through ZEGOCLOUD, then is relayed to CDN by ZEGOCLOUD. Can use real-time audio and video services provided by ZEGO, suitable for scenarios requiring co-hosting interaction.</td>
 <td>Developers have business cooperation with third-party CDNs and want to use the original third-party CDN streaming media network distribution services while also using ZEGO Express SDK for real-time co-hosting interaction. Suitable for business scenarios with co-hosting interaction requirements, such as show live streaming, voice chat rooms, etc.</td>
 </tr>
 <tr>
 <td>Direct-to-CDN</td>
-<td>Publishing does not go through ZEGO real-time audio and video cloud, directly pushes to CDN. Cannot use real-time audio and video services provided by ZEGO, suitable for single live streaming scenarios (no interaction).</td>
+<td>Publishing does not go through ZEGOCLOUD, directly pushes to CDN. Cannot use real-time audio and video services provided by ZEGO, suitable for single live streaming scenarios (no interaction).</td>
 <td>Suitable for developers who do not need to use real-time co-hosting interaction and other services, such as e-commerce live streaming, game live streaming, large classes, etc.</td>
 </tr>
 </tbody></table>
@@ -310,7 +310,7 @@ Call the [removePublishCdnUrl](@removePublishCdnUrl) interface to remove the dyn
 <Warning title="Warning">
 
 
-This interface will not stop the audio and video streams published to ZEGO real-time audio and video cloud.
+This interface will not stop the audio and video streams published to ZEGOCLOUD.
 </Warning>
 
 ```java
@@ -345,7 +345,7 @@ Before publishing, call the [enablePublishDirectToCDN](@enablePublishDirectToCDN
 <Warning title="Warning">
 
 
-- After calling the [enablePublishDirectToCDN](@enablePublishDirectToCDN) interface, calling [addPublishCdnUrl](@addPublishCdnUrl) and [removePublishCdnUrl](@removePublishCdnUrl) to dynamically relay to CDN will no longer take effect, because these two interfaces relay or stop relaying audio and video streams from ZEGO real-time audio and video cloud to CDN. If audio and video streams are published directly to CDN, they cannot be dynamically relayed to CDN through ZEGO real-time audio and video cloud.
+- After calling the [enablePublishDirectToCDN](@enablePublishDirectToCDN) interface, calling [addPublishCdnUrl](@addPublishCdnUrl) and [removePublishCdnUrl](@removePublishCdnUrl) to dynamically relay to CDN will no longer take effect, because these two interfaces relay or stop relaying audio and video streams from ZEGOCLOUD to CDN. If audio and video streams are published directly to CDN, they cannot be dynamically relayed to CDN through ZEGOCLOUD.
 - If calling the [enablePublishDirectToCDN](@enablePublishDirectToCDN) interface returns error code 1000038, possible problems include: domain name configuration error, media network exception, or media network connection is empty. Please contact ZEGO Technical Support.
 </Warning>
 
