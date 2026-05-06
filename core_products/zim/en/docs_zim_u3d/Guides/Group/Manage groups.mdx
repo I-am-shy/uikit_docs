@@ -35,6 +35,7 @@ Client A automatically becomes the group owner of the group. Other client users 
 - After creating a group by calling the [CreateGroup](@CreateGroup) method, you will directly join the group you just created, you don't need to call the [JoinGroup](@JoinGroup) method to join the group again.
 - You will automatically become the group owner after you create a group successfully. To transfer the ownership, refer to chapter **Transfer the group ownership** of the [Manage group members](./Group%20members.mdx).
 - After creating a group, for the group owner to send messages to a group, call the [SendMessage](@SendMessage) method. For details, see [Send & Receive messages](./../Messaging/Send%20and%20receive%20messages.mdx#send--receive-signaling-messages).
+- The `groupID` is unique under the same AppID. Once a group is created with a specific `groupID`, that `groupID` cannot be reused for any subsequent group, regardless of whether the original group has been disbanded.
 </Warning>
 
 <CodeGroup>
