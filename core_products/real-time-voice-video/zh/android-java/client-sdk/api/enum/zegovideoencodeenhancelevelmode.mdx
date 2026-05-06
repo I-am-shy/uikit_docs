@@ -1,0 +1,27 @@
+---
+docType: API
+---
+
+# ZegoVideoEncodeEnhanceLevelMode
+
+## ZegoVideoEncodeEnhanceLevelMode
+
+视频增强等级模式。
+
+*Declared in `constants/ZegoVideoEncodeEnhanceLevelMode.java`*
+
+### 属性
+<ParamField
+  name="ZegoVideoEncodeEnhanceLevelModeAuto"
+  prototype="ZegoVideoEncodeEnhanceLevelModeAuto=(0)"
+  parent_name="ZegoVideoEncodeEnhanceLevelMode"
+  parent_type="enum">
+自动模式, 算法会在[0, enhanceLevel] 中动态调整
+</ParamField>
+<ParamField
+  name="ZegoVideoEncodeEnhanceLevelModeFix"
+  prototype="ZegoVideoEncodeEnhanceLevelModeFix=(1)"
+  parent_name="ZegoVideoEncodeEnhanceLevelMode"
+  parent_type="enum">
+固定模式，算法不会动态调整enhanceLevel
+</ParamField>

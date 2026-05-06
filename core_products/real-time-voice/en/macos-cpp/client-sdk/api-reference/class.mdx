@@ -1,6 +1,5 @@
 ---
 docType: API
-date: "2026-04-20"
 ---
 
 # Class
@@ -1264,7 +1263,7 @@ Get lyrics in lrc format, support parsing lyrics line by line.
 
 | Name | Type | Description |
 | --- | --- | --- |
-| krcToken | std::string | The krcToken obtained when calling [requestResource] for accompaniment or climax clips, or when obtaining shared resources through the [getSharedResource] interface. For more details, please refer to [/online-ktv-ios/client-api/apis-to-obtain-songs-and-lyrics#2_2](/online-ktv-ios/client-api/apis-to-obtain-songs-and-lyrics#2_2) |
+| krcToken | std::string | The krcToken obtained when calling [requestResource] for accompaniment or climax clips, or when obtaining shared resources through the [getSharedResource] interface. For more details, please refer to [https://doc-zh.zego.im/online-ktv-ios/client-api/apis-to-obtain-songs-and-lyrics#2_2](https://doc-zh.zego.im/online-ktv-ios/client-api/apis-to-obtain-songs-and-lyrics#2_2) |
 | callback | [ZegoCopyrightedMusicGetKrcLyricByTokenCallback](./interface#zegocopyrightedmusicgetkrclyricbytokencallback) | get lyrics result. |
 
 **Details**
@@ -3001,7 +3000,7 @@ The callback notification that the room Token authentication is about to expire,
 <Note title="">
 - **Use cases**: In order to prevent illegal entry into the room, it is necessary to perform authentication control on login room, push streaming, etc., to improve security.
 - **When to call /Trigger**: 30 seconds before the Token expires, the SDK will call [onRoomTokenWillExpire] to notify developer.
-- **Caution**: The token contains important information such as the user's room permissions, publish stream permissions, and effective time, please refer to [https://www.zegocloud.com/docs/real-time-video-android-java/communication/using-token-authentication](https://www.zegocloud.com/docs/real-time-video-android-java/communication/using-token-authentication)
+- **Caution**: The token contains important information such as the user's room permissions, publish stream permissions, and effective time, please refer to [https://www.zegocloud.com/docs/real-time-video-ios-oc/communication/using-token-authentication](https://www.zegocloud.com/docs/real-time-video-ios-oc/communication/using-token-authentication) .
 - **Related APIs**: When the developer receives this callback, he can use [renewToken] to update the token authentication information.
 </Note>
 
@@ -4896,6 +4895,32 @@ The callback triggered when calling the start mobile screen capture.
 
 ### Methods
 <ParamField
+  name="setEngineConfig"
+  prototype="public  int setEngineConfig(std::unordered_map<std::string, std::string> advancedConfig)"
+  desc="Set advanced engine configuration."
+  parent_file="Declared in \`ZegoExpressInterface.h\`"
+  parent_name="IZegoExpressEngine"
+  parent_type="class">
+**Parameters**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| advancedConfig | std::unordered_map\<std::string, std::string\> | Advanced engine configuration |
+
+**Details**
+
+Used to enable advanced functions.
+
+<Note title="">
+- **When to call**: Different configurations have different call timing requirements. For details, please consult ZEGO technical support.
+</Note>
+
+<Warning title="">
+- **Available since**: 3.24.0
+- **Restrictions**: Multi-instance SDK for Linux only.
+</Warning>
+</ParamField>
+<ParamField
   name="setEventHandler"
   prototype="public  void setEventHandler(std::shared_ptr<[IZegoEventHandler](#izegoeventhandler)> eventHandler)"
   desc="Sets up the event notification callbacks that need to be handled. If the eventHandler is set to [null], all the callbacks set previously will be cleared."
@@ -5262,7 +5287,7 @@ After the developer receives [onRoomTokenWillExpire], they can use this API to u
 <Note title="">
 - **Use cases**: Used when the token is about to expire.
 - **When to call /Trigger**: After the developer receives [onRoomTokenWillExpire].
-- **Caution**: The token contains important information such as the user's room permissions, publish stream permissions, and effective time, please refer to [https://www.zegocloud.com/docs/real-time-video-android-java/communication/using-token-authentication](https://www.zegocloud.com/docs/real-time-video-android-java/communication/using-token-authentication)
+- **Caution**: The token contains important information such as the user's room permissions, publish stream permissions, and effective time, please refer to [https://www.zegocloud.com/docs/real-time-video-android-java/communication/using-token-authentication](https://www.zegocloud.com/docs/real-time-video-android-java/communication/using-token-authentication) .
 - **Related callbacks**: None.
 - **Related APIs**: None.
 </Note>
@@ -7157,6 +7182,36 @@ Call this function to enable or disable video encoder enhancement.
 </Warning>
 </ParamField>
 <ParamField
+  name="enableVideoEncoderEnhancementWithConfig"
+  prototype="public  void enableVideoEncoderEnhancementWithConfig(bool enable, [ZegoVideoEncoderEnhancementConfig](./struct#zegovideoencoderenhancementconfig) config, [ZegoPublishChannel](./enum#zegopublishchannel) channel)"
+  desc="Enable video encoder enhancement."
+  parent_file="Declared in \`ZegoExpressInterface.h\`"
+  parent_name="IZegoExpressEngine"
+  parent_type="class">
+**Parameters**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| enable | bool | Whether to enable, true: enable, false: disable |
+| config | [ZegoVideoEncoderEnhancementConfig](./struct#zegovideoencoderenhancementconfig) | video encoder enhancement config |
+| channel | [ZegoPublishChannel](./enum#zegopublishchannel) | Publish stream channel. |
+
+**Details**
+
+Call this function to enable or disable video encoder enhancement.
+
+<Note title="">
+- **Use cases**: Commonly used in video calling, live streaming, and similar scenarios.
+- **Default value**: When this function is not called, video encoder enhancement is not enabled by default.
+- **When to call**: It needs to be called after [createEngine].
+  This function is only available in ZegoExpressVideo SDK!
+</Note>
+
+<Warning title="">
+- **Available since**: 3.23.0
+</Warning>
+</ParamField>
+<ParamField
   name="enableAuxBgmBalance"
   prototype="public  void enableAuxBgmBalance(bool enable)"
   desc="Turn on or off the adaptive mode to adjust the volume of the human voice according to the volume of the BGM."
@@ -8659,7 +8714,7 @@ Only for Windows / macOS / Linux
 Select audio equipment mode according to the need of the scene (only supported by Android and iOS).
 
 <Note title="">
-- **Use cases**: In the case of KTV, the General mode must be used, but in the language room, the Communication2 or Communication3 mode is required in order to avoid the sound of third-party music being collected. For details on how to set the audio device mode, see https://doc-zh.zego.im/faq/audio-device-mode-setting
+- **Use cases**: In the case of KTV, the General mode must be used, but in the language room, the Communication2 or Communication3 mode is required in order to avoid the sound of third-party music being collected. For details on how to set the audio device mode, see [https://doc-zh.zego.im/faq/audio-device-mode-setting](https://doc-zh.zego.im/faq/audio-device-mode-setting)
 - **When to call**: After creating the engine [createEngine].
 - **Caution**: This interface triggers startup switchover of the device. You are advised not to invoke this interface frequently to avoid unnecessary overhead and hardware problems. This interface may cause the volume mode to switch between call and media. If the media volume is inconsistent with the call volume, the volume may change.
 </Note>
@@ -9452,7 +9507,7 @@ After monitoring is started, you can use the [onAudioVADStateUpdate] callback to
 </Note>
 
 <Warning title="">
-- **Restrictions**: [onAudioVADStateUpdate] callback notification period is 3 seconds.
+- **Restrictions**: [onAudioVADStateUpdate] callback notification period is 3 seconds. Only steady-state noise recognition is supported, transient noise recognition is not supported.
 </Warning>
 </ParamField>
 <ParamField
@@ -9905,7 +9960,7 @@ Enable the Effects beauty environment. The SDK uses the specified video frame da
 - **Default value**: When this function is not called, the beauty environment is not activated by default.
 - **When to call**: Must be called before calling [startPreview], [startPublishingStream]. If you need to modify the configuration, please call [logoutRoom] to log out of the room first, otherwise it will not take effect.
 - **Related APIs**: [enableEffectsBeauty] switch beauty, [setEffectsBeautyParam] set beauty parameters.
-- **Caution**: This beauty function is the basic function. If it does not meet the expectations of the developer, you can use the custom video pre-processing function [enableCustomVideoProcessing] or the custom video capture function [enableCustomVideoCapture] docking and constructing the AI ​​Effects SDK [ZegoEffects] [/ai-effects-android-java/overview](/ai-effects-android-java/overview) for best results.
+- **Caution**: This beauty function is the basic function. If it does not meet the expectations of the developer, you can use the custom video pre-processing function [enableCustomVideoProcessing] or the custom video capture function [enableCustomVideoCapture] docking and constructing the AI ​​Effects SDK [ZegoEffects] [https://doc-zh.zego.im/ai-effects-android-java/overview/overview](https://doc-zh.zego.im/ai-effects-android-java/overview/overview) for best results.
 </Note>
 
 <Warning title="">
@@ -11009,7 +11064,7 @@ Stop dumping data.
 <Note title="">
 - **Use cases**: This is a debugging tool. When there is a problem with audio capturing, 3A processing, or other environment processing during publish, you can dump the audio data and upload it to the ZEGO server for further analysis.
 - **When to call**: It needs to be called after [startDumpData].
-- **Caution**: It will trigger the [onUploadDumpData] callback.
+- **Caution**: It will trigger the [onStopDumpData] callback.
 </Note>
 
 <Warning title="">
@@ -11575,7 +11630,7 @@ When the custom video pre-processing is turned on, the [CVPixelBuffer] format vi
 <Note title="">
 - **Use cases**: After the developer collects the video data by himself or obtains the video data collected by the SDK, if the basic beauty and watermark functions of the SDK cannot meet the needs of the developer (for example, the beauty effect cannot meet the expectations), the ZegoEffects SDK can be used to perform the video Some special processing, such as beautifying, adding pendants, etc., this process is the pre-processing of custom video.
 - **When to call**: Must be called in the [onCapturedUnprocessedCVPixelbuffer] callback.
-- **Platform differences**: Only valid on Windows platform.
+- **Platform differences**: Only valid on iOS/macOS platform.
   This function is only available in ZegoExpressVideo SDK!
 </Note>
 
@@ -11608,7 +11663,7 @@ When the custom video pre-processing is turned on, the [CVPixelBuffer] format vi
 <Note title="">
 - **Use cases**: After the developer collects the video data by himself or obtains the video data collected by the SDK, if the basic beauty and watermark functions of the SDK cannot meet the needs of the developer (for example, the beauty effect cannot meet the expectations), the ZegoEffects SDK can be used to perform the video Some special processing, such as beautifying, adding pendants, etc., this process is the pre-processing of custom video.
 - **When to call**: Must be called in the [onCapturedUnprocessedCVPixelbuffer] callback.
-- **Platform differences**: Only valid on Windows platform.
+- **Platform differences**: Only valid on iOS/macOS platform.
   This function is only available in ZegoExpressVideo SDK!
 </Note>
 
@@ -17091,6 +17146,39 @@ Create ZegoExpressEngine singleton object and initialize SDK.
 engine singleton instance.
 </ParamField>
 <ParamField
+  name="createEngine"
+  prototype="public  [IZegoExpressEngine](#izegoexpressengine)* createEngine([ZegoMultiEngineProfile](./struct#zegomultiengineprofile) profile, std::shared_ptr<[IZegoEventHandler](#izegoeventhandler)> eventHandler)"
+  desc="Create ZegoExpressEngine object and initialize SDK."
+  prefixes={["static"]}
+  parent_file="Declared in \`ZegoExpressSDK.h\`"
+  parent_name="ZegoExpressSDK"
+  parent_type="class">
+**Parameters**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| profile | [ZegoMultiEngineProfile](./struct#zegomultiengineprofile) | The basic configuration information is used to create the engine. |
+| eventHandler | std::shared_ptr\<[IZegoEventHandler](#izegoeventhandler)\> | Event notification callback. [nullptr] means not receiving any callback notifications.It can also be managed later via [setEventHandler]. If [createEngine] is called repeatedly and the [destroyEngine] function is not called to destroy the engine before the second call, the eventHandler will not be updated. |
+
+**Details**
+
+Create ZegoExpressEngine object and initialize SDK.
+
+<Note title="">
+- **When to call**: The engine needs to be created before calling other functions.
+- **Caution**: The SDK only supports the creation of one instance of ZegoExpressEngine. If you need call [createEngine] multiple times, you need call [destroyEngine] before you call the next [createEngine]. Otherwise it will return the instance which created by [createEngine] you called last time.
+</Note>
+
+<Warning title="">
+- **Available since**: 2.14.0
+- **Restrictions**: None.
+</Warning>
+
+**Return**
+
+engine singleton instance.
+</ParamField>
+<ParamField
   name="destroyEngine"
   prototype="public  void destroyEngine([IZegoExpressEngine](#izegoexpressengine)*& engine, [ZegoDestroyCompletionCallback](./interface#zegodestroycompletioncallback) callback)"
   desc="Destroy the ZegoExpressEngine singleton object and deinitialize the SDK."
@@ -17112,6 +17200,34 @@ Destroy the ZegoExpressEngine singleton object and deinitialize the SDK.
 <Note title="">
 - **When to call**: When the SDK is no longer used, the resources used by the SDK can be released through this interface
 - **Caution**: After using [createEngine] to create a singleton, if the singleton object has not been created or has been destroyed, you will not receive related callbacks when calling this function.
+</Note>
+
+<Warning title="">
+- **Available since**: 1.1.0
+- **Restrictions**: None.
+</Warning>
+</ParamField>
+<ParamField
+  name="destroyEngine"
+  prototype="public  void destroyEngine([IZegoExpressEngine](#izegoexpressengine)*& engine, [ZegoDestroyCompletionCallback](./interface#zegodestroycompletioncallback) callback)"
+  desc="Destroy the ZegoExpressEngine object and deinitialize the SDK."
+  prefixes={["static"]}
+  parent_file="Declared in \`ZegoExpressSDK.h\`"
+  parent_name="ZegoExpressSDK"
+  parent_type="class">
+**Parameters**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| engine | [IZegoExpressEngine](#izegoexpressengine)*& | engine instance that created by createEngine method. |
+| callback | [ZegoDestroyCompletionCallback](./interface#zegodestroycompletioncallback) | Notification callback for destroy engine completion. Developers can listen to this callback to ensure that device hardware resources are released. If the developer only uses SDK to implement audio and video functions, this parameter can be passed [nullptr]. |
+
+**Details**
+
+Destroy the ZegoExpressEngine object and deinitialize the SDK.
+
+<Note title="">
+- **When to call**: When the SDK is no longer used, the resources used by the SDK can be released through this interface
 </Note>
 
 <Warning title="">
@@ -17164,6 +17280,34 @@ Used to enable advanced functions.
 
 <Warning title="">
 - **Available since**: 1.1.0
+- **Restrictions**: None.
+</Warning>
+</ParamField>
+<ParamField
+  name="setLogConfig"
+  prototype="public  void setLogConfig([ZegoLogConfig](./struct#zegologconfig) config)"
+  desc="Set log configuration."
+  prefixes={["static"]}
+  parent_file="Declared in \`ZegoExpressSDK.h\`"
+  parent_name="ZegoExpressSDK"
+  parent_type="class">
+**Parameters**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| config | [ZegoLogConfig](./struct#zegologconfig) | log configuration. |
+
+**Details**
+
+If you need to customize the log file size and path, please call this function to complete the configuration.
+
+<Note title="">
+- **When to call**: It must be set before calling [createEngine] to take effect. If it is set after [createEngine], it will take effect at the next [createEngine] after [destroyEngine].
+- **Caution**: Once this interface is called, the method of setting log size and path via [setEngineConfig] will be invalid.Therefore, it is not recommended to use [setEngineConfig] to set the log size and path.
+</Note>
+
+<Warning title="">
+- **Available since**: 2.3.0
 - **Restrictions**: None.
 </Warning>
 </ParamField>
@@ -17338,6 +17482,28 @@ If you need to use the geo fence feature, please call this function to complete 
 - **Available since**: 3.4.0
 - **Restrictions**: If you need to use the geo fence feature, please contact ZEGO Technical Support.
 </Warning>
+</ParamField>
+<ParamField
+  name="getVersion"
+  prototype="public  std::string getVersion()"
+  desc="Gets the SDK's version number."
+  prefixes={["static"]}
+  parent_file="Declared in \`ZegoExpressSDK.h\`"
+  parent_name="ZegoExpressSDK"
+  parent_type="class">
+If you encounter an abnormality during the running of the SDK, you can submit the problem, log and other information to the ZEGO technical staff to locate and troubleshoot. Developers can also collect current SDK version information through this API, which is convenient for App operation statistics and related issues.
+
+<Note title="">
+- **When to call**: Any time.
+- **Caution**: None.
+</Note>
+
+<Warning title="">
+- **Available since**: 1.1.0
+- **Restrictions**: None.
+</Warning>
+
+SDK version.
 </ParamField>
 <ParamField
   name="getVersion"
@@ -17555,7 +17721,7 @@ By default, SDK creates and prints log files in the App's default directory. Eac
 <ParamField
   name="createEngine"
   prototype="public  [IZegoExpressEngine](#izegoexpressengine)* createEngine(unsigned int appID, std::string appSign, bool isTestEnv, [ZegoScenario](./enum#zegoscenario) scenario, std::shared_ptr<[IZegoEventHandler](#izegoeventhandler)> eventHandler)"
-  desc="[Deprecated] Create ZegoExpressEngine singleton object and initialize SDK. Deprecated since 2.14.0, please use the method with the same name without [isTestEnv] parameter instead. Please refer to [Testing environment deprecation](https://docs.zegocloud.com/article/13315) for more details."
+  desc="[Deprecated] Create ZegoExpressEngine singleton object and initialize SDK. Deprecated since 2.14.0, please use the method with the same name without [isTestEnv] parameter instead. Please refer to [Testing environment deprecation](/real-time-voice-android/introduction/abandon-test-environment) for more details."
   prefixes={["static"]}
   suffixes={["deprecated"]}
   parent_file="Declared in \`ZegoExpressSDK.h\`"
@@ -17568,8 +17734,8 @@ By default, SDK creates and prints log files in the App's default directory. Eac
 | --- | --- | --- |
 | appID | unsigned int | Application ID issued by ZEGO for developers, please apply from the ZEGO Admin Console [https://console.zegocloud.com](https://console.zegocloud.com) The value ranges from 0 to 4294967295. |
 | appSign | std::string | Application signature for each AppID, please apply from the ZEGO Admin Console. Application signature is a 64 character string. Each character has a range of '0' ~ '9', 'a' ~ 'z'. AppSign 2.17.0 and later allows null or no transmission. If the token is passed empty or not passed, the token must be entered in the [ZegoRoomConfig] parameter for authentication when the [loginRoom] interface is called to login to the room. |
-| isTestEnv | bool | [Deprecated] For providing better and more standardized services, starting from 2021-11-16, ZEGO no longer classifies environments into production environments and testing environments. f you create your project in ZEGO Admin Console on/before 2021-11-16, refer to [Testing environment deprecation](https://docs.zegocloud.com/article/13315) to upgrade the SDK and adjust related codes. |
-| scenario | [ZegoScenario](./enum#zegoscenario) | The room scenario. the SDK will optimize the audio and video configuration for the specified scenario to achieve the best effect in this scenario. After specifying the scenario, you can call other APIs to adjusting the audio and video configuration. Differences between scenarios and how to choose a suitable scenario, please refer to [https://www.zegocloud.com/docs/real-time-video-ios-swift/introduction/overview](https://www.zegocloud.com/docs/real-time-video-ios-swift/introduction/overview) |
+| isTestEnv | bool | [Deprecated] For providing better and more standardized services, starting from 2021-11-16, ZEGO no longer classifies environments into production environments and testing environments. f you create your project in ZEGO Admin Console on/before 2021-11-16, refer to [Testing environment deprecation](/real-time-voice-android/introduction/abandon-test-environment) to upgrade the SDK and adjust related codes. |
+| scenario | [ZegoScenario](./enum#zegoscenario) | The room scenario. the SDK will optimize the audio and video configuration for the specified scenario to achieve the best effect in this scenario. After specifying the scenario, you can call other APIs to adjusting the audio and video configuration. Differences between scenarios and how to choose a suitable scenario, please refer to [https://www.zegocloud.com/docs/real-time-video-ios-oc/quick-start/scenario-based-audio-video-configuration](https://www.zegocloud.com/docs/real-time-video-ios-oc/quick-start/scenario-based-audio-video-configuration) |
 | eventHandler | std::shared_ptr\<[IZegoEventHandler](#izegoeventhandler)\> | Event notification callback. [nullptr] means not receiving any callback notifications.It can also be managed later via [setEventHandler]. If [createEngine] is called repeatedly and the [destroyEngine] function is not called to destroy the engine before the second call, the eventHandler will not be updated. |
 
 **Details**

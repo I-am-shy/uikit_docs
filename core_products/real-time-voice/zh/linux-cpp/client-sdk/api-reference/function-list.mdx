@@ -19,7 +19,7 @@ docType: API
 
 ZEGO SDK 拥有全面覆盖全球重点区域的网络节点，提供丰富的 API，为多端提供清晰稳定的实时语音视频云服务。
 
-API 返回的错误码请参考：https://doc-zh.zego.im/real-time-voice-android/client-sdk/error-code
+API 返回的错误码请参考：https://doc-zh.zego.im/article/5690。
 
 以下为基本的 API 简要介绍。
 
@@ -32,15 +32,20 @@ API 返回的错误码请参考：https://doc-zh.zego.im/real-time-voice-android
  | 方法名 | 描述 | 
  | --- | --- | 
  | [createEngine](./class.mdx#createengine-zegoexpresssdk) | 创建 ZegoExpressEngine 单例对象并初始化 SDK。
+[createEngine](./class.mdx#createengine-zegoexpresssdk) | 创建 ZegoExpressEngine 对象并初始化 SDK。
 [destroyEngine](./class.mdx#destroyengine-zegoexpresssdk) | 销毁 ZegoExpressEngine 单例对象并反初始化 SDK。
+[destroyEngine](./class.mdx#destroyengine-zegoexpresssdk) | 销毁 ZegoExpressEngine 对象并反初始化 SDK。
 [getEngine](./class.mdx#getengine-zegoexpresssdk) | 获取引擎单例对象。
 [setEngineConfig](./class.mdx#setengineconfig-zegoexpresssdk) | 设置引擎进阶配置。
+[setEngineConfig](./class.mdx#setengineconfig-izegoexpressengine) | 设置引擎进阶配置。
+[setLogConfig](./class.mdx#setlogconfig-zegoexpresssdk) | 设置日志配置。
 [setLogConfig](./class.mdx#setlogconfig-zegoexpresssdk) | 设置日志配置。
 [setLocalProxyConfig](./class.mdx#setlocalproxyconfig-zegoexpresssdk) | 设置本地代理配置
 [setCloudProxyConfig](./class.mdx#setcloudproxyconfig-zegoexpresssdk) | 设置云代理配置
 [setLicense](./class.mdx#setlicense-zegoexpresssdk) | 设置 License 鉴权。
 [setRoomMode](./class.mdx#setroommode-zegoexpresssdk) | 设置房间模式。
 [setGeoFence](./class.mdx#setgeofence-zegoexpresssdk) | 设置地理围栏。
+[getVersion](./class.mdx#getversion-zegoexpresssdk) | 获取 SDK 版本号。
 [getVersion](./class.mdx#getversion-zegoexpresssdk) | 获取 SDK 版本号。
 [setAndroidEnv](./class.mdx#setandroidenv-zegoexpresssdk) | 设置 Android 平台 JVM 以及 Context。
 [setOhosEnv](./class.mdx#setohosenv-zegoexpresssdk) | 设置鸿蒙平台的环境。
@@ -147,6 +152,7 @@ API 返回的错误码请参考：https://doc-zh.zego.im/real-time-voice-android
 [enableVideoObjectSegmentation](./class.mdx#enablevideoobjectsegmentation1-izegoexpressengine) | 开启主体分割。
 [enableAlphaChannelVideoEncoder](./class.mdx#enablealphachannelvideoencoder-izegoexpressengine) | 开启视频编码器透明通道支持。
 [enableVideoEncoderEnhancement](./class.mdx#enablevideoencoderenhancement-izegoexpressengine) | 开启视频编码增加能力。
+[enableVideoEncoderEnhancementWithConfig](./class.mdx#enablevideoencoderenhancementwithconfig-izegoexpressengine) | 开启视频编码增加能力。
 [enableAuxBgmBalance](./class.mdx#enableauxbgmbalance-izegoexpressengine) | 开启或关闭根据伴奏音量，自适应调整人声音量。
 [onPublisherStateUpdate](./class.mdx#onpublisherstateupdate-izegoeventhandler) | 推流状态回调。
 [onPublisherQualityUpdate](./class.mdx#onpublisherqualityupdate-izegoeventhandler) | 推流质量回调。

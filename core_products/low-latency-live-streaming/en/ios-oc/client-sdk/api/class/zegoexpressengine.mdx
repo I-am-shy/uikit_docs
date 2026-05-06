@@ -1,6 +1,5 @@
 ---
 docType: API
-date: "2026-04-20"
 ---
 
 # ZegoExpressEngine
@@ -397,7 +396,7 @@ By default, SDK creates and prints log files in the App's default directory. Eac
 <ParamField
   name="createEngineWithAppID:appSign:isTestEnv:scenario:eventHandler:"
   prototype="+ ([ZegoExpressEngine](../../api-reference/class#zegoexpressengine) *)createEngineWithAppID:(unsigned int) appID appSign:(NSString *) appSign isTestEnv:(BOOL) isTestEnv scenario:([ZegoScenario](../../api-reference/enum#zegoscenario)) scenario eventHandler:(nullable id<[ZegoEventHandler](../../api-reference/protocol#zegoeventhandler)>) eventHandler;"
-  desc="[Deprecated] Create ZegoExpressEngine singleton object and initialize SDK. Deprecated since 2.14.0, please use the method with the same name without [isTestEnv] parameter instead. Please refer to [Testing environment deprecation](https://docs.zegocloud.com/article/13315) for more details."
+  desc="[Deprecated] Create ZegoExpressEngine singleton object and initialize SDK. Deprecated since 2.14.0, please use the method with the same name without [isTestEnv] parameter instead. Please refer to [Testing environment deprecation](/real-time-voice-android/introduction/abandon-test-environment) for more details."
   prefixes={["static"]}
   suffixes={["deprecated"]}
   parent_file="Declared in \`ZegoExpressEngine.h\`"
@@ -409,8 +408,8 @@ By default, SDK creates and prints log files in the App's default directory. Eac
 | --- | --- | --- |
 | appID | unsigned int | Application ID issued by ZEGO for developers, please apply from the ZEGO Admin Console [https://console.zegocloud.com](https://console.zegocloud.com) The value ranges from 0 to 4294967295. |
 | appSign | NSString * | Application signature for each AppID, please apply from the ZEGO Admin Console. Application signature is a 64 character string. Each character has a range of '0' ~ '9', 'a' ~ 'z'. AppSign 2.17.0 and later allows null or no transmission. If the token is passed empty or not passed, the token must be entered in the [ZegoRoomConfig] parameter for authentication when the [loginRoom] interface is called to login to the room. |
-| isTestEnv | BOOL | [Deprecated] For providing better and more standardized services, starting from 2021-11-16, ZEGO no longer classifies environments into production environments and testing environments. f you create your project in ZEGO Admin Console on/before 2021-11-16, refer to [Testing environment deprecation](https://docs.zegocloud.com/article/13315) to upgrade the SDK and adjust related codes. |
-| scenario | [ZegoScenario](../../api-reference/enum#zegoscenario) | The room scenario. the SDK will optimize the audio and video configuration for the specified scenario to achieve the best effect in this scenario. After specifying the scenario, you can call other APIs to adjusting the audio and video configuration. Differences between scenarios and how to choose a suitable scenario, please refer to [https://www.zegocloud.com/docs/real-time-video-ios-swift/introduction/overview](https://www.zegocloud.com/docs/real-time-video-ios-swift/introduction/overview) |
+| isTestEnv | BOOL | [Deprecated] For providing better and more standardized services, starting from 2021-11-16, ZEGO no longer classifies environments into production environments and testing environments. f you create your project in ZEGO Admin Console on/before 2021-11-16, refer to [Testing environment deprecation](/real-time-voice-android/introduction/abandon-test-environment) to upgrade the SDK and adjust related codes. |
+| scenario | [ZegoScenario](../../api-reference/enum#zegoscenario) | The room scenario. the SDK will optimize the audio and video configuration for the specified scenario to achieve the best effect in this scenario. After specifying the scenario, you can call other APIs to adjusting the audio and video configuration. Differences between scenarios and how to choose a suitable scenario, please refer to [https://www.zegocloud.com/docs/real-time-video-ios-oc/quick-start/scenario-based-audio-video-configuration](https://www.zegocloud.com/docs/real-time-video-ios-oc/quick-start/scenario-based-audio-video-configuration) |
 | eventHandler | nullable id\<[ZegoEventHandler](../../api-reference/protocol#zegoeventhandler)\> | Event notification callback. [nil] means not receiving any callback notifications.It can also be managed later via [setEventHandler]. If [createEngine] is called repeatedly and the [destroyEngine] function is not called to destroy the engine before the second call, the eventHandler will not be updated. |
 
 **Details**
@@ -925,7 +924,7 @@ After the developer receives [onRoomTokenWillExpire], they can use this API to u
 <Note title="">
 - **Use cases**: Used when the token is about to expire.
 - **When to call /Trigger**: After the developer receives [onRoomTokenWillExpire].
-- **Caution**: The token contains important information such as the user's room permissions, publish stream permissions, and effective time, please refer to [https://www.zegocloud.com/docs/real-time-video-android-java/communication/using-token-authentication](https://www.zegocloud.com/docs/real-time-video-android-java/communication/using-token-authentication)
+- **Caution**: The token contains important information such as the user's room permissions, publish stream permissions, and effective time, please refer to [https://www.zegocloud.com/docs/real-time-video-android-java/communication/using-token-authentication](https://www.zegocloud.com/docs/real-time-video-android-java/communication/using-token-authentication) .
 - **Related callbacks**: None.
 - **Related APIs**: None.
 </Note>
@@ -1375,7 +1374,7 @@ This function can be called to stop the preview when the preview is not needed l
 Set the video frame rate, bit rate, video capture resolution, and video encoding output resolution.
 
 <Note title="">
-- **Use cases**: Recommended configuration in different business scenarios [https://www.zegocloud.com/docs/real-time-video-ios-oc/introduction/overview](https://www.zegocloud.com/docs/real-time-video-ios-oc/introduction/overview)
+- **Use cases**: Recommended configuration in different business scenarios [https://www.zegocloud.com/docs/real-time-video-ios-oc/video/common-video-configuration.](https://www.zegocloud.com/docs/real-time-video-ios-oc/video/common-video-configuration.)
 - **Default value**: The default video capture resolution is 360p, the video encoding output resolution is 360p, the bit rate is 600 kbps, and the frame rate is 15 fps.
 - **When to call**: After [createEngine].
 - **Caution**: Developers should note that the wide and high resolution of the mobile end is opposite to the wide and high resolution of the PC. For example, in the case of 360p, the resolution of the mobile end is 360x640, and the resolution of the PC end is 640x360.
@@ -1491,7 +1490,7 @@ Set the stream config.
 
 **Details**
 
-Set whether the local preview video and the published video have mirror mode enabled. For specific mirroring mode, please refer to [https://www.zegocloud.com/docs/real-time-video-ios-oc/introduction/overview](https://www.zegocloud.com/docs/real-time-video-ios-oc/introduction/overview)
+Set whether the local preview video and the published video have mirror mode enabled. For specific mirroring mode, please refer to [https://www.zegocloud.com/docs/real-time-video-ios-oc/video/common-video-configuration.](https://www.zegocloud.com/docs/real-time-video-ios-oc/video/common-video-configuration.)
 
 <Note title="">
 - **When to call**: After [createEngine].
@@ -3338,6 +3337,35 @@ Call this function to enable or disable video encoder enhancement.
 </Warning>
 </ParamField>
 <ParamField
+  name="enableVideoEncoderEnhancementWithConfig:config:channel:"
+  prototype="- (void)enableVideoEncoderEnhancementWithConfig:(BOOL) enable config:([ZegoVideoEncoderEnhancementConfig](../../api-reference/class#zegovideoencoderenhancementconfig) *) config channel:([ZegoPublishChannel](../../api-reference/enum#zegopublishchannel)) channel;"
+  desc="Enable video encoder enhancement."
+  parent_file="Declared in \`ZegoExpressEngine.h\`"
+  parent_name="ZegoExpressEngine"
+  parent_type="class">
+**Parameters**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| enable | BOOL | Whether to enable, true: enable, false: disable |
+| config | [ZegoVideoEncoderEnhancementConfig](../../api-reference/class#zegovideoencoderenhancementconfig) * | video encoder enhancement config |
+| channel | [ZegoPublishChannel](../../api-reference/enum#zegopublishchannel) | Publish stream channel. |
+
+**Details**
+
+Call this function to enable or disable video encoder enhancement.
+
+<Note title="">
+- **Use cases**: Commonly used in video calling, live streaming, and similar scenarios.
+- **Default value**: When this function is not called, video encoder enhancement is not enabled by default.
+- **When to call**: It needs to be called after [createEngine].
+</Note>
+
+<Warning title="">
+- **Available since**: 3.23.0
+</Warning>
+</ParamField>
+<ParamField
   name="setCameraStabilizationMode:channel:"
   prototype="- (void)setCameraStabilizationMode:(int) mode channel:([ZegoPublishChannel](../../api-reference/enum#zegopublishchannel)) channel;"
   desc="Set the camera stabilization mode."
@@ -3413,15 +3441,15 @@ Turn on or off the face detection. Default is on.
 <Note title="">
 - **When to call**: Called after the engine is created [createEngine].
 - **Related callbacks**: Detect results will be called back through [onPublisherFaceDetectInfo].
+- **Caution**: 
+  1. This interface depends on the face detection capability of the Android/iOS platform system, and the SDK only encapsulates and throws the related event callbacks. 
+  2. The face detection function is only effective on devices that support face detection, and some devices may not support this capability. 
+  3. The accuracy of the face detection result depends on the underlying system capabilities and cannot be guaranteed to be completely accurate. Please carefully evaluate and use for applications with high accuracy requirements.
 </Note>
 
 <Warning title="">
 - **Available since**: 3.20.0
 - **Restrictions**: This interface is disabled when using custom video capture.
-- **Caution**: 
-  1. This interface depends on the face detection capability of the Android/iOS platform system, and the SDK only encapsulates and throws the related event callbacks. 
-  2. The face detection function is only effective on devices that support face detection, and some devices may not support this capability.
-  3. The accuracy of the face detection result depends on the underlying system capabilities and cannot be guaranteed to be completely accurate. Please carefully evaluate and use for applications with high accuracy requirements.
 </Warning>
 </ParamField>
 <ParamField
@@ -4807,7 +4835,7 @@ Only for Windows / macOS / Linux
 Select audio equipment mode according to the need of the scene (only supported by Android and iOS).
 
 <Note title="">
-- **Use cases**: In the case of KTV, the General mode must be used, but in the language room, the Communication2 or Communication3 mode is required in order to avoid the sound of third-party music being collected. For details on how to set the audio device mode, see https://doc-zh.zego.im/faq/audio-device-mode-setting
+- **Use cases**: In the case of KTV, the General mode must be used, but in the language room, the Communication2 or Communication3 mode is required in order to avoid the sound of third-party music being collected. For details on how to set the audio device mode, see [https://doc-zh.zego.im/faq/audio-device-mode-setting](https://doc-zh.zego.im/faq/audio-device-mode-setting)
 - **When to call**: After creating the engine [createEngine].
 - **Caution**: This interface triggers startup switchover of the device. You are advised not to invoke this interface frequently to avoid unnecessary overhead and hardware problems. This interface may cause the volume mode to switch between call and media. If the media volume is inconsistent with the call volume, the volume may change.
 </Note>
@@ -5794,7 +5822,7 @@ After monitoring is started, you can use the [onAudioVADStateUpdate] callback to
 </Note>
 
 <Warning title="">
-- **Restrictions**: [onAudioVADStateUpdate] callback notification period is 3 seconds.
+- **Restrictions**: [onAudioVADStateUpdate] callback notification period is 3 seconds. Only steady-state noise recognition is supported, transient noise recognition is not supported.
 </Warning>
 </ParamField>
 <ParamField
@@ -6275,7 +6303,7 @@ Enable the Effects beauty environment. The SDK uses the specified video frame da
 - **Default value**: When this function is not called, the beauty environment is not activated by default.
 - **When to call**: Must be called before calling [startPreview], [startPublishingStream]. If you need to modify the configuration, please call [logoutRoom] to log out of the room first, otherwise it will not take effect.
 - **Related APIs**: [enableEffectsBeauty] switch beauty, [setEffectsBeautyParam] set beauty parameters.
-- **Caution**: This beauty function is the basic function. If it does not meet the expectations of the developer, you can use the custom video pre-processing function [enableCustomVideoProcessing] or the custom video capture function [enableCustomVideoCapture] docking and constructing the AI ​​Effects SDK [ZegoEffects] [/ai-effects-android-java/overview](/ai-effects-android-java/overview) for best results.
+- **Caution**: This beauty function is the basic function. If it does not meet the expectations of the developer, you can use the custom video pre-processing function [enableCustomVideoProcessing] or the custom video capture function [enableCustomVideoCapture] docking and constructing the AI ​​Effects SDK [ZegoEffects] [https://doc-zh.zego.im/ai-effects-android-java/overview/overview](https://doc-zh.zego.im/ai-effects-android-java/overview/overview) for best results.
 </Note>
 
 <Warning title="">
@@ -7325,7 +7353,7 @@ Stop dumping data.
 <Note title="">
 - **Use cases**: This is a debugging tool. When there is a problem with audio capturing, 3A processing, or other environment processing during publish, you can dump the audio data and upload it to the ZEGO server for further analysis.
 - **When to call**: It needs to be called after [startDumpData].
-- **Caution**: It will trigger the [onUploadDumpData] callback.
+- **Caution**: It will trigger the [onStopDumpData] callback.
 </Note>
 
 <Warning title="">
@@ -7548,6 +7576,32 @@ If the value of enable is true, the video collection function is enabled. If the
 
 <Warning title="">
 - **Available since**: 1.9.0
+</Warning>
+</ParamField>
+<ParamField
+  name="setCustomMediaCryptoFactory:"
+  prototype="- (void)setCustomMediaCryptoFactory:(nullable id<[ZegoCustomMediaCryptoFactory](../../api-reference/class#zegocustommediacryptofactory)>) factory;"
+  desc="Sets the factory for custom media crypto."
+  parent_file="Declared in \`ZegoExpressEngine.h\`"
+  parent_name="ZegoExpressEngine"
+  parent_type="class">
+**Parameters**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| factory | nullable id\<[ZegoCustomMediaCryptoFactory](../../api-reference/class#zegocustommediacryptofactory)\> | Custom media crypto factory |
+
+**Details**
+
+Set the factory for custom media crypto while enabling the custom media crypto feature.
+
+<Note title="">
+- **When to call**: After [createEngine], while the engine is not yet started.
+- **Caution**: Once this feature is enabled for an engine instance, it is not recommended to disable it. Disabling requires stopping the engine before the operation can be invoked.
+</Note>
+
+<Warning title="">
+- **Available since**: 3.24.0
 </Warning>
 </ParamField>
 <ParamField
@@ -8132,7 +8186,7 @@ When the custom video pre-processing is turned on, the [CVPixelBuffer] format vi
 <Note title="">
 - **Use cases**: After the developer collects the video data by himself or obtains the video data collected by the SDK, if the basic beauty and watermark functions of the SDK cannot meet the needs of the developer (for example, the beauty effect cannot meet the expectations), the ZegoEffects SDK can be used to perform the video Some special processing, such as beautifying, adding pendants, etc., this process is the pre-processing of custom video.
 - **When to call**: Must be called in the [onCapturedUnprocessedCVPixelbuffer] callback.
-- **Platform differences**: Only valid on Windows platform.
+- **Platform differences**: Only valid on iOS/macOS platform.
 </Note>
 
 <Warning title="">
@@ -8162,7 +8216,7 @@ When the custom video pre-processing is turned on, the [CVPixelBuffer] format vi
 <Note title="">
 - **Use cases**: After the developer collects the video data by himself or obtains the video data collected by the SDK, if the basic beauty and watermark functions of the SDK cannot meet the needs of the developer (for example, the beauty effect cannot meet the expectations), the ZegoEffects SDK can be used to perform the video Some special processing, such as beautifying, adding pendants, etc., this process is the pre-processing of custom video.
 - **When to call**: Must be called in the [onCapturedUnprocessedCVPixelbuffer] callback.
-- **Platform differences**: Only valid on Windows platform.
+- **Platform differences**: Only valid on iOS/macOS platform.
 </Note>
 
 <Warning title="">
@@ -8193,7 +8247,7 @@ When the custom video pre-processing is turned on, the [CVPixelBuffer] format vi
 <Note title="">
 - **Use cases**: After the developer collects the video data by himself or obtains the video data collected by the SDK, if the basic beauty and watermark functions of the SDK cannot meet the needs of the developer (for example, the beauty effect cannot meet the expectations), the ZegoEffects SDK can be used to perform the video Some special processing, such as beautifying, adding pendants, etc., this process is the pre-processing of custom video.
 - **When to call**: Must be called in the [onCapturedUnprocessedCVPixelbuffer] callback.
-- **Platform differences**: Only valid on Windows platform.
+- **Platform differences**: Only valid on iOS/macOS platform.
 </Note>
 
 <Warning title="">
