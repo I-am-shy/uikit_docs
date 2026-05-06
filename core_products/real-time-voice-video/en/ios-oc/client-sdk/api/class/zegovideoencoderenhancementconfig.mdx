@@ -1,0 +1,31 @@
+---
+docType: API
+---
+
+# ZegoVideoEncoderEnhancementConfig
+
+## ZegoVideoEncoderEnhancementConfig
+
+video rncoder Enhancement Config.
+
+**Details**
+
+It is used to configure parameters when Video Encoder Enhancement Config is turned on.
+
+*Declared in `ZegoExpressDefines.h`*
+
+### Properties
+<ParamField
+  name="enhanceLevelMode"
+  prototype="nonatomic, assign [ZegoVideoEncodeEnhanceLevelMode](../../api-reference/enum#zegovideoencodeenhancelevelmode) enhanceLevelMode"
+  parent_name="ZegoVideoEncoderEnhancementConfig"
+  parent_type="class">
+The mode of object enhance level mode.
+</ParamField>
+<ParamField
+  name="enhanceLevel"
+  prototype="nonatomic, assign float enhanceLevel"
+  parent_name="ZegoVideoEncoderEnhancementConfig"
+  parent_type="class">
+enhance_level [0.0,1.5], advise 0.9
+</ParamField>

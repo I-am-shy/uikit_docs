@@ -16,5 +16,12 @@ docType: API
   prototype="nonatomic, assign BOOL enableWindowCapture"
   parent_name="ZegoScreenCaptureAudioConfig"
   parent_type="class">
-是否采集窗口声音。当为 true 时，如果采集源为窗口，则采集窗口声音，当采集源为屏幕或者为 false 时，则采集系统声音。（仅支持 Windows 10 2004 及以上版本采集窗口声音）
+是否采集窗口声音。当为 true 时，如果采集源为窗口，则采集窗口声音，当采集源为屏幕或者为 false 时，则采集系统声音。当为 true 时，将忽略 excludeProcessID 参数。（仅支持 Windows 10 2004 及以上版本采集窗口声音）
+</ParamField>
+<ParamField
+  name="excludeProcessID"
+  prototype=" int excludeProcessID"
+  parent_name="ZegoScreenCaptureAudioConfig"
+  parent_type="class">
+需要排除的进程 ID。如果启动采集系统声音，则可以将此进程声音排除，传入 -1 则将本进程声音剔除。（仅支持 Windows 10 2004 及以上版本采集窗口声音）
 </ParamField>

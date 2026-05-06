@@ -1,6 +1,5 @@
 ---
 docType: API
-date: '2026-03-13'
 ---
 
 # Enum
@@ -68,12 +67,13 @@ date: '2026-03-13'
 | [ZegoVideoCodecBackend](#zegovideocodecbackend) | [ZegoVideoCodecID](#zegovideocodecid) |
 | [ZegoVideoConfigPreference](#zegovideoconfigpreference) | [ZegoVideoConfigPreset](#zegovideoconfigpreset) |
 | [ZegoVideoDenoiseMode](#zegovideodenoisemode) | [ZegoVideoDenoiseStrength](#zegovideodenoisestrength) |
-| [ZegoVideoEncodedFrameFormat](#zegovideoencodedframeformat) | [ZegoVideoFlipMode](#zegovideoflipmode) |
-| [ZegoVideoFrameFormat](#zegovideoframeformat) | [ZegoVideoFrameFormatSeries](#zegovideoframeformatseries) |
-| [ZegoVideoMirrorMode](#zegovideomirrormode) | [ZegoVideoRateControlMode](#zegovideoratecontrolmode) |
-| [ZegoVideoSourceType](#zegovideosourcetype) | [ZegoVideoStreamType](#zegovideostreamtype) |
-| [ZegoViewMode](#zegoviewmode) | [ZegoViewUpdateType](#zegoviewupdatetype) |
-| [ZegoVoiceChangerPreset](#zegovoicechangerpreset) | [ZegoVolumeType](#zegovolumetype) |
+| [ZegoVideoEncodedFrameFormat](#zegovideoencodedframeformat) | [ZegoVideoEncodeEnhanceLevelMode](#zegovideoencodeenhancelevelmode) |
+| [ZegoVideoFlipMode](#zegovideoflipmode) | [ZegoVideoFrameFormat](#zegovideoframeformat) |
+| [ZegoVideoFrameFormatSeries](#zegovideoframeformatseries) | [ZegoVideoMirrorMode](#zegovideomirrormode) |
+| [ZegoVideoRateControlMode](#zegovideoratecontrolmode) | [ZegoVideoSourceType](#zegovideosourcetype) |
+| [ZegoVideoStreamType](#zegovideostreamtype) | [ZegoViewMode](#zegoviewmode) |
+| [ZegoViewUpdateType](#zegoviewupdatetype) | [ZegoVoiceChangerPreset](#zegovoicechangerpreset) |
+| [ZegoVolumeType](#zegovolumetype) |  |
 
 ## ZegoAECMode
 
@@ -3527,7 +3527,7 @@ Room scenario.
 
 <Warning title="">
 - **Available since**: 1.1.0
- To ensure that the selected room scene mode meets the developer's business scene experience requirements, it is recommended to carefully read the [/real-time-video-ios-oc/quick-start/scenario-based-audio-video-configuration](/real-time-video-ios-oc/quick-start/scenario-based-audio-video-configuration) document to understand the scene setting method, the differences between different scenes, and how to choose the right scene.
+ To ensure that the selected room scene mode meets the developer's business scene experience requirements, it is recommended to carefully read the [https://doc-zh.zego.im/real-time-video-ios-oc/quick-start/scenario-based-audio-video-configuration](https://doc-zh.zego.im/real-time-video-ios-oc/quick-start/scenario-based-audio-video-configuration) document to understand the scene setting method, the differences between different scenes, and how to choose the right scene.
 </Warning>
 
 *Declared in `constants/ZegoScenario.java`*
@@ -4829,6 +4829,28 @@ Medium denoise strength.
 Heavy denoise strength.
 </ParamField>
 
+## ZegoVideoEncodeEnhanceLevelMode
+
+video encode enhance level mode.
+
+*Declared in `constants/ZegoVideoEncodeEnhanceLevelMode.java`*
+
+### Properties
+<ParamField
+  name="ZegoVideoEncodeEnhanceLevelModeAuto"
+  prototype="ZegoVideoEncodeEnhanceLevelModeAuto=(0)"
+  parent_name="ZegoVideoEncodeEnhanceLevelMode"
+  parent_type="enum">
+In automatic mode, the algorithm automatically adjusts based on the set enhancement level, with the maximum value being the set enhancement level.
+</ParamField>
+<ParamField
+  name="ZegoVideoEncodeEnhanceLevelModeFix"
+  prototype="ZegoVideoEncodeEnhanceLevelModeFix=(1)"
+  parent_name="ZegoVideoEncodeEnhanceLevelMode"
+  parent_type="enum">
+Fixed mode, the algorithm does not dynamically adjust the enhancement level.
+</ParamField>
+
 ## ZegoVideoEncodedFrameFormat
 
 Video encoded frame format.
@@ -5524,6 +5546,20 @@ Autobot effect
   parent_name="ZegoVoiceChangerPreset"
   parent_type="enum">
 Out of power effect
+</ParamField>
+<ParamField
+  name="ZegoVoiceChangerPresetForeignerRobot"
+  prototype="ZegoVoiceChangerPresetForeignerRobot=(32)"
+  parent_name="ZegoVoiceChangerPreset"
+  parent_type="enum">
+Foreigner robot voice effect
+</ParamField>
+<ParamField
+  name="ZegoVoiceChangerPresetForeignerOptimusPrime"
+  prototype="ZegoVoiceChangerPresetForeignerOptimusPrime=(33)"
+  parent_name="ZegoVoiceChangerPreset"
+  parent_type="enum">
+Foreigner Optimus Prime voice effect
 </ParamField>
 
 ## ZegoVolumeType

@@ -7,6 +7,48 @@ date: "2025-12-19"
 
 - - -
 
+## 3.24.0 Version
+
+**Release date: 2026-05-06**
+
+**New Features**
+
+1. Support custom encryption for audio and video streams
+
+    The SDK exposes custom encryption and decryption capabilities for audio and video transmission data, allowing businesses to perform pre-encryption on raw audio and video data.
+    <Warning title="Note">
+    This feature requires a special build. Please contact ZEGOCLOUD Technical Support if you need to use it.
+    </Warning>
+
+    For related APIs, see: [ZegoCustomMediaCrypto](@-ZegoCustomMediaCrypto), [setCustomMediaCryptoFactory](@setCustomMediaCryptoFactory)
+
+**Improvements**
+
+1. Optimized the size of the Express SDK
+
+1. Local device exception notification callback supports monitoring exception recovery
+
+    A new exception type for device recovery from an abnormal state has been added. When the local audio or video device function recovers from another abnormal state, the local device exception notification callback is triggered.
+    <Warning title="Note">
+    Please contact ZEGOCLOUD Technical Support to configure this exception type for monitoring.
+    </Warning>
+
+    For related APIs, see: [onLocalDeviceExceptionOccurred](@onLocalDeviceExceptionOccurred)
+
+2. Local device exception notification callback supports monitoring low capture volume
+
+    A new exception type for low capture volume has been added. You can set volume thresholds and custom detection periods for flexible identification and low volume alerts.
+
+    For related APIs, see: [onLocalDeviceExceptionOccurred](@onLocalDeviceExceptionOccurred)
+
+3. Improved AGC adjustment effectiveness in singing scenarios
+
+**Bug Fixes**
+
+1. Fixed an issue where the local proxy could not connect to the RTC service
+
+---
+
 <a name="3.23.0"></a>
 
 ## 3.23.0 Version

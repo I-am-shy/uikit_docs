@@ -33,12 +33,13 @@ docType: API
 | [ZegoReverbAdvancedParam](#zegoreverbadvancedparam) | [ZegoReverbEchoParam](#zegoreverbechoparam) |
 | [ZegoReverbParam](#zegoreverbparam) | [ZegoRoiRect](#zegoroirect) |
 | [ZegoRoomConfig](#zegoroomconfig) | [ZegoRoomExtraInfo](#zegoroomextrainfo) |
-| [ZegoScreenCaptureSourceInfo](#zegoscreencapturesourceinfo) | [ZegoSEIConfig](#zegoseiconfig) |
-| [ZegoSoundLevelConfig](#zegosoundlevelconfig) | [ZegoSoundLevelInfo](#zegosoundlevelinfo) |
-| [ZegoStream](#zegostream) | [ZegoStreamRelayCDNInfo](#zegostreamrelaycdninfo) |
-| [ZegoUser](#zegouser) | [ZegoVideoConfig](#zegovideoconfig) |
-| [ZegoVideoFrameObject](#zegovideoframeobject) | [ZegoView](#zegoview) |
-| [ZegoVoiceChangerParam](#zegovoicechangerparam) | [ZegoWatermark](#zegowatermark) |
+| [ZegoScreenCaptureAudioConfig](#zegoscreencaptureaudioconfig) | [ZegoScreenCaptureSourceInfo](#zegoscreencapturesourceinfo) |
+| [ZegoSEIConfig](#zegoseiconfig) | [ZegoSoundLevelConfig](#zegosoundlevelconfig) |
+| [ZegoSoundLevelInfo](#zegosoundlevelinfo) | [ZegoStream](#zegostream) |
+| [ZegoStreamRelayCDNInfo](#zegostreamrelaycdninfo) | [ZegoUser](#zegouser) |
+| [ZegoVideoConfig](#zegovideoconfig) | [ZegoVideoFrameObject](#zegovideoframeobject) |
+| [ZegoView](#zegoview) | [ZegoVoiceChangerParam](#zegovoicechangerparam) |
+| [ZegoWatermark](#zegowatermark) |  |
 
 ## ZegoAudioConfig
 
@@ -816,7 +817,7 @@ Application signature for each AppID, please apply from the ZEGO Admin Console. 
   prototype=" scenario: [ZegoScenario](./enum#zegoscenario) "
   parent_name="ZegoEngineProfile"
   parent_type="class">
-The room scenario. the SDK will optimize the audio and video configuration for the specified scenario to achieve the best effect in this scenario. After specifying the scenario, you can call other APIs to adjusting the audio and video configuration. Differences between scenarios and how to choose a suitable scenario, please refer to [https://www.zegocloud.com/docs/real-time-video-ios-swift/introduction/overview](https://www.zegocloud.com/docs/real-time-video-ios-swift/introduction/overview)
+The room scenario. the SDK will optimize the audio and video configuration for the specified scenario to achieve the best effect in this scenario. After specifying the scenario, you can call other APIs to adjusting the audio and video configuration. Differences between scenarios and how to choose a suitable scenario, please refer to [https://www.zegocloud.com/docs/real-time-video-ios-oc/quick-start/scenario-based-audio-video-configuration](https://www.zegocloud.com/docs/real-time-video-ios-oc/quick-start/scenario-based-audio-video-configuration)
 </ParamField>
 
 ## ZegoFontStyle
@@ -1784,7 +1785,7 @@ Audio break count, break count during the callback cycle (Available since 1.17.0
   prototype=" mos: number "
   parent_name="ZegoPlayStreamQuality"
   parent_type="class">
-The audio quality of the playing stream determined by the audio MOS (Mean Opinion Score) measurement method, value range [-1, 5], where -1 means unknown, [0, 5] means valid score, the higher the score, the better the audio quality. For the subjective perception corresponding to the MOS value, please refer to [https://www.zegocloud.com/docs/real-time-video-android-java/introduction/overview](https://www.zegocloud.com/docs/real-time-video-android-java/introduction/overview) (Available since 2.16.0)
+The audio quality of the playing stream determined by the audio MOS (Mean Opinion Score) measurement method, value range [-1, 5], where -1 means unknown, [0, 5] means valid score, the higher the score, the better the audio quality. For the subjective perception corresponding to the MOS value, please refer to [https://www.zegocloud.com/docs/real-time-video-android-java/communication/monitor-stream-quality#4_4](https://www.zegocloud.com/docs/real-time-video-android-java/communication/monitor-stream-quality#4_4) (Available since 2.16.0)
 </ParamField>
 <ParamField
   name="rtt"
@@ -2474,6 +2475,26 @@ Used to set the relevant configuration of the Supplemental Enhancement Informati
   parent_name="ZegoSEIConfig"
   parent_type="class">
 SEI type
+</ParamField>
+
+## ZegoScreenCaptureAudioConfig
+
+Screen capture audio config
+
+### Properties
+<ParamField
+  name="enableWindowCapture"
+  prototype=" enableWindowCapture: boolean "
+  parent_name="ZegoScreenCaptureAudioConfig"
+  parent_type="class">
+Whether to capture window sounds. When true, window sounds will be captured if the capture source is a window; otherwise, system sounds will be captured if the capture source is the screen or if false. When true, the excludeProcessID parameter will be ignored. (only for Windows 10 2004 and above versions)
+</ParamField>
+<ParamField
+  name="excludeProcessID"
+  prototype=" excludeProcessID: number "
+  parent_name="ZegoScreenCaptureAudioConfig"
+  parent_type="class">
+The process ID to exclude. If system sound capture is enabled, this process's sound can be excluded. Passing in -1 will remove the sound from this process. (Only supports capturing window sounds on Windows 10 2004 and later versions)
 </ParamField>
 
 ## ZegoScreenCaptureSourceInfo

@@ -8,6 +8,43 @@ date: "2026-04-07"
 
 - - -
 
+## 3.24.0 版本
+
+**发布日期：2026-05-06**
+
+**改进优化**
+
+1. 优化 Express SDK 的大小
+
+1. 本地设备异常通知回调支持监听设备从异常状态恢复的异常类型
+
+    新增设备从异常状态恢复的异常类型，当本地音频或视频设备功能从其他的异常状态恢复正常时会触发本地设备异常通知回调。
+    <Warning title="注意">
+    如需监听此异常类型，请联系 ZEGO 技术支持进行配置。
+    </Warning>
+
+    相关 API 请参考： [onLocalDeviceExceptionOccurred](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/dart_flutter/zego_express_engine/ZegoExpressEngine/onLocalDeviceExceptionOccurred.html)
+
+2. 本地设备异常通知回调支持监听采集音量过低的异常类型
+
+    新增采集音量过低的异常类型，支持设置音量阈值和自定义检测周期，便于业务灵活识别并做出低音量提示。
+
+    相关 API 请参考： [onLocalDeviceExceptionOccurred](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/dart_flutter/zego_express_engine/ZegoExpressEngine/onLocalDeviceExceptionOccurred.html)
+
+3. 优化媒体播放器播放预加载资源时的内存占用
+
+    相关 API 请参考： [loadResourceFromMediaData](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/dart_flutter/zego_express_engine/ZegoMediaPlayer/loadResourceFromMediaData.html)
+
+4. 提升唱歌场景下 AGC 调整的效果
+
+**问题修复**
+
+1. 修复开启本地代理连接不上 RTC 服务的问题
+
+2. 修复 32 位系统开启云代理连接不上 RTC 服务的问题
+
+---
+
 ## 3.23.0 版本
 
 **发布日期：2025-12-19**

@@ -66,12 +66,12 @@ docType: API
 | [ZegoTrafficControlProperty](#zegotrafficcontrolproperty) | [ZegoUpdateType](#zegoupdatetype) |
 | [ZegoVideoBufferType](#zegovideobuffertype) | [ZegoVideoCodecBackend](#zegovideocodecbackend) |
 | [ZegoVideoCodecID](#zegovideocodecid) | [ZegoVideoConfigPreset](#zegovideoconfigpreset) |
-| [ZegoVideoEncodedFrameFormat](#zegovideoencodedframeformat) | [ZegoVideoFlipMode](#zegovideoflipmode) |
-| [ZegoVideoFrameFormat](#zegovideoframeformat) | [ZegoVideoFrameFormatSeries](#zegovideoframeformatseries) |
-| [ZegoVideoMirrorMode](#zegovideomirrormode) | [ZegoVideoRateControlMode](#zegovideoratecontrolmode) |
-| [ZegoVideoSourceType](#zegovideosourcetype) | [ZegoVideoStreamType](#zegovideostreamtype) |
-| [ZegoViewMode](#zegoviewmode) | [ZegoVoiceChangerPreset](#zegovoicechangerpreset) |
-| [ZegoVolumeType](#zegovolumetype) |  |
+| [ZegoVideoEncodedFrameFormat](#zegovideoencodedframeformat) | [ZegoVideoEncodeEnhanceLevelMode](#zegovideoencodeenhancelevelmode) |
+| [ZegoVideoFlipMode](#zegovideoflipmode) | [ZegoVideoFrameFormat](#zegovideoframeformat) |
+| [ZegoVideoFrameFormatSeries](#zegovideoframeformatseries) | [ZegoVideoMirrorMode](#zegovideomirrormode) |
+| [ZegoVideoRateControlMode](#zegovideoratecontrolmode) | [ZegoVideoSourceType](#zegovideosourcetype) |
+| [ZegoVideoStreamType](#zegovideostreamtype) | [ZegoViewMode](#zegoviewmode) |
+| [ZegoVoiceChangerPreset](#zegovoicechangerpreset) | [ZegoVolumeType](#zegovolumetype) |
 
 ## ZegoAECMode
 
@@ -3471,7 +3471,7 @@ SEI 类型
 
 <Warning title="">
 - **支持版本**：1.1.0 及以上。
- 为保障所选房间场景模式符合开发者的业务场景体验诉求，建议认真阅读 [/real-time-video-ios-oc/quick-start/scenario-based-audio-video-configuration](/real-time-video-ios-oc/quick-start/scenario-based-audio-video-configuration) 文档了解场景设置方式、各场景的差异以及如何选择合适的场景。
+ 为保障所选房间场景模式符合开发者的业务场景体验诉求，建议认真阅读 [https://doc-zh.zego.im/real-time-video-ios-oc/quick-start/scenario-based-audio-video-configuration](https://doc-zh.zego.im/real-time-video-ios-oc/quick-start/scenario-based-audio-video-configuration) 文档了解场景设置方式、各场景的差异以及如何选择合适的场景。
 </Warning>
 
 *Declared in `ZegoExpressDefines.h`*
@@ -4776,6 +4776,28 @@ H.265
 设置分辨率为 1920x1080，默认采用 15 fps，码率 3000 kbps
 </ParamField>
 
+## ZegoVideoEncodeEnhanceLevelMode
+
+视频增强等级模式。
+
+*Declared in `ZegoExpressDefines.h`*
+
+### 属性
+<ParamField
+  name="ZegoVideoEncodeEnhanceLevelModeAuto"
+  prototype="ZegoVideoEncodeEnhanceLevelModeAuto=(0)"
+  parent_name="ZegoVideoEncodeEnhanceLevelMode"
+  parent_type="enum">
+自动模式, 算法会在[0, enhanceLevel] 中动态调整
+</ParamField>
+<ParamField
+  name="ZegoVideoEncodeEnhanceLevelModeFix"
+  prototype="ZegoVideoEncodeEnhanceLevelModeFix=(1)"
+  parent_name="ZegoVideoEncodeEnhanceLevelMode"
+  parent_type="enum">
+固定模式，算法不会动态调整enhanceLevel
+</ParamField>
+
 ## ZegoVideoEncodedFrameFormat
 
 编码视频帧格式
@@ -5442,6 +5464,20 @@ A小调电音音效
   parent_name="ZegoVoiceChangerPreset"
   parent_type="enum">
 没电了音效
+</ParamField>
+<ParamField
+  name="ZegoVoiceChangerPresetForeignerRobot"
+  prototype="ZegoVoiceChangerPresetForeignerRobot=(32)"
+  parent_name="ZegoVoiceChangerPreset"
+  parent_type="enum">
+外国机器人音效
+</ParamField>
+<ParamField
+  name="ZegoVoiceChangerPresetForeignerOptimusPrime"
+  prototype="ZegoVoiceChangerPresetForeignerOptimusPrime=(33)"
+  parent_name="ZegoVoiceChangerPreset"
+  parent_type="enum">
+外国擎天柱音效
 </ParamField>
 
 ## ZegoVolumeType

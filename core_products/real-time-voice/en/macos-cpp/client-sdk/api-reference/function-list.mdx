@@ -32,15 +32,20 @@ The following is a brief introduction to the basic API.
  | Method | Description | 
  | --- | --- | 
  | [createEngine](./class.mdx#createengine-zegoexpresssdk) | Create ZegoExpressEngine singleton object and initialize SDK.
+[createEngine](./class.mdx#createengine-zegoexpresssdk) | Create ZegoExpressEngine object and initialize SDK.
 [destroyEngine](./class.mdx#destroyengine-zegoexpresssdk) | Destroy the ZegoExpressEngine singleton object and deinitialize the SDK.
+[destroyEngine](./class.mdx#destroyengine-zegoexpresssdk) | Destroy the ZegoExpressEngine object and deinitialize the SDK.
 [getEngine](./class.mdx#getengine-zegoexpresssdk) | Returns the singleton instance of ZegoExpressEngine.
 [setEngineConfig](./class.mdx#setengineconfig-zegoexpresssdk) | Set advanced engine configuration.
+[setEngineConfig](./class.mdx#setengineconfig-izegoexpressengine) | Set advanced engine configuration.
+[setLogConfig](./class.mdx#setlogconfig-zegoexpresssdk) | Set log configuration.
 [setLogConfig](./class.mdx#setlogconfig-zegoexpresssdk) | Set log configuration.
 [setLocalProxyConfig](./class.mdx#setlocalproxyconfig-zegoexpresssdk) | Set local proxy config.
 [setCloudProxyConfig](./class.mdx#setcloudproxyconfig-zegoexpresssdk) | Set cloud proxy config.
 [setLicense](./class.mdx#setlicense-zegoexpresssdk) | Set license auth.
 [setRoomMode](./class.mdx#setroommode-zegoexpresssdk) | Set room mode.
 [setGeoFence](./class.mdx#setgeofence-zegoexpresssdk) | Set Geo Fence.
+[getVersion](./class.mdx#getversion-zegoexpresssdk) | Gets the SDK's version number.
 [getVersion](./class.mdx#getversion-zegoexpresssdk) | Gets the SDK's version number.
 [setAndroidEnv](./class.mdx#setandroidenv-zegoexpresssdk) | Sets the JVM and Context for the Android platform.
 [setOhosEnv](./class.mdx#setohosenv-zegoexpresssdk) | Config the Environment for the OpenHarmony platform.
@@ -147,6 +152,7 @@ The following is a brief introduction to the basic API.
 [enableVideoObjectSegmentation](./class.mdx#enablevideoobjectsegmentation1-izegoexpressengine) | Enable video object segmentation.
 [enableAlphaChannelVideoEncoder](./class.mdx#enablealphachannelvideoencoder-izegoexpressengine) | Enable video encoder alpha channel support.
 [enableVideoEncoderEnhancement](./class.mdx#enablevideoencoderenhancement-izegoexpressengine) | Enable video encoder enhancement.
+[enableVideoEncoderEnhancementWithConfig](./class.mdx#enablevideoencoderenhancementwithconfig-izegoexpressengine) | Enable video encoder enhancement.
 [enableAuxBgmBalance](./class.mdx#enableauxbgmbalance-izegoexpressengine) | Turn on or off the adaptive mode to adjust the volume of the human voice according to the volume of the BGM.
 [onPublisherStateUpdate](./class.mdx#onpublisherstateupdate-izegoeventhandler) | The callback triggered when the state of stream publishing changes.
 [onPublisherQualityUpdate](./class.mdx#onpublisherqualityupdate-izegoeventhandler) | Callback for current stream publishing quality.
@@ -650,7 +656,7 @@ The following is a brief introduction to the basic API.
 
  | Method | Description | 
  | --- | --- | 
- | [createEngine](./class.mdx#createenginescrap_0-zegoexpresssdk) | [Deprecated] Create ZegoExpressEngine singleton object and initialize SDK. Deprecated since 2.14.0, please use the method with the same name without [isTestEnv] parameter instead. Please refer to [Testing environment deprecation](https://docs.zegocloud.com/article/13315) for more details.
+ | [createEngine](./class.mdx#createenginescrap_0-zegoexpresssdk) | [Deprecated] Create ZegoExpressEngine singleton object and initialize SDK. Deprecated since 2.14.0, please use the method with the same name without [isTestEnv] parameter instead. Please refer to [Testing environment deprecation](/real-time-voice-android/introduction/abandon-test-environment) for more details.
 [requestSong](./class.mdx#requestsong-izegocopyrightedmusic) | [Deprecated] Request a song. Deprecated since 3.0.2, please use the [requestResource] function instead.
 [requestAccompaniment](./class.mdx#requestaccompaniment-izegocopyrightedmusic) | [Deprecated] Request accompaniment. Deprecated since 3.0.2, please use the [requestResource] function instead.
 [requestAccompanimentClip](./class.mdx#requestaccompanimentclip-izegocopyrightedmusic) | [Deprecated] Request accompaniment clip. Deprecated since 3.0.2, please use the [requestResource] function instead.
