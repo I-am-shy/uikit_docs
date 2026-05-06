@@ -1,12 +1,73 @@
 ---
 articleID: 12542
-date: '2026-03-12'
+date: '2026-05-06'
 ---
 
 
 # Release Notes
 
 - - -
+
+## 3.24.0 Version
+
+**Release date: 2026-05-06**
+
+**New Features**
+
+1. Support custom encryption for audio and video streams
+
+    The SDK exposes custom encryption and decryption capabilities for audio and video transmission data, allowing businesses to perform pre-encryption on raw audio and video data.
+    <Warning title="Note">
+    This feature requires a special build. Please contact ZEGOCLOUD Technical Support if you need to use it.
+    </Warning>
+
+    For related APIs, see: [IZegoCustomMediaCrypto](@-IZegoCustomMediaCrypto), [setCustomMediaCryptoFactory](@setCustomMediaCryptoFactory)
+
+2. New APP package name verification
+
+    Supports configuring an allowlist of valid Android app package names. The SDK automatically verifies the current app package name during login. If the device package name is not in the allowlist, login will be rejected.
+    <Warning title="Note">
+    Please contact ZEGOCLOUD Technical Support if you need to use this feature.
+    </Warning>
+
+**Improvements**
+
+1. Local device exception notification callback supports monitoring exception recovery
+
+    A new exception type for device recovery from an abnormal state has been added. When the local audio or video device function recovers from another abnormal state, the local device exception notification callback is triggered.
+    <Warning title="Note">
+    Please contact ZEGOCLOUD Technical Support to configure this exception type for monitoring.
+    </Warning>
+
+    For related APIs, see: [onLocalDeviceExceptionOccurred](@onLocalDeviceExceptionOccurred)
+
+2. Local device exception notification callback supports monitoring low capture volume
+
+    A new exception type for low capture volume has been added. You can set volume thresholds and custom detection periods for flexible identification and low volume alerts.
+
+    For related APIs, see: [onLocalDeviceExceptionOccurred](@onLocalDeviceExceptionOccurred)
+
+3. Optimized face detection callback latency
+
+    Improved face detection compatibility on low-end Android devices. Supports custom callback delay modes, significantly reducing response latency. A new error code 1003082 has been added to the face detection callback for devices that do not support face detection.
+
+    For related APIs, see: [onPublisherFaceDetectInfo](@onPublisherFaceDetectInfo)
+
+4. Optimized memory usage when the media player loads preloaded resources
+
+    For related APIs, see: [loadResourceFromMediaData](@loadResourceFromMediaData)
+
+5. Improved AGC adjustment effectiveness in singing scenarios
+
+**Bug Fixes**
+
+1. Fixed an issue where the SDK might crash during deinitialization if the decoder did not stop in time
+
+2. Fixed an issue where the local proxy could not connect to the RTC service
+
+3. Fixed an issue where the cloud proxy could not connect to the RTC service on 32-bit systems
+
+---
 
 ## 3.23.2 Version
 
