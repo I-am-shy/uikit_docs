@@ -1,6 +1,5 @@
 ---
 docType: API
-date: "2026-04-09"
 ---
 
 # Interface
@@ -332,8 +331,8 @@ date: "2026-04-09"
 | 名称 | 类型 | 描述 |
 | --- | --- | --- |
 | errorCode | int | 错误码，详情请参考 [常见错误码](https://doc-zh.zego.im/real-time-video-android-java/client-sdk/error-code) |
-| command | std::string | 请求命令，具体支持的命令详见 [/online-ktv-android/client-api/send-extended-request](/online-ktv-android/client-api/send-extended-request) |
-| result | std::string | 请求结果，每个请求命令具备对应的请求结果，详细见 [/online-ktv-android/client-api/send-extended-request](/online-ktv-android/client-api/send-extended-request) |
+| command | std::string | 请求命令，具体支持的命令详见 [https://doc-zh.zego.im/online-ktv-android/client-api/send-extended-request](https://doc-zh.zego.im/online-ktv-android/client-api/send-extended-request) |
+| result | std::string | 请求结果，每个请求命令具备对应的请求结果，详细见 [https://doc-zh.zego.im/online-ktv-android/client-api/send-extended-request](https://doc-zh.zego.im/online-ktv-android/client-api/send-extended-request) |
 </ParamField>
 <ParamField
   name="ZegoCopyrightedMusicGetLrcLyricCallback"
@@ -345,7 +344,7 @@ date: "2026-04-09"
 | 名称 | 类型 | 描述 |
 | --- | --- | --- |
 | errorCode | int | 错误码，详情请参考 [常见错误码](https://doc-zh.zego.im/real-time-video-android-java/client-sdk/error-code) |
-| lyrics | std::string | lrc 格式歌词，专用于逐行格式歌词场景，详情请参考 [/online-ktv-ios/client-api/apis-to-obtain-songs-and-lyrics#get-line-by-line-lyrics](/online-ktv-ios/client-api/apis-to-obtain-songs-and-lyrics#get-line-by-line-lyrics) |
+| lyrics | std::string | lrc 格式歌词，专用于逐行格式歌词场景，详情请参考 [https://doc-zh.zego.im/online-ktv-ios/client-api/apis-to-obtain-songs-and-lyrics#2_1](https://doc-zh.zego.im/online-ktv-ios/client-api/apis-to-obtain-songs-and-lyrics#2_1) |
 </ParamField>
 <ParamField
   name="ZegoCopyrightedMusicGetKrcLyricByTokenCallback"
@@ -357,7 +356,7 @@ date: "2026-04-09"
 | 名称 | 类型 | 描述 |
 | --- | --- | --- |
 | errorCode | int | 错误码，详情请参考 [常见错误码](https://doc-zh.zego.im/real-time-video-android-java/client-sdk/error-code) |
-| lyrics | std::string | 逐字歌词，详情请参考 [/online-ktv-ios/client-api/apis-to-obtain-songs-and-lyrics#get-word-by-word-lyrics](/online-ktv-ios/client-api/apis-to-obtain-songs-and-lyrics#get-word-by-word-lyrics) |
+| lyrics | std::string | 逐字歌词，详情请参考 [https://doc-zh.zego.im/online-ktv-ios/client-api/apis-to-obtain-songs-and-lyrics#2_2](https://doc-zh.zego.im/online-ktv-ios/client-api/apis-to-obtain-songs-and-lyrics#2_2) |
 </ParamField>
 <ParamField
   name="ZegoCopyrightedMusicRequestSongCallback"
@@ -369,7 +368,7 @@ date: "2026-04-09"
 | 名称 | 类型 | 描述 |
 | --- | --- | --- |
 | errorCode | int | 错误码，详情请参考 [常见错误码](https://doc-zh.zego.im/real-time-video-android-java/client-sdk/error-code) |
-| resource | std::string | 点歌服务返回的 JSON 字符串，包含歌曲资源信息，详细请参考 [/online-ktv-ios/client-api/apis-to-obtain-songs-and-lyrics#get-song-resource-with-vocal](/online-ktv-ios/client-api/apis-to-obtain-songs-and-lyrics#get-song-resource-with-vocal) |
+| resource | std::string | 点歌服务返回的 JSON 字符串，包含歌曲资源信息，详细请参考 [https://doc-zh.zego.im/online-ktv-ios/client-api/apis-to-obtain-songs-and-lyrics#1_1](https://doc-zh.zego.im/online-ktv-ios/client-api/apis-to-obtain-songs-and-lyrics#1_1) |
 </ParamField>
 <ParamField
   name="ZegoCopyrightedMusicRequestAccompanimentCallback"
@@ -381,7 +380,7 @@ date: "2026-04-09"
 | 名称 | 类型 | 描述 |
 | --- | --- | --- |
 | errorCode | int | 错误码，详情请参考 [常见错误码](https://doc-zh.zego.im/real-time-video-android-java/client-sdk/error-code) |
-| resource | std::string | 伴奏资源信息，详情请参考 [/online-ktv-ios/client-api/apis-to-obtain-songs-and-lyrics#get-song-accompaniment-resource](/online-ktv-ios/client-api/apis-to-obtain-songs-and-lyrics#get-song-accompaniment-resource) |
+| resource | std::string | 伴奏资源信息，详情请参考 [https://doc-zh.zego.im/online-ktv-ios/client-api/apis-to-obtain-songs-and-lyrics#1_2](https://doc-zh.zego.im/online-ktv-ios/client-api/apis-to-obtain-songs-and-lyrics#1_2) |
 </ParamField>
 <ParamField
   name="ZegoCopyrightedMusicRequestAccompanimentClipCallback"
@@ -393,7 +392,7 @@ date: "2026-04-09"
 | 名称 | 类型 | 描述 |
 | --- | --- | --- |
 | errorCode | int | 错误码，详情请参考 [常见错误码](https://doc-zh.zego.im/real-time-video-android-java/client-sdk/error-code) |
-| resource | std::string | 伴奏长分片高潮片段资源信息，详情请参考 [/online-ktv-ios/client-api/apis-to-obtain-songs-and-lyrics#get-long-clip-chorus-resource](/online-ktv-ios/client-api/apis-to-obtain-songs-and-lyrics#get-long-clip-chorus-resource) |
+| resource | std::string | 伴奏长分片高潮片段资源信息，详情请参考 [https://doc-zh.zego.im/online-ktv-ios/client-api/apis-to-obtain-songs-and-lyrics#1_3](https://doc-zh.zego.im/online-ktv-ios/client-api/apis-to-obtain-songs-and-lyrics#1_3) |
 </ParamField>
 <ParamField
   name="ZegoCopyrightedMusicGetMusicByTokenCallback"
@@ -405,7 +404,7 @@ date: "2026-04-09"
 | 名称 | 类型 | 描述 |
 | --- | --- | --- |
 | errorCode | int | 错误码，详情请参考 [常见错误码](https://doc-zh.zego.im/real-time-video-android-java/client-sdk/error-code) |
-| resource | std::string | 歌曲、伴奏或高潮片段资源信息，详情请参考 [/online-ktv-ios/client-api/apis-to-obtain-songs-and-lyrics#get-short-clip-chorus-resource](/online-ktv-ios/client-api/apis-to-obtain-songs-and-lyrics#get-short-clip-chorus-resource) |
+| resource | std::string | 歌曲、伴奏或高潮片段资源信息，详情请参考 [https://doc-zh.zego.im/online-ktv-ios/client-api/apis-to-obtain-songs-and-lyrics#1_4](https://doc-zh.zego.im/online-ktv-ios/client-api/apis-to-obtain-songs-and-lyrics#1_4) |
 </ParamField>
 <ParamField
   name="ZegoCopyrightedMusicRequestResourceCallback"
@@ -417,7 +416,7 @@ date: "2026-04-09"
 | 名称 | 类型 | 描述 |
 | --- | --- | --- |
 | errorCode | int | 错误码，详情请参考 [常见错误码](https://doc-zh.zego.im/real-time-video-android-java/client-sdk/error-code) |
-| resource | std::string | 点歌服务返回的 JSON 字符串，包含歌曲资源信息，详细请参考 [/online-ktv-ios/client-api/apis-to-obtain-songs-and-lyrics#get-song-resource-with-vocal](/online-ktv-ios/client-api/apis-to-obtain-songs-and-lyrics#get-song-resource-with-vocal) |
+| resource | std::string | 点歌服务返回的 JSON 字符串，包含歌曲资源信息，详细请参考 [https://doc-zh.zego.im/online-ktv-ios/client-api/apis-to-obtain-songs-and-lyrics#1_1](https://doc-zh.zego.im/online-ktv-ios/client-api/apis-to-obtain-songs-and-lyrics#1_1) |
 </ParamField>
 <ParamField
   name="ZegoCopyrightedMusicGetSharedResourceCallback"
@@ -429,7 +428,7 @@ date: "2026-04-09"
 | 名称 | 类型 | 描述 |
 | --- | --- | --- |
 | errorCode | int | 错误码，详情请参考 [常见错误码](https://doc-zh.zego.im/real-time-video-android-java/client-sdk/error-code) |
-| resource | std::string | 点歌服务返回的 JSON 字符串，包含歌曲资源信息，详细请参考 [/online-ktv-ios/client-api/apis-to-obtain-songs-and-lyrics#get-short-clip-chorus-resource](/online-ktv-ios/client-api/apis-to-obtain-songs-and-lyrics#get-short-clip-chorus-resource) |
+| resource | std::string | 点歌服务返回的 JSON 字符串，包含歌曲资源信息，详细请参考 [https://doc-zh.zego.im/online-ktv-ios/client-api/apis-to-obtain-songs-and-lyrics#1_4](https://doc-zh.zego.im/online-ktv-ios/client-api/apis-to-obtain-songs-and-lyrics#1_4) |
 </ParamField>
 <ParamField
   name="ZegoCopyrightedMusicDownloadCallback"
@@ -452,7 +451,7 @@ date: "2026-04-09"
 | 名称 | 类型 | 描述 |
 | --- | --- | --- |
 | errorCode | int | 错误码，详情请参考 [常见错误码](https://doc-zh.zego.im/real-time-video-android-java/client-sdk/error-code) |
-| pitch | std::string | 标准音高线数据。详情请参考 Android：/online-ktv-android/zego-content-center/scoring-component, iOS：/online-ktv-ios/zego-content-center/scoring-component |
+| pitch | std::string | 标准音高线数据。详情请参考 Android：https://doc-zh.zego.im/online-ktv-android/zego-content-center/scoring-component, iOS：https://doc-zh.zego.im/online-ktv-ios/zego-content-center/scoring-component |
 </ParamField>
 <ParamField
   name="ZegoRangeSceneLoginSceneCallback"

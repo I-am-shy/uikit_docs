@@ -1,6 +1,5 @@
 ---
 docType: API
-date: "2026-04-20"
 ---
 
 # Class
@@ -550,7 +549,7 @@ The callback notification that the room Token authentication is about to expire,
 <Note title="">
 - **Use cases**: In order to prevent illegal entry into the room, it is necessary to perform authentication control on login room, push streaming, etc., to improve security.
 - **When to call /Trigger**: 30 seconds before the Token expires, the SDK will call [onRoomTokenWillExpire] to notify developer.
-- **Caution**: The token contains important information such as the user's room permissions, publish stream permissions, and effective time, please refer to [https://www.zegocloud.com/docs/real-time-video-android-java/communication/using-token-authentication](https://www.zegocloud.com/docs/real-time-video-android-java/communication/using-token-authentication)
+- **Caution**: The token contains important information such as the user's room permissions, publish stream permissions, and effective time, please refer to [https://www.zegocloud.com/docs/real-time-video-ios-oc/communication/using-token-authentication](https://www.zegocloud.com/docs/real-time-video-ios-oc/communication/using-token-authentication) .
 - **Related APIs**: When the developer receives this callback, he can use [renewToken] to update the token authentication information.
 </Note>
 
@@ -3385,7 +3384,7 @@ Get lyrics in lrc format, support parsing lyrics line by line.
 
 | Name | Type | Description |
 | --- | --- | --- |
-| krcToken | string | The krcToken obtained when calling [requestResource] for accompaniment or climax clips, or when obtaining shared resources through the [getSharedResource] interface. For more details, please refer to [/online-ktv-ios/client-api/apis-to-obtain-songs-and-lyrics#2_2](/online-ktv-ios/client-api/apis-to-obtain-songs-and-lyrics#2_2) |
+| krcToken | string | The krcToken obtained when calling [requestResource] for accompaniment or climax clips, or when obtaining shared resources through the [getSharedResource] interface. For more details, please refer to [https://doc-zh.zego.im/online-ktv-ios/client-api/apis-to-obtain-songs-and-lyrics#2_2](https://doc-zh.zego.im/online-ktv-ios/client-api/apis-to-obtain-songs-and-lyrics#2_2) |
 | callback | [OnCopyrightedMusicGetKrcLyricByTokenCallback](./interface#oncopyrightedmusicgetkrclyricbytokencallback) | get lyrics result. |
 
 **Details**
@@ -4502,7 +4501,7 @@ By default, SDK creates and prints log files in the App's default directory. Eac
 <ParamField
   name="CreateEngine"
   prototype="public static  [ZegoExpressEngine](#zegoexpressengine) CreateEngine(uint appID,string appSign,bool isTestEnv,[ZegoScenario](./enum#zegoscenario) scenario)"
-  desc="[Deprecated] Create ZegoExpressEngine singleton object and initialize SDK. Deprecated since 2.14.0, please use the method with the same name without [isTestEnv] parameter instead. Please refer to [Testing environment deprecation](https://docs.zegocloud.com/article/13315) for more details."
+  desc="[Deprecated] Create ZegoExpressEngine singleton object and initialize SDK. Deprecated since 2.14.0, please use the method with the same name without [isTestEnv] parameter instead. Please refer to [Testing environment deprecation](/real-time-voice-android/introduction/abandon-test-environment) for more details."
   prefixes={["static"]}
   suffixes={["deprecated"]}
   parent_file="Declared in \`ZegoExpressEngine.cs\`"
@@ -4515,8 +4514,8 @@ By default, SDK creates and prints log files in the App's default directory. Eac
 | --- | --- | --- |
 | appID | uint | Application ID issued by ZEGO for developers, please apply from the ZEGO Admin Console [https://console.zegocloud.com](https://console.zegocloud.com) The value ranges from 0 to 4294967295. |
 | appSign | string | Application signature for each AppID, please apply from the ZEGO Admin Console. Application signature is a 64 character string. Each character has a range of '0' ~ '9', 'a' ~ 'z'. AppSign 2.17.0 and later allows null or no transmission. If the token is passed empty or not passed, the token must be entered in the [ZegoRoomConfig] parameter for authentication when the [loginRoom] interface is called to login to the room. |
-| isTestEnv | bool | [Deprecated] For providing better and more standardized services, starting from 2021-11-16, ZEGO no longer classifies environments into production environments and testing environments. f you create your project in ZEGO Admin Console on/before 2021-11-16, refer to [Testing environment deprecation](https://docs.zegocloud.com/article/13315) to upgrade the SDK and adjust related codes. |
-| scenario | [ZegoScenario](./enum#zegoscenario) | The room scenario. the SDK will optimize the audio and video configuration for the specified scenario to achieve the best effect in this scenario. After specifying the scenario, you can call other APIs to adjusting the audio and video configuration. Differences between scenarios and how to choose a suitable scenario, please refer to [https://www.zegocloud.com/docs/real-time-video-ios-swift/introduction/overview](https://www.zegocloud.com/docs/real-time-video-ios-swift/introduction/overview) |
+| isTestEnv | bool | [Deprecated] For providing better and more standardized services, starting from 2021-11-16, ZEGO no longer classifies environments into production environments and testing environments. f you create your project in ZEGO Admin Console on/before 2021-11-16, refer to [Testing environment deprecation](/real-time-voice-android/introduction/abandon-test-environment) to upgrade the SDK and adjust related codes. |
+| scenario | [ZegoScenario](./enum#zegoscenario) | The room scenario. the SDK will optimize the audio and video configuration for the specified scenario to achieve the best effect in this scenario. After specifying the scenario, you can call other APIs to adjusting the audio and video configuration. Differences between scenarios and how to choose a suitable scenario, please refer to [https://www.zegocloud.com/docs/real-time-video-ios-oc/quick-start/scenario-based-audio-video-configuration](https://www.zegocloud.com/docs/real-time-video-ios-oc/quick-start/scenario-based-audio-video-configuration) |
 
 **Details**
 
@@ -4878,7 +4877,7 @@ After the developer receives [onRoomTokenWillExpire], they can use this API to u
 <Note title="">
 - **Use cases**: Used when the token is about to expire.
 - **When to call /Trigger**: After the developer receives [onRoomTokenWillExpire].
-- **Caution**: The token contains important information such as the user's room permissions, publish stream permissions, and effective time, please refer to [https://www.zegocloud.com/docs/real-time-video-android-java/communication/using-token-authentication](https://www.zegocloud.com/docs/real-time-video-android-java/communication/using-token-authentication)
+- **Caution**: The token contains important information such as the user's room permissions, publish stream permissions, and effective time, please refer to [https://www.zegocloud.com/docs/real-time-video-android-java/communication/using-token-authentication](https://www.zegocloud.com/docs/real-time-video-android-java/communication/using-token-authentication) .
 - **Related callbacks**: None.
 - **Related APIs**: None.
 </Note>
@@ -7108,7 +7107,7 @@ Only for Windows / macOS / Linux. Not available for WebGL.
 Select audio equipment mode according to the need of the scene (only supported by Android and iOS).
 
 <Note title="">
-- **Use cases**: In the case of KTV, the General mode must be used, but in the language room, the Communication2 or Communication3 mode is required in order to avoid the sound of third-party music being collected. For details on how to set the audio device mode, see https://doc-zh.zego.im/faq/audio-device-mode-setting
+- **Use cases**: In the case of KTV, the General mode must be used, but in the language room, the Communication2 or Communication3 mode is required in order to avoid the sound of third-party music being collected. For details on how to set the audio device mode, see [https://doc-zh.zego.im/faq/audio-device-mode-setting](https://doc-zh.zego.im/faq/audio-device-mode-setting)
 - **When to call**: After creating the engine [createEngine].
 - **Caution**: This interface triggers startup switchover of the device. You are advised not to invoke this interface frequently to avoid unnecessary overhead and hardware problems. This interface may cause the volume mode to switch between call and media. If the media volume is inconsistent with the call volume, the volume may change.
 </Note>
@@ -7851,7 +7850,7 @@ Enable the Effects beauty environment. The SDK uses the specified video frame da
 - **Default value**: When this function is not called, the beauty environment is not activated by default.
 - **When to call**: Must be called before calling [startPreview], [startPublishingStream]. If you need to modify the configuration, please call [logoutRoom] to log out of the room first, otherwise it will not take effect.
 - **Related APIs**: [enableEffectsBeauty] switch beauty, [setEffectsBeautyParam] set beauty parameters.
-- **Caution**: This beauty function is the basic function. If it does not meet the expectations of the developer, you can use the custom video pre-processing function [enableCustomVideoProcessing] or the custom video capture function [enableCustomVideoCapture] docking and constructing the AI ​​Effects SDK [ZegoEffects] [/ai-effects-android-java/overview](/ai-effects-android-java/overview) for best results.
+- **Caution**: This beauty function is the basic function. If it does not meet the expectations of the developer, you can use the custom video pre-processing function [enableCustomVideoProcessing] or the custom video capture function [enableCustomVideoCapture] docking and constructing the AI ​​Effects SDK [ZegoEffects] [https://doc-zh.zego.im/ai-effects-android-java/overview/overview](https://doc-zh.zego.im/ai-effects-android-java/overview/overview) for best results.
 </Note>
 
 <Warning title="">
@@ -8598,7 +8597,7 @@ Stop dumping data.
 <Note title="">
 - **Use cases**: This is a debugging tool. When there is a problem with audio capturing, 3A processing, or other environment processing during publish, you can dump the audio data and upload it to the ZEGO server for further analysis.
 - **When to call**: It needs to be called after [startDumpData].
-- **Caution**: It will trigger the [onUploadDumpData] callback.
+- **Caution**: It will trigger the [onStopDumpData] callback.
 </Note>
 
 <Warning title="">
@@ -8818,7 +8817,7 @@ When the custom video pre-processing is turned on, the [CVPixelBuffer] format vi
 <Note title="">
 - **Use cases**: After the developer collects the video data by himself or obtains the video data collected by the SDK, if the basic beauty and watermark functions of the SDK cannot meet the needs of the developer (for example, the beauty effect cannot meet the expectations), the ZegoEffects SDK can be used to perform the video Some special processing, such as beautifying, adding pendants, etc., this process is the pre-processing of custom video.
 - **When to call**: Must be called in the [onCapturedUnprocessedCVPixelbuffer] callback.
-- **Platform differences**: Only valid on Windows platform.
+- **Platform differences**: Only valid on iOS/macOS platform.
 </Note>
 
 <Warning title="">

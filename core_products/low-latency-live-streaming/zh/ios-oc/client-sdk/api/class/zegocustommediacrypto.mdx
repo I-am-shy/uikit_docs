@@ -1,0 +1,168 @@
+---
+docType: API
+---
+
+# ZegoCustomMediaCrypto
+
+## ZegoCustomMediaCrypto
+
+*Declared in `ZegoExpressEventHandler.h`*
+
+### 方法
+<ParamField
+  name="getEncryptDstLen:"
+  prototype="- (int)getEncryptDstLen:(int) srcLen;"
+  desc="获取加密后目标长度。"
+  parent_file="Declared in \`ZegoExpressEventHandler.h\`"
+  parent_name="ZegoCustomMediaCrypto"
+  parent_type="class">
+**参数**
+
+| 名称 | 类型 | 描述 |
+| --- | --- | --- |
+| srcLen | int | 源长度。 |
+
+**详情**
+
+获取加密后目标长度。
+
+<Note title="">
+- **通知时机**：每一个包加密都会触发。
+</Note>
+
+<Warning title="">
+- **支持版本**：3.24.0 及以上。
+</Warning>
+
+**返回值**
+
+目标长度。
+</ParamField>
+<ParamField
+  name="onAudioEncryptCallback:inBufferSize:outBuffer:outBufferSize:"
+  prototype="- (int)onAudioEncryptCallback:(const unsigned char *) inBuffer inBufferSize:(int) inBufferSize outBuffer:(unsigned char *) outBuffer outBufferSize:(int) outBufferSize;"
+  desc="音频加密回调。"
+  parent_file="Declared in \`ZegoExpressEventHandler.h\`"
+  parent_name="ZegoCustomMediaCrypto"
+  parent_type="class">
+**参数**
+
+| 名称 | 类型 | 描述 |
+| --- | --- | --- |
+| inBuffer | const unsigned char * | 输入数据。 |
+| inBufferSize | int | 输入数据的长度。 |
+| outBuffer | unsigned char * | 输出数据。 |
+| outBufferSize | int | 输出数据的长度。 |
+
+**详情**
+
+音频加密回调。
+
+<Note title="">
+- **通知时机**：每个音频包加密。
+</Note>
+
+<Warning title="">
+- **支持版本**：3.24.0 及以上。
+</Warning>
+
+**返回值**
+
+成功返回0，失败返回非0。
+</ParamField>
+<ParamField
+  name="onVideoEncryptCallback:inBufferSize:outBuffer:outBufferSize:"
+  prototype="- (int)onVideoEncryptCallback:(const unsigned char *) inBuffer inBufferSize:(int) inBufferSize outBuffer:(unsigned char *) outBuffer outBufferSize:(int) outBufferSize;"
+  desc="视频加密回调"
+  parent_file="Declared in \`ZegoExpressEventHandler.h\`"
+  parent_name="ZegoCustomMediaCrypto"
+  parent_type="class">
+**参数**
+
+| 名称 | 类型 | 描述 |
+| --- | --- | --- |
+| inBuffer | const unsigned char * | 输入数据。 |
+| inBufferSize | int | 输入数据的长度。 |
+| outBuffer | unsigned char * | 输出数据。 |
+| outBufferSize | int | 输出数据的长度。 |
+
+**详情**
+
+视频加密回调。
+
+<Note title="">
+- **通知时机**：每个视频包加密。
+</Note>
+
+<Warning title="">
+- **支持版本**：3.24.0 及以上。
+</Warning>
+
+**返回值**
+
+成功返回0，失败返回非0。
+</ParamField>
+<ParamField
+  name="onAudioDecryptCallback:inBufferSize:outBuffer:outBufferSize:"
+  prototype="- (int)onAudioDecryptCallback:(const unsigned char *) inBuffer inBufferSize:(int) inBufferSize outBuffer:(unsigned char *) outBuffer outBufferSize:(int) outBufferSize;"
+  desc="视频加密回调"
+  parent_file="Declared in \`ZegoExpressEventHandler.h\`"
+  parent_name="ZegoCustomMediaCrypto"
+  parent_type="class">
+**参数**
+
+| 名称 | 类型 | 描述 |
+| --- | --- | --- |
+| inBuffer | const unsigned char * | 输入数据。 |
+| inBufferSize | int | 输入数据的长度。 |
+| outBuffer | unsigned char * | 输出数据。 |
+| outBufferSize | int | 输出数据的长度。 |
+
+**详情**
+
+视频加密回调。
+
+<Note title="">
+- **通知时机**：每个音频包解密。
+</Note>
+
+<Warning title="">
+- **支持版本**：3.24.0 及以上。
+</Warning>
+
+**返回值**
+
+成功返回0，失败返回非0。
+</ParamField>
+<ParamField
+  name="onVideoDecryptCallback:inBufferSize:outBuffer:outBufferSize:"
+  prototype="- (int)onVideoDecryptCallback:(const unsigned char *) inBuffer inBufferSize:(int) inBufferSize outBuffer:(unsigned char *) outBuffer outBufferSize:(int) outBufferSize;"
+  desc="视频解密回调"
+  parent_file="Declared in \`ZegoExpressEventHandler.h\`"
+  parent_name="ZegoCustomMediaCrypto"
+  parent_type="class">
+**参数**
+
+| 名称 | 类型 | 描述 |
+| --- | --- | --- |
+| inBuffer | const unsigned char * | 输入数据。 |
+| inBufferSize | int | 输入数据的长度。 |
+| outBuffer | unsigned char * | 输出数据。 |
+| outBufferSize | int | 输出数据的长度。 |
+
+**详情**
+
+视频解密回调。
+
+<Note title="">
+- **通知时机**：每个视频包解密。
+</Note>
+
+<Warning title="">
+- **支持版本**：3.24.0 及以上。
+</Warning>
+
+**返回值**
+
+成功返回0，失败返回非0。
+</ParamField>
