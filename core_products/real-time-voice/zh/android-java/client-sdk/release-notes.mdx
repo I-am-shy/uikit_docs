@@ -8,6 +8,52 @@ date: '2026-03-30'
 
 - - -
 
+## 3.24.0 版本
+
+**发布日期：2026-05-06**
+
+**新增功能**
+
+1. 支持音视频流自定义加密
+
+    SDK 开放音视频传输数据自定义加解密能力，支持业务自主对原始音视频数据进行前置加密处理。
+    <Warning title="注意">
+    此功能需要特殊编包，如需使用请联系 ZEGO 技术支持。
+    </Warning>
+
+    相关 API 请参考： [IZegoCustomMediaCrypto](@-IZegoCustomMediaCrypto)、 [setCustomMediaCryptoFactory](@setCustomMediaCryptoFactory)
+
+2. 新增 APP 包名校验能力
+
+    支持配置 Android 应用合法包名白名单，SDK 在登录环节会自动校验当前应用包名。若设备包名不在白名单范围内将直接拒绝登录。
+    <Warning title="注意">
+    如需使用此功能，请联系 ZEGO 技术支持。
+    </Warning>
+
+**改进优化**
+
+1. 本地设备异常通知回调支持监听设备从异常状态恢复的异常类型
+
+    新增设备从异常状态恢复的异常类型，当本地音频或视频设备功能从其他的异常状态恢复正常时会触发本地设备异常通知回调。
+    <Warning title="注意">
+    如需监听此异常类型，请联系 ZEGO 技术支持进行配置。
+    </Warning>
+
+    相关 API 请参考： [onLocalDeviceExceptionOccurred](@onLocalDeviceExceptionOccurred)
+
+2. 本地设备异常通知回调支持监听采集音量过低的异常类型
+
+    新增采集音量过低的异常类型，支持设置音量阈值和自定义检测周期，便于业务灵活识别并做出低音量提示。
+
+    相关 API 请参考： [onLocalDeviceExceptionOccurred](@onLocalDeviceExceptionOccurred)
+
+3. 提升唱歌场景下 AGC 调整的效果
+
+**问题修复**
+
+1. 修复开启本地代理连接不上 RTC 服务的问题
+
+---
 ## 3.23.0 版本
 
 **发布日期：2025-12-19**
