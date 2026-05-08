@@ -947,6 +947,13 @@ conversationName,与会话对应的 groupName/userName 值相同。
 - **默认值**：会话被取消置顶或从未被置顶的情况下，该值为 0。
 </Note>
 </ParamField>
+<ParamField
+  name="readMessageSeq"
+  prototype="public long readMessageSeq"
+  parent_name="ZIMConversation"
+  parent_type="class">
+会话已读到的消息序号。
+</ParamField>
 
 ## ZIMConversationChangeInfo
 
@@ -1827,6 +1834,13 @@ conversationName,与会话对应的 groupName/userName 值相同。
 - **业务场景**：可用于将被置顶会话按照置顶时间排序。
 - **默认值**：会话被取消置顶或从未被置顶的情况下，该值为 0。
 </Note>
+</ParamField>
+<ParamField
+  name="readMessageSeq"
+  prototype="public long readMessageSeq"
+  parent_name="ZIMGroupConversation"
+  parent_type="class">
+会话已读到的消息序号。
 </ParamField>
 
 ## ZIMGroupInviteApplicationAcceptConfig
