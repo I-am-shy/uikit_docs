@@ -183,6 +183,7 @@ paths:
                             "ClassPath": "其他",
                             "CoverUrl": "",
                             "Type": "mp4",
+                            "IntranetMediaUrl": "http://6ccdc2cdvodcq1500030200-10022853.cos.ap-chongqing.myqcloud.com/6ccdc2cdvodcq1500030200/9f4b53275145403724864089390/f0.mp4",
                             "MediaUrl": "http://push.url/6cbbc436vodcq1500020831/03c1ada53270835011057780896/9e505713fb216f0b0232064f.mp4",
                             "SourceInfo": {
                               "SourceType": "VideoProcessing",
@@ -446,9 +447,13 @@ components:
                             type: string
                             description: 媒体文件的封装格式，例如 mp4、flv 等。
                             example: "mp4"
+                          IntranetMediaUrl: 
+                            type: string
+                            description: 腾讯云的内网 URL 地址，有效期 2 小时。
+                            example: "http://6ccdc2cdvodcq1500030200-10022853.cos.ap-chongqing.myqcloud.com/6ccdc2cdvodcq1500030200/9f4b53275145403724864089390/f0.mp4"
                           MediaUrl:
                             type: string
-                            description: 原始媒体文件的 URL 地址。
+                            description: 原始媒体文件的内网 URL 地址。
                             example: "http://push.url/6cbbc436vodcq1500020831/03c1ada53270835011057780896/9e505713fb216f0b0232064f.mp4"
                           SourceInfo:
                             type: object
