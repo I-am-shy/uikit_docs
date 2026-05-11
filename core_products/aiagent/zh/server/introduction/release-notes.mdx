@@ -17,7 +17,7 @@ date: "2026-04-07"
 | 功能项 | 功能描述 | 相关文档 |
 | --- | --- | --- |
 | 新增多家 ASR 厂商和模型 | 新增火山大模型 ASR、阿里云百炼千问 ASR、阿里云百炼 Fun-ASR。可以通过 ASR Vendor 支持 Tencent、AliyunParaformer、AliyunGummy、ByteDance 等厂商配置。适用于中文方言识别、多语种识别场景。具体包括：<ul><li>腾讯 ASR：大模型版本，包括中英粤+9种方言大模型引擎【大模型版】、普方英大模型引擎【大模型版】等。详情查看[腾讯云-实时语音识别](https://cloud.tencent.com/document/product/1093/48982)。</li><li>阿里云百炼 Fun-ASR 系列模型：主要支持中文及方言。详情查看[实时语音识别-Fun-ASR/Gummy/Paraformer](https://help.aliyun.com/zh/model-studio/real-time-speech-recognition)。</li><li>阿里云百炼千问系列模型：主要适用于中文、英文等多种语言。详情查看[实时语音识别-千问](https://help.aliyun.com/zh/model-studio/qwen-real-time-speech-recognition)。</li><li>火山大模型流式语音识别模型：适用于中英等语种场景。详情查看[火山语音识别大模型](https://www.volcengine.com/docs/6561/1354871)。</li></ul> | [配置 ASR](/aiagent-server/guides/configuring-asr) |
-| 新增新加坡节点 | 新增新加坡集群，默认配置新加坡节点 ASR、LLM、TTS、数字人 等服务。适用于海外客户降低延迟、多区域部署、隐私合规相关需求场景。**注意：新加坡节点开通及定价请联系ZEGO商务。** | - |
+| 新增新加坡节点 | 新增新加坡集群，默认配置新加坡节点 ASR、LLM、TTS、数字人 等服务。适用于海外客户降低延迟、多区域部署、隐私合规相关需求场景。<Note>新加坡节点开通及定价请联系ZEGO商务。</Note> | - |
 | 新增 Round 机制 | 新增 Round 机制，明确 AI 某一轮对话结束时机。Round 是 AI Agent 交互链路的唯一标识符，服务端为每次交互生成升序序号，不会重复。每次用户说话或 API 调用生成一个 Round 值，后续所有回调（ASR、LLM、TTS、状态变化、打断）都携带 Round，业务方可准确追踪完整对话链路。适用于 AI 陪聊、语聊房、数字人、智能客服等需要追踪完整对话链路的场景，尤其适合处理打断、排队等复杂情况。 | [Round 机制与回调追踪](/aiagent-server/advanced/round-mechanism-and-callback-tracking) |
 
 </Accordion>
