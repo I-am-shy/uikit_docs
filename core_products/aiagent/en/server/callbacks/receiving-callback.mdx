@@ -71,6 +71,7 @@ To receive different types of callback results, configure the corresponding [Cal
 |------|------|------|
 | Code | Number | For details, please refer to [Exception Codes](./exception-codes.mdx). |
 | Message | String | Description of the exception information. |
+| Round | Int | The dialogue round number. It increases each time the user starts speaking (ordered, not necessarily incremental). |
 </Tab>
 <Tab title="Interrupted">
 | Parameter | Type | Description |
@@ -83,11 +84,13 @@ To receive different types of callback results, configure the corresponding [Cal
 |------|------|------|
 | UserId | String | The speaker's UserId. |
 | Action | String | User speaking behavior:<ul><li>SPEAK_BEGIN: Start speaking.</li><li>SPEAK_END: Stop speaking.</li></ul> |
+| Round | Int | The dialogue round number. It increases each time the user starts speaking (ordered, not necessarily incremental). |
 </Tab>
 <Tab title="AgentInstanceStatus">
 | Parameter | Type | Description |
 |------|------|------|
 | Status | String | <ul><li>IDLE: Idle</li><li>LISTENING: Listening</li><li>THINKING: Thinking</li><li>SPEAKING: Speaking</li></ul> |
+| Round | Int | The dialogue round number. It increases each time the user starts speaking (ordered, not necessarily incremental). |
 </Tab>
 <Tab title="UserAudioData">
 <Warning title="Note">If the user's speech audio duration is less than 1s, no callback will be triggered.</Warning>
@@ -176,7 +179,8 @@ Below are callback examples for each `Event` type.
     "AgentInstanceId": "1912124734317838336",
     "Data": {
         "Code": 1001,
-        "Message": "AI Agent general error"
+        "Message": "AI Agent general error",
+        "Round": 123456
     },
     "Event": "Exception",
     "Nonce": "7450395512627324902",
@@ -214,7 +218,8 @@ Below are callback examples for each `Event` type.
     "Sequence": 1234567890,
     "Data": {
         "UserId": "user_1",
-        "Action": "SPEAK_BEGIN"
+        "Action": "SPEAK_BEGIN",
+        "Round": 123456
     },
     "Event": "UserSpeakAction",
     "Nonce": "7450395512627324902",
@@ -232,7 +237,8 @@ Below are callback examples for each `Event` type.
     "RoomId": "room_1",
     "Sequence": 1234567890,
     "Data": {
-        "Status": "LISTENING"
+        "Status": "LISTENING",
+        "Round": 123456
     },
     "Event": "AgentSpeakAction",
     "Nonce": "7450395512627324902",

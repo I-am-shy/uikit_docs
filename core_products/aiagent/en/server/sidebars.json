@@ -125,6 +125,11 @@
           "type": "doc",
           "label": "Getting MetaInfo During AI Broadcast",
           "id": "advanced/get-meta-info-while-ai-is-speaking"
+        },
+        {
+          "type": "doc",
+          "label": "Round Mechanism and Callback Tracking",
+          "id": "advanced/round-mechanism-and-callback-tracking"
         }
       ]
     },

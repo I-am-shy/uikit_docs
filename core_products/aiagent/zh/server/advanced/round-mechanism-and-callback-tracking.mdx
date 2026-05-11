@@ -1,0 +1,564 @@
+---
+slug: /aiagent-server/advanced/round-mechanism-and-callback-tracking
+title: Round 机制与回调追踪
+---
+
+
+# Round 机制与回调追踪
+
+## 功能简介
+
+**Round 是 AI Agent 交互链路的唯一标识符。** 每一次用户说话或 API 调用，服务端都会生成一个 Round 值，后续所有相关回调（ASR 识别、LLM 回复、TTS 播报、状态变化、打断事件等）都携带这个 Round 值，让业务方能准确追踪"这次交互发生了什么"。
+
+**适用场景：** AI 陪聊、语聊房、数字人、智能客服等需要追踪完整对话链路的场景。无论是用户主动发言、还是业务方主动触发 AI 回复，都能通过 Round 串联所有回调，轻松处理打断、排队等复杂情况。
+
+---
+
+## 核心概念：Round 是什么
+
+### Round 的定义
+
+**Round（轮次）** 是服务端为每一次完整交互生成的升序序号，不会重复。
+
+- **一次交互** = 从"触发"到"结束"的完整链路
+- **触发来源**：用户说话、调用 sendAgentInstanceLLM、调用 sendAgentInstanceTTS
+- **结束标志**：AI 完成本轮回复（TTS 播报完成或 LLM 返回完成）
+
+### Round 的作用
+
+Round 贯穿整个交互生命周期，所有回调事件都携带 Round 字段：
+
+```plaintext
+触发 → Round N 开始
+  ├─ ASRResult (Round: N)        // ASR 开始识别结果
+  ├─ LLMResult (Round: N)        // LLM 回复内容
+  ├─ AgentInstanceStatus (Round: N)  // 状态变化（聆听→思考→说话→空闲）
+  ├─ AgentInstanceMetaInfo (Round: N) // 元数据（音色、情绪等）
+  └─ 结束 → Round N 完成
+```
+
+### Round 的生成时机
+
+| 触发来源 | Round 生成时机 | 说明 |
+| --- | --- | --- |
+| 用户说话 | 检测到用户语音开始 | ASR 开始识别时，Round 已确定 |
+| sendAgentInstanceLLM | API 请求成功 | 服务端接收请求后立即分配 Round |
+| sendAgentInstanceTTS | API 请求成功 | 服务端接收请求后立即分配 Round |
+
+### 客户端 SDK 回调（获取 Round）
+
+**重要：** 客户端可通过 **ZEGO Express SDK 的试验性 API** 回调获取 Round 信息，用于实现状态切换 UI（如"聆听中"、"思考中"、"说话中"）。
+
+#### 消息格式（通用）
+
+```json
+{
+  "Timestamp": 1765510379,           // 秒级时间戳
+  "TimestampMs": 1765510379113,      // 毫秒级时间戳
+  "SeqId": 278800715,                // 包序列号，保证有序性，不保证连续性
+  "Round": 510359002,                // 【核心】对话轮次，升序生成，不保证连续性
+  "Cmd": 1,                          // 命令类型
+  "Data": { ... }                    // 具体内容，见下表
+}
+```
+
+#### Cmd 类型及 Data 字段
+
+| Cmd | 类型 | Data 字段 | 说明 |
+| --- | --- | --- | --- |
+| 1 | 用户说话状态 | SpeakStatus, UserId | SpeakStatus: 1=说话开始，2=说话结束 |
+| 3 | ASR 文本 | Text, MessageId, UserId, StartFlag, EndFlag | 增量下发 ASR 识别结果 |
+| 4 | LLM 应答 | Text, MessageId, EndFlag | 增量下发 LLM 回复 |
+| 6 | 智能体状态 | Status, OldStatus, Reason | Status: 0=空闲，1=聆听，2=思考，3=说话 |
+| 102 | 元数据信息 | Object | 元数据信息（音色、情绪、动作等） |
+
+#### 详细文档
+
+完整 API 说明参考：[智能体实例 SDK 端回调](/aiagent-android/client-sdk/ai-related-callback)
+
+---
+
+## 功能示意图
+
+### 数据流转总览
+
+```plaintext
+┌─────────────────────────────────────────────────────────────────┐
+│                        触发来源                                  │
+├───────────────────────┬─────────────────────────────────────────┤
+│   用户主动说话         │   业务方调用 API                         │
+│   (RTC 房间语音)        │   sendAgentInstanceLLM/TTS              │
+└───────────┬───────────┴────────────────┬────────────────────────┘
+            │                            │
+            ▼                            ▼
+    ┌────────────────────────────────────────┐
+    │    ZEGO AI Agent 服务端                 │
+    │    生成 Round (升序序号)                │
+    └────────────────────────────────────────┘
+                    │
+        ┌───────────┼───────────┬───────────┐
+        │           │           │           │
+        ▼           ▼           ▼           ▼
+  ┌──────────┐ ┌──────────┐ ┌──────────┐ ┌──────────┐
+  │   ASR    │ │   LLM    │ │   TTS    │ │  Status  │
+  │  Result  │ │  Result  │ │  Status  │ │  Change  │
+  │ Round: N │ │ Round: N │ │ Round: N │ │ Round: N │
+  └──────────┘ └──────────┘ └──────────┘ └──────────┘
+        │           │           │           │
+        └───────────┴───────────┴───────────┘
+                    │
+                    ▼
+        ┌───────────────────────┐
+        │   业务方服务端回调     │
+        │   通过 Round 关联所有事件 │
+        └───────────────────────┘
+```
+
+### 两种触发来源对比
+
+```plaintext
+【场景 1：用户主动说话】
+用户："今天天气怎么样？" (Round 5)
+  ↓
+服务端：ASR 识别 → LLM 思考 → TTS 播报
+  ↓
+回调序列：
+  - ASRResult (Round: 5, 文本："今天天气怎么样？")
+  - AgentInstanceStatus (Round: 5, 状态："Thinking")
+  - LLMResult (Round: 5, 文本："今天天气晴朗...")
+  - AgentInstanceStatus (Round: 5, 状态："Speaking")
+  - AgentInstanceStatus (Round: 5, 状态："Idle")
+
+【场景 2：业务方调用 API】
+业务方：sendAgentInstanceTTS("欢迎语") (Round 6)
+  ↓
+服务端：直接 TTS 播报
+  ↓
+回调序列：
+  - AgentInstanceStatus (Round: 6, 状态："Speaking")
+  - AgentInstanceMetaInfo (Round: 6, 音色："zh_female")
+  - AgentInstanceStatus (Round: 6, 状态："Idle")
+```
+
+---
+
+## 回调事件总览
+
+### 回调类型列表
+
+| 回调事件 | 携带 Round | 触发时机 | 用途 |
+| --- | --- | --- | --- |
+| ASRResult | ✅ | 用户说话识别完成 | 获取 ASR 识别文本 |
+| LLMResult | ✅ | LLM 生成回复 | 获取 AI 回复内容 |
+| AgentInstanceStatus | ✅ | 状态变化 | 追踪 AI 当前状态（聆听/思考/说话/空闲） |
+| AgentInstanceMetaInfo | ✅ | 开始播报 | 获取元数据（音色、情绪、动作等） |
+| Interrupted | ✅ | 被打断 | 处理打断逻辑 |
+| UserSpeakAction | ✅ | 用户开始/结束说话 | 检测用户发言 |
+| AgentSpeakAction | ✅ | AI 开始/结束说话 | 检测 AI 发言 |
+| Exception | ✅ | 发生错误 | 错误处理 |
+| UserAudioData | ✅ | 用户说话音频数据 | 获取用户语音 PCM 数据 |
+
+### 回调字段说明（关键字段）
+
+所有回调事件的公共字段：
+
+```json
+{
+  "Event": "ASRResult",           // 事件类型
+  "RoomId": "room_123",               // 房间 ID
+  "AgentUserId": "agent_user_001",    // Agent 用户 ID
+  "Round": 5,                         // 【核心】轮次序号
+  "Sequence": 1234567890,             // 事件序列号（全局递增）
+  "Timestamp": 1746619200000,         // 时间戳（毫秒）
+  "Data": { ... }                     // 事件具体数据
+}
+```
+
+---
+
+## 使用示例
+
+### 案例 1：用户提问
+
+#### 流程时序图
+
+```plaintext
+时间线 →
+  ├─ T0: 用户开始说话
+  ├─ T1: ASR 识别完成 → ASRResult (Round: 1)
+  ├─ T2: AI 开始思考 → AgentInstanceStatus (Round: 1, Status: "Thinking")
+  ├─ T3: LLM 生成回复 → LLMResult (Round: 1)
+  ├─ T4: AI 开始播报 → AgentInstanceStatus (Round: 1, Status: "Speaking")
+  ├─ T5: 播报开始回调 → AgentInstanceMetaInfo (Round: 1)
+  └─ T6: 播报完成 → AgentInstanceStatus (Round: 1, Status: "Idle")
+```
+
+#### 服务端回调序列（按时间顺序）
+
+| 时间 | 事件类型 | Round | 关键数据 |
+| --- | --- | --- | --- |
+| T1 | ASRResult | 1 | Result: "你好，介绍一下你自己" |
+| T2 | AgentInstanceStatus | 1 | Status: "Thinking" |
+| T3 | LLMResult | 1 | Content: "你好，我是 AI 助手..." |
+| T4 | AgentInstanceStatus | 1 | Status: "Speaking" |
+| T5 | AgentInstanceMetaInfo | 1 | MetaInfo: `{"VoiceId": "zh_female"}` |
+| T6 | AgentInstanceStatus | 1 | Status: "Idle" |
+
+#### 客户端 SDK 回调序列（按时间顺序）
+
+| 时间 | Cmd | Round | 关键数据 |
+| --- | --- | --- | --- |
+| T0 | Cmd=1 | 1 | SpeakStatus: 1 (用户开始说话) |
+| T1 | Cmd=3 | 1 | Text: "你好，介绍一下你自己", EndFlag: true |
+| T2 | Cmd=6 | 1 | Status: 2 (思考中) |
+| T3 | Cmd=4 | 1 | Text: "你好，我是 AI 助手...", EndFlag: true |
+| T4 | Cmd=6 | 1 | Status: 3 (说话中) |
+| T5 | Cmd=102 | 1 | MetaInfo: `{"VoiceId": "zh_female"}` |
+| T6 | Cmd=6 | 1 | Status: 0 (空闲) |
+
+#### API 请求示例（无，用户主动触发）
+
+#### 回调示例
+
+**ASRResult**
+
+```json
+{
+  "Event": "ASRResult",
+  "Round": 1,
+  "Data": {
+    "Result": "你好，介绍一下你自己",
+    "IsFinal": true
+  }
+}
+```
+
+**LLMResult**
+
+```json
+{
+  "Event": "LLMResult",
+  "Round": 1,
+  "Data": {
+    "Content": "你好，我是 AI 助手，很高兴为你服务。"
+  }
+}
+```
+
+**AgentInstanceStatus**
+
+```json
+{
+  "Event": "AgentInstanceStatus",
+  "Round": 1,
+  "Data": {
+    "Status": "Speaking"  // Thinking | Speaking | Idle | Listening
+  }
+}
+```
+
+**客户端 SDK 回调示例（Cmd=3, ASR 文本）**
+
+```json
+{
+  "Timestamp": 1765510379,
+  "TimestampMs": 1765510379113,
+  "SeqId": 278800715,
+  "Round": 1,
+  "Cmd": 3,
+  "Data": {
+    "Text": "你好，介绍一下你自己",
+    "MessageId": "msg_001",
+    "UserId": "user_123",
+    "StartFlag": true,
+    "EndFlag": true
+  }
+}
+```
+
+---
+
+### 案例 2：sendAgentInstanceLLM
+
+#### 流程时序图
+
+```plaintext
+业务方调用 sendAgentInstanceLLM
+         │
+         ▼
+   服务端生成 Round: 2
+         │
+         ▼
+   LLM 开始生成 → AgentInstanceStatus (Round: 2, Status: "Thinking")
+         │
+         ▼
+   LLM 生成完成 → LLMResult (Round: 2)
+         │
+         ▼
+   TTS 开始播报 → AgentInstanceStatus (Round: 2, Status: "Speaking")
+         │
+         ▼
+   播报完成 → AgentInstanceStatus (Round: 2, Status: "Idle")
+```
+
+#### API 请求示例
+
+```json
+POST https://aigc-aiagent-api.zegotech.cn/
+{
+  "Action": "sendAgentInstanceLLM",
+  "AppId": 1234567890,
+  "AgentId": "agent_001",
+  "AgentUserId": "agent_user_001",
+  "Text": "请讲一个笑话",
+  "AddHistory": true
+}
+```
+
+#### 服务端回调序列
+
+| 时间 | 事件类型 | Round | 关键数据 |
+| --- | --- | --- | --- |
+| T1 | AgentInstanceStatus | 2 | Status: "Thinking" |
+| T2 | LLMResult | 2 | Content: "有一天，0 遇到了 8..." |
+| T3 | AgentInstanceStatus | 2 | Status: "Speaking" |
+| T4 | AgentInstanceMetaInfo | 2 | MetaInfo: `{"VoiceId": "zh_female"}` |
+| T5 | AgentInstanceStatus | 2 | Status: "Idle" |
+
+#### 客户端 SDK 回调序列
+
+| 时间 | Cmd | Round | 关键数据 |
+| --- | --- | --- | --- |
+| T1 | Cmd=6 | 2 | Status: 2 (思考中) |
+| T2 | Cmd=4 | 2 | Text: "有一天，0 遇到了 8...", EndFlag: true |
+| T3 | Cmd=6 | 2 | Status: 3 (说话中) |
+| T4 | Cmd=102 | 2 | MetaInfo: `{"VoiceId": "zh_female"}` |
+| T5 | Cmd=6 | 2 | Status: 0 (空闲) |
+
+#### 回调示例
+
+**LLMResult**
+
+```json
+{
+  "Event": "LLMResult",
+  "Round": 2,
+  "Data": {
+    "Content": "有一天，0 遇到了 8，0 不屑地说：'胖就胖呗，还系什么腰带啊！'"
+  }
+}
+```
+
+---
+
+### 案例 3：sendAgentInstanceTTS
+
+#### 流程时序图
+
+```plaintext
+业务方调用 sendAgentInstanceTTS
+         │
+         ▼
+   服务端生成 Round: 3
+         │
+         ▼
+   TTS 开始播报 → AgentInstanceStatus (Round: 3, Status: "Speaking")
+         │
+         ▼
+   播报开始回调 → AgentInstanceMetaInfo (Round: 3)
+         │
+         ▼
+   播报完成 → AgentInstanceStatus (Round: 3, Status: "Idle")
+```
+
+#### API 请求示例
+
+```json
+POST https://aigc-aiagent-api.zegotech.cn/
+{
+  "Action": "sendAgentInstanceTTS",
+  "AppId": 1234567890,
+  "AgentId": "agent_001",
+  "AgentUserId": "agent_user_001",
+  "Text": "欢迎语：很高兴见到你！",
+  "AddHistory": false
+}
+```
+
+#### 服务端回调序列
+
+| 时间 | 事件类型 | Round | 关键数据 |
+| --- | --- | --- | --- |
+| T1 | AgentInstanceStatus | 3 | Status: "Speaking" |
+| T2 | AgentInstanceMetaInfo | 3 | MetaInfo: `{"VoiceId": "zh_female"}` |
+| T3 | AgentInstanceStatus | 3 | Status: "Idle" |
+
+#### 客户端 SDK 回调序列
+
+| 时间 | Cmd | Round | 关键数据 |
+| --- | --- | --- | --- |
+| T1 | Cmd=6 | 3 | Status: 3 (说话中) |
+| T2 | Cmd=102 | 3 | MetaInfo: `{"VoiceId": "zh_female"}` |
+| T3 | Cmd=6 | 3 | Status: 0 (空闲) |
+
+#### 回调示例
+
+**AgentInstanceMetaInfo**
+
+```json
+{
+  "Event": "AgentInstanceMetaInfo",
+  "Round": 3,
+  "Data": {
+    "MetaInfo": {
+      "VoiceId": "zh_female",
+      "Speed": 1.0
+    }
+  }
+}
+```
+
+---
+
+## 边缘场景处理
+
+### 打断场景
+
+**场景描述：** AI 正在播报 Round 3 的内容，用户突然说话打断。
+
+#### 服务端回调序列
+
+| 时间 | 事件类型 | Round | 说明 |
+| --- | --- | --- | --- |
+| T1 | AgentInstanceStatus | 3 | Status: "Speaking" (AI 播报中) |
+| T2 | UserSpeakAction | 4 | 检测到用户说话，**新 Round 4 开始** |
+| T3 | Interrupted | 3 | **Round 3 被打断** |
+| T4 | AgentInstanceStatus | 3 | Status: "Idle" (Round 3 终止) |
+| T5 | ASRResult | 4 | 用户说话识别结果 |
+| T6 | AgentInstanceStatus | 4 | Status: "Thinking" (处理 Round 4) |
+
+#### 客户端 SDK 回调序列
+
+| 时间 | Cmd | Round | 说明 |
+| --- | --- | --- | --- |
+| T1 | Cmd=6 | 3 | Status: 3 (说话中) |
+| T2 | Cmd=1 | 4 | SpeakStatus: 1 (用户开始说话) |
+| T3 | Cmd=6 | 3 | Status: 0 (空闲，Round 3 终止) |
+| T4 | Cmd=3 | 4 | Text: "用户说话内容", EndFlag: true |
+| T5 | Cmd=6 | 4 | Status: 2 (思考中) |
+
+#### 关键逻辑
+
+- 打断发生时，**当前 Round 立即终止**，状态变为 Idle
+- 用户说话触发**新 Round**，从新 Round 继续处理
+- 业务方需监听 `Interrupted` 事件，清理被中断 Round 的 pending 状态
+
+---
+
+### 排队场景
+
+**场景描述：** 业务方连续调用 3 次 sendAgentInstanceTTS，AI 按序播报。
+
+#### 服务端回调序列
+
+| 时间 | 事件类型 | Round | 说明 |
+| --- | --- | --- | --- |
+| T1 | sendAgentInstanceTTS (请求 1) | 4 | Round 4 分配 |
+| T2 | sendAgentInstanceTTS (请求 2) | 5 | Round 5 分配，**排队等待** |
+| T3 | sendAgentInstanceTTS (请求 3) | 6 | Round 6 分配，**排队等待** |
+| T4 | AgentInstanceStatus | 4 | Status: "Speaking" (播报 Round 4) |
+| T5 | AgentInstanceStatus | 5 | Status: "Speaking" (播报 Round 5，**状态不变，Round 变化**) |
+| T6 | AgentInstanceStatus | 6 | Status: "Speaking" (播报 Round 6，**状态不变，Round 变化**) |
+| T7 | AgentInstanceStatus | 6 | Status: "Idle" (全部完成) |
+
+#### 客户端 SDK 回调序列
+
+| 时间 | Cmd | Round | 说明 |
+| --- | --- | --- | --- |
+| T4 | Cmd=6 | 4 | Status: 3 (说话中) |
+| T5 | Cmd=6 | 5 | Status: 3 (说话中，**状态不变，Round 变化**) |
+| T6 | Cmd=6 | 6 | Status: 3 (说话中，**状态不变，Round 变化**) |
+| T7 | Cmd=6 | 6 | Status: 0 (空闲，全部完成) |
+
+#### 关键逻辑
+
+- 每个 API 请求**立即分配 Round**，即使需要排队
+- 排队时，**AI 持续保持 Speaking 状态**，Round 升序变化
+- 业务方可通过 Round 追踪每个请求的播报进度
+
+---
+
+## 常见问题
+
+### Q1: Round 何时生成？
+
+**A:** 每次新交互触发时生成，包括：
+
+- 用户开始说话
+- 调用 sendAgentInstanceLLM
+- 调用 sendAgentInstanceTTS
+
+打断场景下，新交互触发新 Round，旧 Round 终止。
+
+### Q2: Round 会重复吗？
+
+**A:** 不会。Round 升序生成，不会重复。
+
+### Q3: 如何调试 Round 关联问题？
+
+**A:** 建议业务方在日志中记录每个回调的 Round 值，按 Round 分组查看：
+
+```plaintext
+[Round 5] ASRResult: "用户提问内容"
+[Round 5] LLMResult: "AI 回复内容"
+[Round 5] Status: Speaking → Idle
+```
+
+如发现 Round 不连续或事件缺失，检查：
+
+1. 回调配置是否开启（CallbackConfig）
+2. 网络是否正常（回调是否丢失）
+
+### Q4: Round 和 Sequence 有什么区别？
+
+**A:**
+
+- **Round**：标识"哪一次交互"，同一交互的所有事件 Round 相同
+- **Sequence**：标识"事件的全局顺序"，所有事件严格递增
+
+业务方用 Round 关联同一交互的事件，用 Sequence 检测事件是否丢失。
+
+### Q5: 打断时，被中断的 Round 还会收到 LLMResult 吗？
+
+**A:** 不会。打断时，如果 LLM 还在生成，服务端会停止生成，**不会回调 LLMResult**。
+
+业务方应在收到 `Interrupted` 事件后，清理被中断 Round 的 pending 状态。
+
+---
+
+## 附录：回调配置示例
+
+创建 Agent 实例时，开启相关回调：
+
+```json
+{
+  "Action": "CreateAgentInstance",
+  "AppId": 1234567890,
+  "AgentId": "agent_001",
+  "UserId": "user_001",
+  "RTC": {
+    "RoomId": "room_123",
+    "AgentStreamId": "stream_001",
+    "AgentUserId": "agent_user_001",
+    "UserStreamId": "user_stream_001"
+  },
+  "CallbackConfig": {
+    "ASRResult": 1,              // 开启 ASR 回调
+    "LLMResult": 1,              // 开启 LLM 回调
+    "Interrupted": 1,            // 开启打断回调
+    "UserSpeakAction": 1,        // 开启用户说话回调
+    "AgentSpeakAction": 1,       // 开启 AI 说话回调
+    "AgentInstanceStatus": 1     // 开启状态回调
+  }
+}
+```

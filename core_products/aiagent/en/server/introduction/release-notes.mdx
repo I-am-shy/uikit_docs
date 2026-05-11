@@ -8,6 +8,21 @@ date: "2026-04-07"
 ## V2
 
 
+### 2026-05-09
+
+<Accordion title="Server v2.12.0" defaultOpen="true">
+
+**New Features**
+
+| Feature | Description | Related Docs |
+| --- | --- | --- |
+| Add support for multiple ASR vendors and models | Added Volcengine Large Model ASR, Aliyun Bailian Qwen ASR, and Aliyun Bailian Fun-ASR. ASR Vendor supports configuring Tencent, AliyunParaformer, AliyunGummy, ByteDance and other vendors. Suitable for Chinese dialect recognition and multi-language recognition scenarios. Specifically including:<ul><li>Tencent ASR: Large Model version, including Chinese-English-Cantonese+9 dialect large model engine [Large Model Version], Putonghua-English large model engine [Large Model Version], etc. For details, see [Tencent Cloud - Real-Time Speech Recognition](https://cloud.tencent.com/document/product/1093/48982).</li><li>Aliyun Bailian Fun-ASR series models: mainly support Chinese and dialects. For details, see [Real-Time Speech Recognition - Fun-ASR/Gummy/Paraformer](https://help.aliyun.com/zh/model-studio/real-time-speech-recognition).</li><li>Aliyun Bailian Qwen series models: mainly support Chinese, English and other languages. For details, see [Real-Time Speech Recognition - Qwen](https://help.aliyun.com/zh/model-studio/qwen-real-time-speech-recognition).</li><li>Volcengine Large Model streaming speech recognition model: suitable for Chinese, English and other language scenarios. For details, see [Volcengine Speech Recognition Large Model](https://www.volcengine.com/docs/6561/1354871).</li></ul> | [Configuring ASR](/aiagent-server/guides/configuring-asr) |
+| Add Singapore node | Added a Singapore cluster with default configuration for Singapore node ASR, LLM, TTS and other services. Suitable for overseas customers to reduce latency and deploy in multiple regions. Among them, zego_test account supports Singapore node qwen-3.5-flash and other models, and can configure self-procured overseas Gemini, OpenAI and other LLM providers; supports Singapore node MiniMax-TTS, for details please refer to [Configuring TTS](/aiagent-server/guides/configuring-tts); digital human service also supports Singapore node. | - |
+| Add Round mechanism | Add Round mechanism, clarifying when an AI conversation round ends. Round is the unique identifier for each AI Agent interaction chain. The server generates an ascending sequence number for each interaction that does not repeat. Each user speech or API call generates a Round value, and all subsequent callbacks (ASR, LLM, TTS, status changes, interruptions) carry the Round, allowing business logic to accurately track the complete conversation chain. Suitable for AI companions, voice chat rooms, digital humans, intelligent customer service and other scenarios that require tracking complete conversation chains, especially suitable for handling complex situations such as interruptions and queuing. | [Round Mechanism and Callback Tracking](/aiagent-server/advanced/round-mechanism-and-callback-tracking) |
+
+</Accordion>
+
+
 ### 2026-04-01
 
 <Accordion title="Server v2.11.0" defaultOpen="true">
