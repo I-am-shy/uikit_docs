@@ -19,7 +19,7 @@ docType: API
 
 ZEGO SDK 拥有全面覆盖全球重点区域的网络节点，提供丰富的 API，为多端提供清晰稳定的实时语音视频云服务。
 
-API 返回的错误码请参考：https://doc-zh.zego.im/article/5690
+API 返回的错误码请参考：https://doc-zh.zego.im/article/5690。
 
 以下为基本的 API 简要介绍。
 
@@ -169,6 +169,7 @@ API 返回的错误码请参考：https://doc-zh.zego.im/article/5690
 [enableVideoObjectSegmentation](./class.mdx#enablevideoobjectsegmentation1-zegoexpressengine) | 开启主体分割。
 [enableAlphaChannelVideoEncoder](./class.mdx#enablealphachannelvideoencoder-zegoexpressengine) | 开启视频编码器透明通道支持。
 [enableVideoEncoderEnhancement](./class.mdx#enablevideoencoderenhancement-zegoexpressengine) | 开启视频编码增加能力。
+[enableVideoEncoderEnhancementWithConfig](./class.mdx#enablevideoencoderenhancementwithconfig-zegoexpressengine) | 开启视频编码增加能力。
 [setCameraStabilizationMode](./class.mdx#setcamerastabilizationmode-zegoexpressengine) | 设置摄像机稳定模式。
 [enableAuxBgmBalance](./class.mdx#enableauxbgmbalance-zegoexpressengine) | 开启或关闭根据伴奏音量，自适应调整人声音量。
 [enableFaceDetection](./class.mdx#enablefacedetection-zegoexpressengine) | 开启或关闭人脸检测。
@@ -495,6 +496,7 @@ API 返回的错误码请参考：https://doc-zh.zego.im/article/5690
 [enableRemoteVideoCustomVideoRender](./class.mdx#enableremotevideocustomvideorender-zegoexpressengine) | 开始或停止远端拉流的视频做自定义视频渲染。
 [enableCustomVideoCapture](./class.mdx#enablecustomvideocapture-zegoexpressengine) | 开始或停止自定义视频采集。
 [enableCustomVideoCapture](./class.mdx#enablecustomvideocapture1-zegoexpressengine) | 开始或停止自定义视频采集，支持设置其他通道的推流。
+[setCustomMediaCryptoFactory](./class.mdx#setcustommediacryptofactory-zegoexpressengine) | 设置自定义媒体数据加解密工厂
 [setCustomVideoCaptureHandler](./class.mdx#setcustomvideocapturehandler-zegoexpressengine) | 设置自定义视频采集回调。
 [sendCustomVideoCaptureRawData](./class.mdx#sendcustomvideocapturerawdata-zegoexpressengine) | 给 SDK 发送自定义采集的视频帧原始数据。
 [sendCustomVideoCaptureRawData](./class.mdx#sendcustomvideocapturerawdata1-zegoexpressengine) | 给 SDK 发送自定义采集的视频帧原始数据，支持其他路推流。
@@ -513,6 +515,13 @@ API 返回的错误码请参考：https://doc-zh.zego.im/article/5690
 [setCustomVideoCaptureTransformMatrix](./class.mdx#setcustomvideocapturetransformmatrix-zegoexpressengine) | 设置指定推流通道自定义采集画面转换矩阵。
 [setCustomVideoCaptureRegionOfInterest](./class.mdx#setcustomvideocaptureregionofinterest-zegoexpressengine) | 设置指定推流通道自定义视频采集编码器的感兴趣区域（ROI）。
 [resetCustomVideoCaptureTextureContext](./class.mdx#resetcustomvideocapturetexturecontext-zegoexpressengine) | 清除 SDK 缓存的纹理相关的上下文，例如 EglContext，仅当自定义采集类型为 Texture2D、TextureExternalOES 时，此函数生效。
+[getEncryptDstLen](./class.mdx#getencryptdstlen-izegocustommediacrypto) | 获取加密后目标长度。
+[onAudioEncryptCallback](./class.mdx#onaudioencryptcallback-izegocustommediacrypto) | 音频加密回调。
+[onVideoEncryptCallback](./class.mdx#onvideoencryptcallback-izegocustommediacrypto) | 视频加密回调
+[onAudioDecryptCallback](./class.mdx#onaudiodecryptcallback-izegocustommediacrypto) | 视频加密回调
+[onVideoDecryptCallback](./class.mdx#onvideodecryptcallback-izegocustommediacrypto) | 视频解密回调
+[createMediaCrypto](./class.mdx#createmediacrypto-izegocustommediacryptofactory) | 创建自定义媒体数据加解密对象。
+[destroyMediaCrypto](./class.mdx#destroymediacrypto-izegocustommediacryptofactory) | 销毁媒体数据加解密对象
 [onStart](./class.mdx#onstart-izegocustomvideocapturehandler) | 自定义视频采集开始的通知。
 [onStop](./class.mdx#onstop-izegocustomvideocapturehandler) | 自定义视频采集结束的通知。
 [onEncodedDataTrafficControl](./class.mdx#onencodeddatatrafficcontrol-izegocustomvideocapturehandler) | 自定义视频采集时检测到网络变化，通知开发者需要做流量控制，根据SDK的推荐参数调整编码配置。

@@ -1,6 +1,6 @@
 ---
 articleID: 16676
-date: "2024-02-05"
+date: "2026-04-13"
 ---
 
 
@@ -29,7 +29,7 @@ date: "2024-02-05"
 | [直播连麦](/real-time-video-web/quick-start/implementing-video-call)  | 一个房间内，可以出现多个主播，进行同屏连麦直播。 | <ul><li>多主播不同地区连麦</li> <li>多人 KTV 合唱</li><li>秀场直播</li></ul>  |
 | [同时推送多路流](/real-time-video-web/communication/publish-multi-streams)   | 一个用户可以推送多路音视频流，如分享屏幕的同时，将摄像头的视频流进行发送。 | 视频会议中播放 PPT 的同时，看到主讲人的画面 |
 | [媒体补充增强信息（SEI）](/real-time-video-web/communication/sei)  | 文本信息与音视频内容打包在一起通过流媒体通道进行传输，以此实现文本数据与音视频内容的精准同步的目的。  | <ul><li>视频画面的精准布局</li> <li>远端歌词同步</li> <li>直播答题</li></ul> |
-| [流量控制](https://doc-zh.zego.im/faq/flowcontrol?product=ExpressVideo&platform=all)  | ZEGO 业内领先技术。SDK 根据自己以及对端当前网络环境状态来动态调整视频推流的码率、帧率、分辨率，以及音频码率，自动适应当前网络环境及网络波动，从而保证视频能流畅发布。| 所有希望有高质量实时音视频服务的场景 |
+| [流量控制](https://doc-zh.zego.im/faq/flow-control-in-weak-network)  | ZEGO 业内领先技术。SDK 根据自己以及对端当前网络环境状态来动态调整视频推流的码率、帧率、分辨率，以及音频码率，自动适应当前网络环境及网络波动，从而保证视频能流畅发布。| 所有希望有高质量实时音视频服务的场景 |
 | [云代理](/real-time-video-web/communication/cloud-proxy) | 通过设置 SDK 的云代理接口，将 SDK 对应的所有流量通过云端的代理服务器中转，实现与 RTC、L3（超低延迟直播）通信。| 医院、政府、公司内部等有内网等限制性的网络环境中 |
 | [地理围栏](/real-time-video-web/communication/geofencing) | 将音视频及信令数据传输限定在某一区域，用以满足地区数据隐私安全相关法规，即限定访问某一特定区域的音视频服务。 | 通话场景  |
 | [音视频轨道替换](/real-time-video-web/communication/media-track-replacement)| 在浏览器中，本地存在两条及以上的媒体流（音轨、视轨）时，可以通过 ZEGO Express Web SDK 自由组合媒体流包含的音视轨。 | 直播场景 |
@@ -68,7 +68,7 @@ date: "2024-02-05"
 | 进阶功能-20%    | 功能描述-50%    | 业务场景-30%    |
 |-----|-----|-----|
 | [混音](/real-time-video-web/audio/audio-aux)| SDK 从 App 获取一路音频数据，将 App 提供的音频数据与 SDK 采集的音频数据整合为一路音频数据，从而实现在通话或直播过程中播放自定义的声音、音乐文件，并且让房间内的其他人也听到的能力。| <ul><li>社交语聊</li> <li>直播</li></ul> |
-| [AI 降噪](/real-time-video-web/audio/scenario-based-ai-noise-reductionAIDenoise) | ZEGO Express SDK 提供了 AI 降噪功能，开发者可以在使用麦克风采集声音时，对声音进行降噪处理；并在传统降噪消除稳态噪声的基础上，同步处理非稳态噪声（包括鼠标点击声、键盘声、敲击声、空调声、厨房碗碟碰撞声、餐厅嘈杂声、环境风声、咳嗽声、吹气声等非人声噪声），保留纯净语音，提升用户的通话体验。 | 语音房、会议、语音开黑等 1v1 或多人音视频通话场景，以及声卡、弹唱、近场音乐的直播或者在线 KTV 场景 |
+| [AI 降噪](/real-time-video-web/audio/scenario-based-ai-noise-reduction) | ZEGO Express SDK 提供了 AI 降噪功能，开发者可以在使用麦克风采集声音时，对声音进行降噪处理；并在传统降噪消除稳态噪声的基础上，同步处理非稳态噪声（包括鼠标点击声、键盘声、敲击声、空调声、厨房碗碟碰撞声、餐厅嘈杂声、环境风声、咳嗽声、吹气声等非人声噪声），保留纯净语音，提升用户的通话体验。 | 语音房、会议、语音开黑等 1v1 或多人音视频通话场景，以及声卡、弹唱、近场音乐的直播或者在线 KTV 场景 |
 | [自定义音频采集](/real-time-video-web/audio/custom-audio-capture-and-rendering)  | 开发者可以自行获取音频信息后，交给 SDK 进行传输。 | <ul><li>在线或本地音频文件传输</li> <li>定制采集系统的音频文件进行传输</li></ul> |
 
 

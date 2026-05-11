@@ -1,0 +1,69 @@
+---
+docType: API
+date: "2026-05-06"
+---
+
+# ZegoCustomMediaCryptoFactory
+
+## ZegoCustomMediaCryptoFactory
+
+*Declared in `ZegoExpressEventHandler.h`*
+
+### Methods
+<ParamField
+  name="createMediaCrypto:isEncrypt:"
+  prototype="- (nonnull id&lt;[ZegoCustomMediaCrypto](../../api-reference/class#zegocustommediacrypto)&gt;)createMediaCrypto:(NSString *) streamID isEncrypt:(BOOL) isEncrypt;"
+  desc="Create a custom media crypto object."
+  parent_file="Declared in \`ZegoExpressEventHandler.h\`"
+  parent_name="ZegoCustomMediaCryptoFactory"
+  parent_type="class">
+**Parameters**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| streamID | NSString * | Stream ID. |
+| isEncrypt | BOOL | Whether to encrypt. true indicates encryption, false indicates decryption. |
+
+**Details**
+
+The SDK notifies that media data encryption/decryption needs to begin.
+ When to
+
+<Note title="">
+- **Trigger**: After calling [startPlayingStream] or [startPublishingStream] successfully.
+</Note>
+
+<Warning title="">
+- **Available since**: 3.24.0
+</Warning>
+
+**Return**
+
+Custom media crypto object.
+</ParamField>
+<ParamField
+  name="destroyMediaCrypto:"
+  prototype="- (void)destroyMediaCrypto:(nonnull id<[ZegoCustomMediaCrypto](../../api-reference/class#zegocustommediacrypto)>) instance;"
+  desc="Destroy a custom media crypto object."
+  parent_file="Declared in \`ZegoExpressEventHandler.h\`"
+  parent_name="ZegoCustomMediaCryptoFactory"
+  parent_type="class">
+**Parameters**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| instance | nonnull id\<[ZegoCustomMediaCrypto](../../api-reference/class#zegocustommediacrypto)\> | The custom media crypto object returned by the callback [createMediaCrypto]. |
+
+**Details**
+
+Destroy a custom media crypto object.
+ When to
+
+<Note title="">
+- **Trigger**: At the end of a stream.
+</Note>
+
+<Warning title="">
+- **Available since**: 3.24.0
+</Warning>
+</ParamField>

@@ -1,5 +1,6 @@
 ---
 docType: API
+date: "2026-04-29"
 ---
 
 # Enum
@@ -25,14 +26,14 @@ docType: API
 | [ZIMGroupMessageNotificationStatus](#zimgroupmessagenotificationstatus) | [ZIMGroupMuteMode](#zimgroupmutemode) |
 | [ZIMGroupState](#zimgroupstate) | [ZIMMessageDirection](#zimmessagedirection) |
 | [ZIMMessageMentionedType](#zimmessagementionedtype) | [ZIMMessagePinStatus](#zimmessagepinstatus) |
-| [ZIMMessagePriority](#zimmessagepriority) | [ZIMMessageReceiptStatus](#zimmessagereceiptstatus) |
-| [ZIMMessageRepliedInfoState](#zimmessagerepliedinfostate) | [ZIMMessageRevokeStatus](#zimmessagerevokestatus) |
-| [ZIMMessageSentStatus](#zimmessagesentstatus) | [ZIMMessageType](#zimmessagetype) |
-| [ZIMPlatformType](#zimplatformtype) | [ZIMRevokeType](#zimrevoketype) |
-| [ZIMRoomAttributesUpdateAction](#zimroomattributesupdateaction) | [ZIMRoomEvent](#zimroomevent) |
-| [ZIMRoomState](#zimroomstate) | [ZIMTipsMessageChangeInfoType](#zimtipsmessagechangeinfotype) |
-| [ZIMTipsMessageEvent](#zimtipsmessageevent) | [ZIMUserOnlineStatus](#zimuseronlinestatus) |
-| [ZIMUserRelationType](#zimuserrelationtype) |  |
+| [ZIMMessagePriority](#zimmessagepriority) | [ZIMMessageReactionUserChangeAction](#zimmessagereactionuserchangeaction) |
+| [ZIMMessageReceiptStatus](#zimmessagereceiptstatus) | [ZIMMessageRepliedInfoState](#zimmessagerepliedinfostate) |
+| [ZIMMessageRevokeStatus](#zimmessagerevokestatus) | [ZIMMessageSentStatus](#zimmessagesentstatus) |
+| [ZIMMessageType](#zimmessagetype) | [ZIMPlatformType](#zimplatformtype) |
+| [ZIMRevokeType](#zimrevoketype) | [ZIMRoomAttributesUpdateAction](#zimroomattributesupdateaction) |
+| [ZIMRoomEvent](#zimroomevent) | [ZIMRoomState](#zimroomstate) |
+| [ZIMTipsMessageChangeInfoType](#zimtipsmessagechangeinfotype) | [ZIMTipsMessageEvent](#zimtipsmessageevent) |
+| [ZIMUserOnlineStatus](#zimuseronlinestatus) | [ZIMUserRelationType](#zimuserrelationtype) |
 
 ## ZIMBlacklistChangeAction
 
@@ -1466,6 +1467,13 @@ Url资源未找到。
   parent_type="enum">
 批量查询房间成员全部查询失败。
 </ParamField>
+<ParamField
+  name="BLACKLIST_LIMIT"
+  prototype="BLACKLIST_LIMIT=(6000021)"
+  parent_name="ZIMErrorCode"
+  parent_type="enum">
+操作因黑名单限制失败。
+</ParamField>
 
 ## ZIMFriendApplicationListChangeAction
 
@@ -2260,6 +2268,26 @@ Url资源未找到。
 <Note title="">
 - **业务场景**：一般用于发送房间内礼物、打赏等重要的信息。
 </Note>
+</ParamField>
+
+## ZIMMessageReactionUserChangeAction
+
+用户表态变更行为。
+
+### 属性
+<ParamField
+  name="Added"
+  prototype="Added=(0)"
+  parent_name="ZIMMessageReactionUserChangeAction"
+  parent_type="enum">
+新增行为
+</ParamField>
+<ParamField
+  name="Deleted"
+  prototype="Deleted=(1)"
+  parent_name="ZIMMessageReactionUserChangeAction"
+  parent_type="enum">
+删除行为。
 </ParamField>
 
 ## ZIMMessageReceiptStatus

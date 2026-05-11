@@ -607,12 +607,14 @@ components:
         OutputFileFormat:
           type: string
           description: |
-            "Specifies the format of the recording file. Default is \"mp4\". Currently supports \"mp4\", \"flv\", \"hls\", \"jpg\", and \"mp3\". If recording \"mp4\" or \"flv\" and `StreamType` is set to 4, the generated audio file format is aac."
+            Specify the format of the generated recording file, default is "mp4". Currently supports "mp4", "flv", "hls", "jpg", "aac", "mp3", and "ogg".
 
             > **Note**
             >
-            > When the stream is VP8 encoded and the recording file format is "mp4", please contact ZEGOCLOUD Technical Support for configuration.
-          enum: ["mp4", "flv", "hls", "jpg", "mp3"]
+            > - If recording "mp4" or "flv" and **StreamType** is set to 4, the generated audio file format is "aac".
+            > - If single stream recording and the original audio stream is "opus" format and the output parameter is set to "ogg", the audio stream will be recorded according to the bitrate and sampling rate of the input audio stream.
+            > - When the stream is VP8 encoded and the recording file format is "mp4", please contact ZEGOCLOUD Technical Support for configuration.
+          enum: ["mp4", "flv", "hls", "jpg","aac","mp3","ogg"]
           default: "mp4"
         OutputFolder:
           type: string
@@ -697,11 +699,11 @@ components:
 
              > **Note**
              >
-             > - When `Vendor` is set to 1, 2, 3, 4, 7, 9, or 10, `Region`, `Bucket`, `AccessKeyId`, and `AccessKeySecret` are required.
+             > - When `Vendor` is set to 1, 2, 3, 4, 7, or 9, `Region`, `Bucket`, `AccessKeyId`, and `AccessKeySecret` are required.
              > - When `Vendor` is set to 5, `AlibabaCloudVodParams` is required. Currently only supports uploading MP4 and FLV format files.
              > - When `Vendor` is set to 6, `TencentCloudVodParams` is required. Currently only supports uploading MP4, FLV, JPG, and MP3 format files.
              > - When `Vendor` is set to 8, `Bucket`, `AccessKeyId`, and `AccessKeySecret` are required.
-             > - When `Vendor` is set to 10, `Bucket` and `EndPoint` are required.
+             > - When `Vendor` is set to 10, `Region`, `Bucket`, `AccessKeyId`, `AccessKeySecret`, and `EndPoint` are required.
 
           enum: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
         Region:

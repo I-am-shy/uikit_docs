@@ -1,5 +1,6 @@
 ---
 docType: API
+date: "2026-05-09"
 ---
 
 # Class
@@ -122,7 +123,7 @@ Listen to the event notification callback of the AI voice changer.
 | Name | Type | Description |
 | --- | --- | --- |
 | aiVoiceChanger | [IZegoAIVoiceChanger](#izegoaivoicechanger)* | Callback AI voice changer instance. |
-| errorCode | int | Error code, please refer to the error codes document [https://docs.zegocloud.com/en/5548.html](https://docs.zegocloud.com/en/5548.html) for details. |
+| errorCode | int | Error code, please refer to the [Common Error Codes](https://www.zegocloud.com/docs/real-time-video-android-java/client-sdk/error-code) for details. |
 
 **Details**
 
@@ -178,7 +179,7 @@ Update AI voice changer engine models progress callback.
 | Name | Type | Description |
 | --- | --- | --- |
 | aiVoiceChanger | [IZegoAIVoiceChanger](#izegoaivoicechanger)* | Callback AI voice changer instance. |
-| errorCode | int | Error code, please refer to the error codes document [https://docs.zegocloud.com/en/5548.html](https://docs.zegocloud.com/en/5548.html) for details. |
+| errorCode | int | Error code, please refer to the [Common Error Codes](https://www.zegocloud.com/docs/real-time-video-android-java/client-sdk/error-code) for details. |
 
 **Details**
 
@@ -205,7 +206,7 @@ Update AI voice changer engine models status callback.
 | Name | Type | Description |
 | --- | --- | --- |
 | aiVoiceChanger | [IZegoAIVoiceChanger](#izegoaivoicechanger)* | Callback AI voice changer instance. |
-| errorCode | int | Error code, please refer to the error codes document [https://docs.zegocloud.com/en/5548.html](https://docs.zegocloud.com/en/5548.html) for details. |
+| errorCode | int | Error code, please refer to the [Common Error Codes](https://www.zegocloud.com/docs/real-time-video-android-java/client-sdk/error-code) for details. |
 | speakerList | const std::vector\<[ZegoAIVoiceChangerSpeakerInfo](./struct#zegoaivoicechangerspeakerinfo)\>& | Available speaker list. |
 
 **Details**
@@ -260,7 +261,7 @@ AI voice changer event callback.
 | Name | Type | Description |
 | --- | --- | --- |
 | aiVoiceChanger | [IZegoAIVoiceChanger](#izegoaivoicechanger)* | Callback AI voice changer instance. |
-| errorCode | int | Error code, please refer to the error codes document [https://docs.zegocloud.com/en/5548.html](https://docs.zegocloud.com/en/5548.html) for details. |
+| errorCode | int | Error code, please refer to the [Common Error Codes](https://www.zegocloud.com/docs/real-time-video-android-java/client-sdk/error-code) for details. |
 
 **Details**
 
@@ -292,7 +293,7 @@ Set AI voice changer engine speaker status callback.
 
 | Name | Type | Description |
 | --- | --- | --- |
-| errorCode | int | Error code, please refer to the error codes document [https://docs.zegocloud.com/en/5548.html](https://docs.zegocloud.com/en/5548.html) for details. |
+| errorCode | int | Error code, please refer to the [Common Error Codes](https://www.zegocloud.com/docs/real-time-video-android-java/client-sdk/error-code) for details. |
 | funcName | std::string | Function name. |
 | info | std::string | Detailed error information. |
 
@@ -1019,7 +1020,7 @@ Audio effect player index.
 | audioEffectPlayer | [IZegoAudioEffectPlayer](#izegoaudioeffectplayer)* | Audio effect player instance that triggers this callback. |
 | audioEffectID | unsigned int | The ID of the audio effect resource that triggered this callback. |
 | state | [ZegoAudioEffectPlayState](./enum#zegoaudioeffectplaystate) | The playback state of the audio effect. |
-| errorCode | int | Error code, please refer to the error codes document [https://docs.zegocloud.com/en/5548.html](https://docs.zegocloud.com/en/5548.html) for details. |
+| errorCode | int | Error code, please refer to the [Common Error Codes](https://www.zegocloud.com/docs/real-time-video-android-java/client-sdk/error-code) for details. |
 
 **Details**
 
@@ -1263,7 +1264,7 @@ Get lyrics in lrc format, support parsing lyrics line by line.
 
 | Name | Type | Description |
 | --- | --- | --- |
-| krcToken | std::string | The krcToken obtained when calling [requestResource] for accompaniment or climax clips, or when obtaining shared resources through the [getSharedResource] interface. For more details, please refer to [/online-ktv-ios/client-api/apis-to-obtain-songs-and-lyrics#2_2](/online-ktv-ios/client-api/apis-to-obtain-songs-and-lyrics#2_2) |
+| krcToken | std::string | The krcToken obtained when calling [requestResource] for accompaniment or climax clips, or when obtaining shared resources through the [getSharedResource] interface. For more details, please refer to [https://doc-zh.zego.im/online-ktv-ios/client-api/apis-to-obtain-songs-and-lyrics#2_2](https://doc-zh.zego.im/online-ktv-ios/client-api/apis-to-obtain-songs-and-lyrics#2_2) |
 | callback | [ZegoCopyrightedMusicGetKrcLyricByTokenCallback](./interface#zegocopyrightedmusicgetkrclyricbytokencallback) | get lyrics result. |
 
 **Details**
@@ -2536,7 +2537,7 @@ When [enableCustomVideoRender] is called to enable custom video rendering and th
 | Name | Type | Description |
 | --- | --- | --- |
 | state | [ZegoDataRecordState](./enum#zegodatarecordstate) | File recording status. |
-| errorCode | int | Error code, please refer to the error codes document [https://docs.zegocloud.com/en/5548.html](https://docs.zegocloud.com/en/5548.html) for details. |
+| errorCode | int | Error code, please refer to the [Common Error Codes](https://www.zegocloud.com/docs/real-time-video-android-java/client-sdk/error-code) for details. |
 | config | [ZegoDataRecordConfig](./struct#zegodatarecordconfig) | Record config. |
 | channel | [ZegoPublishChannel](./enum#zegopublishchannel) | Publishing stream channel. |
 
@@ -2595,7 +2596,7 @@ Recording progress update callback, triggered at regular intervals during record
 | Name | Type | Description |
 | --- | --- | --- |
 | state | [ZegoDataRecordState](./enum#zegodatarecordstate) | File recording status. |
-| errorCode | int | Error code, please refer to the error codes document [https://docs.zegocloud.com/en/5548.html](https://docs.zegocloud.com/en/5548.html) for details. |
+| errorCode | int | Error code, please refer to the [Common Error Codes](https://www.zegocloud.com/docs/real-time-video-android-java/client-sdk/error-code) for details. |
 | config | [ZegoDataRecordConfig](./struct#zegodatarecordconfig) | Record config. |
 | streamID | std::string | play stream id. |
 
@@ -2659,7 +2660,7 @@ Remote Recording progress update callback, triggered at regular intervals during
 
 | Name | Type | Description |
 | --- | --- | --- |
-| errorCode | int | Error code, please refer to the error codes document [https://docs.zegocloud.com/en/5548.html](https://docs.zegocloud.com/en/5548.html) for details. |
+| errorCode | int | Error code, please refer to the [Common Error Codes](https://www.zegocloud.com/docs/real-time-video-android-java/client-sdk/error-code) for details. |
 | funcName | std::string | Function name. |
 | info | std::string | Detailed error information. |
 
@@ -2770,7 +2771,7 @@ The callback that triggered a fatal error.
 | --- | --- | --- |
 | roomID | std::string | Room ID, a string of up to 128 bytes in length. |
 | state | [ZegoRoomState](./enum#zegoroomstate) | Changed room state. |
-| errorCode | int | Error code, For details, please refer to [Common Error Codes](https://docs.zegocloud.com/article/5548). |
+| errorCode | int | Error code, For details, please refer to [Common Error Codes](https://www.zegocloud.com/docs/real-time-video-android-java/client-sdk/error-code). |
 | extendedData | std::string | Extended Information with state updates. When the room login is successful, the key "room_session_id" can be used to obtain the unique RoomSessionID of each audio and video communication, which identifies the continuous communication from the first user in the room to the end of the audio and video communication. It can be used in scenarios such as call quality scoring and call problem diagnosis. |
 
 **Details**
@@ -2781,7 +2782,7 @@ This callback is triggered when the connection status of the room changes, and t
 - **Use cases**: Developers can use this callback to determine the status of the current user in the room.
  When to trigger:
  1. The developer will receive this notification when calling the [loginRoom], [logoutRoom], [switchRoom] functions.
- 2. This notification may also be received when the network condition of the user's device changes (SDK will automatically log in to the room when disconnected, please refer to [Does ZEGO SDK support a fast reconnection for temporary disconnection] for details](https://docs.zegocloud.com/faq/reconnect?product=ExpressVideo&platform=all).
+ 2. This notification may also be received when the network condition of the user's device changes (SDK will automatically log in to the room when disconnected, please refer to [Does ZEGO SDK support a fast reconnection for temporary disconnection] for details](https://www.zegocloud.com/docs/faq/express-reconnect).
 - **Caution**: If the connection is being requested for a long time, the general probability is that the user's network is unstable.
 - **Related APIs**: [loginRoom]、[logoutRoom]、[switchRoom]
 </Note>
@@ -2804,7 +2805,7 @@ This callback is triggered when the connection status of the room changes, and t
 | --- | --- | --- |
 | roomID | std::string | Room ID, a string of up to 128 bytes in length. |
 | reason | [ZegoRoomStateChangedReason](./enum#zegoroomstatechangedreason) | Room state change reason. |
-| errorCode | int | Error code, please refer to the error codes document [https://doc-en.zego.im/en/5548.html](https://doc-en.zego.im/en/5548.html) for details. |
+| errorCode | int | Error code, please refer to the error codes document [https://www.zegocloud.com/docs/real-time-video-android-java/client-sdk/error-code](https://www.zegocloud.com/docs/real-time-video-android-java/client-sdk/error-code) for details. |
 | extendedData | std::string | Extended Information with state updates. When the room login is successful, the key "room_session_id" can be used to obtain the unique RoomSessionID of each audio and video communication, which identifies the continuous communication from the first user in the room to the end of the audio and video communication. It can be used in scenarios such as call quality scoring and call problem diagnosis. |
 
 **Details**
@@ -2813,7 +2814,7 @@ This callback is triggered when the connection status of the room changes, and t
 
 <Note title="">
 - **Use cases**: Developers can use this callback to determine the status of the current user in the room.
- When to trigger: Users will receive this notification when they call room functions (refer to [Related APIs]). 2. This notification may also be received when the user device's network conditions change (SDK will automatically log in to the room again when the connection is disconnected, refer to [https://doc-zh.zego.im/faq/reconnect](https://doc-zh.zego.im/faq/reconnect) ).
+ When to trigger: Users will receive this notification when they call room functions (refer to [Related APIs]). 2. This notification may also be received when the user device's network conditions change (SDK will automatically log in to the room again when the connection is disconnected, refer to [https://doc-zh.zego.im/faq/express-reconnect](https://doc-zh.zego.im/faq/express-reconnect) ).
 - **Caution**: If the connection is being requested for a long time, the general probability is that the user's network is unstable.
 - **Related APIs**: [loginRoom], [logoutRoom], [switchRoom]
 </Note>
@@ -3000,7 +3001,7 @@ The callback notification that the room Token authentication is about to expire,
 <Note title="">
 - **Use cases**: In order to prevent illegal entry into the room, it is necessary to perform authentication control on login room, push streaming, etc., to improve security.
 - **When to call /Trigger**: 30 seconds before the Token expires, the SDK will call [onRoomTokenWillExpire] to notify developer.
-- **Caution**: The token contains important information such as the user's room permissions, publish stream permissions, and effective time, please refer to [https://docs.zegocloud.com/article/11649.](https://docs.zegocloud.com/article/11649.)
+- **Caution**: The token contains important information such as the user's room permissions, publish stream permissions, and effective time, please refer to [https://www.zegocloud.com/docs/real-time-video-ios-oc/communication/using-token-authentication](https://www.zegocloud.com/docs/real-time-video-ios-oc/communication/using-token-authentication) .
 - **Related APIs**: When the developer receives this callback, he can use [renewToken] to update the token authentication information.
 </Note>
 
@@ -3022,7 +3023,7 @@ The callback notification that the room Token authentication is about to expire,
 | --- | --- | --- |
 | streamID | std::string | Stream ID. |
 | state | [ZegoPublisherState](./enum#zegopublisherstate) | State of publishing stream. |
-| errorCode | int | The error code corresponding to the status change of the publish stream, please refer to the error codes document [https://docs.zegocloud.com/en/5548.html](https://docs.zegocloud.com/en/5548.html) for details. |
+| errorCode | int | The error code corresponding to the status change of the publish stream, please refer to the [Common Error Codes](https://www.zegocloud.com/docs/real-time-video-android-java/client-sdk/error-code) for details. |
 | extendedData | std::string | Extended information with state updates, include playing stream CDN address. |
 
 **Details**
@@ -3315,7 +3316,7 @@ After start publishing stream, this callback will return the current stream addr
 | --- | --- | --- |
 | state | [ZegoObjectSegmentationState](./enum#zegoobjectsegmentationstate) | Object segmentation state. |
 | channel | [ZegoPublishChannel](./enum#zegopublishchannel) | Publishing stream channel.If you only publish one audio and video stream, you can ignore this parameter. |
-| errorCode | int | The error code corresponding to the status change of the object segmentation, please refer to the error codes document [https://docs.zegocloud.com/en/5548.html](https://docs.zegocloud.com/en/5548.html) for details. |
+| errorCode | int | The error code corresponding to the status change of the object segmentation, please refer to the [Common Error Codes](https://www.zegocloud.com/docs/real-time-video-android-java/client-sdk/error-code) for details. |
 
 **Details**
 
@@ -3398,7 +3399,7 @@ The notification for setting the path of the static image displayed when the cam
 | --- | --- | --- |
 | streamID | std::string | stream ID. |
 | state | [ZegoPlayerState](./enum#zegoplayerstate) | State of playing stream. |
-| errorCode | int | The error code corresponding to the status change of the playing stream, please refer to the error codes document [https://docs.zegocloud.com/en/5548.html](https://docs.zegocloud.com/en/5548.html) for details. |
+| errorCode | int | The error code corresponding to the status change of the playing stream, please refer to the [Common Error Codes](https://www.zegocloud.com/docs/real-time-video-android-java/client-sdk/error-code) for details. |
 | extendedData | std::string | Extended Information with state updates. As the standby, only an empty json table is currently returned. |
 
 **Details**
@@ -3426,7 +3427,7 @@ After calling the [startPlayingStream] successfully, the notification of the pla
 | Name | Type | Description |
 | --- | --- | --- |
 | streamID | std::string | The stream ID currently playing. |
-| errorCode | int | The error code corresponding to the result of the switch stream, please refer to the error codes document [https://docs.zegocloud.com/en/5548.html](https://docs.zegocloud.com/en/5548.html) for details. |
+| errorCode | int | The error code corresponding to the result of the switch stream, please refer to the [Common Error Codes](https://www.zegocloud.com/docs/real-time-video-android-java/client-sdk/error-code) for details. |
 
 **Details**
 
@@ -3910,7 +3911,7 @@ After start playing stream, this callback will return the current stream address
 | --- | --- | --- |
 | streamID | std::string | Stream ID. |
 | state | [ZegoSuperResolutionState](./enum#zegosuperresolutionstate) | Video super resolution state. |
-| errorCode | int | Error code, please refer to the error codes document [https://docs.zegocloud.com/en/5548.html](https://docs.zegocloud.com/en/5548.html) for details. |
+| errorCode | int | Error code, please refer to the [Common Error Codes](https://www.zegocloud.com/docs/real-time-video-android-java/client-sdk/error-code) for details. |
 
 **Details**
 
@@ -4608,7 +4609,7 @@ Network mode changed callback.
 
 | Name | Type | Description |
 | --- | --- | --- |
-| errorCode | int | Network speed test error code. Please refer to error codes document [https://docs.zegocloud.com/en/5548.html](https://docs.zegocloud.com/en/5548.html) for details. |
+| errorCode | int | Network speed test error code. Please refer to [Common Error Codes](https://www.zegocloud.com/docs/real-time-video-android-java/client-sdk/error-code) for details. |
 | type | [ZegoNetworkSpeedTestType](./enum#zegonetworkspeedtesttype) | Uplink or downlink. |
 
 **Details**
@@ -4895,6 +4896,32 @@ The callback triggered when calling the start mobile screen capture.
 
 ### Methods
 <ParamField
+  name="setEngineConfig"
+  prototype="public  int setEngineConfig(std::unordered_map<std::string, std::string> advancedConfig)"
+  desc="Set advanced engine configuration."
+  parent_file="Declared in \`ZegoExpressInterface.h\`"
+  parent_name="IZegoExpressEngine"
+  parent_type="class">
+**Parameters**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| advancedConfig | std::unordered_map\<std::string, std::string\> | Advanced engine configuration |
+
+**Details**
+
+Used to enable advanced functions.
+
+<Note title="">
+- **When to call**: Different configurations have different call timing requirements. For details, please consult ZEGO technical support.
+</Note>
+
+<Warning title="">
+- **Available since**: 3.24.0
+- **Restrictions**: Multi-instance SDK for Linux only.
+</Warning>
+</ParamField>
+<ParamField
   name="setEventHandler"
   prototype="public  void setEventHandler(std::shared_ptr<[IZegoEventHandler](#izegoeventhandler)> eventHandler)"
   desc="Sets up the event notification callbacks that need to be handled. If the eventHandler is set to [null], all the callbacks set previously will be cleared."
@@ -5096,7 +5123,7 @@ If the room does not exist, [loginRoom] creates and logs in the room. SDK uses t
 
 <Warning title="">
 - **Available since**: 1.1.0
-- **Restrictions**: For restrictions on the use of this function, please refer to [https://docs.zegocloud.com/article/7611](https://docs.zegocloud.com/article/7611) or contact ZEGO technical support.
+- **Restrictions**: For restrictions on the use of this function, please refer to [https://www.zegocloud.com/docs/real-time-video-ios-oc/introduction/overview](https://www.zegocloud.com/docs/real-time-video-ios-oc/introduction/overview) or contact ZEGO technical support.
 </Warning>
 </ParamField>
 <ParamField
@@ -5139,7 +5166,7 @@ If the room does not exist, [loginRoom] creates and logs in the room. SDK uses t
 
 <Warning title="">
 - **Available since**: 1.1.0
-- **Restrictions**: For restrictions on the use of this function, please refer to [https://docs.zegocloud.com/article/7611](https://docs.zegocloud.com/article/7611) or contact ZEGO technical support.
+- **Restrictions**: For restrictions on the use of this function, please refer to [https://www.zegocloud.com/docs/real-time-video-ios-oc/introduction/overview](https://www.zegocloud.com/docs/real-time-video-ios-oc/introduction/overview) or contact ZEGO technical support.
 </Warning>
 </ParamField>
 <ParamField
@@ -5261,7 +5288,7 @@ After the developer receives [onRoomTokenWillExpire], they can use this API to u
 <Note title="">
 - **Use cases**: Used when the token is about to expire.
 - **When to call /Trigger**: After the developer receives [onRoomTokenWillExpire].
-- **Caution**: The token contains important information such as the user's room permissions, publish stream permissions, and effective time, please refer to [https://docs.zegocloud.com/article/11649.](https://docs.zegocloud.com/article/11649.)
+- **Caution**: The token contains important information such as the user's room permissions, publish stream permissions, and effective time, please refer to [https://www.zegocloud.com/docs/real-time-video-android-java/communication/using-token-authentication](https://www.zegocloud.com/docs/real-time-video-android-java/communication/using-token-authentication) .
 - **Related callbacks**: None.
 - **Related APIs**: None.
 </Note>
@@ -5301,7 +5328,7 @@ The user can call this function to set the extra info of the room.
 
 <Warning title="">
 - **Available since**: 1.13.0
-- **Restrictions**: For restrictions on the use of this function, please refer to [https://docs.zegocloud.com/article/7611](https://docs.zegocloud.com/article/7611) or contact ZEGO technical support.
+- **Restrictions**: For restrictions on the use of this function, please refer to [https://www.zegocloud.com/docs/real-time-video-ios-oc/introduction/overview](https://www.zegocloud.com/docs/real-time-video-ios-oc/introduction/overview) or contact ZEGO technical support.
 </Warning>
 </ParamField>
 <ParamField
@@ -7156,6 +7183,36 @@ Call this function to enable or disable video encoder enhancement.
 </Warning>
 </ParamField>
 <ParamField
+  name="enableVideoEncoderEnhancementWithConfig"
+  prototype="public  void enableVideoEncoderEnhancementWithConfig(bool enable, [ZegoVideoEncoderEnhancementConfig](./struct#zegovideoencoderenhancementconfig) config, [ZegoPublishChannel](./enum#zegopublishchannel) channel)"
+  desc="Enable video encoder enhancement."
+  parent_file="Declared in \`ZegoExpressInterface.h\`"
+  parent_name="IZegoExpressEngine"
+  parent_type="class">
+**Parameters**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| enable | bool | Whether to enable, true: enable, false: disable |
+| config | [ZegoVideoEncoderEnhancementConfig](./struct#zegovideoencoderenhancementconfig) | video encoder enhancement config |
+| channel | [ZegoPublishChannel](./enum#zegopublishchannel) | Publish stream channel. |
+
+**Details**
+
+Call this function to enable or disable video encoder enhancement.
+
+<Note title="">
+- **Use cases**: Commonly used in video calling, live streaming, and similar scenarios.
+- **Default value**: When this function is not called, video encoder enhancement is not enabled by default.
+- **When to call**: It needs to be called after [createEngine].
+  This function is only available in ZegoExpressVideo SDK!
+</Note>
+
+<Warning title="">
+- **Available since**: 3.23.0
+</Warning>
+</ParamField>
+<ParamField
   name="enableAuxBgmBalance"
   prototype="public  void enableAuxBgmBalance(bool enable)"
   desc="Turn on or off the adaptive mode to adjust the volume of the human voice according to the volume of the BGM."
@@ -8172,7 +8229,7 @@ This interface will update playing view.
 
 **Return**
 
-Error code, please refer to the error codes document [https://doc-en.zego.im/en/5548.html](https://doc-en.zego.im/en/5548.html) for details.
+Error code, please refer to the error codes document [https://www.zegocloud.com/docs/real-time-video-android-java/client-sdk/error-code](https://www.zegocloud.com/docs/real-time-video-android-java/client-sdk/error-code) for details.
 </ParamField>
 <ParamField
   name="startMixerTask"
@@ -8263,7 +8320,7 @@ Local users can use this function to start an auto stream mixing task, all strea
 
 <Warning title="">
 - **Available since**: 2.10.0
-- **Restrictions**: Please refer to [https://docs.zegocloud.com/article/7611](https://docs.zegocloud.com/article/7611) or contact ZEGO technical support.
+- **Restrictions**: Please refer to [https://www.zegocloud.com/docs/real-time-video-ios-oc/introduction/overview](https://www.zegocloud.com/docs/real-time-video-ios-oc/introduction/overview) or contact ZEGO technical support.
 </Warning>
 </ParamField>
 <ParamField
@@ -8658,7 +8715,7 @@ Only for Windows / macOS / Linux
 Select audio equipment mode according to the need of the scene (only supported by Android and iOS).
 
 <Note title="">
-- **Use cases**: In the case of KTV, the General mode must be used, but in the language room, the Communication2 or Communication3 mode is required in order to avoid the sound of third-party music being collected. For details on how to set the audio device mode, see https://doc-zh.zego.im/faq/AudioDeviceMod?product=ExpressVideo&platform=macos
+- **Use cases**: In the case of KTV, the General mode must be used, but in the language room, the Communication2 or Communication3 mode is required in order to avoid the sound of third-party music being collected. For details on how to set the audio device mode, see [https://doc-zh.zego.im/faq/audio-device-mode-setting](https://doc-zh.zego.im/faq/audio-device-mode-setting)
 - **When to call**: After creating the engine [createEngine].
 - **Caution**: This interface triggers startup switchover of the device. You are advised not to invoke this interface frequently to avoid unnecessary overhead and hardware problems. This interface may cause the volume mode to switch between call and media. If the media volume is inconsistent with the call volume, the volume may change.
 </Note>
@@ -9359,7 +9416,7 @@ Enable sound card capture to mix sounds played by the system into the publishing
 
 <Note title="">
 - **Default value**: Default is disable.
-- **When to call**: Called this function after calling [startPublishingStream] or [startPreview].
+- **When to call**: Called this function after calling [createEngine].
 - **Caution**: The system sound card sound does not include streaming sound, media player sound and sound effect player sound.
 - **Related APIs**: [setMixSystemPlayoutVolume] function can set system audio capture volume.
 - **Platform differences**: Only supports Windows and macOS.
@@ -9451,7 +9508,7 @@ After monitoring is started, you can use the [onAudioVADStateUpdate] callback to
 </Note>
 
 <Warning title="">
-- **Restrictions**: [onAudioVADStateUpdate] callback notification period is 3 seconds.
+- **Restrictions**: [onAudioVADStateUpdate] callback notification period is 3 seconds. Only steady-state noise recognition is supported, transient noise recognition is not supported.
 </Warning>
 </ParamField>
 <ParamField
@@ -9904,7 +9961,7 @@ Enable the Effects beauty environment. The SDK uses the specified video frame da
 - **Default value**: When this function is not called, the beauty environment is not activated by default.
 - **When to call**: Must be called before calling [startPreview], [startPublishingStream]. If you need to modify the configuration, please call [logoutRoom] to log out of the room first, otherwise it will not take effect.
 - **Related APIs**: [enableEffectsBeauty] switch beauty, [setEffectsBeautyParam] set beauty parameters.
-- **Caution**: This beauty function is the basic function. If it does not meet the expectations of the developer, you can use the custom video pre-processing function [enableCustomVideoProcessing] or the custom video capture function [enableCustomVideoCapture] docking and constructing the AI ​​Effects SDK [ZegoEffects] [/ai-effects-android-java/overview/overview](/ai-effects-android-java/overview/overview) for best results.
+- **Caution**: This beauty function is the basic function. If it does not meet the expectations of the developer, you can use the custom video pre-processing function [enableCustomVideoProcessing] or the custom video capture function [enableCustomVideoCapture] docking and constructing the AI ​​Effects SDK [ZegoEffects] [https://doc-zh.zego.im/ai-effects-android-java/overview/overview](https://doc-zh.zego.im/ai-effects-android-java/overview/overview) for best results.
 </Note>
 
 <Warning title="">
@@ -11008,7 +11065,7 @@ Stop dumping data.
 <Note title="">
 - **Use cases**: This is a debugging tool. When there is a problem with audio capturing, 3A processing, or other environment processing during publish, you can dump the audio data and upload it to the ZEGO server for further analysis.
 - **When to call**: It needs to be called after [startDumpData].
-- **Caution**: It will trigger the [onUploadDumpData] callback.
+- **Caution**: It will trigger the [onStopDumpData] callback.
 </Note>
 
 <Warning title="">
@@ -11302,7 +11359,7 @@ Send custom captured video frame type ZEGO_VIDEO_BUFFER_TYPE_D3D_TEXTURE_2D data
 
 **Return**
 
-Error code, please refer to the error codes document [https://docs.zegocloud.com/en/5548.html](https://docs.zegocloud.com/en/5548.html) for details.
+Error code, please refer to the [Common Error Codes](https://www.zegocloud.com/docs/real-time-video-android-java/client-sdk/error-code) for details.
 </ParamField>
 <ParamField
   name="sendCustomVideoCaptureEncodedData"
@@ -11574,7 +11631,7 @@ When the custom video pre-processing is turned on, the [CVPixelBuffer] format vi
 <Note title="">
 - **Use cases**: After the developer collects the video data by himself or obtains the video data collected by the SDK, if the basic beauty and watermark functions of the SDK cannot meet the needs of the developer (for example, the beauty effect cannot meet the expectations), the ZegoEffects SDK can be used to perform the video Some special processing, such as beautifying, adding pendants, etc., this process is the pre-processing of custom video.
 - **When to call**: Must be called in the [onCapturedUnprocessedCVPixelbuffer] callback.
-- **Platform differences**: Only valid on Windows platform.
+- **Platform differences**: Only valid on iOS/macOS platform.
   This function is only available in ZegoExpressVideo SDK!
 </Note>
 
@@ -11607,7 +11664,7 @@ When the custom video pre-processing is turned on, the [CVPixelBuffer] format vi
 <Note title="">
 - **Use cases**: After the developer collects the video data by himself or obtains the video data collected by the SDK, if the basic beauty and watermark functions of the SDK cannot meet the needs of the developer (for example, the beauty effect cannot meet the expectations), the ZegoEffects SDK can be used to perform the video Some special processing, such as beautifying, adding pendants, etc., this process is the pre-processing of custom video.
 - **When to call**: Must be called in the [onCapturedUnprocessedCVPixelbuffer] callback.
-- **Platform differences**: Only valid on Windows platform.
+- **Platform differences**: Only valid on iOS/macOS platform.
   This function is only available in ZegoExpressVideo SDK!
 </Note>
 
@@ -12506,7 +12563,7 @@ Set event callback handler for media data publisher.
 <Note title="">
 - **Use cases**: Often used in server-side publishing stream scenarios, such as AI classrooms.
 - **When to call**: After calling the [createMediaDataPublisher] function to create a media data publisher.
-- **Caution**: This API used to be named [setMediaDataPublisherEventHandler] before version 3.8.0. Please refer to [Upgrade guide v3.8.0+](https://docs.zegocloud.com/en/16413.html).
+- **Caution**: This API used to be named [setMediaDataPublisherEventHandler] before version 3.8.0. Please refer to [Upgrade guide v3.8.0+](https://docs.zegocloud.com/article/16413.html).
 </Note>
 
 <Warning title="">
@@ -13968,7 +14025,7 @@ The size of the buffer, -1 is returned for failure.
 | --- | --- | --- |
 | mediaPlayer | [IZegoMediaPlayer](#izegomediaplayer)* | Callback player object. |
 | state | [ZegoMediaPlayerState](./enum#zegomediaplayerstate) | Media player status. |
-| errorCode | int | Error code, please refer to the error codes document [https://docs.zegocloud.com/en/5548.html](https://docs.zegocloud.com/en/5548.html) for details. |
+| errorCode | int | Error code, please refer to the [Common Error Codes](https://www.zegocloud.com/docs/real-time-video-android-java/client-sdk/error-code) for details. |
 
 **Details**
 
@@ -14435,7 +14492,7 @@ Set the audio receiving range, the audio source sound beyond this range will not
 
 **Return**
 
-Error code, please refer to the error codes document [https://doc-en.zego.im/en/5548.html](https://doc-en.zego.im/en/5548.html) for details.
+Error code, please refer to the error codes document [https://www.zegocloud.com/docs/real-time-video-android-java/client-sdk/error-code](https://www.zegocloud.com/docs/real-time-video-android-java/client-sdk/error-code) for details.
 </ParamField>
 <ParamField
   name="setPositionUpdateFrequency"
@@ -14550,7 +14607,7 @@ Set range voice volume.
 
 **Return**
 
-Error code, please refer to the error codes document [https://doc-en.zego.im/en/5548.html](https://doc-en.zego.im/en/5548.html) for details.
+Error code, please refer to the error codes document [https://www.zegocloud.com/docs/real-time-video-android-java/client-sdk/error-code](https://www.zegocloud.com/docs/real-time-video-android-java/client-sdk/error-code) for details.
 </ParamField>
 <ParamField
   name="updateStreamPosition"
@@ -14854,7 +14911,7 @@ In the process of real-time audio and video interaction, local users can use thi
 | --- | --- | --- |
 | rangeAudio | [IZegoRangeAudio](#izegorangeaudio)* | Range audio instance that triggers this callback. |
 | state | [ZegoRangeAudioMicrophoneState](./enum#zegorangeaudiomicrophonestate) | The use state of the range audio. |
-| errorCode | int | Error code, please refer to the error codes document [https://docs.zegocloud.com/en/5548.html](https://docs.zegocloud.com/en/5548.html) for details. |
+| errorCode | int | Error code, please refer to the [Common Error Codes](https://www.zegocloud.com/docs/real-time-video-android-java/client-sdk/error-code) for details. |
 
 **Details**
 
@@ -15020,7 +15077,7 @@ SDK RangeScene uses the 'scene' to organize users.
 
 **Return**
 
-Error code, please refer to the error codes document [https://doc-en.zego.im/en/5548.html](https://doc-en.zego.im/en/5548.html) for details.
+Error code, please refer to the error codes document [https://www.zegocloud.com/docs/real-time-video-android-java/client-sdk/error-code](https://www.zegocloud.com/docs/real-time-video-android-java/client-sdk/error-code) for details.
 </ParamField>
 <ParamField
   name="logoutScene"
@@ -15052,7 +15109,7 @@ This API will log out the current user has logged in the scene.
 
 **Return**
 
-Error code, please refer to the error codes document [https://doc-en.zego.im/en/5548.html](https://doc-en.zego.im/en/5548.html) for details.
+Error code, please refer to the error codes document [https://www.zegocloud.com/docs/real-time-video-android-java/client-sdk/error-code](https://www.zegocloud.com/docs/real-time-video-android-java/client-sdk/error-code) for details.
 </ParamField>
 <ParamField
   name="updateUserStatus"
@@ -15085,7 +15142,7 @@ Developers can call this function to update the user status.
 
 **Return**
 
-Error code, please refer to the error codes document [https://doc-en.zego.im/en/5548.html](https://doc-en.zego.im/en/5548.html) for details.
+Error code, please refer to the error codes document [https://www.zegocloud.com/docs/real-time-video-android-java/client-sdk/error-code](https://www.zegocloud.com/docs/real-time-video-android-java/client-sdk/error-code) for details.
 </ParamField>
 <ParamField
   name="updateUserCommand"
@@ -15118,7 +15175,7 @@ Developers can call this function to update the user command.
 
 **Return**
 
-Error code, please refer to the error codes document [https://doc-en.zego.im/en/5548.html](https://doc-en.zego.im/en/5548.html) for details.
+Error code, please refer to the error codes document [https://www.zegocloud.com/docs/real-time-video-android-java/client-sdk/error-code](https://www.zegocloud.com/docs/real-time-video-android-java/client-sdk/error-code) for details.
 </ParamField>
 <ParamField
   name="updateUserPosition"
@@ -15148,7 +15205,7 @@ Developers can call this function to update the user position.
 
 **Return**
 
-Error code, please refer to the error codes document [https://doc-en.zego.im/en/5548.html](https://doc-en.zego.im/en/5548.html) for details.
+Error code, please refer to the error codes document [https://www.zegocloud.com/docs/real-time-video-android-java/client-sdk/error-code](https://www.zegocloud.com/docs/real-time-video-android-java/client-sdk/error-code) for details.
 </ParamField>
 <ParamField
   name="getUserCount"
@@ -15179,7 +15236,7 @@ Developers can call this function to get user count in scene.
 
 **Return**
 
-Error code, please refer to the error codes document [https://doc-en.zego.im/en/5548.html](https://doc-en.zego.im/en/5548.html) for details.
+Error code, please refer to the error codes document [https://www.zegocloud.com/docs/real-time-video-android-java/client-sdk/error-code](https://www.zegocloud.com/docs/real-time-video-android-java/client-sdk/error-code) for details.
 </ParamField>
 <ParamField
   name="getUserListInView"
@@ -15210,7 +15267,7 @@ Developers can call this function to get user list in view.
 
 **Return**
 
-Error code, please refer to the error codes document [https://doc-en.zego.im/en/5548.html](https://doc-en.zego.im/en/5548.html) for details.
+Error code, please refer to the error codes document [https://www.zegocloud.com/docs/real-time-video-android-java/client-sdk/error-code](https://www.zegocloud.com/docs/real-time-video-android-java/client-sdk/error-code) for details.
 </ParamField>
 <ParamField
   name="sendCustomCommand"
@@ -15243,7 +15300,7 @@ Developers can call this function to send custom command.
 
 **Return**
 
-Error code, please refer to the error codes document [https://doc-en.zego.im/en/5548.html](https://doc-en.zego.im/en/5548.html) for details.
+Error code, please refer to the error codes document [https://www.zegocloud.com/docs/real-time-video-android-java/client-sdk/error-code](https://www.zegocloud.com/docs/real-time-video-android-java/client-sdk/error-code) for details.
 </ParamField>
 <ParamField
   name="renewToken"
@@ -15274,7 +15331,7 @@ After the developer receives [onSceneTokenWillExpire], they can use this API to 
 
 **Return**
 
-Error code, please refer to the error codes document [https://doc-en.zego.im/en/5548.html](https://doc-en.zego.im/en/5548.html) for details.
+Error code, please refer to the error codes document [https://www.zegocloud.com/docs/real-time-video-android-java/client-sdk/error-code](https://www.zegocloud.com/docs/real-time-video-android-java/client-sdk/error-code) for details.
 </ParamField>
 <ParamField
   name="setStreamConfig"
@@ -15305,7 +15362,7 @@ Developers can call this function to set range scene stream config.
 
 **Return**
 
-Error code, please refer to the error codes document [https://doc-en.zego.im/en/5548.html](https://doc-en.zego.im/en/5548.html) for details.
+Error code, please refer to the error codes document [https://www.zegocloud.com/docs/real-time-video-android-java/client-sdk/error-code](https://www.zegocloud.com/docs/real-time-video-android-java/client-sdk/error-code) for details.
 </ParamField>
 
 ## IZegoRangeSceneEventHandler
@@ -15326,7 +15383,7 @@ Error code, please refer to the error codes document [https://doc-en.zego.im/en/
 | --- | --- | --- |
 | rangeScene | [IZegoRangeScene](#izegorangescene)* | Range scene instance that triggers this callback. |
 | state | [ZegoSceneState](./enum#zegoscenestate) | Current scene state. |
-| errorCode | int | Error code, please refer to the error codes document [https://doc-en.zego.im/en/5548.html](https://doc-en.zego.im/en/5548.html) for details. |
+| errorCode | int | Error code, please refer to the error codes document [https://www.zegocloud.com/docs/real-time-video-android-java/client-sdk/error-code](https://www.zegocloud.com/docs/real-time-video-android-java/client-sdk/error-code) for details. |
 
 **Details**
 
@@ -15564,7 +15621,7 @@ Create item.
 
 **Return**
 
-Error code, please refer to the error codes document [https://doc-en.zego.im/en/5548.html](https://doc-en.zego.im/en/5548.html) for details.
+Error code, please refer to the error codes document [https://www.zegocloud.com/docs/real-time-video-android-java/client-sdk/error-code](https://www.zegocloud.com/docs/real-time-video-android-java/client-sdk/error-code) for details.
 </ParamField>
 <ParamField
   name="destroyItem"
@@ -15593,7 +15650,7 @@ Destroy item.
 
 **Return**
 
-Error code, please refer to the error codes document [https://doc-en.zego.im/en/5548.html](https://doc-en.zego.im/en/5548.html) for details.
+Error code, please refer to the error codes document [https://www.zegocloud.com/docs/real-time-video-android-java/client-sdk/error-code](https://www.zegocloud.com/docs/real-time-video-android-java/client-sdk/error-code) for details.
 </ParamField>
 <ParamField
   name="bindItem"
@@ -15622,7 +15679,7 @@ Bind item.
 
 **Return**
 
-Error code, please refer to the error codes document [https://doc-en.zego.im/en/5548.html](https://doc-en.zego.im/en/5548.html) for details.
+Error code, please refer to the error codes document [https://www.zegocloud.com/docs/real-time-video-android-java/client-sdk/error-code](https://www.zegocloud.com/docs/real-time-video-android-java/client-sdk/error-code) for details.
 </ParamField>
 <ParamField
   name="unbindItem"
@@ -15651,7 +15708,7 @@ Unbind item.
 
 **Return**
 
-Error code, please refer to the error codes document [https://doc-en.zego.im/en/5548.html](https://doc-en.zego.im/en/5548.html) for details.
+Error code, please refer to the error codes document [https://www.zegocloud.com/docs/real-time-video-android-java/client-sdk/error-code](https://www.zegocloud.com/docs/real-time-video-android-java/client-sdk/error-code) for details.
 </ParamField>
 <ParamField
   name="updateItemStatus"
@@ -15686,7 +15743,7 @@ Developers can call this function to update the item status.
 
 **Return**
 
-Error code, please refer to the error codes document [https://doc-en.zego.im/en/5548.html](https://doc-en.zego.im/en/5548.html) for details.
+Error code, please refer to the error codes document [https://www.zegocloud.com/docs/real-time-video-android-java/client-sdk/error-code](https://www.zegocloud.com/docs/real-time-video-android-java/client-sdk/error-code) for details.
 </ParamField>
 <ParamField
   name="updateItemCommand"
@@ -15721,7 +15778,7 @@ Developers can call this function to update the item command.
 
 **Return**
 
-Error code, please refer to the error codes document [https://doc-en.zego.im/en/5548.html](https://doc-en.zego.im/en/5548.html) for details.
+Error code, please refer to the error codes document [https://www.zegocloud.com/docs/real-time-video-android-java/client-sdk/error-code](https://www.zegocloud.com/docs/real-time-video-android-java/client-sdk/error-code) for details.
 </ParamField>
 
 ## IZegoRangeSceneItemEventHandler
@@ -15952,7 +16009,7 @@ This interface will set the receiving range of audio and video streams, and ZEGO
 
 **Return**
 
-Error code, please refer to the error codes document [https://doc-en.zego.im/en/5548.html](https://doc-en.zego.im/en/5548.html) for details.
+Error code, please refer to the error codes document [https://www.zegocloud.com/docs/real-time-video-android-java/client-sdk/error-code](https://www.zegocloud.com/docs/real-time-video-android-java/client-sdk/error-code) for details.
 </ParamField>
 <ParamField
   name="setReceiveRange"
@@ -15984,7 +16041,7 @@ This interface will set the receiving range of audio and video streams, and ZEGO
 
 **Return**
 
-Error code, please refer to the error codes document [https://doc-en.zego.im/en/5548.html](https://doc-en.zego.im/en/5548.html) for details.
+Error code, please refer to the error codes document [https://www.zegocloud.com/docs/real-time-video-android-java/client-sdk/error-code](https://www.zegocloud.com/docs/real-time-video-android-java/client-sdk/error-code) for details.
 </ParamField>
 <ParamField
   name="enableRangeSpatializer"
@@ -16015,7 +16072,7 @@ After it is turned on, the audio of non-team members in the world will change sp
 
 **Return**
 
-Error code, please refer to the error codes document [https://doc-en.zego.im/en/5548.html](https://doc-en.zego.im/en/5548.html) for details.
+Error code, please refer to the error codes document [https://www.zegocloud.com/docs/real-time-video-android-java/client-sdk/error-code](https://www.zegocloud.com/docs/real-time-video-android-java/client-sdk/error-code) for details.
 </ParamField>
 <ParamField
   name="mutePlayAudio"
@@ -16047,7 +16104,7 @@ Set whether to receive the audio data of the specified user.
 
 **Return**
 
-Error code, please refer to the error codes document [https://doc-en.zego.im/en/5548.html](https://doc-en.zego.im/en/5548.html) for details.
+Error code, please refer to the error codes document [https://www.zegocloud.com/docs/real-time-video-android-java/client-sdk/error-code](https://www.zegocloud.com/docs/real-time-video-android-java/client-sdk/error-code) for details.
 </ParamField>
 <ParamField
   name="mutePlayVideo"
@@ -16079,7 +16136,7 @@ After it is turned on, the audio of non-team members in the world will change sp
 
 **Return**
 
-Error code, please refer to the error codes document [https://doc-en.zego.im/en/5548.html](https://doc-en.zego.im/en/5548.html) for details.
+Error code, please refer to the error codes document [https://www.zegocloud.com/docs/real-time-video-android-java/client-sdk/error-code](https://www.zegocloud.com/docs/real-time-video-android-java/client-sdk/error-code) for details.
 </ParamField>
 
 ## IZegoRangeSceneStreamEventHandler
@@ -16250,7 +16307,7 @@ Join team.
 
 **Return**
 
-Error code, please refer to the error codes document [https://doc-en.zego.im/en/5548.html](https://doc-en.zego.im/en/5548.html) for details.
+Error code, please refer to the error codes document [https://www.zegocloud.com/docs/real-time-video-android-java/client-sdk/error-code](https://www.zegocloud.com/docs/real-time-video-android-java/client-sdk/error-code) for details.
 </ParamField>
 <ParamField
   name="leaveTeam"
@@ -16282,7 +16339,7 @@ Join team.
 
 **Return**
 
-Error code, please refer to the error codes document [https://doc-en.zego.im/en/5548.html](https://doc-en.zego.im/en/5548.html) for details.
+Error code, please refer to the error codes document [https://www.zegocloud.com/docs/real-time-video-android-java/client-sdk/error-code](https://www.zegocloud.com/docs/real-time-video-android-java/client-sdk/error-code) for details.
 </ParamField>
 
 ## IZegoRangeSceneTeamEventHandler
@@ -16304,7 +16361,7 @@ Error code, please refer to the error codes document [https://doc-en.zego.im/en/
 | rangeScene | [IZegoRangeScene](#izegorangescene)* | Range scene instance that triggers this callback. |
 | teamID | unsigned int | Team ID. |
 | state | [ZegoTeamState](./enum#zegoteamstate) | Changed team state. |
-| errorCode | int | Error code, For details, please refer to [Common Error Codes](https://docs.zegocloud.com/article/5548). |
+| errorCode | int | Error code, For details, please refer to [Common Error Codes](https://www.zegocloud.com/docs/real-time-video-android-java/client-sdk/error-code). |
 
 **Details**
 
@@ -16314,7 +16371,7 @@ This callback is triggered when the connection status of the team changes, and t
 - **Use cases**: Developers can use this callback to determine the status of the current user in the team.
  When to trigger:
  1. The developer will receive this notification when calling the [joinTeam], [leaveTeam] functions.
- 2. This notification may also be received when the network condition of the user's device changes (SDK will automatically join the team when reconnected, please refer to [Does ZEGO SDK support a fast reconnection for temporary disconnection] for details](https://docs.zegocloud.com/faq/reconnect?product=ExpressVideo&platform=all).
+ 2. This notification may also be received when the network condition of the user's device changes (SDK will automatically join the team when reconnected, please refer to [Does ZEGO SDK support a fast reconnection for temporary disconnection] for details](https://www.zegocloud.com/docs/faq/express-reconnect).
 - **Caution**: If the connection is being requested for a long time, the general probability is that the user's network is unstable.
 - **Related APIs**: [joinTeam]、[leaveTeam]
 </Note>
@@ -17090,6 +17147,39 @@ Create ZegoExpressEngine singleton object and initialize SDK.
 engine singleton instance.
 </ParamField>
 <ParamField
+  name="createEngine"
+  prototype="public  [IZegoExpressEngine](#izegoexpressengine)* createEngine([ZegoMultiEngineProfile](./struct#zegomultiengineprofile) profile, std::shared_ptr<[IZegoEventHandler](#izegoeventhandler)> eventHandler)"
+  desc="Create ZegoExpressEngine object and initialize SDK."
+  prefixes={["static"]}
+  parent_file="Declared in \`ZegoExpressSDK.h\`"
+  parent_name="ZegoExpressSDK"
+  parent_type="class">
+**Parameters**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| profile | [ZegoMultiEngineProfile](./struct#zegomultiengineprofile) | The basic configuration information is used to create the engine. |
+| eventHandler | std::shared_ptr\<[IZegoEventHandler](#izegoeventhandler)\> | Event notification callback. [nullptr] means not receiving any callback notifications.It can also be managed later via [setEventHandler]. If [createEngine] is called repeatedly and the [destroyEngine] function is not called to destroy the engine before the second call, the eventHandler will not be updated. |
+
+**Details**
+
+Create ZegoExpressEngine object and initialize SDK.
+
+<Note title="">
+- **When to call**: The engine needs to be created before calling other functions.
+- **Caution**: The SDK only supports the creation of one instance of ZegoExpressEngine. If you need call [createEngine] multiple times, you need call [destroyEngine] before you call the next [createEngine]. Otherwise it will return the instance which created by [createEngine] you called last time.
+</Note>
+
+<Warning title="">
+- **Available since**: 2.14.0
+- **Restrictions**: None.
+</Warning>
+
+**Return**
+
+engine singleton instance.
+</ParamField>
+<ParamField
   name="destroyEngine"
   prototype="public  void destroyEngine([IZegoExpressEngine](#izegoexpressengine)*& engine, [ZegoDestroyCompletionCallback](./interface#zegodestroycompletioncallback) callback)"
   desc="Destroy the ZegoExpressEngine singleton object and deinitialize the SDK."
@@ -17111,6 +17201,34 @@ Destroy the ZegoExpressEngine singleton object and deinitialize the SDK.
 <Note title="">
 - **When to call**: When the SDK is no longer used, the resources used by the SDK can be released through this interface
 - **Caution**: After using [createEngine] to create a singleton, if the singleton object has not been created or has been destroyed, you will not receive related callbacks when calling this function.
+</Note>
+
+<Warning title="">
+- **Available since**: 1.1.0
+- **Restrictions**: None.
+</Warning>
+</ParamField>
+<ParamField
+  name="destroyEngine"
+  prototype="public  void destroyEngine([IZegoExpressEngine](#izegoexpressengine)*& engine, [ZegoDestroyCompletionCallback](./interface#zegodestroycompletioncallback) callback)"
+  desc="Destroy the ZegoExpressEngine object and deinitialize the SDK."
+  prefixes={["static"]}
+  parent_file="Declared in \`ZegoExpressSDK.h\`"
+  parent_name="ZegoExpressSDK"
+  parent_type="class">
+**Parameters**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| engine | [IZegoExpressEngine](#izegoexpressengine)*& | engine instance that created by createEngine method. |
+| callback | [ZegoDestroyCompletionCallback](./interface#zegodestroycompletioncallback) | Notification callback for destroy engine completion. Developers can listen to this callback to ensure that device hardware resources are released. If the developer only uses SDK to implement audio and video functions, this parameter can be passed [nullptr]. |
+
+**Details**
+
+Destroy the ZegoExpressEngine object and deinitialize the SDK.
+
+<Note title="">
+- **When to call**: When the SDK is no longer used, the resources used by the SDK can be released through this interface
 </Note>
 
 <Warning title="">
@@ -17163,6 +17281,34 @@ Used to enable advanced functions.
 
 <Warning title="">
 - **Available since**: 1.1.0
+- **Restrictions**: None.
+</Warning>
+</ParamField>
+<ParamField
+  name="setLogConfig"
+  prototype="public  void setLogConfig([ZegoLogConfig](./struct#zegologconfig) config)"
+  desc="Set log configuration."
+  prefixes={["static"]}
+  parent_file="Declared in \`ZegoExpressSDK.h\`"
+  parent_name="ZegoExpressSDK"
+  parent_type="class">
+**Parameters**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| config | [ZegoLogConfig](./struct#zegologconfig) | log configuration. |
+
+**Details**
+
+If you need to customize the log file size and path, please call this function to complete the configuration.
+
+<Note title="">
+- **When to call**: It must be set before calling [createEngine] to take effect. If it is set after [createEngine], it will take effect at the next [createEngine] after [destroyEngine].
+- **Caution**: Once this interface is called, the method of setting log size and path via [setEngineConfig] will be invalid.Therefore, it is not recommended to use [setEngineConfig] to set the log size and path.
+</Note>
+
+<Warning title="">
+- **Available since**: 2.3.0
 - **Restrictions**: None.
 </Warning>
 </ParamField>
@@ -17337,6 +17483,28 @@ If you need to use the geo fence feature, please call this function to complete 
 - **Available since**: 3.4.0
 - **Restrictions**: If you need to use the geo fence feature, please contact ZEGO Technical Support.
 </Warning>
+</ParamField>
+<ParamField
+  name="getVersion"
+  prototype="public  std::string getVersion()"
+  desc="Gets the SDK's version number."
+  prefixes={["static"]}
+  parent_file="Declared in \`ZegoExpressSDK.h\`"
+  parent_name="ZegoExpressSDK"
+  parent_type="class">
+If you encounter an abnormality during the running of the SDK, you can submit the problem, log and other information to the ZEGO technical staff to locate and troubleshoot. Developers can also collect current SDK version information through this API, which is convenient for App operation statistics and related issues.
+
+<Note title="">
+- **When to call**: Any time.
+- **Caution**: None.
+</Note>
+
+<Warning title="">
+- **Available since**: 1.1.0
+- **Restrictions**: None.
+</Warning>
+
+SDK version.
 </ParamField>
 <ParamField
   name="getVersion"
@@ -17554,7 +17722,7 @@ By default, SDK creates and prints log files in the App's default directory. Eac
 <ParamField
   name="createEngine"
   prototype="public  [IZegoExpressEngine](#izegoexpressengine)* createEngine(unsigned int appID, std::string appSign, bool isTestEnv, [ZegoScenario](./enum#zegoscenario) scenario, std::shared_ptr<[IZegoEventHandler](#izegoeventhandler)> eventHandler)"
-  desc="[Deprecated] Create ZegoExpressEngine singleton object and initialize SDK. Deprecated since 2.14.0, please use the method with the same name without [isTestEnv] parameter instead. Please refer to [Testing environment deprecation](https://docs.zegocloud.com/article/13315) for more details."
+  desc="[Deprecated] Create ZegoExpressEngine singleton object and initialize SDK. Deprecated since 2.14.0, please use the method with the same name without [isTestEnv] parameter instead. Please refer to [Testing environment deprecation](/real-time-voice-android/introduction/abandon-test-environment) for more details."
   prefixes={["static"]}
   suffixes={["deprecated"]}
   parent_file="Declared in \`ZegoExpressSDK.h\`"
@@ -17567,8 +17735,8 @@ By default, SDK creates and prints log files in the App's default directory. Eac
 | --- | --- | --- |
 | appID | unsigned int | Application ID issued by ZEGO for developers, please apply from the ZEGO Admin Console [https://console.zegocloud.com](https://console.zegocloud.com) The value ranges from 0 to 4294967295. |
 | appSign | std::string | Application signature for each AppID, please apply from the ZEGO Admin Console. Application signature is a 64 character string. Each character has a range of '0' ~ '9', 'a' ~ 'z'. AppSign 2.17.0 and later allows null or no transmission. If the token is passed empty or not passed, the token must be entered in the [ZegoRoomConfig] parameter for authentication when the [loginRoom] interface is called to login to the room. |
-| isTestEnv | bool | [Deprecated] For providing better and more standardized services, starting from 2021-11-16, ZEGO no longer classifies environments into production environments and testing environments. f you create your project in ZEGO Admin Console on/before 2021-11-16, refer to [Testing environment deprecation](https://docs.zegocloud.com/article/13315) to upgrade the SDK and adjust related codes. |
-| scenario | [ZegoScenario](./enum#zegoscenario) | The room scenario. the SDK will optimize the audio and video configuration for the specified scenario to achieve the best effect in this scenario. After specifying the scenario, you can call other APIs to adjusting the audio and video configuration. Differences between scenarios and how to choose a suitable scenario, please refer to [https://docs.zegocloud.com/article/14940](https://docs.zegocloud.com/article/14940) |
+| isTestEnv | bool | [Deprecated] For providing better and more standardized services, starting from 2021-11-16, ZEGO no longer classifies environments into production environments and testing environments. f you create your project in ZEGO Admin Console on/before 2021-11-16, refer to [Testing environment deprecation](/real-time-voice-android/introduction/abandon-test-environment) to upgrade the SDK and adjust related codes. |
+| scenario | [ZegoScenario](./enum#zegoscenario) | The room scenario. the SDK will optimize the audio and video configuration for the specified scenario to achieve the best effect in this scenario. After specifying the scenario, you can call other APIs to adjusting the audio and video configuration. Differences between scenarios and how to choose a suitable scenario, please refer to [https://www.zegocloud.com/docs/real-time-video-ios-oc/quick-start/scenario-based-audio-video-configuration](https://www.zegocloud.com/docs/real-time-video-ios-oc/quick-start/scenario-based-audio-video-configuration) |
 | eventHandler | std::shared_ptr\<[IZegoEventHandler](#izegoeventhandler)\> | Event notification callback. [nullptr] means not receiving any callback notifications.It can also be managed later via [setEventHandler]. If [createEngine] is called repeatedly and the [destroyEngine] function is not called to destroy the engine before the second call, the eventHandler will not be updated. |
 
 **Details**

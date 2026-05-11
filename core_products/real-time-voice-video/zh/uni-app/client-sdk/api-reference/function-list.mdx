@@ -1,6 +1,6 @@
 ---
 docType: API
-date: '2026-01-14'
+date: "2026-04-14"
 ---
 # 功能总览
 
@@ -180,6 +180,7 @@ ZEGO SDK 拥有全面覆盖全球重点区域的网络节点，提供丰富的 A
 | [setNetworkResourceMaxCache ](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/javascript_uni-app/classes/_zegoexpressdefines_.zegomediaplayer.html#setnetworkresourcemaxcache) | 设置网络素材最大的缓存时长和缓存数据大小 |❌|
 | [getNetworkResourceCache ](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/javascript_uni-app/classes/_zegoexpressdefines_.zegomediaplayer.html#getnetworkresourcecache) | 获取当前网络素材缓存队列的缓存数据可播放的时长和缓存数据大小 |❌|
 | [setNetworkBufferThreshold ](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/javascript_uni-app/classes/_zegoexpressdefines_.zegomediaplayer.html#setnetworkbufferthreshold) | 通过该接口设置媒体播放器重新恢复播放需要达到的缓存阈值,SDK 默认值是 5000ms,有效值为大于等于1000ms |❌|
+| [clearView ](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/javascript_uni-app/classes/_zegoexpressdefines_.zegomediaplayer.html#clearview) | 清除播放控件播放结束后, 在控件上保留的最后一帧画面。 |❌|
 | [on\<MediaPlayerEventType extends keyof ZegoMediaPlayerListener> ](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/javascript_uni-app/classes/_zegoexpressdefines_.zegomediaplayer.html#on) | 注册监听媒体播放器事件回调 |❌|
 | [off\<MediaPlayerEventType extends keyof ZegoMediaPlayerListener> ](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/javascript_uni-app/classes/_zegoexpressdefines_.zegomediaplayer.html#off) | 注销监听媒体播放器事件回调 |❌|
 | [mediaPlayerStateUpdate ](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/javascript_uni-app/interfaces/_zegoexpresseventhandler_.zegoeventlistener.html#mediaplayerstateupdate) | 媒体播放器播放状态回调。 |❌|
@@ -234,7 +235,22 @@ ZEGO SDK 拥有全面覆盖全球重点区域的网络节点，提供丰富的 A
 
 ## 自定义音频采集和渲染
 
-`暂不支持`
+## 自定义音频采集和渲染
+
+| 方法名 | 描述 | Web 端是否支持-15% |
+|-|-|-|
+| [enableCustomAudioCaptureProcessing](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/javascript_uni-app/classes/_zegoexpressengine_.zegoexpressengine.html#enablecustomaudiocaptureprocessing) | 开启本地采集自定义音频处理（耳返前）。 |❌|
+| [enableCustomAudioCaptureProcessingAfterHeadphoneMonitor](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/javascript_uni-app/classes/_zegoexpressengine_.zegoexpressengine.html#enablecustomaudiocaptureprocessingafterheadphonemonitor) | 开启本地采集自定义音频处理（耳返后）。 |❌|
+| [enableAlignedAudioAuxData](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/javascript_uni-app/classes/_zegoexpressengine_.zegoexpressengine.html#enablealignedaudioauxdata) | 开启抛出与伴奏对齐的音频混音数据功能。 |❌|
+| [enableBeforeAudioPrepAudioData](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/javascript_uni-app/classes/_zegoexpressengine_.zegoexpressengine.html#enablebeforeaudioprepaudiodata) | 开启抛出 SDK 内部音频前处理前的音频数据功能。 |❌|
+| [enableCustomAudioRemoteProcessing](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/javascript_uni-app/classes/_zegoexpressengine_.zegoexpressengine.html#enablecustomaudioremoteprocessing) | 开启远端拉流自定义音频处理。 |❌|
+| [enableCustomAudioPlaybackProcessing](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/javascript_uni-app/classes/_zegoexpressengine_.zegoexpressengine.html#enablecustomaudioplaybackprocessing) | 开启 SDK 播放的音频数据的自定义音频处理。 |❌|
+| [processCapturedAudioData](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/javascript_uni-app/interfaces/_zegoexpresseventhandler_.zegoeventlistener.html#processcapturedaudiodata) | 自定义音频处理本地采集 PCM 音频帧回调。 |❌|
+| [processCapturedAudioDataAfterUsedHeadphoneMonitor](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/javascript_uni-app/interfaces/_zegoexpresseventhandler_.zegoeventlistener.html#processcapturedaudiodataafterusedheadphonemonitor) | 自定义音频处理本地采集使用耳返后的 PCM 音频帧回调。 |❌|
+| [alignedAudioAuxData](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/javascript_uni-app/interfaces/_zegoexpresseventhandler_.zegoeventlistener.html#alignedaudioauxdata) | 与伴奏对齐的音频混音数据回调 |❌|
+| [beforeAudioPrepAudioData](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/javascript_uni-app/interfaces/_zegoexpresseventhandler_.zegoeventlistener.html#beforeaudioprepaudiodata) | SDK 内部音频前处理前的音频数据回调。 |❌|
+| [processRemoteAudioData](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/javascript_uni-app/interfaces/_zegoexpresseventhandler_.zegoeventlistener.html#processremoteaudiodata) | 自定义音频处理远端拉流 PCM 音频帧回调。 |❌|
+| [processPlaybackAudioData](https://doc-zh.zego.im/unique-api/express-video-sdk/zh/javascript_uni-app/interfaces/_zegoexpresseventhandler_.zegoeventlistener.html#processplaybackaudiodata) | 自定义音频处理 SDK 播放音频的 PCM 音频帧回调。 |❌|
 
 ## 媒体推流器
 
@@ -249,6 +265,10 @@ ZEGO SDK 拥有全面覆盖全球重点区域的网络节点，提供丰富的 A
 `暂不支持`
 
 ## 版权音乐
+
+`暂不支持`
+
+## 图片采集器
 
 `暂不支持`
 

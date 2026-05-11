@@ -383,6 +383,11 @@
           "type": "doc",
           "label": "Set custom push rules",
           "id": "offline-push-notifications/set-custom-push-rules"
+        },
+        {
+          "type": "doc",
+          "label": "Implementing Offline Push Notifications with the ZIM SDK",
+          "id": "offline-push-notifications/use-zim-to-zpns"
         }
       ]
     },
@@ -404,13 +409,18 @@
       "items": [
         {
           "type": "doc",
+          "label": "Render conversation messages in chat page",
+          "id": "best-practice/show-message"
+        },
+        {
+          "type": "doc",
           "label": "Subscribe to user online status",
           "id": "best-practice/subscribe-to-online-status"
         },
         {
           "type": "doc",
-          "label": "Render Conversation Messages on the Chat Page",
-          "id": "best-practice/show-message"
+          "label": "Manage user login",
+          "id": "best-practice/manage-user-login-state"
         }
       ]
     },

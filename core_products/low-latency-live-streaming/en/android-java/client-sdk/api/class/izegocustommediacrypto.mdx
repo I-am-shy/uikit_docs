@@ -1,0 +1,166 @@
+---
+docType: API
+date: "2026-05-06"
+---
+
+# IZegoCustomMediaCrypto
+
+## IZegoCustomMediaCrypto
+
+*Declared in `callback/IZegoCustomMediaCrypto.java`*
+
+### Methods
+<ParamField
+  name="getEncryptDstLen"
+  prototype="public  int getEncryptDstLen(int srcLen)"
+  desc="Get the length of the encrypted target."
+  parent_file="Declared in \`callback/IZegoCustomMediaCrypto.java\`"
+  parent_name="IZegoCustomMediaCrypto"
+  parent_type="class">
+**Parameters**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| srcLen | int | Length of the source. |
+
+**Details**
+
+Get the length of the encrypted destination.
+ When to
+
+<Note title="">
+- **Trigger**: Encrypted per package.
+</Note>
+
+<Warning title="">
+- **Available since**: 3.24.0
+</Warning>
+
+**Return**
+
+Length of the destination.
+</ParamField>
+<ParamField
+  name="onAudioEncryptCallback"
+  prototype="public  int onAudioEncryptCallback(ByteBuffer inBuffer, ByteBuffer outBuffer)"
+  desc="Audio encryption callback."
+  parent_file="Declared in \`callback/IZegoCustomMediaCrypto.java\`"
+  parent_name="IZegoCustomMediaCrypto"
+  parent_type="class">
+**Parameters**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| inBuffer | ByteBuffer | The block data of the input data. |
+| outBuffer | ByteBuffer | The block data of the output data. |
+
+**Details**
+
+Audio encryption callback.
+ When to
+
+<Note title="">
+- **Trigger**: Encrypt each audio package.
+</Note>
+
+<Warning title="">
+- **Available since**: 3.24.0
+</Warning>
+
+**Return**
+
+Returns 0 on success, non-zero on failure.
+</ParamField>
+<ParamField
+  name="onVideoEncryptCallback"
+  prototype="public  int onVideoEncryptCallback(ByteBuffer inBuffer, ByteBuffer outBuffer)"
+  desc="Video encryption callback."
+  parent_file="Declared in \`callback/IZegoCustomMediaCrypto.java\`"
+  parent_name="IZegoCustomMediaCrypto"
+  parent_type="class">
+**Parameters**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| inBuffer | ByteBuffer | The block data of the input data. |
+| outBuffer | ByteBuffer | The block data of the output data. |
+
+**Details**
+
+Video encryption callback.
+ When to
+
+<Note title="">
+- **Trigger**: Encrypt each video package.
+</Note>
+
+<Warning title="">
+- **Available since**: 3.24.0
+</Warning>
+
+**Return**
+
+Returns 0 on success, non-zero on failure.
+</ParamField>
+<ParamField
+  name="onAudioDecryptCallback"
+  prototype="public  int onAudioDecryptCallback(ByteBuffer inBuffer, ByteBuffer outBuffer)"
+  desc="Audio decryption callback."
+  parent_file="Declared in \`callback/IZegoCustomMediaCrypto.java\`"
+  parent_name="IZegoCustomMediaCrypto"
+  parent_type="class">
+**Parameters**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| inBuffer | ByteBuffer | The block data of the input data. |
+| outBuffer | ByteBuffer | The block data of the output data. |
+
+**Details**
+
+Audio decryption callback.
+ When to
+
+<Note title="">
+- **Trigger**: Decrypt each audio package.
+</Note>
+
+<Warning title="">
+- **Available since**: 3.24.0
+</Warning>
+
+**Return**
+
+Returns 0 on success, non-zero on failure.
+</ParamField>
+<ParamField
+  name="onVideoDecryptCallback"
+  prototype="public  int onVideoDecryptCallback(ByteBuffer inBuffer, ByteBuffer outBuffer)"
+  desc="Video decryption callback."
+  parent_file="Declared in \`callback/IZegoCustomMediaCrypto.java\`"
+  parent_name="IZegoCustomMediaCrypto"
+  parent_type="class">
+**Parameters**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| inBuffer | ByteBuffer | The block data of the input data. |
+| outBuffer | ByteBuffer | The block data of the output data. |
+
+**Details**
+
+Video decryption callback.
+ When to
+
+<Note title="">
+- **Trigger**: Decrypt each video package.
+</Note>
+
+<Warning title="">
+- **Available since**: 3.24.0
+</Warning>
+
+**Return**
+
+Returns 0 on success, non-zero on failure.
+</ParamField>

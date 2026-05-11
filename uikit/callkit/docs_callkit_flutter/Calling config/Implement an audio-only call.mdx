@@ -1,3 +1,6 @@
+---
+date: "2026-05-08"
+---
 # Implement an audio-only call
 
 When starting a call, the Call Kit (ZegoUIKitPrebuiltCall) turns on the camera, and microphone, and uses the speaker as the audio output device by default.
@@ -9,6 +12,20 @@ To change this default configuration, for example, turn off the camera when you 
 2. `turnOnMicrophoneWhenJoining`: Whether to turn on the microphone when the call starts. true: turn on (by default). false: turn off.
 
 3. `useSpeakerWhenJoining`: Whether to use the speaker when the call starts. true: use the speaker (by default). false: use the system's default audio output device, such as an ear speaker, headset, Bluetooth, etc.
+
+<Warning title="Warning">
+
+**Configuration Override in Call Invitation Scenario**
+
+When using the call invitation feature, the following configurations in `ZegoCallConfig` will be overridden by the corresponding settings in `ZegoInvitationConfig`:
+
+- `turnOnCameraWhenJoining` → `ZegoInvitationConfig.defaultCameraOn`
+- `turnOnMicrophoneWhenJoining` → `ZegoInvitationConfig.defaultMicrophoneOn`
+- `useSpeakerWhenJoining` → `ZegoInvitationConfig.defaultSpeakerOn`
+
+If you need to customize device states for the call invitation scenario, please configure the corresponding properties in `ZegoInvitationConfig` instead of `ZegoCallConfig`.
+
+</Warning>
 
 Here is the reference code:
 
@@ -22,6 +39,18 @@ await ZegoUIKitPrebuiltCallInvitationService().init(
   userID: userID,
   userName: userName,
   plugins: [ZegoUIKitSignalingPlugin()],
+  uiConfig: ZegoCallInvitationUIConfig(
+    inviter: ZegoCallInvitationInviterUIConfig(
+      defaultCameraOn : false,
+      defaultMicrophoneOn : false,
+      defaultSpeakerOn: true,
+    ),
+    invitee: ZegoCallInvitationInviteeUIConfig(
+      defaultCameraOn : false,
+      defaultMicrophoneOn : false,
+      defaultSpeakerOn: true,
+    ),
+  ),
   requireConfig: (ZegoCallInvitationData data) {
     var config = (data.invitees.length > 1)
         ? ZegoCallType.videoCall == data.type
@@ -32,10 +61,13 @@ await ZegoUIKitPrebuiltCallInvitationService().init(
             : ZegoUIKitPrebuiltCallConfig.oneOnOneVoiceCall();
 
     // Modify your custom configurations here.
-    config
-      ..turnOnCameraWhenJoining = false
-      ..turnOnMicrophoneWhenJoining = false
-      ..useSpeakerWhenJoining = true;
+    // Note: In call invitation scenario, you should configure device states 
+    // through ZegoInvitationConfig (e.g., defaultCameraOn, defaultMicrophoneOn, 
+    // defaultSpeakerOn) instead of ZegoCallConfig properties.
+    // config
+    //   ..turnOnCameraWhenJoining = false
+    //   ..turnOnMicrophoneWhenJoining = false
+    //   ..useSpeakerWhenJoining = true;
     return config;
   },
 );

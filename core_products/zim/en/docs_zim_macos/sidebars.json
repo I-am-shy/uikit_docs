@@ -48,7 +48,7 @@
           "id": "client-sdks/api-reference/enum"
         }
       ]
-    }  
+    }
   ],
   "mySidebar": [
     {
@@ -372,6 +372,17 @@
     },
     {
       "type": "category",
+      "label": "Offline push notifications",
+      "items": [
+        {
+          "type": "doc",
+          "label": "Implementing Offline Push Notifications with the ZIM SDK",
+          "id": "offline-push-notifications/use-zim-to-zpns"
+        }
+      ]
+    },
+    {
+      "type": "category",
       "label": "SDK Error Codes",
       "items": [
         {
@@ -388,13 +399,18 @@
       "items": [
         {
           "type": "doc",
+          "label": "Render conversation messages in chat page",
+          "id": "best-practice/show-message"
+        },
+        {
+          "type": "doc",
           "label": "Subscribe to user online status",
           "id": "best-practice/subscribe-to-online-status"
         },
         {
           "type": "doc",
-          "label": "Render Conversation Messages on the Chat Page",
-          "id": "best-practice/show-message"
+          "label": "Manage user login",
+          "id": "best-practice/manage-user-login-state"
         }
       ]
     },

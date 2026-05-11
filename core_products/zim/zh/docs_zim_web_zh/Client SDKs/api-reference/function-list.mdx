@@ -1,5 +1,6 @@
 ---
 docType: API
+date: "2026-04-29"
 ---
 
 
@@ -36,6 +37,7 @@ API 返回的错误码，请参考 https://doc-zh.zego.im/article/11606。
 [subscribeUsersStatus](./class.mdx#subscribeusersstatus-zim) | 订阅其他用户的用户状态。
 [unsubscribeUsersStatus](./class.mdx#unsubscribeusersstatus-zim) | 用于批量取消订阅当前用户订阅列表中的目标用户。
 [updateUserCustomStatus](./class.mdx#updateusercustomstatus-zim) | 用于更新用户自定义状态。
+[updateUserCustomStatus](./class.mdx#updateusercustomstatus1-zim) | 用于更新用户自定义状态。
 [updateUserOfflinePushRule](./class.mdx#updateuserofflinepushrule-zim) | 修改离线推送的自定规则
 [querySelfUserInfo](./class.mdx#queryselfuserinfo-zim) | 查询自身用户信息、用户规则。
 [create](./class.mdx#create1-zim) | 创建 ZIM 实例。
@@ -119,6 +121,7 @@ API 返回的错误码，请参考 https://doc-zh.zego.im/article/11606。
 [revokeMessage](./class.mdx#revokemessage-zim) | 撤回消息。
 [deleteMessages](./class.mdx#deletemessages-zim) | 删除消息。
 [addMessageReaction](./class.mdx#addmessagereaction-zim) | 增加消息表态
+[deleteMessageAllReactions](./class.mdx#deletemessageallreactions-zim) | 删除消息全部表态。
 [deleteMessageReaction](./class.mdx#deletemessagereaction-zim) | 删除消息表态
 [queryMessageReactionUserList](./class.mdx#querymessagereactionuserlist-zim) | 拉取消息表态用户列表
 [deleteAllMessage](./class.mdx#deleteallmessage-zim) | 通过会话ID删除消息。
@@ -248,7 +251,8 @@ API 返回的错误码，请参考 https://doc-zh.zego.im/article/11606。
 
  | 方法名 | 描述 | 
  | --- | --- | 
- | [getInstance](./class.mdx#getinstance-zpns) | 获得 ZPNs 实例。
+ | [updateUserBadge](./class.mdx#updateuserbadge-zim) | 更新 iOS 离线通知徽标数量。
+[getInstance](./class.mdx#getinstance-zpns) | 获得 ZPNs 实例。
 [register](./class.mdx#register-zpns) | 该方法用于注册厂商离线推送。
 [unregister](./class.mdx#unregister-zpns) | 不需要离线推送时可调用此方法反注册。 | 
 

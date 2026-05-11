@@ -268,6 +268,15 @@
             "label": "进阶",
             "color": "Warning"
           }
+        },
+        {
+          "type": "doc",
+          "label": "自定义视频前处理",
+          "id": "video/custom-video-preprocessing",
+          "tag": {
+            "label": "进阶",
+            "color": "Warning"
+          }
         }
       ]
     },
@@ -281,6 +290,15 @@
           "label": "混流",
           "id": "live-streaming/stream-mixing",
           "articleID": 6649,
+          "tag": {
+            "label": "基础",
+            "color": "Check"
+          }
+        },
+        {
+          "type": "doc",
+          "label": "CDN 拉流、录制、截图鉴权",
+          "id": "live-streaming/cdn-stream-playing-recording-screenshot-authentication",
           "tag": {
             "label": "基础",
             "color": "Check"

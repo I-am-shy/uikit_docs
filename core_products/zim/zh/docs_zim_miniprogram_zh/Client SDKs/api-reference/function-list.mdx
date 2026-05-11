@@ -1,5 +1,6 @@
 ---
 docType: API
+date: "2026-04-29"
 ---
 
 
@@ -36,6 +37,7 @@ API 返回的错误码，请参考 https://doc-zh.zego.im/article/11606。
 [subscribeUsersStatus](./class.mdx#subscribeusersstatus-zim) | 订阅其他用户的用户状态。
 [unsubscribeUsersStatus](./class.mdx#unsubscribeusersstatus-zim) | 用于批量取消订阅当前用户订阅列表中的目标用户。
 [updateUserCustomStatus](./class.mdx#updateusercustomstatus-zim) | 用于更新用户自定义状态。
+[updateUserCustomStatus](./class.mdx#updateusercustomstatus1-zim) | 用于更新用户自定义状态。
 [updateUserOfflinePushRule](./class.mdx#updateuserofflinepushrule-zim) | 修改离线推送的自定规则
 [querySelfUserInfo](./class.mdx#queryselfuserinfo-zim) | 查询自身用户信息、用户规则。
 [create](./class.mdx#create1-zim) | 创建 ZIM 实例。
@@ -116,6 +118,7 @@ API 返回的错误码，请参考 https://doc-zh.zego.im/article/11606。
 [revokeMessage](./class.mdx#revokemessage-zim) | 撤回消息。
 [deleteMessages](./class.mdx#deletemessages-zim) | 删除消息。
 [addMessageReaction](./class.mdx#addmessagereaction-zim) | 增加消息表态
+[deleteMessageAllReactions](./class.mdx#deletemessageallreactions-zim) | 删除消息全部表态。
 [deleteMessageReaction](./class.mdx#deletemessagereaction-zim) | 删除消息表态
 [queryMessageReactionUserList](./class.mdx#querymessagereactionuserlist-zim) | 拉取消息表态用户列表
 [deleteAllMessage](./class.mdx#deleteallmessage-zim) | 通过会话ID删除消息。
@@ -238,6 +241,12 @@ API 返回的错误码，请参考 https://doc-zh.zego.im/article/11606。
 [callInviteesAnsweredTimeout](./interface.mdx#callinviteesansweredtimeout-zimeventhandler) | 邀请者呼叫邀请超时的通知回调。
 [callInvitationEnded](./interface.mdx#callinvitationended-zimeventhandler) | 呼叫结束的通知回调。
 [callUserStateChanged](./interface.mdx#calluserstatechanged-zimeventhandler) | 呼叫邀请内的用户状态的通知回调。 | 
+
+## 离线推送功能（需单独集成）
+
+ | 方法名 | 描述 | 
+ | --- | --- | 
+ | [updateUserBadge](./class.mdx#updateuserbadge-zim) | 更新 iOS 离线通知徽标数量。 | 
 
 ## 黑名单功能
 

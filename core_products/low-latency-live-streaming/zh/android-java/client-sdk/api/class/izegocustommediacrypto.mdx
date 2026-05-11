@@ -1,0 +1,161 @@
+---
+docType: API
+date: "2026-05-06"
+---
+
+# IZegoCustomMediaCrypto
+
+## IZegoCustomMediaCrypto
+
+*Declared in `callback/IZegoCustomMediaCrypto.java`*
+
+### 方法
+<ParamField
+  name="getEncryptDstLen"
+  prototype="public  int getEncryptDstLen(int srcLen)"
+  desc="获取加密后目标长度。"
+  parent_file="Declared in \`callback/IZegoCustomMediaCrypto.java\`"
+  parent_name="IZegoCustomMediaCrypto"
+  parent_type="class">
+**参数**
+
+| 名称 | 类型 | 描述 |
+| --- | --- | --- |
+| srcLen | int | 源长度。 |
+
+**详情**
+
+获取加密后目标长度。
+
+<Note title="">
+- **通知时机**：每一个包加密都会触发。
+</Note>
+
+<Warning title="">
+- **支持版本**：3.24.0 及以上。
+</Warning>
+
+**返回值**
+
+目标长度。
+</ParamField>
+<ParamField
+  name="onAudioEncryptCallback"
+  prototype="public  int onAudioEncryptCallback(ByteBuffer inBuffer, ByteBuffer outBuffer)"
+  desc="音频加密回调。"
+  parent_file="Declared in \`callback/IZegoCustomMediaCrypto.java\`"
+  parent_name="IZegoCustomMediaCrypto"
+  parent_type="class">
+**参数**
+
+| 名称 | 类型 | 描述 |
+| --- | --- | --- |
+| inBuffer | ByteBuffer | 输入数据。 |
+| outBuffer | ByteBuffer | 输出数据。 |
+
+**详情**
+
+音频加密回调。
+
+<Note title="">
+- **通知时机**：每个音频包加密。
+</Note>
+
+<Warning title="">
+- **支持版本**：3.24.0 及以上。
+</Warning>
+
+**返回值**
+
+成功返回0，失败返回非0。
+</ParamField>
+<ParamField
+  name="onVideoEncryptCallback"
+  prototype="public  int onVideoEncryptCallback(ByteBuffer inBuffer, ByteBuffer outBuffer)"
+  desc="视频加密回调"
+  parent_file="Declared in \`callback/IZegoCustomMediaCrypto.java\`"
+  parent_name="IZegoCustomMediaCrypto"
+  parent_type="class">
+**参数**
+
+| 名称 | 类型 | 描述 |
+| --- | --- | --- |
+| inBuffer | ByteBuffer | 输入数据。 |
+| outBuffer | ByteBuffer | 输出数据。 |
+
+**详情**
+
+视频加密回调。
+
+<Note title="">
+- **通知时机**：每个视频包加密。
+</Note>
+
+<Warning title="">
+- **支持版本**：3.24.0 及以上。
+</Warning>
+
+**返回值**
+
+成功返回0，失败返回非0。
+</ParamField>
+<ParamField
+  name="onAudioDecryptCallback"
+  prototype="public  int onAudioDecryptCallback(ByteBuffer inBuffer, ByteBuffer outBuffer)"
+  desc="视频加密回调"
+  parent_file="Declared in \`callback/IZegoCustomMediaCrypto.java\`"
+  parent_name="IZegoCustomMediaCrypto"
+  parent_type="class">
+**参数**
+
+| 名称 | 类型 | 描述 |
+| --- | --- | --- |
+| inBuffer | ByteBuffer | 输入数据。 |
+| outBuffer | ByteBuffer | 输出数据。 |
+
+**详情**
+
+视频加密回调。
+
+<Note title="">
+- **通知时机**：每个音频包解密。
+</Note>
+
+<Warning title="">
+- **支持版本**：3.24.0 及以上。
+</Warning>
+
+**返回值**
+
+成功返回0，失败返回非0。
+</ParamField>
+<ParamField
+  name="onVideoDecryptCallback"
+  prototype="public  int onVideoDecryptCallback(ByteBuffer inBuffer, ByteBuffer outBuffer)"
+  desc="视频解密回调"
+  parent_file="Declared in \`callback/IZegoCustomMediaCrypto.java\`"
+  parent_name="IZegoCustomMediaCrypto"
+  parent_type="class">
+**参数**
+
+| 名称 | 类型 | 描述 |
+| --- | --- | --- |
+| inBuffer | ByteBuffer | 输入数据。 |
+| outBuffer | ByteBuffer | 输出数据。 |
+
+**详情**
+
+视频解密回调。
+
+<Note title="">
+- **通知时机**：每个视频包解密。
+</Note>
+
+<Warning title="">
+- **支持版本**：3.24.0 及以上。
+</Warning>
+
+**返回值**
+
+成功返回0，失败返回非0。
+</ParamField>

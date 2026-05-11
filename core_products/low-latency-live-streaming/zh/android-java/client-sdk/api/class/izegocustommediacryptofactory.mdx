@@ -1,0 +1,67 @@
+---
+docType: API
+date: "2026-05-06"
+---
+
+# IZegoCustomMediaCryptoFactory
+
+## IZegoCustomMediaCryptoFactory
+
+*Declared in `callback/IZegoCustomMediaCryptoFactory.java`*
+
+### 方法
+<ParamField
+  name="createMediaCrypto"
+  prototype="public  [IZegoCustomMediaCrypto](../../api-reference/class#izegocustommediacrypto) createMediaCrypto(String streamID, boolean isEncrypt)"
+  desc="创建自定义媒体数据加解密对象。"
+  parent_file="Declared in \`callback/IZegoCustomMediaCryptoFactory.java\`"
+  parent_name="IZegoCustomMediaCryptoFactory"
+  parent_type="class">
+**参数**
+
+| 名称 | 类型 | 描述 |
+| --- | --- | --- |
+| streamID | String | 流 ID。 |
+| isEncrypt | boolean | 是否加密，true表示加密，false表示解密。 |
+
+**详情**
+
+SDK 通知需要开始媒体数据加解密。
+
+<Note title="">
+- **通知时机**：调用 [startPlayingStream] 或 [startPublishingStream] 成功之后。
+</Note>
+
+<Warning title="">
+- **支持版本**：3.24.0 及以上。
+</Warning>
+
+**返回值**
+
+自定义媒体数据加解密对象。
+</ParamField>
+<ParamField
+  name="destroyMediaCrypto"
+  prototype="public  void destroyMediaCrypto([IZegoCustomMediaCrypto](../../api-reference/class#izegocustommediacrypto) instance)"
+  desc="销毁媒体数据加解密对象"
+  parent_file="Declared in \`callback/IZegoCustomMediaCryptoFactory.java\`"
+  parent_name="IZegoCustomMediaCryptoFactory"
+  parent_type="class">
+**参数**
+
+| 名称 | 类型 | 描述 |
+| --- | --- | --- |
+| instance | [IZegoCustomMediaCrypto](../../api-reference/class#izegocustommediacrypto) | 回调 [createMediaCrypto] 返回的媒体数据加解密对象。 |
+
+**详情**
+
+销毁媒体数据加解密对象。
+
+<Note title="">
+- **通知时机**：一条流结束时。
+</Note>
+
+<Warning title="">
+- **支持版本**：3.24.0 及以上。
+</Warning>
+</ParamField>

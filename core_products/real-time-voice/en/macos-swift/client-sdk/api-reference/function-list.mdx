@@ -167,6 +167,7 @@ The following is a brief introduction to the basic API.
 [enableVideoObjectSegmentation:config:channel:](./class.mdx#enablevideoobjectsegmentationconfigchannel-zegoexpressengine) | Enable video object segmentation.
 [enableAlphaChannelVideoEncoder:alphaLayout:channel:](./class.mdx#enablealphachannelvideoencoderalphalayoutchannel-zegoexpressengine) | Enable video encoder alpha channel support.
 [enableVideoEncoderEnhancement:enhanceLevel:channel:](./class.mdx#enablevideoencoderenhancementenhancelevelchannel-zegoexpressengine) | Enable video encoder enhancement.
+[enableVideoEncoderEnhancementWithConfig:config:channel:](./class.mdx#enablevideoencoderenhancementwithconfigconfigchannel-zegoexpressengine) | Enable video encoder enhancement.
 [setCameraStabilizationMode:channel:](./class.mdx#setcamerastabilizationmodechannel-zegoexpressengine) | Set the camera stabilization mode.
 [enableAuxBgmBalance:](./class.mdx#enableauxbgmbalance-zegoexpressengine) | Turn on or off the adaptive mode to adjust the volume of the human voice according to the volume of the BGM.
 [enableFaceDetection:channel:](./class.mdx#enablefacedetectionchannel-zegoexpressengine) | Turn on or off the face detection.
@@ -513,6 +514,7 @@ The following is a brief introduction to the basic API.
 [enableRemoteVideoCustomVideoRender:streamID:](./class.mdx#enableremotevideocustomvideorenderstreamid-zegoexpressengine) | Enables or disables remote playback video to custom video rendering.
 [enableCustomVideoCapture:config:](./class.mdx#enablecustomvideocaptureconfig-zegoexpressengine) | Enables or disables custom video capture.
 [enableCustomVideoCapture:config:channel:](./class.mdx#enablecustomvideocaptureconfigchannel-zegoexpressengine) | Enables or disables custom video capture (for the specified channel).
+[setCustomMediaCryptoFactory:](./class.mdx#setcustommediacryptofactory-zegoexpressengine) | Sets the factory for custom media crypto.
 [setCustomVideoCaptureHandler:](./class.mdx#setcustomvideocapturehandler-zegoexpressengine) | Sets the event callback handler for custom video capture.
 [sendCustomVideoCaptureTextureData:size:timestamp:](./class.mdx#sendcustomvideocapturetexturedatasizetimestamp-zegoexpressengine) | Sends the video frames (Texture Data) produced by custom video capture to the SDK.
 [sendCustomVideoCaptureTextureData:size:timestamp:channel:](./class.mdx#sendcustomvideocapturetexturedatasizetimestampchannel-zegoexpressengine) | Sends the video frames (Texture Data) produced by custom video capture to the SDK (for the specified channel).
@@ -527,6 +529,13 @@ The following is a brief introduction to the basic API.
 [setCustomVideoCaptureRotation:channel:](./class.mdx#setcustomvideocapturerotationchannel-zegoexpressengine) | Sets the video rotation of custom video capture (for the specified channel).
 [setCustomVideoCaptureDeviceState:state:channel:](./class.mdx#setcustomvideocapturedevicestatestatechannel-zegoexpressengine) | Sets device state of custom video capture (for the specified channel).
 [setCustomVideoCaptureRegionOfInterest:channel:](./class.mdx#setcustomvideocaptureregionofinterestchannel-zegoexpressengine) | Set the region of interest (ROI) for encoder of custom video capture (for the specified channel).
+[getEncryptDstLen:](./class.mdx#getencryptdstlen-zegocustommediacrypto) | Get the length of the encrypted target.
+[onAudioEncryptCallback:inBufferSize:outBuffer:outBufferSize:](./class.mdx#onaudioencryptcallbackinbuffersizeoutbufferoutbuffersize-zegocustommediacrypto) | Audio encryption callback.
+[onVideoEncryptCallback:inBufferSize:outBuffer:outBufferSize:](./class.mdx#onvideoencryptcallbackinbuffersizeoutbufferoutbuffersize-zegocustommediacrypto) | Video encryption callback.
+[onAudioDecryptCallback:inBufferSize:outBuffer:outBufferSize:](./class.mdx#onaudiodecryptcallbackinbuffersizeoutbufferoutbuffersize-zegocustommediacrypto) | Audio decryption callback.
+[onVideoDecryptCallback:inBufferSize:outBuffer:outBufferSize:](./class.mdx#onvideodecryptcallbackinbuffersizeoutbufferoutbuffersize-zegocustommediacrypto) | Video decryption callback.
+[createMediaCrypto:isEncrypt:](./class.mdx#createmediacryptoisencrypt-zegocustommediacryptofactory) | Create a custom media crypto object.
+[destroyMediaCrypto:](./class.mdx#destroymediacrypto-zegocustommediacryptofactory) | Destroy a custom media crypto object.
 [onStart:](./protocol.mdx#onstart-zegocustomvideocapturehandler) | Customize the notification of the start of video capture.
 [onStop:](./protocol.mdx#onstop-zegocustomvideocapturehandler) | Customize the notification of the end of the collection.
 [onEncodedDataTrafficControl:channel:](./protocol.mdx#onencodeddatatrafficcontrolchannel-zegocustomvideocapturehandler) | When network changes are detected during custom video capture, the developer is notified that traffic control is required, and the encoding configuration is adjusted according to the recommended parameters of the SDK.
@@ -703,7 +712,7 @@ The following is a brief introduction to the basic API.
 [enableBeautify:channel:](./class.mdx#enablebeautifychannel-zegoexpressengine) | [Deprecated] Enables or disables the beauty features for the specified publish channel. Deprecated since 2.16.0, please use the [enableEffectsBeauty] function instead.
 [setBeautifyOption:](./class.mdx#setbeautifyoption-zegoexpressengine) | [Deprecated] Set beautify option. Deprecated since 2.16.0, please use the [setEffectsBeautyParam] function instead.
 [setBeautifyOption:channel:](./class.mdx#setbeautifyoptionchannel-zegoexpressengine) | [Deprecated] Set beautify option. Deprecated since 2.16.0, please use the [setEffectsBeautyParam] function instead.
-[createEngineWithAppID:appSign:isTestEnv:scenario:eventHandler:](./class.mdx#createenginewithappidappsignistestenvscenarioeventhandler-zegoexpressengine) | [Deprecated] Create ZegoExpressEngine singleton object and initialize SDK. Deprecated since 2.14.0, please use the method with the same name without [isTestEnv] parameter instead. Please refer to [Testing environment deprecation](https://docs.zegocloud.com/article/13315) for more details.
+[createEngineWithAppID:appSign:isTestEnv:scenario:eventHandler:](./class.mdx#createenginewithappidappsignistestenvscenarioeventhandler-zegoexpressengine) | [Deprecated] Create ZegoExpressEngine singleton object and initialize SDK. Deprecated since 2.14.0, please use the method with the same name without [isTestEnv] parameter instead. Please refer to [Testing environment deprecation](/real-time-voice-android/introduction/abandon-test-environment) for more details.
 [requestSong:callback:](./class.mdx#requestsongcallback-zegocopyrightedmusic) | [Deprecated] Request a song. Deprecated since 3.0.2, please use the [requestResource] function instead.
 [requestAccompaniment:callback:](./class.mdx#requestaccompanimentcallback-zegocopyrightedmusic) | [Deprecated] Request accompaniment. Deprecated since 3.0.2, please use the [requestResource] function instead.
 [requestAccompanimentClip:callback:](./class.mdx#requestaccompanimentclipcallback-zegocopyrightedmusic) | [Deprecated] Request accompaniment clip. Deprecated since 3.0.2, please use the [requestResource] function instead.

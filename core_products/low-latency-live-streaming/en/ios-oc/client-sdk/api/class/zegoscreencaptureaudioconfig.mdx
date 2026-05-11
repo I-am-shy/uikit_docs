@@ -1,5 +1,6 @@
 ---
 docType: API
+date: "2026-05-06"
 ---
 
 # ZegoScreenCaptureAudioConfig
@@ -16,5 +17,12 @@ Screen capture audio config
   prototype="nonatomic, assign BOOL enableWindowCapture"
   parent_name="ZegoScreenCaptureAudioConfig"
   parent_type="class">
-Whether to collect window sound. true for collection, false for no collection, default false. (only for Windows 10 2004 and above versions)
+Whether to capture window sounds. When true, window sounds will be captured if the capture source is a window; otherwise, system sounds will be captured if the capture source is the screen or if false. When true, the excludeProcessID parameter will be ignored. (only for Windows 10 2004 and above versions)
+</ParamField>
+<ParamField
+  name="excludeProcessID"
+  prototype=" int excludeProcessID"
+  parent_name="ZegoScreenCaptureAudioConfig"
+  parent_type="class">
+The process ID to exclude. If system sound capture is enabled, this process's sound can be excluded. Passing in -1 will remove the sound from this process. (Only supports capturing window sounds on Windows 10 2004 and later versions)
 </ParamField>

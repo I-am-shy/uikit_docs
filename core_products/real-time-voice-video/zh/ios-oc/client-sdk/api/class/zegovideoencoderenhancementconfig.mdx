@@ -1,0 +1,31 @@
+---
+docType: API
+---
+
+# ZegoVideoEncoderEnhancementConfig
+
+## ZegoVideoEncoderEnhancementConfig
+
+视频增强配置。
+
+**详情**
+
+用于在开启视频增强时，配置参数。
+
+*Declared in `ZegoExpressDefines.h`*
+
+### 属性
+<ParamField
+  name="enhanceLevelMode"
+  prototype="nonatomic, assign [ZegoVideoEncodeEnhanceLevelMode](../../api-reference/enum#zegovideoencodeenhancelevelmode) enhanceLevelMode"
+  parent_name="ZegoVideoEncoderEnhancementConfig"
+  parent_type="class">
+增强等级模式
+</ParamField>
+<ParamField
+  name="enhanceLevel"
+  prototype="nonatomic, assign float enhanceLevel"
+  parent_name="ZegoVideoEncoderEnhancementConfig"
+  parent_type="class">
+增强等级[0.0,1.5]，推荐0.9。
+</ParamField>

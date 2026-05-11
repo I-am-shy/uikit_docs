@@ -1,0 +1,69 @@
+---
+docType: API
+date: "2026-05-06"
+---
+
+# IZegoCustomMediaCryptoFactory
+
+## IZegoCustomMediaCryptoFactory
+
+*Declared in `callback/IZegoCustomMediaCryptoFactory.java`*
+
+### Methods
+<ParamField
+  name="createMediaCrypto"
+  prototype="public  [IZegoCustomMediaCrypto](../../api-reference/class#izegocustommediacrypto) createMediaCrypto(String streamID, boolean isEncrypt)"
+  desc="Create a custom media crypto object."
+  parent_file="Declared in \`callback/IZegoCustomMediaCryptoFactory.java\`"
+  parent_name="IZegoCustomMediaCryptoFactory"
+  parent_type="class">
+**Parameters**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| streamID | String | Stream ID. |
+| isEncrypt | boolean | Whether to encrypt. true indicates encryption, false indicates decryption. |
+
+**Details**
+
+The SDK notifies that media data encryption/decryption needs to begin.
+ When to
+
+<Note title="">
+- **Trigger**: After calling [startPlayingStream] or [startPublishingStream] successfully.
+</Note>
+
+<Warning title="">
+- **Available since**: 3.24.0
+</Warning>
+
+**Return**
+
+Custom media crypto object.
+</ParamField>
+<ParamField
+  name="destroyMediaCrypto"
+  prototype="public  void destroyMediaCrypto([IZegoCustomMediaCrypto](../../api-reference/class#izegocustommediacrypto) instance)"
+  desc="Destroy a custom media crypto object."
+  parent_file="Declared in \`callback/IZegoCustomMediaCryptoFactory.java\`"
+  parent_name="IZegoCustomMediaCryptoFactory"
+  parent_type="class">
+**Parameters**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| instance | [IZegoCustomMediaCrypto](../../api-reference/class#izegocustommediacrypto) | The custom media crypto object returned by the callback [createMediaCrypto]. |
+
+**Details**
+
+Destroy a custom media crypto object.
+ When to
+
+<Note title="">
+- **Trigger**: At the end of a stream.
+</Note>
+
+<Warning title="">
+- **Available since**: 3.24.0
+</Warning>
+</ParamField>

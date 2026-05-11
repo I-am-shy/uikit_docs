@@ -1,5 +1,5 @@
 ---
-date: '2026-02-06'
+date: "2026-05-06"
 ---
 # MessageBody introduction
 
@@ -422,8 +422,8 @@ The MessageBody structure is the same for text messages, custom messages and pop
 | MediaDuration | Number | No | Video duration in seconds. |
 | Thumbnail | Object | No | Video first frame. |
 | Url | String | Yes（Only if the first frame of the video is required） | The URL address of the thumbnail, the maximum length is 500 bytes. |
-| Width | Number | Yes（Only if the first frame of the video is required） | Image width in pixels（px). |
-| Height | Number | Yes（Only if the first frame of the video is required） | Image height in pixels（px). |
+| Width | Number | Yes（Only if the first frame of the video is required） | Image width in pixels（px). If Thumbnail is set, this value cannot be 0. |
+| Height | Number | Yes（Only if the first frame of the video is required） | Image height in pixels（px). If Thumbnail is set, this value cannot be 0. |
 
 ### Message example
 

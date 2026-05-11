@@ -1,6 +1,6 @@
 ---
 articleID: 14167
-date: '2026-02-06'
+date: "2026-05-06"
 ---
 
 import { getPlatformData } from '/snippets/utils-content-parser.js'
@@ -210,6 +210,7 @@ You can check whether the group is created through the {getPlatformData(props,ZI
 - After creating a group, the group owner can use the [sendGroupMessage](https://pub.dev/documentation/zego_zim/latest/zego_zim/ZIM/sendGroupMessage.html) interface to send messages to the group. For details, please refer to [Send and Receive Group Messages](./../Messaging/Send%20and%20receive%20messages.mdx#receive-rich-media-content).
 </div>
 :::
+- The `groupID` is unique under the same AppID. Once a group is created with a specific `groupID`, that `groupID` cannot be reused for any subsequent group, regardless of whether the original group has been disbanded.
 </Warning>
 
 
@@ -1737,7 +1738,7 @@ The ZIM SDK supports three mute modes:
 - Group members of specified roles are muted.
 
 <Frame width="auto" height="auto">
-  <img src="https://media-resource.spreading.io/docuo/workspace564/27e54a759d23575969552654cb45bf89/166e1eaa78.jpg" alt="Group_Muted_New_EN.jpg"/>
+  <img src="https://doc-media.zego.im/docuo/166e1eaa78.jpg" alt="Group_Muted_New_EN.jpg"/>
 </Frame>
 
 The result is returned in the {getPlatformData(props,ZIMGroupMutedCallbackMap)} callback.
