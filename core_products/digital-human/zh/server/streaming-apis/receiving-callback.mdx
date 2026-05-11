@@ -27,7 +27,7 @@ import Content from '/snippets/Reuse/SignatureVerificationZH.mdx'
 | AppId | Number | ZEGO 给开发者 APP 的唯一标识。 |
 | EventType | Number | 事件通知类型。<ul><li>3:数字人视频流任务状态。</li><li>4:数字人视频流驱动任务状态。</li></ul> |
 | Nonce | String | 随机数,用于检验串计算。 |
-| Timestamp | String | 回调发送时的 Unix 时间戳(秒),用于检验串计算。 |
+| Timestamp | String | 回调发送时的 Unix 时间戳(毫秒),用于检验串计算。 |
 | Signature | String | 检验串,验证回调发送方身份。 |
 | EventTime | Number | 事件在 ZEGO 服务器上发生的 Unix 时间戳(毫秒)。 |
 | TaskId | String | 数字人视频流任务 ID。 |

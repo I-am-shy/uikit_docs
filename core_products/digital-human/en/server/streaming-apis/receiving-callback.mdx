@@ -27,7 +27,7 @@ Through this callback, you can monitor Digital Human video stream task related i
 | AppId | Number | The unique identifier assigned by ZEGOCLOUD to the developer's app. |
 | EventType | Number | Event notification type.<ul><li>3: Digital Human video stream task status.</li><li>4: Digital Human video stream drive task status.</li></ul> |
 | Nonce | String | Random number, used for signature calculation. |
-| Timestamp | String | Unix timestamp (seconds) when the callback was sent, used for signature calculation. |
+| Timestamp | String | Unix timestamp (milliseconds) when the callback was sent, used for signature calculation. |
 | Signature | String | Signature string, used to verify the callback sender's identity. |
 | EventTime | Number | Unix timestamp (milliseconds) when the event occurred on the ZEGOCLOUD server. |
 | TaskId | String | Digital Human video stream task ID. |
