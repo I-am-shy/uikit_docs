@@ -162,17 +162,16 @@ Server: Direct TTS playback
 
 ### Callback Field Description (Key Fields)
 
-Common fields for all callback events:
+Common fields for all callback events (Round is inside the Data structure):
 
 ```json
 {
   "Event": "ASRResult",           // Event type
   "RoomId": "room_123",               // Room ID
   "AgentUserId": "agent_user_001",    // Agent user ID
-  "Round": 5,                         // 【Core】Round number
   "Sequence": 1234567890,             // Event sequence number (globally incrementing)
   "Timestamp": 1746619200000,         // Timestamp (milliseconds)
-  "Data": { ... }                     // Event specific data
+  "Data": { "Round": 5, ... }         // Event specific data, Round is inside Data
 }
 ```
 
@@ -227,8 +226,8 @@ Common fields for all callback events:
 ```json
 {
   "Event": "ASRResult",
-  "Round": 1,
   "Data": {
+    "Round": 1,
     "Result": "Hello, introduce yourself",
     "IsFinal": true
   }
@@ -240,8 +239,8 @@ Common fields for all callback events:
 ```json
 {
   "Event": "LLMResult",
-  "Round": 1,
   "Data": {
+    "Round": 1,
     "Content": "Hello, I am an AI assistant, happy to serve you."
   }
 }
@@ -252,8 +251,8 @@ Common fields for all callback events:
 ```json
 {
   "Event": "AgentInstanceStatus",
-  "Round": 1,
   "Data": {
+    "Round": 1,
     "Status": "Speaking"  // Thinking | Speaking | Idle | Listening
   }
 }
@@ -344,8 +343,8 @@ POST https://aigc-aiagent-api.zegotech.cn/
 ```json
 {
   "Event": "LLMResult",
-  "Round": 2,
   "Data": {
+    "Round": 2,
     "Content": "One day, 0 met 8. 0 said disdainfully: 'So what if I'm fat, why wear a belt!'"
   }
 }
@@ -410,8 +409,8 @@ POST https://aigc-aiagent-api.zegotech.cn/
 ```json
 {
   "Event": "AgentInstanceMetaInfo",
-  "Round": 3,
   "Data": {
+    "Round": 3,
     "MetaInfo": {
       "VoiceId": "zh_female",
       "Speed": 1.0
