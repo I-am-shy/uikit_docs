@@ -91,6 +91,7 @@ components:
             > **📌 重要说明**
             >
             > 需确保同时在运行中的多个智能体实例（即便不在同一个 RTC 房间）使用不同的用户 ID，否则先创建的智能体实例会被踢出 RTC 房间。
+            > AgentUserId 不可与真实用户的 UserId 一致，会导致互踢。
           maxLength: 32
           example: "agent_user_1"
         UserStreamId:
@@ -314,7 +315,7 @@ components:
         Vendor:
           type: string
           description: ASR 厂商。可参考[配置 ASR](/aiagent-server/guides/configuring-asr) 参数说明。
-          enum: [Tencent, AliyunParaformer, AliyunGummy, Microsoft]
+          enum: [Tencent, AliyunParaformer, AliyunGummy, Microsoft, AliyunFunASR, AliyunQwenASR, VolcSeedASR]
           default: Tencent
           example: "Tencent"
         Params:
@@ -323,7 +324,10 @@ components:
           example: {"engine_model_type": "16k_zh", "hotword_list": "zego|10"}
         VADSilenceSegmentation:
           type: number
+          deprecated: true
           description: |
+            ⚠️ 该参数已废弃。2.12.0 版本起迁移至 [VAD.TurnDetectConfig.SilenceSegmentation](/aiagent-server/api-reference/agent-instance-management/create-agent-instance)。
+
             用于设置用户说话停顿多少秒后，不再将两句话视为一句。
             单位为 ms，范围 [200，2000]，默认为 500。
             详细说明请参考[语音识别断句](/aiagent-server/advanced/speech-segmentation-control)。
@@ -337,10 +341,13 @@ components:
           example: 500
         PauseInterval:
           type: number
+          deprecated: true
           description: |
+            ⚠️ 该参数已废弃。2.12.0 版本起迁移至 [VAD.TurnDetectConfig.PauseInterval](/aiagent-server/api-reference/agent-instance-management/create-agent-instance)。
+
             用于设置用户说话停顿多少秒内，将两句话视为一句，即 ASR 多句拼接。
             单位为 ms，范围 [200，2000]。
-            仅当此值大于 VADSilenceSegmentation 时，才会启用 ASR 多句拼接。
+            仅当此值大于 SilenceSegmentation 时，才会启用 ASR 多句拼接。
             详细说明请参考[语音识别断句](/aiagent-server/advanced/speech-segmentation-control)。
           minimum: 200
           maximum: 2000
@@ -348,15 +355,21 @@ components:
         VADSensitiveLevel:
           type: number
           format: int
+          deprecated: true
           description: |
-            VAD 敏感度，0：中等敏感度,默认值；1：低敏感度；2：高敏感度；3：自定义模式,需配合 VADMinSpeechDur 和 VADEnergyThreshold 使用。详细说明请参考[语音打断灵敏度调整](/aiagent-server/advanced/voice-interruption-sensitivity-adjustment)。
+            ⚠️ 该参数已废弃。2.12.0 版本起迁移至 [VAD.VoiceDetectConfig.SensitiveConfig.Level](/aiagent-server/api-reference/agent-instance-management/create-agent-instance)。
+
+            VAD 敏感度，0：中等敏感度,默认值；1：低敏感度；2：高敏感度；3：自定义模式,需配合 MinSpeechDur 和 EnergyThreshold 使用。详细说明请参考[语音打断灵敏度调整](/aiagent-server/advanced/voice-interruption-sensitivity-adjustment)。
           default: 0
           enum: [0, 1, 2, 3]
           example: 0
         VADMinSpeechDur:
           type: number
           format: int
+          deprecated: true
           description: |
+            ⚠️ 该参数已废弃。2.12.0 版本起迁移至 [VAD.VoiceDetectConfig.SensitiveConfig.MinSpeechDur](/aiagent-server/api-reference/agent-instance-management/create-agent-instance)。
+
             VAD 最小说话时长，单位 ms，值越大，越不容易误检，但是可能会引起有些短语音漏检，取值范围[0, 1000]。
           minimum: 0
           maximum: 1000
@@ -364,7 +377,10 @@ components:
         VADEnergyThreshold:
           type: number
           format: float
+          deprecated: true
           description: |
+            ⚠️ 该参数已废弃。2.12.0 版本起迁移至 [VAD.VoiceDetectConfig.SensitiveConfig.EnergyThreshold](/aiagent-server/api-reference/agent-instance-management/create-agent-instance)。
+
             VAD 能量阈值，值越小，灵敏度越高，取值范围[0, 1]。
           minimum: 0
           maximum: 1
@@ -373,6 +389,70 @@ components:
           type: string
           deprecated: true
           description: 该参数已废弃。请通过 Params 厂商参数设置。
+
+    VAD:
+      type: object
+      description: |
+        VAD（Voice Activity Detection）参数，用于控制语音活动检测。
+        2.12.0 版本起，原 ASR 下的 VAD 相关参数迁移至 VAD 结构下。
+      properties:
+        TurnDetectConfig:
+          type: object
+          description: |
+            轮次检测配置。
+          properties:
+            SilenceSegmentation:
+              type: integer
+              description: |
+                用于设置用户说话停顿多少秒后，不再将两句话视为一句。
+                单位为 ms，范围 [200，2000]，默认为 500。
+                详细说明请参考[语音识别断句](/aiagent-server/advanced/speech-segmentation-control)。
+              minimum: 200
+              maximum: 2000
+              default: 500
+              example: 500
+            PauseInterval:
+              type: integer
+              description: |
+                用于设置用户说话停顿多少秒内，将两句话视为一句，即 ASR 多句拼接。
+                单位为 ms，范围 [200，2000]。
+                仅当此值大于 SilenceSegmentation 时，才会启用 ASR 多句拼接。
+                详细说明请参考[语音识别断句](/aiagent-server/advanced/speech-segmentation-control)。
+              minimum: 200
+              maximum: 2000
+              example: 800
+        VoiceDetectConfig:
+          type: object
+          description: 语音检测配置。
+          properties:
+            SensitiveConfig:
+              type: object
+              description: VAD 敏感度配置。详细说明请参考[语音打断灵敏度调整](/aiagent-server/advanced/voice-interruption-sensitivity-adjustment)。
+              properties:
+                Level:
+                  type: integer
+                  description: |
+                    VAD 敏感度，0：中等敏感度,默认值；1：低敏感度；2：高敏感度；3：自定义模式,需配合 MinSpeechDur 和 EnergyThreshold 使用。
+                  default: 0
+                  enum: [0, 1, 2, 3]
+                  example: 0
+                MinSpeechDur:
+                  type: integer
+                  description: |
+                    VAD 最小说话时长，单位 ms，值越大，越不容易误检，但是可能会引起有些短语音漏检，取值范围[0, 1000]。
+                    **注意：** 仅在 Level 设置为 3（自定义模式）时生效。
+                  minimum: 0
+                  maximum: 1000
+                  example: 100
+                EnergyThreshold:
+                  type: number
+                  format: float
+                  description: |
+                    VAD 能量阈值，值越小，灵敏度越高，取值范围[0, 1]。
+                    **注意：** 仅在 Level 设置为 3（自定义模式）时生效。
+                  minimum: 0
+                  maximum: 1
+                  example: 0
 
     MessageHistory:
       type: object
@@ -561,6 +641,12 @@ components:
           example:
             BeginCharacters: "[["
             EndCharacters: "]]"
+        AddASRInfo:
+          type: boolean
+          description: |
+            透传对应厂商支持的识别标签。
+          default: false
+          example: false
 
     DigitalHuman:
       type: object

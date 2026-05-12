@@ -99,6 +99,8 @@ components:
           $ref: '../shared-components.yaml#/components/schemas/TTS'
         ASR:
           $ref: '../shared-components.yaml#/components/schemas/ASR'
+        VAD:
+          $ref: '../shared-components.yaml#/components/schemas/VAD'
         MessageHistory:
           $ref: '../shared-components.yaml#/components/schemas/MessageHistory'
         CallbackConfig:

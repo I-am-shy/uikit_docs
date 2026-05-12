@@ -87,7 +87,6 @@ components:
             > 4. StopListening(Sequence:4)
             > 5. ...
           example: 1
-
     StartListeningResponse:
       type: object
       properties:
@@ -103,4 +102,13 @@ components:
           type: string
           description: Request ID
           example: "8916619579948490296"
+        Data:
+          type: object
+          description: Response data
+          properties:
+            Round:
+              type: integer
+              format: int64
+              description: The Round (turn number) for this turn
+              example: 158422001
 

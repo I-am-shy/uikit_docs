@@ -5,13 +5,22 @@
 ## Function Introduction
 
 To improve the recognition accuracy of speech recognition (or speech-to-text) in different scenarios, the following methods can be used:
-- Select the appropriate vendor/recognition model: Support Tencent ASR, Aliyun Paraformer, Aliyun Gummy, Microsoft, etc.
+- Select the appropriate vendor/recognition model:
 - Select the appropriate language: The default Tencent and Aliyun Paraformer models are for Chinese recognition, and Microsoft is for English recognition.
 - Set recognition hot words: In certain scenarios, there are usually some specialized words, such as character names, user IDs, function names, etc., which can be set as temporary hot words when creating an agent instance to improve the accuracy of speech recognition.
 
+Currently ZEGO-supported ASR vendors and models:
+- Tencent ASR: Standard version, Large Model version (including Chinese-English-Cantonese+9 dialect large model engine [Large Model Version], Putonghua-English large model engine [Large Model Version], etc.). For details, see [Tencent Cloud-Real-Time Speech Recognition](https://cloud.tencent.com/document/product/1093/48982)
+- Aliyun Bailian:
+    - Gummy series models (mainly support Chinese, English, Japanese, etc.), Fun-ASR series models (mainly support Chinese and dialects), Paraformer series (Mandarin, dialects, English, and some minority languages, not recommended). For details, see [Real-Time Speech Recognition-Fun-ASR/Gummy/Paraformer](https://help.aliyun.com/zh/model-studio/real-time-speech-recognition?spm=a2c4g.11186623.0.0.771ce4edF33KTg);
+    - Qwen series models: Mainly applicable to Chinese, English and other languages. For details, see [Real-Time Speech Recognition-Qwen](https://help.aliyun.com/zh/model-studio/qwen-real-time-speech-recognition?spm=a2c4g.11186623.help-menu-2400256.d_0_4_3_1.5d5423e4OJzxll)
+- Volcengine Large Model streaming speech recognition model: Applicable to Chinese, English and other languages. For details, see [Volcengine Speech Recognition Large Model](https://www.volcengine.com/docs/6561/1354871?lang=zh)
+- Microsoft ASR: For details, see [Microsoft Real-Time Speech Recognition](https://learn.microsoft.com/en-us/azure/ai-services/speech-service/speech-to-text).
+For more ASR vendors and models, please contact ZEGOCLOUD business.
+
 ## Prerequisites
 
-Currently, Tencent is the default vendor that is supported and opened. If you need Aliyun, Microsoft, etc., please contact ZEGOCLOUD business to open.
+Currently, Tencent is the default vendor that is supported and opened. If you need Aliyun, Microsoft, Volcengine, etc., please contact ZEGOCLOUD business to open.
 
 ## Usage Method
 
@@ -26,13 +35,15 @@ Currently, ASR related parameters can be set through 4 interfaces:
 
 | Parameters                   | Type   | Required | Description                                                                                                                                                                                                                                  |
 | ---------------------- | ------ | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Vendor                 | String | No       | ASR vendor, default is Tencent：<ul><li>Tencent: Tencent</li><li>AliyunParaformer: Aliyun Paraformer</li><li>AliyunGummy: Aliyun Gummy</li><li>Microsoft: Microsoft ASR</li></ul>                                                                 |
+| Vendor                 | String | No       | ASR vendor, default is Tencent：<ul><li>Tencent: Tencent</li><li>AliyunParaformer: Aliyun Paraformer</li><li>AliyunGummy: Aliyun Gummy</li><li>Microsoft: Microsoft ASR</li><li>AliyunFunASR: Aliyun FunASR</li><li>AliyunQwenASR: Aliyun Qwen ASR</li><li>VolcSeedASR: Volcengine Seed ASR</li></ul>                                                                 |
 | ~HotWord~              | String | No       | This parameter has been deprecated. <br/>Please set it through the Params extended parameters, please refer to the hot word setting instructions for each vendor below.                                                                                                                                             |
 | Params                 | Object | No       | Vendor parameters, please refer to the parameter setting instructions for each vendor below.                                                                                                                                                                                  |
-| VADSilenceSegmentation | number | No       | Set the number of milliseconds after which two sentences are no longer considered as one. Range [200, 2000], default is 500. Please refer to [Speech Segmentation Control](/aiagent-server/advanced/speech-segmentation-control) for details.                                                              |
-| PauseInterval          | number | No       | Set the number of milliseconds within which two sentences are considered as one, i.e., ASR multi-sentence concatenation. Range [200, 2000]. Only when this value is greater than VADSilenceSegmentation, ASR multi-sentence concatenation will be enabled. Please refer to [Speech Segmentation Control](/aiagent-server/advanced/speech-segmentation-control) for details. |
+| ~VADSilenceSegmentation~ | number | No       | ⚠️ This parameter has been deprecated. Since v2.12.0, it has been migrated to [VAD.TurnDetectConfig.SilenceSegmentation](/aiagent-server/api-reference/agent-instance-management/create-agent-instance) in the VAD structure.<br/>Used to set how many milliseconds after the user stops speaking, the two sentences are no longer considered as one. Range [200, 2000], default is 500. For details, see [Speech Segmentation](/aiagent-server/advanced/speech-segmentation-control).                                                              |
+| ~PauseInterval~         | number | No       | ⚠️ This parameter has been deprecated. Since v2.12.0, it has been migrated to [VAD.TurnDetectConfig.PauseInterval](/aiagent-server/api-reference/agent-instance-management/create-agent-instance) in the VAD structure.<br/>Used to set how many milliseconds within the user stops speaking, the two sentences are considered as one, i.e., ASR multi-sentence concatenation. Range [200, 2000]. Only when this value is greater than SilenceSegmentation, ASR multi-sentence concatenation will be enabled. For details, see [Speech Segmentation](/aiagent-server/advanced/speech-segmentation-control). |
 
 The Params parameters for each vendor are as follows:
+
+## ASR Vendor Parameters
 
 <Tabs titleSize="h3">
 <Tab title="Tencent">
@@ -54,8 +65,17 @@ Note:
 
 Please refer to [Tencent Cloud-Real-Time Speech Recognition](https://cloud.tencent.com/document/product/1093/48982#835304ab-3b0b-487e-9daa-08f7086b4fdf) `engine_model_type` (engine model type) parameter detailed description. The default value is `16k_zh`, Chinese general.
 <Accordion title="Supported Engine Model Type Detailed List" defaultOpen="false">
+**Phone scenarios:**
+- 8k_zh: Chinese phone general;
+- 8k_en: English phone general;
+- 8k_zh_large: Chinese phone scenario dedicated large model engine [Large Model Version]. The current model supports Chinese, Shanghai, Sichuan, Wuhan, Guiyang, Kunming, Xi'an, Zhengzhou, Taiyuan, Lanzhou, Yinchuan, Xining, Nanjing, Hefei, Nanchang, Changsha, Suzhou, Hangzhou, Jinan, Tianjin, Shijiazhuang, Heilongjiang, Jilin, Liaoning, Minnan, Hakka, Cantonese, Nanning dialect recognition.
+
+**Non-phone scenarios:**
+- 16k_zh_en: Chinese-English-Cantonese+9 dialect large model engine [Large Model Version]. The current model supports Chinese, English, Cantonese, Sichuan, Shaanxi, Henan, Shanghai, Hunan, Hubei, Anhui, Minnan and Chaoshan dialect recognition;
+- 16k_zh_large: Putonghua-English large model engine [Large Model Version]. The current model supports Chinese, English and 27 dialect recognition;
+- 16k_multi_lang: Multi-language large model engine [Large Model Version]. The current model supports English, Japanese, Korean, Arabic, Filipino, French, Hindi, Indonesian, Malay, Portuguese, Spanish, Thai, Turkish, Vietnamese, German;
+- 16k_en_large: English large model engine [Large Model Version] supports English;
 - 16k_zh： Chinese General;
-- 16k_zh-PY: Chinese-English-Cantonese;
 - 16k_zh-TW: Chinese Traditional;
 - 16k_zh_edu: Chinese Education;
 - 16k_zh_medical: Chinese Medical;
@@ -64,7 +84,6 @@ Please refer to [Tencent Cloud-Real-Time Speech Recognition](https://cloud.tence
 - 16k_en: English General;
 - 16k_en_game: English Game;
 - 16k_en_edu: English Education;
-- 16k_zh_en: Chinese-English-Cantonese+7 Chinese Dialect Large Model Engine【Large Model Version】. The current model supports Chinese, English, Cantonese, Sichuan, Shaanxi, Henan, Shanghai, Hunan, Hubei and Anhui dialects, model parameter quantity is huge, language model performance enhancement, greatly improving the recognition accuracy of low-quality audio with large noise, echo, small human voice, and distant human voice.
 - 16k_ko: Korean;
 - 16k_ja: Japanese;
 - 16k_th: Thai;
@@ -404,6 +423,290 @@ Below is an example of setting "zego" and "microsoft" as a phrase list and the l
                 "zego",
                 "microsoft"
             ]
+        }
+    }
+}
+```
+</CodeGroup>
+</Tab>
+<Tab title="Aliyun Fun-ASR">
+
+Detailed parameter description please refer to: [Aliyun Bailian Fun-ASR Real-Time Speech Recognition](https://help.aliyun.com/zh/model-studio/real-time-speech-recognition?spm=a2c4g.11186623.0.0.771ce4edF33KTg).
+
+#### Set Model
+
+Set the model through the `payload.model` parameter, the model value is `fun-asr-realtime`.
+
+#### Set Language
+
+Set the language through the `payload.parameters.language_hints` parameter. The system only reads the first value in the array; excess values will be ignored. If the language cannot be determined in advance, it can be left unset, and the model will automatically recognize the language.
+
+<Accordion title="Supported Language Codes by Model" defaultOpen="false">
+**fun-asr-realtime, fun-asr-realtime-2025-11-07:**
+- zh: Chinese
+- en: English
+- ja: Japanese
+
+**fun-asr-realtime-2025-09-15:**
+- zh: Chinese
+- en: English
+</Accordion>
+
+#### Usage Example
+
+Below is an example of setting the language as Chinese and English.
+
+<CodeGroup>
+```json RegisterAgent
+// !mark(7:12)
+{
+    "AgentId": "xiaozhi",
+    "Name": "Xiao Zhi",
+    "ASR": {
+        "Vendor": "AliyunFunASR",
+        "Params": {
+            "payload": {
+                "model": "fun-asr-realtime",
+                "parameters": {
+                    "language_hints": [
+                        "zh",
+                        "en"
+                    ]
+                }
+            }
+        }
+    },
+    "LLM": {
+        "Url": "https://ark.cn-beijing.volces.com/api/v3/chat/completions",
+        "ApiKey": "zego_test",
+        "Model": "zego_test",
+        "SystemPrompt": "You are Xiaozhi, an adult woman, a companion assistant **created by ZEGOClOUD**. knowledgeable in both astronomy and geography, intelligent, wise, enthusiastic, and friendly. \nDialogue requirements: 1. Dialogue with users according to the requirements of the persona. \n2.No more than 100 words."
+    },
+    "TTS": {
+        "Vendor": "Bytedance",
+        "Params": {
+            "app": {
+                "appid": "zego_test",
+                "token": "zego_test",
+                "cluster": "volcano_tts"
+            },
+            "audio": {
+                "voice_type": "en_female_sarah_mars_bigtts"
+            }
+        }
+    }
+}
+```
+
+```json CreateAgentInstance
+// !mark(13:18)
+{
+    "AgentId": "xiaozhi",
+    "UserId": "user_1",
+    "RtcInfo": {
+        "RoomId": "room_1",
+        "AgentStreamId": "agent_stream_1",
+        "AgentUserId": "agent_user_1",
+        "UserStreamId": "user_stream_1"
+    },
+    "ASR": {
+        "Vendor": "AliyunFunASR",
+        "Params": {
+            "payload": {
+                "model": "fun-asr-realtime",
+                "parameters": {
+                    "language_hints": [
+                        "zh",
+                        "en"
+                    ]
+                }
+            }
+        }
+    }
+}
+```
+</CodeGroup>
+</Tab>
+<Tab title="Aliyun Qwen">
+
+Detailed parameter description please refer to: [Aliyun Qwen Real-Time Speech Recognition](https://help.aliyun.com/zh/model-studio/qwen-real-time-speech-recognition?spm=a2c4g.11186623.help-menu-2400256.d_0_4_3_1.5d5423e4OJzxll).
+
+#### Set Model
+
+Set the model through the `model` parameter, the model value is `qwen3-asr-flash-realtime`.
+
+#### Set Language
+
+Set the language through the `language` parameter.
+
+<Accordion title="Supported Language Code List" defaultOpen="false">
+- zh: Chinese (Mandarin, Sichuan, Minnan, Wu)
+- yue: Cantonese
+- en: English
+- ja: Japanese
+- de: German
+- ko: Korean
+- ru: Russian
+- fr: French
+- pt: Portuguese
+- ar: Arabic
+- it: Italian
+- es: Spanish
+- hi: Hindi
+- id: Indonesian
+- th: Thai
+- tr: Turkish
+- uk: Ukrainian
+- vi: Vietnamese
+- cs: Czech
+- da: Danish
+- fil: Filipino
+- fi: Finnish
+- is: Icelandic
+- ms: Malay
+- no: Norwegian
+- pl: Polish
+- sv: Swedish
+</Accordion>
+
+#### Usage Example
+
+Below is an example of setting the language as Chinese.
+
+<CodeGroup>
+```json RegisterAgent
+// !mark(7:10)
+{
+    "AgentId": "xiaozhi",
+    "Name": "Xiao Zhi",
+    "ASR": {
+        "Vendor": "AliyunQwenASR",
+        "Params": {
+            "input_audio_transcription": {
+                "language": "zh"
+            },
+            "model": "qwen3-asr-flash-realtime"
+        }
+    },
+    "LLM": {
+        "Url": "https://ark.cn-beijing.volces.com/api/v3/chat/completions",
+        "ApiKey": "zego_test",
+        "Model": "zego_test",
+        "SystemPrompt": "You are Xiaozhi, an adult woman, a companion assistant **created by ZEGOClOUD**. knowledgeable in both astronomy and geography, intelligent, wise, enthusiastic, and friendly. \nDialogue requirements: 1. Dialogue with users according to the requirements of the persona. \n2.No more than 100 words."
+    },
+    "TTS": {
+        "Vendor": "Bytedance",
+        "Params": {
+            "app": {
+                "appid": "zego_test",
+                "token": "zego_test",
+                "cluster": "volcano_tts"
+            },
+            "audio": {
+                "voice_type": "en_female_sarah_mars_bigtts"
+            }
+        }
+    }
+}
+```
+
+```json CreateAgentInstance
+// !mark(13:16)
+{
+    "AgentId": "xiaozhi",
+    "UserId": "user_1",
+    "RtcInfo": {
+        "RoomId": "room_1",
+        "AgentStreamId": "agent_stream_1",
+        "AgentUserId": "agent_user_1",
+        "UserStreamId": "user_stream_1"
+    },
+    "ASR": {
+        "Vendor": "AliyunQwenASR",
+        "Params": {
+            "input_audio_transcription": {
+                "language": "zh"
+            },
+            "model": "qwen3-asr-flash-realtime"
+        }
+    }
+}
+```
+</CodeGroup>
+</Tab>
+<Tab title="Volcengine">
+
+Detailed parameter description please refer to: [Volcengine Real-Time Speech Recognition](https://www.volcengine.com/docs/6561/1354869?lang=zh).
+
+#### Set Model
+
+Set the model through the `model_name` parameter, the model value is `bigmodel`.
+
+#### Set Hot Words
+
+Set the hot word table ID through the `corpus.boosting_table_id` parameter. This ID is obtained through the Volcengine self-learning platform configuration.
+
+<Warning title="Note">Since Volcengine has enabled two-pass recognition, language cannot be specified through parameters.</Warning>
+
+#### Usage Example
+
+Below is an example of setting the hot word table ID to "test_boosting_table".
+
+<CodeGroup>
+```json RegisterAgent
+// !mark(7:12)
+{
+    "AgentId": "xiaozhi",
+    "Name": "Xiao Zhi",
+    "ASR": {
+        "Vendor": "VolcSeedASR",
+        "Params": {
+            "model_name": "bigmodel",
+            "corpus": {
+                "boosting_table_id": "test_boosting_table"
+            }
+        }
+    },
+    "LLM": {
+        "Url": "https://ark.cn-beijing.volces.com/api/v3/chat/completions",
+        "ApiKey": "zego_test",
+        "Model": "zego_test",
+        "SystemPrompt": "You are Xiaozhi, an adult woman, a companion assistant **created by ZEGOClOUD**. knowledgeable in both astronomy and geography, intelligent, wise, enthusiastic, and friendly. \nDialogue requirements: 1. Dialogue with users according to the requirements of the persona. \n2.No more than 100 words."
+    },
+    "TTS": {
+        "Vendor": "Bytedance",
+        "Params": {
+            "app": {
+                "appid": "zego_test",
+                "token": "zego_test",
+                "cluster": "volcano_tts"
+            },
+            "audio": {
+                "voice_type": "en_female_sarah_mars_bigtts"
+            }
+        }
+    }
+}
+```
+
+```json CreateAgentInstance
+// !mark(13:18)
+{
+    "AgentId": "xiaozhi",
+    "UserId": "user_1",
+    "RtcInfo": {
+        "RoomId": "room_1",
+        "AgentStreamId": "agent_stream_1",
+        "AgentUserId": "agent_user_1",
+        "UserStreamId": "user_stream_1"
+    },
+    "ASR": {
+        "Vendor": "VolcSeedASR",
+        "Params": {
+            "model_name": "bigmodel",
+            "corpus": {
+                "boosting_table_id": "test_boosting_table"
+            }
         }
     }
 }
