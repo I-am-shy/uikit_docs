@@ -87,7 +87,6 @@ components:
             > 4. StopListening(Sequence:4)
             > 5. ...
           example: 1
-
     StartListeningResponse:
       type: object
       properties:
@@ -103,4 +102,13 @@ components:
           type: string
           description: 请求 ID
           example: "8916619579948490296"
+        Data:
+          type: object
+          description: 响应数据
+          properties:
+            Round:
+              type: integer
+              format: int64
+              description: 本轮的 Round（轮次）
+              example: 158422001
 

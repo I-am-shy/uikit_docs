@@ -121,7 +121,6 @@ components:
             - Enqueue
           default: ClearAndInterrupt
           example: ClearAndInterrupt
-
     SendAgentInstanceLLMResponse:
       type: object
       properties:
@@ -137,3 +136,12 @@ components:
           type: string
           description: Request ID
           example: "8825223157230377926"
+        Data:
+          type: object
+          description: Response data
+          properties:
+            Round:
+              type: integer
+              format: int64
+              description: The Round (turn number) for this turn
+              example: 158422001

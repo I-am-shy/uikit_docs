@@ -89,6 +89,7 @@ components:
             > **📌 Important Note**
             >
             > Ensure that multiple AI agent instances (even if they are not in the same RTC room) use different user IDs, otherwise the earlier created AI agent instance will be kicked out of the RTC room.
+            > AgentUserId must not be the same as a real user's UserId, as this will cause mutual kicking.
           maxLength: 32
           example: "agent_user_1"
         UserStreamId:
@@ -312,7 +313,7 @@ components:
         Vendor:
           type: string
           description: ASR provider. Please refer to [Configuring ASR > ASR Parameters](/aiagent-server/guides/configuring-asr#asr-params) for details.
-          enum: [Tencent, AliyunParaformer, AliyunGummy, Microsoft]
+          enum: [Tencent, AliyunParaformer, AliyunGummy, Microsoft, AliyunFunASR, AliyunQwenASR, VolcSeedASR]
           default: Tencent
           example: "Tencent"
         Params:
@@ -321,7 +322,10 @@ components:
           example: {"engine_model_type": "16k_en", "hotword_list": "zego|10"}
         VADSilenceSegmentation:
           type: number
+          deprecated: true
           description: |
+            ⚠️ This parameter has been deprecated. Starting from version 2.12.0, it has been moved to [VAD.TurnDetectConfig.SilenceSegmentation](/aiagent-server/api-reference/agent-instance-management/create-agent-instance).
+
             Set the number of seconds after which two sentences are no longer considered as one.
             Unit is ms, range [200, 2000], default is 500.
             Please refer to [Speech Segmentation Control](/aiagent-server/advanced/speech-segmentation-control) for details.
@@ -335,10 +339,13 @@ components:
           example: 500
         PauseInterval:
           type: number
+          deprecated: true
           description: |
+            ⚠️ This parameter has been deprecated. Starting from version 2.12.0, it has been moved to [VAD.TurnDetectConfig.PauseInterval](/aiagent-server/api-reference/agent-instance-management/create-agent-instance).
+
             Set the number of seconds within which two sentences are considered as one, i.e., ASR multi-sentence concatenation.
             Unit is ms, range [200, 2000].
-            Only when this value is greater than VADSilenceSegmentation, ASR multi-sentence concatenation will be enabled.
+            Only when this value is greater than SilenceSegmentation, ASR multi-sentence concatenation will be enabled.
             Please refer to [Speech Segmentation Control](/aiagent-server/advanced/speech-segmentation-control) for details.
           minimum: 200
           maximum: 2000
@@ -346,15 +353,21 @@ components:
         VADSensitiveLevel:
           type: number
           format: int
+          deprecated: true
           description: |
-            VAD sensitivity, 0: medium sensitivity, default value; 1: low sensitivity; 2: high sensitivity; 3: custom mode, needs to be used in combination with VADMinSpeechDur and VADEnergyThreshold. Please refer to [Voice Interruption Sensitivity Adjustment](/aiagent-server/advanced/voice-interruption-sensitivity-adjustment) for details.
+            ⚠️ This parameter has been deprecated. Starting from version 2.12.0, it has been moved to [VAD.VoiceDetectConfig.SensitiveConfig.Level](/aiagent-server/api-reference/agent-instance-management/create-agent-instance).
+
+            VAD sensitivity, 0: medium sensitivity, default value; 1: low sensitivity; 2: high sensitivity; 3: custom mode, needs to be used in combination with MinSpeechDur and EnergyThreshold. Please refer to [Voice Interruption Sensitivity Adjustment](/aiagent-server/advanced/voice-interruption-sensitivity-adjustment) for details.
           default: 0
           enum: [0, 1, 2, 3]
           example: 0
         VADMinSpeechDur:
           type: number
           format: int
+          deprecated: true
           description: |
+            ⚠️ This parameter has been deprecated. Starting from version 2.12.0, it has been moved to [VAD.VoiceDetectConfig.SensitiveConfig.MinSpeechDur](/aiagent-server/api-reference/agent-instance-management/create-agent-instance).
+
             VAD minimum speech duration, unit ms, the larger the value, the less likely it is to be detected, but it may cause some short speech to be missed, the value range is [0, 1000].
           minimum: 0
           maximum: 1000
@@ -362,7 +375,10 @@ components:
         VADEnergyThreshold:
           type: number
           format: float
+          deprecated: true
           description: |
+            ⚠️ This parameter has been deprecated. Starting from version 2.12.0, it has been moved to [VAD.VoiceDetectConfig.SensitiveConfig.EnergyThreshold](/aiagent-server/api-reference/agent-instance-management/create-agent-instance).
+
             VAD energy threshold, the smaller the value, the higher the sensitivity, the value range is [0, 1].
           minimum: 0
           maximum: 1
@@ -371,6 +387,70 @@ components:
           type: string
           deprecated: true
           description: This parameter has been deprecated. Please set it through the Params vendor parameters.
+
+    VAD:
+      type: object
+      description: |
+        VAD (Voice Activity Detection) parameters for controlling voice activity detection.
+        Starting from version 2.12.0, VAD-related parameters previously under ASR have been moved to the VAD structure.
+      properties:
+        TurnDetectConfig:
+          type: object
+          description: |
+            Turn detection configuration.
+          properties:
+            SilenceSegmentation:
+              type: integer
+              description: |
+                Set the number of seconds after which two sentences are no longer considered as one.
+                Unit is ms, range [200, 2000], default is 500.
+                Please refer to [Speech Segmentation Control](/aiagent-server/advanced/speech-segmentation-control) for details.
+              minimum: 200
+              maximum: 2000
+              default: 500
+              example: 500
+            PauseInterval:
+              type: integer
+              description: |
+                Set the number of milliseconds within which two sentences are considered as one, i.e., ASR multi-sentence concatenation.
+                Unit is ms, range [200, 2000].
+                Only when this value is greater than SilenceSegmentation, ASR multi-sentence concatenation will be enabled.
+                Please refer to [Speech Segmentation Control](/aiagent-server/advanced/speech-segmentation-control) for details.
+              minimum: 200
+              maximum: 2000
+              example: 800
+        VoiceDetectConfig:
+          type: object
+          description: Voice detection configuration.
+          properties:
+            SensitiveConfig:
+              type: object
+              description: VAD sensitivity configuration. Please refer to [Voice Interruption Sensitivity Adjustment](/aiagent-server/advanced/voice-interruption-sensitivity-adjustment) for details.
+              properties:
+                Level:
+                  type: integer
+                  description: |
+                    VAD sensitivity, 0: medium sensitivity, default value; 1: low sensitivity; 2: high sensitivity; 3: custom mode, needs to be used in combination with MinSpeechDur and EnergyThreshold.
+                  default: 0
+                  enum: [0, 1, 2, 3]
+                  example: 0
+                MinSpeechDur:
+                  type: integer
+                  description: |
+                    VAD minimum speech duration, unit ms, the larger the value, the less likely it is to be detected, but it may cause some short speech to be missed, the value range is [0, 1000].
+                    **Note:** Only effective when Level is set to 3 (custom mode).
+                  minimum: 0
+                  maximum: 1000
+                  example: 100
+                EnergyThreshold:
+                  type: number
+                  format: float
+                  description: |
+                    VAD energy threshold, the smaller the value, the higher the sensitivity, the value range is [0, 1].
+                    **Note:** Only effective when Level is set to 3 (custom mode).
+                  minimum: 0
+                  maximum: 1
+                  example: 0
 
     MessageHistory:
       type: object
@@ -559,6 +639,12 @@ components:
           example:
             BeginCharacters: "[["
             EndCharacters: "]]"
+        AddASRInfo:
+          type: boolean
+          description: |
+            Pass through the recognition tags supported by the corresponding vendor.
+          default: false
+          example: false
 
     DigitalHuman:
       type: object

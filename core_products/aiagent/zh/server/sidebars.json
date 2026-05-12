@@ -130,6 +130,11 @@
           "type": "doc",
           "label": "AI 播报时获取 MetaInfo",
           "id": "advanced/get-meta-info-while-ai-is-speaking"
+        },
+        {
+          "type": "doc",
+          "label": "Round 机制与回调追踪",
+          "id": "advanced/round-mechanism-and-callback-tracking"
         }
       ]
     },

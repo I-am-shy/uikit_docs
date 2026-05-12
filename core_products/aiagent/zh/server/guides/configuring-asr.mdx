@@ -5,13 +5,22 @@
 ## 功能简介
 
 为了提高不同场景下语音识别（或语音转文字）的识别准确率，可以通过以下方式实现：
-- 选择合适厂商/识别模型：支持腾讯 ASR、阿里百炼 Paraformer、百阿里炼 Gummy、微软等
+- 选择合适厂商/识别模型：
 - 选择合适语种: 默认腾讯、阿里百炼模型为中文识别，微软为英文识别。
 - 设置识别热词：在特定的场景下，通常存在一些专用词汇，例如角色名、用户名、功能名称等，可以在创建智能体实例时设置临时热词，提高语音识别的准确率。
 
+目前ZEGO支持的ASR厂商及模型如下：
+- 腾讯 ASR：普通版本、大模型版本（包括中英粤+9种方言大模型引擎【大模型版】、普方英大模型引擎【大模型版】等）。详情查看[腾讯云-实时语音识别](https://cloud.tencent.com/document/product/1093/48982)
+- 阿里云百炼: 
+    - Gummy 系列模型（主要支持中英日等语言）、Fun-ASR系列模型（主要支持中文及方言）、Paraformer 系列（普通话、方言、英语及部分小语种，不推荐）。详情查看[实时语音识别-Fun-ASR/Gummy/Paraformer](https://help.aliyun.com/zh/model-studio/real-time-speech-recognition?spm=a2c4g.11186623.0.0.771ce4edF33KTg);
+    - 千问系列模型：主要适用于中文、英文等多种语言，详情查看[实时语音识别-千问](https://help.aliyun.com/zh/model-studio/qwen-real-time-speech-recognition?spm=a2c4g.11186623.help-menu-2400256.d_0_4_3_1.5d5423e4OJzxll)
+- 火山大模型流式语音识别模型：适用于中英等语种场景，详情查看[火山语音识别大模型](https://www.volcengine.com/docs/6561/1354871?lang=zh)
+- 微软 ASR ：详情请查看[微软实时语音识别](https://learn.microsoft.com/zh-cn/azure/ai-services/speech-service/speech-to-text)。
+若需要更多ASR厂商及模型，请联系ZEGO商务。
+
 ## 前提条件
 
-目前腾讯为默认开通并支持的语音识别厂商。若需要阿里、微软等识别厂商，请联系 ZEGO 商务开通。
+目前腾讯为默认开通并支持的语音识别厂商。若需要阿里百炼、微软、火山等识别厂商，请联系 ZEGO 商务开通。
 
 ## 使用方式
 
@@ -26,11 +35,11 @@
 
 | 参数                   | 类型   | 是否必选 | 描述                                                                                                                                                                                                                                  |
 | ---------------------- | ------ | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Vendor                 | String | 否       | ASR 供应商，默认为 Tencent：<ul><li>Tencent: 腾讯</li><li>AliyunParaformer: 阿里云 Paraformer</li><li>AliyunGummy: 阿里云 Gummy</li><li>Microsoft: 微软 ASR</li></ul>                                                                 |
+| Vendor                 | String | 否       | ASR 供应商，默认为 Tencent：<ul><li>Tencent: 腾讯</li><li>AliyunParaformer: 阿里云Paraformer</li><li>AliyunGummy: 阿里云Gummy</li><li>Microsoft: 微软 ASR</li><li>AliyunFunASR：阿里云 FunASR（大模型版本）</li><li>AliyunQwenASR：阿里云 QwenASR（大模型版本）</li><li>VolcSeedASR：火山引擎 SeedASR</li></ul>                                                                 |
 | ~HotWord~              | String | 否       | 该参数已废弃。<br/>请通过 Params 扩展参数设置，具体使用方式参考下面各厂商的热词设置说明。                                                                                                                                             |
 | Params                 | Object | 否       | 厂商参数，具体使用方式参考下面各厂商的参数设置说明。                                                                                                                                                                                  |
-| VADSilenceSegmentation | number | 否       | 用于设置用户说话停顿多少毫秒后，不再将两句话视为一句。范围 [200，2000]，默认为 500。详细说明请参考[语音识别断句](/aiagent-server/advanced/speech-segmentation-control)。                                                              |
-| PauseInterval          | number | 否       | 用于设置用户说话停顿多少毫秒内，将两句话视为一句，即 ASR 多句拼接。范围 [200，2000]。仅当此值大于 VADSilenceSegmentation，才会开启 ASR 多句拼接。详细说明请参考[语音识别断句](/aiagent-server/advanced/speech-segmentation-control)。 |
+| ~VADSilenceSegmentation~ | number | 否       | ⚠️ 该参数已废弃。2.12.0 版本起迁移至 VAD 结构下的 [VAD.TurnDetectConfig.SilenceSegmentation](/aiagent-server/api-reference/agent-instance-management/create-agent-instance)。<br/>用于设置用户说话停顿多少毫秒后，不再将两句话视为一句。范围 [200，2000]，默认为 500。详细说明请参考[语音识别断句](/aiagent-server/advanced/speech-segmentation-control)。                                                              |
+| ~PauseInterval~         | number | 否       | ⚠️ 该参数已废弃。2.12.0 版本起迁移至 VAD 结构下的 [VAD.TurnDetectConfig.PauseInterval](/aiagent-server/api-reference/agent-instance-management/create-agent-instance)。<br/>用于设置用户说话停顿多少毫秒内，将两句话视为一句，即 ASR 多句拼接。范围 [200，2000]。仅当此值大于 SilenceSegmentation，才会开启 ASR 多句拼接。详细说明请参考[语音识别断句](/aiagent-server/advanced/speech-segmentation-control)。 |
 
 各厂商的 Params 参数说明如下：
 
@@ -54,8 +63,17 @@
 
 请查看[腾讯云-实时语音识别](https://cloud.tencent.com/document/product/1093/48982#835304ab-3b0b-487e-9daa-08f7086b4fdf) `engine_model_type` （引擎模型类型）参数详细说明。默认值为 `16k_zh` ，中文通用。
 <Accordion title="支持的引擎模型类型详细列表" defaultOpen="false">
+**电话场景：**
+- 8k_zh：中文电话通用；
+- 8k_en：英文电话通用；
+- 8k_zh_large：中文电话场景专用大模型引擎【大模型版】。当前模型同时支持中文、上海话、四川话、武汉话、贵阳话、昆明话、西安话、郑州话、太原话、兰州话、银川话、西宁话、南京话、合肥话、南昌话、长沙话、苏州话、杭州话、济南话、天津话、石家庄话、黑龙江话、吉林话、辽宁话、闽南语、客家话、粤语、南宁话方言识别。
+
+**非电话场景：**
+- 16k_zh_en：中英粤+9种方言大模型引擎【大模型版】。当前模型同时支持中文、英语、粤语、四川话、陕西话、河南话、上海话、湖南话、湖北话、安徽话、闽南和潮汕方言识别；
+- 16k_zh_large：普方英大模型引擎【大模型版】。当前模型同时支持中文、英文和27种方言的识别；
+- 16k_multi_lang：多语种大模型引擎【大模型版】。当前模型同时支持英语、日语、韩语、阿拉伯语、菲律宾语、法语、印地语、印尼语、马来语、葡萄牙语、西班牙语、泰语、土耳其语、越南语、德语；
+- 16k_en_large：英文大模型引擎【大模型版】支持英语；
 - 16k_zh：中文通用；
-- 16k_zh-PY：中英粤；
 - 16k_zh-TW：中文繁体；
 - 16k_zh_edu：中文教育；
 - 16k_zh_medical：中文医疗；
@@ -64,7 +82,6 @@
 - 16k_en：英文通用；
 - 16k_en_game：英文游戏；
 - 16k_en_edu：英文教育；
-- 16k_zh_en：中英粤+7种方言大模型引擎【大模型版】。当前模型同时支持中文、英语、粤语、四川、陕西、河南、上海、湖南、湖北和安徽方言识别，模型参数量极大，语言模型性能增强，针对噪声大、回音大、人声小、人声远等低质量音频的识别准确率极大提升;
 - 16k_ko：韩语；
 - 16k_ja：日语；
 - 16k_th：泰语；
@@ -403,6 +420,290 @@
                 "zego",
                 "microsoft"
             ]
+        }
+    }
+}
+```
+</CodeGroup>
+</Tab>
+<Tab title="阿里云百炼 Fun-ASR">
+
+详细参数说明请查看：[阿里云百炼 Fun-ASR 实时语音识别](https://help.aliyun.com/zh/model-studio/real-time-speech-recognition?spm=a2c4g.11186623.0.0.771ce4edF33KTg)。
+
+#### 设置模型
+
+通过 `payload.model` 参数设置模型，模型值为 `fun-asr-realtime`。
+
+#### 设置语种
+
+通过 `payload.parameters.language_hints` 参数设置语种。系统仅读取数组中的首个值，多余值将被忽略。如果无法提前确定语种，可不设置，模型会自动识别语种。
+
+<Accordion title="不同模型支持的语言代码" defaultOpen="false">
+**fun-asr-realtime、fun-asr-realtime-2025-11-07：**
+- zh: 中文
+- en: 英文
+- ja: 日语
+
+**fun-asr-realtime-2025-09-15：**
+- zh: 中文
+- en: 英文
+</Accordion>
+
+#### 使用示例
+
+以下为设置语种为中文和英文的示例。
+
+<CodeGroup>
+```json RegisterAgent
+// !mark(7:12)
+{
+    "AgentId": "xiaozhi",
+    "Name": "小智",
+    "ASR": {
+        "Vendor": "AliyunFunASR",
+        "Params": {
+            "payload": {
+                "model": "fun-asr-realtime",
+                "parameters": {
+                    "language_hints": [
+                        "zh",
+                        "en"
+                    ]
+                }
+            }
+        }
+    },
+    "LLM": {
+        "Url": "https://ark.cn-beijing.volces.com/api/v3/chat/completions",
+        "ApiKey": "zego_test",
+        "Model": "zego_test",
+        "SystemPrompt": "你是小智，成年女性，是**即构科技创造的陪伴助手**，上知天文下知地理，聪明睿智、热情友善。\n对话要求：1、按照人设要求与用户对话。\n2、不能超过100字。"
+    },
+    "TTS": {
+        "Vendor": "Bytedance",
+        "Params": {
+            "app": {
+                "appid": "zego_test",
+                "token": "zego_test",
+                "cluster": "volcano_tts"
+            },
+            "audio": {
+                "voice_type": "zh_female_qingxinnvsheng_mars_bigtts"
+            }
+        }
+    }
+}
+```
+
+```json CreateAgentInstance
+// !mark(13:18)
+{
+    "AgentId": "xiaozhi",
+    "UserId": "user_1",
+    "RtcInfo": {
+        "RoomId": "room_1",
+        "AgentStreamId": "agent_stream_1",
+        "AgentUserId": "agent_user_1",
+        "UserStreamId": "user_stream_1"
+    },
+    "ASR": {
+        "Vendor": "AliyunFunASR",
+        "Params": {
+            "payload": {
+                "model": "fun-asr-realtime",
+                "parameters": {
+                    "language_hints": [
+                        "zh",
+                        "en"
+                    ]
+                }
+            }
+        }
+    }
+}
+```
+</CodeGroup>
+</Tab>
+<Tab title="阿里云千问">
+
+详细参数说明请查看：[阿里云千问实时语音识别](https://help.aliyun.com/zh/model-studio/qwen-real-time-speech-recognition?spm=a2c4g.11186623.help-menu-2400256.d_0_4_3_1.5d5423e4OJzxll)。
+
+#### 设置模型
+
+通过 `model` 参数设置模型，模型值为 `qwen3-asr-flash-realtime`。
+
+#### 设置语种
+
+通过 `language` 参数设置语种。
+
+<Accordion title="支持的语言代码列表" defaultOpen="false">
+- zh: 中文（普通话、四川话、闽南语、吴语）
+- yue: 粤语
+- en: 英文
+- ja: 日语
+- de: 德语
+- ko: 韩语
+- ru: 俄语
+- fr: 法语
+- pt: 葡萄牙语
+- ar: 阿拉伯语
+- it: 意大利语
+- es: 西班牙语
+- hi: 印地语
+- id: 印尼语
+- th: 泰语
+- tr: 土耳其语
+- uk: 乌克兰语
+- vi: 越南语
+- cs: 捷克语
+- da: 丹麦语
+- fil: 菲律宾语
+- fi: 芬兰语
+- is: 冰岛语
+- ms: 马来语
+- no: 挪威语
+- pl: 波兰语
+- sv: 瑞典语
+</Accordion>
+
+#### 使用示例
+
+以下为设置语种为中文的示例。
+
+<CodeGroup>
+```json RegisterAgent
+// !mark(7:10)
+{
+    "AgentId": "xiaozhi",
+    "Name": "小智",
+    "ASR": {
+        "Vendor": "AliyunQwenASR",
+        "Params": {
+            "input_audio_transcription": {
+                "language": "zh"
+            },
+            "model": "qwen3-asr-flash-realtime"
+        }
+    },
+    "LLM": {
+        "Url": "https://ark.cn-beijing.volces.com/api/v3/chat/completions",
+        "ApiKey": "zego_test",
+        "Model": "zego_test",
+        "SystemPrompt": "你是小智，成年女性，是**即构科技创造的陪伴助手**，上知天文下知地理，聪明睿智、热情友善。\n对话要求：1、按照人设要求与用户对话。\n2、不能超过100字。"
+    },
+    "TTS": {
+        "Vendor": "Bytedance",
+        "Params": {
+            "app": {
+                "appid": "zego_test",
+                "token": "zego_test",
+                "cluster": "volcano_tts"
+            },
+            "audio": {
+                "voice_type": "zh_female_qingxinnvsheng_mars_bigtts"
+            }
+        }
+    }
+}
+```
+
+```json CreateAgentInstance
+// !mark(13:16)
+{
+    "AgentId": "xiaozhi",
+    "UserId": "user_1",
+    "RtcInfo": {
+        "RoomId": "room_1",
+        "AgentStreamId": "agent_stream_1",
+        "AgentUserId": "agent_user_1",
+        "UserStreamId": "user_stream_1"
+    },
+    "ASR": {
+        "Vendor": "AliyunQwenASR",
+        "Params": {
+            "input_audio_transcription": {
+                "language": "zh"
+            },
+            "model": "qwen3-asr-flash-realtime"
+        }
+    }
+}
+```
+</CodeGroup>
+</Tab>
+<Tab title="火山">
+
+详细参数说明请查看：[火山引擎实时语音识别](https://www.volcengine.com/docs/6561/1354869?lang=zh)。
+
+#### 设置模型
+
+通过 `model_name` 参数设置模型，模型值为 `bigmodel`。
+
+#### 设置热词
+
+通过 `corpus.boosting_table_id` 参数设置热词表ID。该ID通过火山引擎自学习平台配置获取。
+
+<Warning title="注意">由于火山引擎已启用二遍识别，因此不支持通过参数指定语种。</Warning>
+
+#### 使用示例
+
+以下为设置热词表ID为 "test_boosting_table" 的示例。
+
+<CodeGroup>
+```json RegisterAgent
+// !mark(7:12)
+{
+    "AgentId": "xiaozhi",
+    "Name": "小智",
+    "ASR": {
+        "Vendor": "VolcSeedASR",
+        "Params": {
+            "model_name": "bigmodel",
+            "corpus": {
+                "boosting_table_id": "test_boosting_table"
+            }
+        }
+    },
+    "LLM": {
+        "Url": "https://ark.cn-beijing.volces.com/api/v3/chat/completions",
+        "ApiKey": "zego_test",
+        "Model": "zego_test",
+        "SystemPrompt": "你是小智，成年女性，是**即构科技创造的陪伴助手**，上知天文下知地理，聪明睿智、热情友善。\n对话要求：1、按照人设要求与用户对话。\n2、不能超过100字。"
+    },
+    "TTS": {
+        "Vendor": "Bytedance",
+        "Params": {
+            "app": {
+                "appid": "zego_test",
+                "token": "zego_test",
+                "cluster": "volcano_tts"
+            },
+            "audio": {
+                "voice_type": "zh_female_qingxinnvsheng_mars_bigtts"
+            }
+        }
+    }
+}
+```
+
+```json CreateAgentInstance
+// !mark(13:18)
+{
+    "AgentId": "xiaozhi",
+    "UserId": "user_1",
+    "RtcInfo": {
+        "RoomId": "room_1",
+        "AgentStreamId": "agent_stream_1",
+        "AgentUserId": "agent_user_1",
+        "UserStreamId": "user_stream_1"
+    },
+    "ASR": {
+        "Vendor": "VolcSeedASR",
+        "Params": {
+            "model_name": "bigmodel",
+            "corpus": {
+                "boosting_table_id": "test_boosting_table"
+            }
         }
     }
 }

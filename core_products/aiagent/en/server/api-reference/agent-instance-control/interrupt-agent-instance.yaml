@@ -79,7 +79,6 @@ components:
           type: string
           description: The unique identifier of the AI agent instance, obtained through the response parameters of the [Create AI Agent Instance](/aiagent-server/api-reference/agent-instance-management/create-agent-instance) interface.
           example: "1907755175297171456"
-
     InterruptAgentInstanceResponse:
       type: object
       properties:
@@ -95,3 +94,12 @@ components:
           type: string
           description: Request ID
           example: "8825223157230377926"
+        Data:
+          type: object
+          description: Response data
+          properties:
+            Round:
+              type: integer
+              format: int64
+              description: The Round (turn number) for this turn
+              example: 158422001
