@@ -235,13 +235,23 @@ await ZegoExpressEngine.instance().startPublishingStream("streamID");
 ```HTML title="HTML"
 <template>
   <!-- #ifdef APP-PLUS -->
-    <zego-local-view style="height: 403.84rpx;flex: 1;"></zego-local-view>
-    <!-- #endif -->
-    <!-- #ifdef H5 -->
-    <video id="local_video" style="height: 403.84rpx;flex: 1;"  autoplay playsinline :muted="true"></video>
-    <!-- #endif -->
+  <zego-local-view style="height: 403.84rpx;flex: 1;"></zego-local-view>
+  <!-- #endif -->
+  <!-- #ifdef H5 -->
+  <video id="local_video" style="height: 403.84rpx;flex: 1;" autoplay playsinline :muted="true"></video>
+  <!-- #endif -->
 </template>
-
+<script>
+import ZegoLocalView from '@/uni_modules/zego-ZegoExpressUniApp-JS/components/zego-ZegoExpressUniApp-JS/zego-view/ZegoLocalView';
+// ...
+export default {
+  // ...
+  components: {
+    ZegoLocalView,
+  },
+  // ...
+}
+</script>
 ```
 
 ```javascript title="js"
