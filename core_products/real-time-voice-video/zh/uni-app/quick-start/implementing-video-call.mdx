@@ -298,13 +298,25 @@ ZegoExpressEngine.instance().on("publisherStateUpdate", (streamID, state, errorC
 <CodeGroup>
 ```HTML title="HTML"
 <template>
-    <!-- #ifdef APP-PLUS -->
-    <zego-remote-view :streamID="playStreamID" style="height: 403.84rpx;flex: 1"></zego-remote-view>
-    <!-- #endif -->
-    <!-- #ifdef H5 -->
-    <video id="remote_video" style="height: 403.84rpx;flex: 1;"  autoplay playsinline :muted="true"></video>
-    <!-- #endif -->
+  <!-- #ifdef APP-PLUS -->
+  <zego-remote-view :streamID="playStreamID" style="height: 403.84rpx;flex: 1"></zego-remote-view>
+  <!-- #endif -->
+  <!-- #ifdef H5 -->
+  <video id="remote_video" style="height: 403.84rpx;flex: 1;" autoplay playsinline :muted="true"></video>
+  <!-- #endif -->
 </template>
+<script>
+import ZegoRemoteView from '@/uni_modules/zego-ZegoExpressUniApp-JS/components/zego-ZegoExpressUniApp-JS/zego-view/ZegoRemoteView';
+// ...
+
+export default {
+  // ...
+  components: {
+    ZegoRemoteView,
+  },
+  // ...
+}
+</script>
 ```
 ```javascript title="js"
 /** 开始拉流 */
