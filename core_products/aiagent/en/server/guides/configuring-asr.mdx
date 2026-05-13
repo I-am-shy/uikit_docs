@@ -71,14 +71,16 @@ Please refer to [Tencent Cloud-Real-Time Speech Recognition](https://cloud.tence
 **Phone scenarios:**
 - 8k_zh: Chinese phone general;
 - 8k_en: English phone general;
-- 8k_zh_large: Chinese phone scenario dedicated large model engine [Large Model Version]. The current model supports Chinese, Shanghai, Sichuan, Wuhan, Guiyang, Kunming, Xi'an, Zhengzhou, Taiyuan, Lanzhou, Yinchuan, Xining, Nanjing, Hefei, Nanchang, Changsha, Suzhou, Hangzhou, Jinan, Tianjin, Shijiazhuang, Heilongjiang, Jilin, Liaoning, Minnan, Hakka, Cantonese, Nanning dialect recognition.
+- 8k_zh_large: Chinese phone scenario dedicated large model engine [Large Model Version]. The current model supports Chinese, Shanghai, Sichuan, Wuhan, Guiyang, Kunming, Xi'an, Zhengzhou, Taiyuan, Lanzhou, Yinchuan, Xining, Nanjing, Hefei, Nanchang, Changsha, Suzhou, Hangzhou, Jinan, Tianjin, Shijiazhuang, Heilongjiang, Jilin, Liaoning, Minnan, Hakka, Cantonese, Nanning dialect recognition. By significantly improving model parameter scale and language modeling capabilities, it achieves high-precision recognition of complex scenarios in phone audio (such as accent interference, background noise), with a substantial improvement in recognition accuracy compared to the regular version.
+
+<Note title="Note">If you have phone communication recognition requirements but find that the target language only supports 16k, you can set the input_sample_rate parameter to 8000 and use the 16k engine below to obtain recognition results. However, the 16k engine is not trained on phone communication data, so we cannot guarantee the recognition performance of this usage in phone scenarios. You need to verify the recognition results yourself.</Note>
 
 **Non-phone scenarios:**
-- 16k_zh_en: Chinese-English-Cantonese+9 dialect large model engine [Large Model Version]. The current model supports Chinese, English, Cantonese, Sichuan, Shaanxi, Henan, Shanghai, Hunan, Hubei, Anhui, Minnan and Chaoshan dialect recognition;
-- 16k_zh_large: Putonghua-English large model engine [Large Model Version]. The current model supports Chinese, English and 27 dialect recognition;
-- 16k_multi_lang: Multi-language large model engine [Large Model Version]. The current model supports English, Japanese, Korean, Arabic, Filipino, French, Hindi, Indonesian, Malay, Portuguese, Spanish, Thai, Turkish, Vietnamese, German;
+- 16k_zh_en: Chinese-English-Cantonese+9 dialect large model engine [Large Model Version]. The current model supports Chinese, English, Cantonese, Sichuan, Shaanxi, Henan, Shanghai, Hunan, Hubei, Anhui, Minnan and Chaoshan dialect recognition. With extremely large model parameters and enhanced language model performance, recognition accuracy for low-quality audio with loud noise, loud echo, quiet or distant voice is greatly improved;
+- 16k_zh_large: Putonghua-English large model engine [Large Model Version]. The current model supports Chinese, English and [27 dialects](https://cloud.tencent.com/document/product/1093/35682) recognition. With extremely large model parameters and enhanced language model performance, recognition accuracy for low-quality audio with loud noise, loud echo, quiet or distant voice is greatly improved;
+- 16k_multi_lang: Multi-language large model engine [Large Model Version]. The current model supports English, Japanese, Korean, Arabic, Filipino, French, Hindi, Indonesian, Malay, Portuguese, Spanish, Thai, Turkish, Vietnamese, German recognition, enabling automatic recognition of 15 languages (sentence/paragraph level);
 - 16k_en_large: English large model engine [Large Model Version] supports English;
-- 16k_zh： Chinese General;
+- 16k_zh: Chinese General;
 - 16k_zh-TW: Chinese Traditional;
 - 16k_zh_edu: Chinese Education;
 - 16k_zh_medical: Chinese Medical;
@@ -101,6 +103,8 @@ Please refer to [Tencent Cloud-Real-Time Speech Recognition](https://cloud.tence
 - 16k_hi: Hindi;
 - 16k_fr: French;
 - 16k_de: German;
+
+Example value: 16k_zh
 </Accordion>
 
 #### Usage Example
