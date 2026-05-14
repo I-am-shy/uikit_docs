@@ -6,6 +6,26 @@ articleID: 15339
 
 - - -
 
+**发布日期：2026-05-14**
+
+**新增功能**
+
+
+| 功能项-25% | 功能描述 | 相关接口 |
+|--|--|--|
+|适配内存分页|适配 Android 15 的 16KB 内存分页大小。|-|
+
+**改进优化**
+
+| 优化项-25% | 优化描述 | 相关接口 |
+|--|--|--|
+|优化自定义高级功能配置 | 现支持在调用 `ZIMAudio.init` 进行初始化前，通过 `ZIMAudio.setAdvancedConfig` 方法设置以下 3 个配置项，更新 `ZIMAudio.init` 初始化的默认配置。<ul><li>`enable_audio_focus_listener`</li><li>`audio_session_mix_with_others`</li><li>`deactivate_avsession_after_pause`</li></ul> |<ul><li>[setAdvancedConfig](@setAdvancedConfig)</li><li>[init](@init)</li></ul> |
+
+**问题修复**
+
+修复了快速切换正在播放的音频时，已知的一些问题。
+
+---
 ## 1.0.0 版本
 
 **发布日期：2024-07-01**

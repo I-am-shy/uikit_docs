@@ -13,6 +13,28 @@ export const startRecordMap = {
 
 - - -
 
+## Version 1.1.0
+
+**Release date: 2026-05-14**
+
+**New features**
+
+| Feature | Description | Related API |
+|--|--|--|
+|Memory page adaptation|Adapted to the 16KB memory page size of Android 15.|-|
+
+**Improvements**
+
+| Improvement | Description | Related API |
+|--|--|--|
+|Improved custom advanced configuration | Now supports setting the following 3 configuration items through the `ZIMAudio.setAdvancedConfig` method before calling `ZIMAudio.init` for initialization, to update the default configuration of `ZIMAudio.init` initialization.<ul><li>`enable_audio_focus_listener`</li><li>`audio_session_mix_with_others`</li><li>`deactivate_avsession_after_pause`</li></ul> |<ul><li>[setAdvancedConfig](@setAdvancedConfig)</li><li>[init](@init)</li></ul> |
+
+**Bug fixes**
+
+Fixed known issues when quickly switching audio being played.
+
+---
+
 ## Version 1.0.0
 
 **Release date: 2024-04-17**
