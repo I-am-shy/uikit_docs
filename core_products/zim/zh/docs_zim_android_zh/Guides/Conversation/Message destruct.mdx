@@ -1,6 +1,6 @@
 ---
 articleID: 11594
-date: "2026-07-16"
+date: "2026-07-24"
 ---
 
 import { getPlatformData } from "/snippets/utils-content-parser.js"
@@ -15,19 +15,18 @@ export const setConversationMessageDestructDurationMap = {
   'Flutter': <a href='@setConversationMessageDestructDuration' target='_blank'>setConversationMessageDestructDuration</a>,
 }
 
-# 会话消息定时销毁
+# 设置会话消息定时销毁
 
 - - -
 
 ## 功能概述
 
-会话消息定时销毁，指设置一个会话的消息定时销毁时长后，该会话内此后发送的消息将在指定时长后自动删除。可用于阅后即焚、保密通信等场景。
+设置会话消息定时销毁，指设置一个会话的消息定时销毁时长后，该会话内此后发送的消息将在指定时长后自动删除。可用于阅后即焚、保密通信等场景。
 
-<Frame width="auto" height="auto">
+<Frame width="512" height="auto">
   <img src="https://doc-media.zego.im/docuo/7c17419de1.png" alt="消息定时销毁.png"/>
 </Frame>
 
-本文档介绍了如何使用 ZIM SDK 的接口，实现设置会话消息定时销毁时长、感知配置变化、获取消息过期时间戳、以及监听消息销毁事件等功能。
 
 ## 设置会话消息定时销毁时长
 
@@ -112,7 +111,7 @@ ZIM.getInstance()!
 ```
 :::
 
-## 感知会话消息定时销毁配置变化
+## 获取会话消息的定时销毁配置
 
 当会话的定时销毁时长发生变化时（包括本端设置或多端同步），可通过 [conversationChanged](@conversationChanged) 回调感知到变化。
 
@@ -204,13 +203,11 @@ ZIM.getInstance()!
 ```
 :::
 
-## 限时消息携带过期时间戳
+## 获取限时消息的过期时间戳
 
-在会话内设置消息定时销毁时长后，此后该会话内成员发送的消息，将会携带过期时间戳 `destructTime`。
+在会话内设置消息定时销毁时长后，此后该会话内成员发送的消息，将会携带过期时间戳 `destructTime`。`destructTime` 单位为毫秒，`0` 表示该消息非限时消息。
 
-开发者可通过 `destructTime` 减去当前本地时间，展示对应消息的销毁倒计时。
-
-`destructTime` 单位为毫秒，`0` 表示该消息非限时消息。
+开发者可通过 `destructTime` 和当前时间，获取对应消息的销毁倒计时。
 
 :::if{props.platform=undefined}
 ```java
@@ -263,7 +260,7 @@ if (destructTime > 0) {
 ```
 :::
 
-<Note title="获取更精确的倒计时">
+### 获取更精确的消息销毁倒计时
 
 若希望获得更精确的倒计时，可通过 [callExperimentalAPI](@callExperimentalAPI) 接口获取 SDK 当前时间戳，再通过 `destructTime - SDK 当前时间戳` 获得倒计时。
 
@@ -282,9 +279,8 @@ SDK 返回结果（`ZIMExperimentalAPICalledCallback` 的 result 参数）为 JS
 ```
 其中 `timestamp` 精度为毫秒。
 
-</Note>
 
-## 监听消息因定时销毁被删除
+## 监听定时销毁消息
 
 当消息达到销毁时间时，将会触发 [onMessageDeleted](@onMessageDeleted) 事件，删除类型 `ZIMMessageDeleteType` 为 `MessagesDestructed`。
 
