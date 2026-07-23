@@ -46,11 +46,7 @@ export const ZIMMessageReceiptsReadSentCallbackMap = {
 }
 export const onMessageReceiptChangedMap = {
   'Android': <a href='@onMessageReceiptChanged' target='_blank'>onMessageReceiptChanged</a>,
-  'Web': <a href='@messageReceiptChanged' target='_blank'>messageReceiptChanged</a>,
-  'UTS': <a href='@messageReceiptChanged' target='_blank'>onMessageReceiptChanged</a>,
-  'Flutter': <a href='https://pub.dev/documentation/zego_zim/latest/zego_zim/ZIMEventHandler/onMessageReceiptChanged.html' target='_blank'>onMessageReceiptChanged</a>,
-  'iOS': <a href='https://doc-zh.zego.im/article/api?doc=zim_API~objective-c_ios~protocol~ZIMEventHandler#zim-message-receipt-changed' target='_blank'>messageReceiptChanged</a>,
-  'mac': <a href='https://doc-zh.zego.im/article/api?doc=zim_API~objective-c_macos~protocol~ZIMEventHandler#zim-message-receipt-changed' target='_blank'>messageReceiptChanged</a>,
+  'iOS,mac': <a href='@ZIMmessageReceiptChanged' target='_blank'>messageReceiptChanged</a>,
 }
 export const ZIMEventHandlerMap = {
   'Android': <a href='@-ZIMEventHandler' target='_blank'>ZIMEventHandler</a>,
@@ -124,6 +120,10 @@ export const ZIMVideoMessageMap = {
 export const ZIMCombineMessageMap = {
   'Android': <a href='@-ZIMCombineMessage' target='_blank'>ZIMCombineMessage</a>,
   'Flutter': <a href='https://pub.dev/documentation/zego_zim/latest/zego_zim/ZIMCombineMessage-class.html' target='_blank'>ZIMCombineMessage</a>,
+}
+export const queryGroupMessageReceiptMemberListMap = {
+  'Android': <a href='@queryGroupMessageReceiptMemberList' target='_blank'>queryGroupMessageReceiptMemberList</a>,
+  'iOS,mac': <a href='@queryGroupMessageReceiptMemberListByMessage' target='_blank'>queryGroupMessageReceiptMemberListByMessage</a>,
 }
 
 # 消息回执
@@ -856,13 +856,13 @@ zim.queryGroupMessageReceiptUnreadMemberList(groupMsgObj, groupMsgObj.conversati
 
 ### 获取回执消息的已送达状态
 
-发送者发送回执消息后，若接收端设备已收到该消息，那么消息的回执状态将变更为已送达。开发者可通过 [onMessageReceiptChanged](@onMessageReceiptChanged) 回调监听回执状态的变化。
+发送者发送回执消息后，若接收端设备已收到该消息，那么消息的回执状态将变更为已送达。开发者可通过 {getPlatformData(props,onMessageReceiptChangedMap)} 回调监听回执状态的变化。
 
 <Warning title="注意">
 ZIM 3.1.0 版本起，消息回执在 “回执中” 和 “已完成” 之间新增了 “已送达” 状态，用于表示回执消息已送达。如需使用此功能，请联系 ZEGO 技术支持。
 </Warning>
 
-以下场景的消息回执状态会变更为 “已送达” 并触发 [onMessageReceiptChanged](@onMessageReceiptChanged) 回调。
+以下场景的消息回执状态会变更为 “已送达” 并触发 {getPlatformData(props,onMessageReceiptChangedMap)} 回调。
 
 **单聊场景：**
 
@@ -884,10 +884,10 @@ ZIM 3.1.0 版本起，消息回执在 “回执中” 和 “已完成” 之间
 
 ### 查询群消息回执状态的成员列表
 
-调用 [queryGroupMessageReceiptMemberList](@queryGroupMessageReceiptMemberList) 可查询群消息的已读、未读（未送达）、或已送达状态的成员列表。
+调用 {getPlatformData(props,queryGroupMessageReceiptMemberListMap)} 可查询群消息的已读、未读（未送达）、或已送达状态的成员列表。
 
 **参数说明：**
-
+:::if{props.platform="undefined|iOS|mac|window"}
 | 参数-20% | 说明 |
 | --- | --- |
 | message | 需要查询的带回执的消息。 |
@@ -895,6 +895,20 @@ ZIM 3.1.0 版本起，消息回执在 “回执中” 和 “已完成” 之间
 | count | 查询的人数，单次查询不超过 100。 |
 | config | 查询的配置项：[ZIMGroupMessageReceiptMemberQueryConfig](@-ZIMGroupMessageReceiptMemberQueryConfig)，可以配置查询起始标记 `nextFlag` 以及查询项（已读、未读[未送达]、已送达）。 |
 | callback | 查询结果的回调：[ZIMGroupMessageReceiptMemberListQueriedCallback](@-ZIMGroupMessageReceiptMemberListQueriedCallback)，其中 `userList` 为符合查询条件的群成员列表，`nextFlag` 为下一次查询的起始标记（当 `nextFlag` 为 0 时表示查询完毕）。 |
+:::
+
+:::if{props.platform="Flutter|Web"}
+| 参数-20% | 说明 |
+| --- | --- |
+| message | 需要查询的带回执的消息。 |
+| groupID | 对应群会话的群 ID。 |
+| count | 查询的人数，单次查询不超过 100。 |
+| config | 查询的配置项：[ZIMGroupMessageReceiptMemberQueryConfig](@-ZIMGroupMessageReceiptMemberQueryConfig)，可以配置查询起始标记 `nextFlag` 以及查询项（已读、未读[未送达]、已送达）。 |
+
+| 返回值-30% | 说明 |
+|--- | --- |
+| [ZIMGroupMessageReceiptMemberListQueriedResult](@-ZIMGroupMessageReceiptMemberListQueriedResult) | 查询结果的回调，其中 `userList` 为符合查询条件的群成员列表，`nextFlag` 为下一次查询的起始标记（当 `nextFlag` 为 0 时表示查询完毕）。|
+:::
 
 **调用示例：**
 
@@ -977,6 +991,28 @@ ZIM.getInstance()!
         // result.nextFlag 为下一次查询的起始标记，nextFlag 为 0 时表示查询完毕
     })
     .catchError((onError) {
+        // 查询失败
+    });
+```
+:::
+
+:::if{props.platform="Web"}
+```javascript
+// 1. 构造查询配置
+const config = new ZIMGroupMessageReceiptMemberListQueryConfig();
+config.nextFlag = 0;    // 初始填 0，后续填 result 里返回的 nextFlag
+config.filterType = ZIMMessageReceiptFilterType.Read; // 默认值，查已读成员
+
+// 2. 调用接口
+zim.queryGroupMessageReceiptMemberList(message, groupID, 10, config)
+    .then((result) => {
+        // 查询成功
+        // result.userList  — List<ZIMGroupMemberInfo>，符合查询条件的群成员列表
+        // result.nextFlag  — 下一次查询的起始标记，为 0 时表示查询完毕
+        // result.groupID   — 群组 ID
+        // result.errorInfo — ZIMError，code 为 0 表示成功
+    })
+    .catch((error) => {
         // 查询失败
     });
 ```

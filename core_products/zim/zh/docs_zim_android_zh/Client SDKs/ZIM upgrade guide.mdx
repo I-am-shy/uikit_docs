@@ -7,7 +7,7 @@ import { getPlatformData } from "/snippets/utils-content-parser.js"
 
 export const ZIMMessageReactionUserListQueriedCallbackMap = {
   'Android': <a href='@-ZIMMessageReactionUserListQueriedCallback' target='_blank'>ZIMMessageReactionUserListQueriedCallback</a>,
-  'window': <a href='@ZIMMessageReactionUserListQueriedCallback' target='_blank'>ZIMMessageReactionUserListQueriedCallback</a>,
+  'window': <a href='@-ZIMMessageReactionUserListQueriedCallback' target='_blank'>ZIMMessageReactionUserListQueriedCallback</a>,
 
 }
 
@@ -66,28 +66,6 @@ zim.queryGroupMessageReceiptMemberList(
 ```
 :::
 
-:::if{props.platform="iOS|mac"}
-```objc
-ZIMGroupMessageReceiptMemberQueryConfig *config = [[ZIMGroupMessageReceiptMemberQueryConfig alloc] init];
-config.nextFlag = 0;    // 查询的起始标记，初始填 0，后续填从 callback 里返回的 nextFlag。
-config.count = 10;      // 需要查询的用户数量，单次不超过 100。
-
-[zim queryGroupMessageReceiptMemberListByMessage:message
-                                         groupID:groupID
-                                           count:count
-                                          config:config
-                                        callback:^(NSString *_Nonnull groupID, NSArray<ZIMGroupMemberInfo *> *_Nonnull userList,
-                                                   unsigned int nextFlag, ZIMError *_Nonnull errorInfo) {
-    if (errorInfo.code == 0) {
-        // 查询成功，userList 为符合查询条件的群成员列表
-        // nextFlag 为下一次查询的起始标记，nextFlag 为 0 时表示查询完毕
-    } else {
-        // 查询失败
-    }
-}];
-```
-:::
-
 :::if{props.platform="window"}
 ```cpp
 zim::ZIMGroupMessageReceiptMemberQueryConfig config;
@@ -108,23 +86,6 @@ zim->queryGroupMessageReceiptMemberList(
 ```
 :::
 
-:::if{props.platform="Flutter"}
-```dart
-ZIMGroupMessageReceiptMemberQueryConfig config = ZIMGroupMessageReceiptMemberQueryConfig();
-config.nextFlag = 0;    // 查询的起始标记，初始填 0，后续填从 callback 里返回的 nextFlag。
-config.count = 10;      // 需要查询的用户数量，单次不超过 100。
-
-ZIM.getInstance()!
-    .queryGroupMessageReceiptMemberList(message, groupID, count, config)
-    .then((result) {
-        // 查询成功，result.userList 为符合查询条件的群成员列表
-        // result.nextFlag 为下一次查询的起始标记，nextFlag 为 0 时表示查询完毕
-    })
-    .catchError((onError) {
-        // 查询失败
-    });
-```
-:::
 
 
 ---

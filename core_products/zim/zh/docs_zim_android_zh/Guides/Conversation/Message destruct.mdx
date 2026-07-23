@@ -8,6 +8,10 @@ import { conversationChangedMap } from "/snippets/zim/const-link.mdx"
 export const setConversationMessageDestructDurationMap = {
   'Android': <a href='@setConversationMessageDestructDuration' target='_blank'>setConversationMessageDestructDuration</a>,
 }
+export const callExperimentalAPIMap = {
+  'Android': <a href='@callExperimentalAPI' target='_blank'>callExperimentalAPI</a>,
+  'iOS,mac': <a href='@callExperimentalAPIWithParams' target='_blank'>callExperimentalAPIWithParams</a>,
+}
 
 # 设置会话消息定时销毁
 
@@ -263,7 +267,7 @@ if (destructTime > 0) {
 
 ### 获取更精确的消息销毁倒计时
 
-若希望获得更精确的倒计时，可通过 [callExperimentalAPI](@callExperimentalAPI) 接口获取 SDK 当前时间戳，再通过 `destructTime - SDK 当前时间戳` 获得倒计时。
+若希望获得更精确的倒计时，可通过 {getPlatformData(props, callExperimentalAPIMap)} 接口获取 SDK 当前时间戳，再通过 `destructTime - SDK 当前时间戳` 获得倒计时。
 
 传入参数为 JSON 字符串：
 ```json
