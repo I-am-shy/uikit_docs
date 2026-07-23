@@ -16,23 +16,25 @@ paths:
   /:
     post:
       tags: [messaging]
-      summary: C2cReadReceipt
+      summary: GroupDeliveryReceipt
       description: |
-        Use this API to set read receipts for one-to-one messages sent by a specific user.
-        
+        Use this API to set delivered receipts for group messages.
+
+        The server can call this API to report the delivery status on behalf of the message receiver (group member). After a successful call, the message sender will receive a delivery receipt push for the corresponding group message.
+        <Note title="Note">FromUserId is the receiver (operator, must be a group member), and GroupId is the target group ID.</Note>
         <Note title="Note">Rate limit: 20 requests/second.</Note>
-      operationId: set-read-receipts-for-one-to-one-messages
+      operationId: set-delivery-receipts-for-group-messages
       parameters:
         - name: Action
           in: query
           description: |
             > API prototype parameter
             >
-            > https://zim-api.zego.im/?Action=C2cReadReceipt
+            > https://zim-api.zego.im/?Action=GroupDeliveryReceipt
           required: true
           schema:
             type: string
-            enum: [C2cReadReceipt]
+            enum: [GroupDeliveryReceipt]
           style: form
           explode: true
         - $ref: '../shared-components.yaml#/components/parameters/AppId'
@@ -45,36 +47,36 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/C2cReadReceiptRequest'
+              $ref: '#/components/schemas/GroupDeliveryReceiptRequest'
       responses:
         '200':
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/C2cReadReceiptResponse'
+                $ref: '#/components/schemas/GroupDeliveryReceiptResponse'
 
 components:
   schemas:
-    C2cReadReceiptRequest:
+    GroupDeliveryReceiptRequest:
       type: object
-      required: [FromUserId,ConvId,ConvMsgSeq]
+      required: [FromUserId,GroupId,ConvMsgSeq]
       properties:
         FromUserId:
           type: string
-          description: The operator. Must be a registered user.
-          example: "fromUserId"
-        ConvId:
+          description: The operator (message receiver). Must be a registered user and a group member.
+          example: "receiverUserId"
+        GroupId:
           type: string
-          description: Conversation ID.
-          example: "clientA"
+          description: Group ID.
+          example: "groupA"
         ConvMsgSeq:
           type: array
           items:
             type: number
-          description: Message sequence numbers for which read receipts need to be set.
+          description: Message sequence numbers for which delivered receipts need to be set. Up to 10 per request.
           example: [3,4]
-    C2cReadReceiptResponse:
+    GroupDeliveryReceiptResponse:
       type: object
       properties:
         Code:
@@ -83,7 +85,7 @@ components:
             Return code. (0 indicates success)
 
             The following only lists return codes related to the API business logic. For the complete list of return codes, please refer to [Global return codes](/zim-server/return-codes).
-              
+
             <table>
               <thead>
                 <tr>
@@ -109,8 +111,8 @@ components:
                   <td>Up to 10 per request, please reduce and retry</td>
                 </tr>
                 <tr>
-                  <td>660400104</td>
-                  <td>Failed to set receipts for one-to-one messages</td>
+                  <td>660400103</td>
+                  <td>Failed to set receipts for group messages</td>
                   <td>Contact technical support</td>
                 </tr>
               </tbody>
@@ -124,7 +126,7 @@ components:
           type: string
           description: Unique request identifier.
           example: "req-123456789"
-        ReadTime:
+        DeliveredTime:
           type: number
-          description: Server timestamp when the read receipt is successfully set for the recipient.
+          description: Server timestamp when the delivered receipt is successfully set for the receiver.
           example: 12345678
