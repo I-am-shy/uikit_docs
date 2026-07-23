@@ -1,5 +1,4 @@
 ---
-articleID: 11594
 date: "2026-07-24"
 ---
 
@@ -8,11 +7,6 @@ import { conversationChangedMap } from "/snippets/zim/const-link.mdx"
 
 export const setConversationMessageDestructDurationMap = {
   'Android': <a href='@setConversationMessageDestructDuration' target='_blank'>setConversationMessageDestructDuration</a>,
-  'iOS,mac': <a href='@setConversationMessageDestructDuration' target='_blank'>setConversationMessageDestructDuration</a>,
-  'window': <a href='@setConversationMessageDestructDuration' target='_blank'>setConversationMessageDestructDuration</a>,
-  'Web,UTS': <a href='@setConversationMessageDestructDuration' target='_blank'>setConversationMessageDestructDuration</a>,
-  'U3d': <a href='@setConversationMessageDestructDuration' target='_blank'>setConversationMessageDestructDuration</a>,
-  'Flutter': <a href='@setConversationMessageDestructDuration' target='_blank'>setConversationMessageDestructDuration</a>,
 }
 
 # 设置会话消息定时销毁
@@ -21,10 +15,14 @@ export const setConversationMessageDestructDurationMap = {
 
 ## 功能概述
 
+<Note title="说明">
+如需使用本功能，请开通旗舰版套餐。
+</Note>
+
 设置会话消息定时销毁，指设置一个会话的消息定时销毁时长后，该会话内此后发送的消息将在指定时长后自动删除。可用于阅后即焚、保密通信等场景。
 
 <Frame width="512" height="auto">
-  <img src="https://doc-media.zego.im/docuo/7c17419de1.png" alt="消息定时销毁.png"/>
+  <img src="https://doc-media.zego.im/core_products/zim/zh/docs_zim_android_zh/Guides/Conversation/message_destruct.png" alt="消息定时销毁.png"/>
 </Frame>
 
 
@@ -38,8 +36,11 @@ export const setConversationMessageDestructDurationMap = {
 
 **调用时机：** 用户登录后可调用，网络条件良好时可调用成功。
 
-- 设置单聊会话，需要 conversationID 对应的用户为已注册用户。
-- 设置群聊会话，需要群组已创建、且当前用户已加入群组。
+- 设置单聊会话消息定时销毁，需要 `conversationID` 对应的用户为已注册用户。
+- 设置群聊会话消息定时销毁，需要群组已创建、且当前用户已加入群组。
+    <Warning title="注意">
+    群聊会话消息的定时销毁设置默认为**所有群成员**均可配置，支持修改为**仅群主和管理员**可配置。如需修改默认权限配置，请联系 ZEGO 技术支持。
+    </Warning>
 
 :::if{props.platform=undefined}
 ```java
@@ -113,7 +114,7 @@ ZIM.getInstance()!
 
 ## 获取会话消息的定时销毁配置
 
-当会话的定时销毁时长发生变化时（包括本端设置或多端同步），可通过 [conversationChanged](@conversationChanged) 回调感知到变化。
+当会话的定时销毁时长发生变化时（包括本端设置或多端同步），可通过 {getPlatformData(props,conversationChangedMap)} 回调感知到变化。
 
 [ZIMConversation](@-ZIMConversation) 新增 `messageDestructDuration` 属性，表示当前会话的限时消息时长。未设置过定时销毁的会话，该值为 `0`。
 
