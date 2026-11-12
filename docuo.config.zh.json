@@ -1059,6 +1059,36 @@
         "description": "【英文名Digital Human AI】实时TTS驱动语音与唇形联动，表情/动作控制，剧本播报；流式渲染输出与背景合成；高拟真、低延迟；服务端API/SDK"
       },
       {
+        "id": "cloud_realtime_asr_zh",
+        "name": "云端实时语音识别",
+        "category": [
+          "产品",
+          "互动扩展服务"
+        ],
+        "instances": [
+          {
+            "id": "cloud_realtime_asr_zh",
+            "platform": "Server"
+          }
+        ],
+        "description": "云端实时语音识别：流式低延迟转写，中文与多语种，标点/时间戳，热词/词库与领域自定义；SDK/HTTP接入，回调与任务管理，可靠稳定"
+      },
+      {
+        "id": "shumei-moderation-zh",
+        "name": "数美内容审核",
+        "category": [
+          "产品",
+          "互动扩展服务"
+        ],
+        "instances": [
+          {
+            "id": "shumei_moderation_zh",
+            "platform": "Server"
+          }
+        ],
+        "description": "数美内容审核：音视频/图片/文本审核，涉政/涉黄/暴恐等；实时+离线，回调与命中策略；审计报表，SDK对接，风控联动"
+      },
+      {
         "id": "super_board_zh",
         "name": "超级白板",
         "category": [
@@ -1280,21 +1310,6 @@
         "description": "【英文名Analytics Dashboard】全链路质量监控/可视化与告警；通话KPI、设备/网络检测、呼叫详单；实时/历史报表，地域节点与并发容量洞察；QoS分析与问题定位"
       },
       {
-        "id": "cloud_realtime_asr_zh",
-        "name": "云端实时语音识别",
-        "category": [
-          "产品",
-          "互动扩展服务"
-        ],
-        "instances": [
-          {
-            "id": "cloud_realtime_asr_zh",
-            "platform": "Server"
-          }
-        ],
-        "description": "云端实时语音识别：流式低延迟转写，中文与多语种，标点/时间戳，热词/词库与领域自定义；SDK/HTTP接入，回调与任务管理，可靠稳定"
-      },
-      {
         "id": "callkit_zh",
         "name": "音视频通话 UIKit",
         "category": [
@@ -1385,67 +1400,6 @@
           }
         ],
         "description": "【英文名In-app Chat Kit】即时通讯UI组件：会话列表、聊天窗口、消息输入框；文本/图片/语音/文件/表情/自定义消息；已读回执、撤回、引用、@、草稿；群聊/好友与用户资料；离线推送；本地缓存与搜索；多端SDK与可定制主题"
-      },
-      {
-        "id": "shumei-moderation-zh",
-        "name": "数美内容审核",
-        "category": [
-          "产品",
-          "云市场"
-        ],
-        "instances": [
-          {
-            "id": "shumei_moderation_zh",
-            "platform": "Server"
-          }
-        ],
-        "description": "数美内容审核：音视频/图片/文本审核，涉政/涉黄/暴恐等；实时+离线，回调与命中策略；审计报表，SDK对接，风控联动"
-      },
-      {
-        "id": "ai-voice-changer-zh",
-        "name": "大饼 AI 变声",
-        "category": [
-          "产品",
-          "云市场"
-        ],
-        "instances": [
-          {
-            "id": "ai-voice_changer_android_zh",
-            "platform": "Android: Java"
-          },
-          {
-            "id": "ai_voice_changer_flutter_zh",
-            "platform": "Flutter: Dart"
-          },
-          {
-            "id": "ai_voice_changer_ios_zh",
-            "platform": "iOS: Objective-C"
-          },
-          {
-            "id": "ai_voice_changer_windows_zh",
-            "platform": "Windows: C++"
-          }
-        ],
-        "description": "AI 变声：实时音色转换，预设与自定义音色；低延迟；混响/音效；跨平台SDK，联动通话/直播；简单集成"
-      },
-      {
-        "id": "real-time-translation-zh",
-        "name": "实时传译",
-        "category": [
-          "产品",
-          "云市场"
-        ],
-        "instances": [
-          {
-            "id": "real_time_translation_android_zh",
-            "platform": "Android: Java"
-          },
-          {
-            "id": "real_time_translation_ios_zh",
-            "platform": "iOS: Objective-C"
-          }
-        ],
-        "description": "实时传译：低延迟双向多语种翻译；术语/词汇表；字幕/转写；会议/直播场景；流式API/回调，稳定可靠"
       },
       {
         "id": "solution_audio_room_zh",
@@ -2477,6 +2431,12 @@
       "locale": "zh"
     },
     {
+      "id": "shumei_moderation_zh",
+      "path": "extended_services/shumei-moderation/zh/server",
+      "routeBasePath": "shumei-moderation",
+      "locale": "zh"
+    },
+    {
       "id": "super_board_ios_zh",
       "label": "超级白板 (iOS)",
       "path": "extended_services/super_board/zh/ios",
@@ -2684,48 +2644,6 @@
       "label": "数字人 API（服务端）",
       "path": "core_products/digital-human/zh/server",
       "routeBasePath": "aigc-digital-human-server",
-      "locale": "zh"
-    },
-    {
-      "id": "shumei_moderation_zh",
-      "path": "cloud-market/shumei-moderation/zh/server",
-      "routeBasePath": "shumei-moderation",
-      "locale": "zh"
-    },
-    {
-      "id": "ai-voice_changer_android_zh",
-      "path": "cloud-market/ai-voice-changer/zh/android",
-      "routeBasePath": "ai-voice-changer-android",
-      "locale": "zh"
-    },
-    {
-      "id": "ai_voice_changer_flutter_zh",
-      "path": "cloud-market/ai-voice-changer/zh/flutter",
-      "routeBasePath": "ai-voice-changer-flutter",
-      "locale": "zh"
-    },
-    {
-      "id": "ai_voice_changer_ios_zh",
-      "path": "cloud-market/ai-voice-changer/zh/ios",
-      "routeBasePath": "ai-voice-changer-ios",
-      "locale": "zh"
-    },
-    {
-      "id": "ai_voice_changer_windows_zh",
-      "path": "cloud-market/ai-voice-changer/zh/windows",
-      "routeBasePath": "ai-voice-changer-windows",
-      "locale": "zh"
-    },
-    {
-      "id": "real_time_translation_android_zh",
-      "path": "cloud-market/realtime-translation/zh/android",
-      "routeBasePath": "real-time-translation-android",
-      "locale": "zh"
-    },
-    {
-      "id": "real_time_translation_ios_zh",
-      "path": "cloud-market/realtime-translation/zh/ios",
-      "routeBasePath": "real-time-translation-ios",
       "locale": "zh"
     },
     {
@@ -3083,6 +3001,14 @@
     {
       "source": "/faq/ai-coding",
       "destination": "/ai-coding/using-ai-coding"
+    },
+    {
+      "source":"/ai-voice-changer-:platform/:path*",
+      "destination":"/real-time-video-ios-oc/introduction/entry"
+    },
+    {
+      "source":"/real-time-translation-:platform/:path*",
+      "destination":"/real-time-video-ios-oc/introduction/entry"
     }
   ],
   "passthroughPrefixes": ["/unique-api", "/client-api"]
