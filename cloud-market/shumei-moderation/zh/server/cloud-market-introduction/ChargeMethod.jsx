@@ -146,7 +146,7 @@ export  function ChargeMethod() {
             onMouseDown={() => setActiveButton('btn2')}
             onMouseUp={() => setActiveButton(null)}
           >
-            前往 ZEGO 云市场，购买套餐包
+            购买套餐包
           </a>
         </div>
       </div>

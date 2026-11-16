@@ -1,12 +1,6 @@
 {
   "mySidebar": [
     {
-      "type": "doc",
-      "label": "云市场简介",
-      "id": "cloud-market",
-      "articleID": 18672
-    },
-    {
       "type": "category",
       "label": "产品简介",
       "collapsed": false,
